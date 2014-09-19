@@ -1,7 +1,7 @@
 /*Add two 64-bit numbers together */
 
 	.global _start
-_start;
+_start:
 
 	MOV R2, #0xFFFFFFFF @
 	MOV R3, #0x1		@
