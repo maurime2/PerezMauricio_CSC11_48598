@@ -8,4 +8,3 @@
 	
 	MOV R7, #1	/*exit through system call*/
 	SWI 0
-	
