@@ -17,6 +17,6 @@ _bits:
 	MOV R6, R8				@ MOV no , preserve
 	BAL _noprint1
 
-_print0;
+_print0:
 	MOV R8, R6				@ MOV preserve, no
 	MOV R0, #48				@ ACII '0'
