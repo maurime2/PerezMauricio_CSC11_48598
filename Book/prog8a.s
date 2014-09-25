@@ -5,7 +5,7 @@ _start:
 _read:					@ read syscall
 	MOV R7, #3			@ Syscall number
 	MOV R0, #0			@ Stdout is monitor
-	MOV R2, #5			@ Read one character only
+	MOV R2, #1			@ Read one character only
 	LDR R1, =string		@ String at string
 	SWI 0
 	
@@ -18,7 +18,7 @@ _togglecase:
 _write:					@ Write syscall
 	MOV R7, #4			@ syscall number
 	MOV R0, #1			@ Stdout is monitor
-	MOV R2, #5			@ string is 1 char long
+	MOV R2, #1			@ string is 1 char long
 	LDR R1, =string		@ string at start:
 	SWI 0
 	
