@@ -5,7 +5,7 @@ _start:
 _read:					@ read syscall
 	MOV R7, #3			@ Syscall number
 	MOV R0, #0			@ Stdout is monitor
-	MOV R2, #1			@ Read one character only
+	MOV R2, #5			@ Read one character only
 	LDR R1, =string		@ String at string
 	SWI 0
 	
