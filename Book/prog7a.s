@@ -1,4 +1,4 @@
-/**/
+/*prog7a Using syscall 4 to write a string to the screen*/
 
 	.global _start
 _start:

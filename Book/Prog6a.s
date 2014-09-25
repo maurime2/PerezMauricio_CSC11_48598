@@ -1,4 +1,4 @@
-/*Preform R0=r1+r2*/
+/*prog6a Preform R0=r1+r2*/
 
 	.global _start
 _start:

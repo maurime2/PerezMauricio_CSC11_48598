@@ -1,4 +1,4 @@
-/*Multiply two numbers R0=R1*R2*/
+/*prog6c Multiply two numbers R0=R1*R2*/
 
 	.global _start
 _start:

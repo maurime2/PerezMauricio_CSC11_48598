@@ -1,4 +1,4 @@
-/*How to use syscall 3 to read from keyboard*/
+/*prog7b How to use syscall 3 to read from keyboard*/
 
 	.global _start
 _start:

@@ -1,3 +1,4 @@
+/*prog7c automate assembly and linking with makefiles*/
 
 PROGRAMS = prog7a prog7b
 
