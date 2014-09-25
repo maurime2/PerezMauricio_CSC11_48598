@@ -41,4 +41,4 @@ _write:
 
 .data
 string:
-	.ascii " "
+	.ascii "  "
