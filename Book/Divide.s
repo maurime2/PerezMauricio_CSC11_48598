@@ -11,7 +11,7 @@ _sub:						@ Subtraction Happens HERE.
 	BNE _exit				@ If Negative, go to exit.
 	
 _add:						@ Increment R6 HERE
-	ADD R6, R6, #1			@INCREMENT R7
+	ADDS R6, R6, #1			@INCREMENT R7
 	BAL _sub
 	
 _exit:
