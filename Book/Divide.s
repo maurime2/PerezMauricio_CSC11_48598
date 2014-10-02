@@ -7,7 +7,7 @@ _start:
 	MOV R3, #0				@ Number to hold Value.
 	
 _sub:						@ Subtraction Happens HERE.
-	SUBS R1, R1, R5
+	SUBS R4, R4, R5
 	BMI _exit				@ If Negative, go to exit.
 							@ BAL _sub @ TEST - SHOULD LOOP TILL NEG VALUE ACHIVED
 _add:						@ Increment R6 HERE
