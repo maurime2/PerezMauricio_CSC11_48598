@@ -7,7 +7,7 @@ _start:
 	MOV R3, #0				@ Number to hold Value.
 	
 _sub:						@ Subtraction Happens HERE.
-	SUB R4, R4, R5
+	SBC R4, R4, R5
 	BNE _exit				@ If Negative, go to exit.
 	
 _add:						@ Increment R6 HERE
