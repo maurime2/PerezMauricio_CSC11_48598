@@ -15,8 +15,8 @@ _add:						@ Increment R6 HERE
 	BAL _sub
 	
 _exit:
-	@ ADD R0, R4, 0
-	ADD R0, R3, #0
+	ADD R0, R4, #0
+	@ADD R0, R3, #0
 	MOV R7, #1
 	SWI 0
 	
