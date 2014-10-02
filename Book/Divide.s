@@ -2,10 +2,12 @@
 
 	.global _start
 _start:
-	MOV R2, #110			@ Number to print in r6
-	MOV R3, #5
-	EORS R0, R3, #0xFFFFFFFF
-	ADDS R0, R0, #1
+	MOV R5, #110			@ Number to print in r6
+	MOV R6, #5
+	MOV R7, #0
+	
+_sub:
+	SUBS R0, R5, R6
 
 	_exit:
 	MOV R7, #1
