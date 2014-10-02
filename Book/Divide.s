@@ -2,7 +2,7 @@
 
 	.global _start
 _start:
-	MOV R4, #10			@ Number to Divide/ Will hold Remander at the end.
+	MOV R4, #110			@ Number to Divide/ Will hold Remander at the end.
 	MOV R5, #5				@ Number to Divide By.
 	MOV R3, #0				@ Number to hold Value.
 	
