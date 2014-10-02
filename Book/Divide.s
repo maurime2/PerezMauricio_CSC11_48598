@@ -2,7 +2,7 @@
 
 	.global _start
 _start:
-	MOV R4, #111			@ Number to Divide/ Will hold Remander at the end.
+	MOV R4, #10			@ Number to Divide/ Will hold Remander at the end.
 	MOV R5, #5				@ Number to Divide By.
 	MOV R3, #0				@ Number to hold Value.
 	
@@ -15,8 +15,8 @@ _add:						@ Increment R6 HERE
 	BAL _sub
 	
 _exit:
-	ADD R0, R1, R5
-	@ ADD R0, R3, #0
+	@ ADD R0, R4, 0
+	ADD R0, R3, #0
 	MOV R7, #1
 	SWI 0
 	
