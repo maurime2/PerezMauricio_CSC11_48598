@@ -12,8 +12,7 @@ _sub:						@ Subtraction Happens HERE.
 	
 _add:						@ Increment R6 HERE
 	ADD R6, R6, #1			@INCREMENT R7
-	TST R6, R6
-	BEQ _sub
+	BAL _sub
 	
 _exit:
 	@ADD R0, R4, R5
