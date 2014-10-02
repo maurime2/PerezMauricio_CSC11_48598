@@ -16,8 +16,8 @@ _add:						@ Increment R6 HERE
 	BEQ _sub
 	
 _exit:
-	ADD R0, R4, R5
-	@ MOV R0, R6
+	@ADD R0, R4, R5
+	MOV R0, R6
 	MOV R7, #1
 	SWI 0
 	
