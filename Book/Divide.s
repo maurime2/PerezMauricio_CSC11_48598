@@ -8,14 +8,14 @@ _start:
 	
 _sub:						@ Subtraction Happens HERE.
 	SUBS R1, R1, R5
-	BNE _exit				@ If Negative, go to exit.
+	MI _exit				@ If Negative, go to exit.
 							@ BAL _sub @ TEST - SHOULD LOOP TILL NEG VALUE ACHIVED
 _add:						@ Increment R6 HERE
 	ADD R3, R3, #1			@INCREMENT R7
 	BAL _sub
 	
 _exit:
-	@ ADD R0, R1, #0
+	 ADD R0, R1, #0
 	@ ADD R0, R3, #0
 	MOV R7, #1
 	SWI 0
