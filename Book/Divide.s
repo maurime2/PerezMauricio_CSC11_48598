@@ -16,7 +16,7 @@ _add:						@ Increment R6 HERE
 	
 _exit:
 	@ADD R0, R4, R5
-	MOV R0, R6
+	ADD R0, R6, #0
 	MOV R7, #1
 	SWI 0
 	
