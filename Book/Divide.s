@@ -8,7 +8,7 @@ _start:
 	
 _sub:						@ Subtraction Happens HERE.
 	SUBS R1, R1, R5
-	MI _exit				@ If Negative, go to exit.
+	BMI _exit				@ If Negative, go to exit.
 							@ BAL _sub @ TEST - SHOULD LOOP TILL NEG VALUE ACHIVED
 _add:						@ Increment R6 HERE
 	ADD R3, R3, #1			@INCREMENT R7
