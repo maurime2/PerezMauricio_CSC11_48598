@@ -18,6 +18,7 @@ _add:						@ Increment R3 HERE
 
 _exit:
 	ADD R4, R4, R5			@ Corrects the extra subtraction done to R4
+	ADD R0, R4, #0		@ Test: Shows R4/R5 without remainder
 	@ ADD R0, R3, #0		@ Test: Shows R4%R5
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
 	SWI 0					@ Software Interrupt: Exit
