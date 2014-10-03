@@ -1,22 +1,24 @@
-/**** Divide Program ****/
+/**** Divide Program: Mauricio S. Perez ****/
+/**** DUE DATE: OCTOBER 1st 2014        ****/
+/**** CSC11 - 48598 ****/
 
 	.global _start
 _start:
-	MOV R4, #111			@ Number to Divide/ Will hold Remander at the end.
-	MOV R5, #5				@ Number to Divide By.
-	MOV R3, #0				@ Number to hold Value.
+	MOV R4, #111			@ Number to divide / Will hold remainder.
+	MOV R5, #5				@ Number to divide by.
+	MOV R3, #0				@ Number to hold times divided by value.
 	
 _sub:						@ Subtraction Happens HERE.
 	SUBS R4, R4, R5
-	BMI _exit				@ If Negative, go to exit.
-							@ BAL _sub @ TEST - SHOULD LOOP TILL NEG VALUE ACHIVED
-_add:						@ Increment R6 HERE
-	ADD R3, R3, #1			@INCREMENT R7
-	BAL _sub
-	
+	BMI _exit				@ If Negative, branch to exit.
+
+_add:						@ Increment R3 HERE
+	ADD R3, R3, #1			@ Will Hold value of R4%R5
+	BAL _sub				@ Always Branch to _sub
+
 _exit:
-	ADD R0, R4, R5
-	@ADD R0, R3, #0
-	MOV R7, #1
-	SWI 0
+	ADD R4, R4, R5			@ Corrects the extra subtraction done to R4
+	@ ADD R0, R3, #0		@ Test: Shows R4%R5
+	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
+	SWI 0					@ Software Interrupt: Exit
 	
