@@ -1,4 +1,5 @@
-/**/
+/*Using OR to toggle character case*/
+/*INPUT CAP to turn into Lowercase*/
 
 	.global _start
 _start:

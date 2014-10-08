@@ -4,7 +4,7 @@
 _start:
 	MOV R6, #251			@ Number to print in r6
 	MOV R10, #1				@ set up mask
-	MOV R9, R10, LSL #31
+	MOV R9, R10, LSL #31	@ Left Shift #1 31 times. x8000
 	LDR R1, = string		@ Point R1 to string
 
 _bits:
