@@ -17,7 +17,7 @@ _bits:
 	MOV R6, R8				@ MOV no , preserve
 	
 	MOVS R9, R9, LSR #1		@ SHUFFLE MASK BITS
-	BNE _BITS
+	BNE _bits
 	
 
 _exit:
