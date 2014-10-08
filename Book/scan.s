@@ -22,7 +22,6 @@
 .text
 
 .global main
-
 main:
 	ldr r1, address_of_return 			/* r1 ? &address_of_return */
 	str lr, [r1] 						/* *r1 ? lr */
@@ -49,3 +48,4 @@ main:
 	/* External */
 	.global printf
 	.global scanf
+	
