@@ -1,7 +1,9 @@
 /**** Divide Program: Mauricio S. Perez ****/
 /**** DUE DATE: OCTOBER 1st 2014        ****/
 /**** CSC11 - 48598 					****/
-/**** Program 1: Divide With Flags
+/**** Program 2: Divide Without Flags	****/
+/**** Outputs: R0 -> a%b 				****/
+ /**** 		   R1 -> a/b				****/
 
 	.global _start
 _start:
