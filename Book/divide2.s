@@ -20,7 +20,7 @@ _add:						@ Increment R3 HERE
 	BAL _sub				@ Always Branch to _sub
 
 _exit:
-	ADD R0, R4, R5			@ Corrects the extra subtraction, a%b = R0
+	ADDs R0, R4, R5			@ Corrects the extra subtraction, a%b = R0
 	@ ADD R0, R1, #0		@ Test: Shows R4/R5 in R1
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
 	SWI 0					@ Software Interrupt: Exit
