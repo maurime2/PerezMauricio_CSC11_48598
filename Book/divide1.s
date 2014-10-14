@@ -20,8 +20,10 @@ _add:						@ Increment R3 HERE
 	BAL _sub				@ Always Branch to _sub
 
 _exit:
-	ADD R1, R4, R5			@ Corrects the extra subtraction, a/b = R1
+	ADDS R1, R4, R5			@ Corrects the extra subtraction, a/b = R1
+	MOV R4, #0				@ To clear Negative Bit
+	CMP R4, #1
 	@ ADD R0, R1, #0		@ Test: Shows R4%R5 in R0
-	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
+	MOVS R7, #1				@ Prepare Software Interrupt 1: EXIT
 	SWI 0					@ Software Interrupt: Exit
 	
