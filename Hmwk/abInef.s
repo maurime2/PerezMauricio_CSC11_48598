@@ -128,8 +128,13 @@ _exit:
     ADD R1, R4, #0
 	bl printf                        /* call to printf */
 	
-	/*Store R6 (Div) and R6 (Remainder) in addresses*/
+	/*Store R6 (Div) in addresses*/
+	ldr r1, address_of_a/b			/* Stores a/b to address */
+	str r6, [r1]
 	
+	/*R4 (Remainder) in addresses*/
+	ldr R1, address_of_a%b			/* Stores a%b to address */
+	str R4, [r1]
  
 	/*EXIT*/
     @ldr r0, address_of_number_a		/* r0 ← &number_read */
