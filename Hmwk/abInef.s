@@ -29,9 +29,13 @@ message6: .asciz "Input 'b' = "
 .balign 4
 message5: .asciz "Input 'a' = "
 
-/* Output message 2 */
+/* Output message 6 */
 .balign 4
 message6: .asciz "Input 'b' = "
+ 
+/* Format pattern for scanf */
+.balign 4
+scan_pattern : .asciz "%d" 
  
 /* Format pattern for 'a' */
 .balign 4
@@ -62,7 +66,7 @@ main:
     ldr r0, address_of_message5      /* r0 ← &message5 */
     bl printf                        /* call to printf */
  
-    ldr r0, address_of_scan_a  		/* r0 ← &scan_pattern */
+    ldr r0, address_of_scan_pattern /* r0 ← &scan_pattern */
     ldr r1, address_of_number_a   	/* r1 ← &number_read */
     bl scanf                         /* call to scanf */
  
@@ -83,6 +87,7 @@ address_of_message3 : .word message3
 address_of_message4 : .word message4
 address_of_message5 : .word message5
 address_of_message6 : .word message6
+address_of_scan_pattern : .word scan_pattern
 address_of_scan_a : .word scan_a
 address_of_scan_b : .word scan_b
 address_of_number_a : .word number_a
