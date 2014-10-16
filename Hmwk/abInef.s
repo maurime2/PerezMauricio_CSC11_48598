@@ -63,6 +63,7 @@ main:
     ldr r1, address_of_return        /* r1 ← &address_of_return */
     str lr, [r1]                     /* *r1 ← lr */
  
+	/*First Print*/
     ldr r0, address_of_message5      /* r0 ← &message5 */
     bl printf                        /* call to printf */
  
@@ -74,6 +75,7 @@ main:
     ldr r1, address_of_number_a  	/* r1 ← &number_read */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
+	/*First Print End*/
  
 	/*second print*/
     ldr r0, address_of_message6      /* r0 ← &message5 */
