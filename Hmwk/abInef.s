@@ -1,4 +1,11 @@
-/* -- printf01.s */
+/* -- abInef.s 									*/
+/*By: Mauricio S. Perez							*/
+/*Date Completed: 10.16.2014 12:40 AM.			*/
+/*Divide program that asks user for two inputs.	*/
+/*Input 'a' will be divided by Input 'b'.		*/
+/*At the end, Program will print a/b and 		*/
+/*				  show the remainder a%b.		*/
+
 .data
  
 /* First message */
@@ -11,11 +18,11 @@ message2: .asciz "Acutal Remainder a%b = %d\n"
  
 /* Third message */
 .balign 4
-message3: .asciz "Calculated a/b = "
+message3: .asciz "Calculated a/b = %d\n"
 
 /* Fourth message */
 .balign 4
-message4: .asciz "Calculated a%b = "
+message4: .asciz "Calculated a%b = %d\n"
  
 /* Fifth message */
 .balign 4
@@ -39,11 +46,11 @@ scan_pattern : .asciz "%d"
  
 /* Format pattern for 'a' */
 .balign 4
-scan_a : .asciz "%d"
+calc_a/b : .word 0
 
 /* Format pattern for 'b' */
 .balign 4
-scan_b : .asciz "%d"
+scan_a%b : .word 0
  
 /* Where scanf will store the number read */
 .balign 4
@@ -141,8 +148,8 @@ address_of_message6 : .word message6
 address_of_message7 : .word message7
 address_of_message8 : .word message8
 address_of_scan_pattern : .word scan_pattern
-address_of_scan_a : .word scan_a
-address_of_scan_b : .word scan_b
+address_of_a/b : .word calc_a/b
+address_of_a%b : .word scan_a%b
 address_of_number_a : .word number_a
 address_of_number_b : .word number_b
 address_of_return : .word return
