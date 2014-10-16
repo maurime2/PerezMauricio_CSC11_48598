@@ -66,21 +66,39 @@ main:
     ldr r0, address_of_message5      /* r0 ← &message5 */
     bl printf                        /* call to printf */
  
-    ldr r0, address_of_scan_pattern /* r0 ← &scan_pattern */
+    ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
     ldr r1, address_of_number_a   	/* r1 ← &number_read */
-    bl scanf                         /* call to scanf */
+    bl scanf                        /* call to scanf */
  
-    ldr r0, address_of_message7      /* r0 ← &message5 */
-    ldr r1, address_of_number_a  	 /* r1 ← &number_read */
-    ldr r1, [r1]                     /* r1 ← *r1 */
+    ldr r0, address_of_message7     /* r0 ← &message5 */
+    ldr r1, address_of_number_a  	/* r1 ← &number_read */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */
+ 
+	/*second print*/
+    ldr r0, address_of_message6      /* r0 ← &message5 */
     bl printf                        /* call to printf */
  
-    ldr r0, address_of_number_a   /* r0 ← &number_read */
-    ldr r0, [r0]                     /* r0 ← *r0 */
+    ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
+    ldr r1, address_of_number_b   	/* r1 ← &number_read */
+    bl scanf                        /* call to scanf */
  
-    ldr lr, address_of_return        /* lr ← &address_of_return */
-    ldr lr, [lr]                     /* lr ← *lr */
-    bx lr                            /* return from main using lr */
+    ldr r0, address_of_message8     /* r0 ← &message5 */
+    ldr r1, address_of_number_b  	/* r1 ← &number_read */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */
+	/*second print end*/
+ 
+ 
+ 
+ 
+ 
+    ldr r0, address_of_number_a		/* r0 ← &number_read */
+    ldr r0, [r0]                    /* r0 ← *r0 */
+ 
+    ldr lr, address_of_return       /* lr ← &address_of_return */
+    ldr lr, [lr]                    /* lr ← *lr */
+    bx lr                           /* return from main using lr */
 address_of_message1 : .word message1
 address_of_message2 : .word message2
 address_of_message3 : .word message3
