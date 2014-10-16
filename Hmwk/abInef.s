@@ -114,6 +114,13 @@ _exit:
 	@MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
 	@SWI 0					@ Software Interrupt: Exit
  
+	/* a/b Print */
+    ldr r0, address_of_message5      /* r0 ← &message5 */
+    bl printf                        /* call to printf */
+	
+	/* a%b Print */
+    ldr r0, address_of_message5      /* r0 ← &message5 */
+    bl printf                        /* call to printf */
  
  
  
