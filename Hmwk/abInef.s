@@ -70,7 +70,7 @@ main:
     ldr r1, address_of_number_a   	/* r1 ← &number_read */
     bl scanf                         /* call to scanf */
  
-    ldr r0, address_of_message5      /* r0 ← &message5 */
+    ldr r0, address_of_message7      /* r0 ← &message5 */
     ldr r1, address_of_number_a  	 /* r1 ← &number_read */
     ldr r1, [r1]                     /* r1 ← *r1 */
     bl printf                        /* call to printf */
