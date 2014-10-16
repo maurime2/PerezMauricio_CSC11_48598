@@ -136,12 +136,12 @@ _exit:
 	ldr R1, address_of_a%b			/* Stores a%b to address */
 	str R4, [R1]
 	
-	/* a/b Print */
+	/* a/b Actual Print */
     ldr R0, address_of_message3      /* r0 ← &message5 */
 	ldr R1, address_of_a/b
     bl printf                        /* call to printf */
 	
-	/* a%b Print */
+	/* a%b Actual Print */
     ldr r0, address_of_message4      /* r0 ← &message5 */
     ldr R1, address_of_a%b
 	bl printf
