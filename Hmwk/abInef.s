@@ -130,11 +130,21 @@ _exit:
 	
 	/*Store R6 (Div) in addresses*/
 	ldr r1, address_of_a/b			/* Stores a/b to address */
-	str r6, [r1]
+	str r6, [R1]
 	
 	/*R4 (Remainder) in addresses*/
 	ldr R1, address_of_a%b			/* Stores a%b to address */
-	str R4, [r1]
+	str R4, [R1]
+	
+	/* a/b Print */
+    ldr R0, address_of_message3      /* r0 ← &message5 */
+	ldr R1, address_of_a/b
+    bl printf                        /* call to printf */
+	
+	/* a%b Print */
+    ldr r0, address_of_message4      /* r0 ← &message5 */
+    ldr R1, address_of_a%b
+	bl printf
  
 	/*EXIT*/
     @ldr r0, address_of_number_a		/* r0 ← &number_read */
