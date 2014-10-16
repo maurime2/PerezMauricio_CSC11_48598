@@ -133,7 +133,7 @@ _exit:
 	str r6, [R1]
 	
 	/*R4 (Remainder) in addresses*/
-	ldr R1, address_of_a%b			/* Stores a%b to address */
+	ldr R1, address_of_a_b			/* Stores a%b to address */
 	str R4, [R1]
 	
 	/* a/b Actual Print */
