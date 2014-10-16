@@ -25,13 +25,13 @@ message5: .asciz "Input 'a' = "
 .balign 4
 message6: .asciz "Input 'b' = "
 
-/* Output message 1*/
+/* Seventh message */
 .balign 4
-message5: .asciz "Input 'a' = "
+message7: .asciz "Input 'a' is = %d\n"
 
-/* Output message 6 */
+/* Eighth message */
 .balign 4
-message6: .asciz "Input 'b' = "
+message8: .asciz "Input 'b' is = %d\n"
  
 /* Format pattern for scanf */
 .balign 4
@@ -87,6 +87,8 @@ address_of_message3 : .word message3
 address_of_message4 : .word message4
 address_of_message5 : .word message5
 address_of_message6 : .word message6
+address_of_message7 : .word message7
+address_of_message8 : .word message8
 address_of_scan_pattern : .word scan_pattern
 address_of_scan_a : .word scan_a
 address_of_scan_b : .word scan_b
