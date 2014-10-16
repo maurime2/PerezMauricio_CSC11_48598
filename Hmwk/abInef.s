@@ -68,25 +68,25 @@ main:
     bl printf                        /* call to printf */
  
     ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
-    ldr r1, address_of_number_a   	/* r1 ← &number_read */
+    ldr r1, address_of_number_a   	/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
  
-    ldr r0, address_of_message7     /* r0 ← &message5 */
-    ldr r1, address_of_number_a  	/* r1 ← &number_read */
+    ldr r0, address_of_message7     /* r0 ← &message7 */
+    ldr r1, address_of_number_a  	/* r1 ← &number_a */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	/*First Print End*/
  
 	/*second print*/
-    ldr r0, address_of_message6      /* r0 ← &message5 */
+    ldr r0, address_of_message6      /* r0 ← &message6 */
     bl printf                        /* call to printf */
  
     ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
-    ldr r1, address_of_number_b   	/* r1 ← &number_read */
+    ldr r1, address_of_number_b   	/* r1 ← &number_b */
     bl scanf                        /* call to scanf */
  
-    ldr r0, address_of_message8     /* r0 ← &message5 */
-    ldr r1, address_of_number_b  	/* r1 ← &number_read */
+    ldr r0, address_of_message8     /* r0 ← &message8 */
+    ldr r1, address_of_number_b  	/* r1 ← &number_b */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	/*second print end*/
@@ -108,12 +108,9 @@ _add:						@ Increment R3 HERE
 	BAL _sub				@ Always Branch to _sub
 
 _exit:
+	/*Corrects Extra Subtraction*/
 	ADD R4, R4, R5			@ Corrects the extra subtraction done to R4
-	ADD R0, R4, #0			@ Test: Shows R4/R5 without remainder
-	@ ADD R0, R3, #0		@ Test: Shows R4%R5
-	@MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
-	@SWI 0					@ Software Interrupt: Exit
- 
+	 
 	/* a/b Print */
     ldr R0, address_of_message1      /* r0 ← &message5 */
 	ADD R1, R6, #0
@@ -124,13 +121,14 @@ _exit:
     ADD R1, R4, #0
 	bl printf                        /* call to printf */
  
- 
- 
- 
 	/*EXIT*/
-    ldr r0, address_of_number_a		/* r0 ← &number_read */
-    ldr r0, [r0]                    /* r0 ← *r0 */
+    @ldr r0, address_of_number_a		/* r0 ← &number_read */
+    @ldr r0, [r0]                    /* r0 ← *r0 */
  
+	/*Echo Register Tests*/
+	ADD R0, R4, #0			@ Test: Shows R4/R5 without remainder
+	@ ADD R0, R3, #0		@ Test: Shows R4%R5
+
     ldr lr, address_of_return       /* lr ← &address_of_return */
     ldr lr, [lr]                    /* lr ← *lr */
     bx lr                           /* return from main using lr */
