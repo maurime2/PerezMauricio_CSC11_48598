@@ -116,12 +116,12 @@ _exit:
  
 	/* a/b Print */
     ldr R0, address_of_message1      /* r0 ← &message5 */
-	ADD R1, R4, #0
+	ADD R1, R6, #0
     bl printf                        /* call to printf */
 	
 	/* a%b Print */
     ldr r0, address_of_message2      /* r0 ← &message5 */
-    ADD R1, R6, #0
+    ADD R1, R4, #0
 	bl printf                        /* call to printf */
  
  
