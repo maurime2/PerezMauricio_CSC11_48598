@@ -126,8 +126,8 @@ _exit:
     @ldr r0, [r0]                    /* r0 ← *r0 */
  
 	/*Echo Register Tests*/
-	ADD R0, R4, #0			@ Test: Shows R4/R5 without remainder
-	@ ADD R0, R3, #0		@ Test: Shows R4%R5
+	ADD R0, R6, #0			@ Test: Shows R4/R5 without remainder
+	@ ADD R0, R4, #0		@ Test: Shows R4%R5
 
     ldr lr, address_of_return       /* lr ← &address_of_return */
     ldr lr, [lr]                    /* lr ← *lr */
