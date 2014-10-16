@@ -93,8 +93,10 @@ main:
   
 	/*Divide*/
 _div:
- 	MOV R4, address_of_number_a		@ Number to divide / Will hold remainder.
-	MOV R5, address_of_number_b		@ Number to divide by.
+ 	ldr R4, address_of_number_a		@ Number to divide / Will hold remainder.
+	ldr R4, [R4]
+	ldr R5, address_of_number_b		@ Number to divide by.
+	ldr R5, [R5]
 	MOV R6, #0						@ Number to hold times divided by value.
 	
 _sub:						@ Subtraction Happens HERE.
