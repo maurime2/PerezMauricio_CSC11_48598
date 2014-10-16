@@ -127,6 +127,9 @@ _exit:
     ldr r0, address_of_message2      /* r0 ← &message5 */
     ADD R1, R4, #0
 	bl printf                        /* call to printf */
+	
+	/*Store R6 (Div) and R6 (Remainder) in addresses*/
+	
  
 	/*EXIT*/
     @ldr r0, address_of_number_a		/* r0 ← &number_read */
