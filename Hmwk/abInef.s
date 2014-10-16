@@ -46,11 +46,11 @@ scan_pattern : .asciz "%d"
  
 /* Format pattern for 'a' */
 .balign 4
-calc_a/b : .word 0
+calc_ab : .word 0
 
 /* Format pattern for 'b' */
 .balign 4
-scan_a%b : .word 0
+scan_a_b : .word 0
  
 /* Where scanf will store the number read */
 .balign 4
@@ -129,7 +129,7 @@ _exit:
 	bl printf                        /* call to printf */
 	
 	/*Store R6 (Div) in addresses*/
-	ldr r1, address_of_a/b			/* Stores a/b to address */
+	ldr r1, address_of_ab			/* Stores a/b to address */
 	str r6, [R1]
 	
 	/*R4 (Remainder) in addresses*/
@@ -138,12 +138,12 @@ _exit:
 	
 	/* a/b Actual Print */
     ldr R0, address_of_message3      /* r0 ← &message5 */
-	ldr R1, address_of_a/b
+	ldr R1, address_of_ab
     bl printf                        /* call to printf */
 	
 	/* a%b Actual Print */
     ldr r0, address_of_message4      /* r0 ← &message5 */
-    ldr R1, address_of_a%b
+    ldr R1, address_of_a_b
 	bl printf
  
 	/*EXIT*/
@@ -166,8 +166,8 @@ address_of_message6 : .word message6
 address_of_message7 : .word message7
 address_of_message8 : .word message8
 address_of_scan_pattern : .word scan_pattern
-address_of_a/b : .word calc_a/b
-address_of_a%b : .word scan_a%b
+address_of_ab : .word calc_ab
+address_of_a_b : .word scan_a_b
 address_of_number_a : .word number_a
 address_of_number_b : .word number_b
 address_of_return : .word return
