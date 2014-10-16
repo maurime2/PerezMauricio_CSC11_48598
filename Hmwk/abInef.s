@@ -3,11 +3,11 @@
  
 /* First message */
 .balign 4
-message1: .asciz "Actual Answer a/b = "
+message1: .asciz "Actual Answer a/b = %d\n"
  
 /* Second message */
 .balign 4
-message2: .asciz "Acutal Remainder a%b = "
+message2: .asciz "Acutal Remainder a%b = %d\n"
  
 /* Third message */
 .balign 4
@@ -115,12 +115,14 @@ _exit:
 	@SWI 0					@ Software Interrupt: Exit
  
 	/* a/b Print */
-    ldr r0, address_of_message5      /* r0 ← &message5 */
+    ldr R0, address_of_message1      /* r0 ← &message5 */
+	ADD R1, R4, #0
     bl printf                        /* call to printf */
 	
 	/* a%b Print */
-    ldr r0, address_of_message5      /* r0 ← &message5 */
-    bl printf                        /* call to printf */
+    ldr r0, address_of_message2      /* r0 ← &message5 */
+    ADD R1, R6, #0
+	bl printf                        /* call to printf */
  
  
  
