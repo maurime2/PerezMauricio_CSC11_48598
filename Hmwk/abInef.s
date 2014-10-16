@@ -24,6 +24,14 @@ message5: .asciz "Input 'a' = "
 /* Sixth message */
 .balign 4
 message6: .asciz "Input 'b' = "
+
+/* Output message 1*/
+.balign 4
+message5: .asciz "Input 'a' = "
+
+/* Output message 2 */
+.balign 4
+message6: .asciz "Input 'b' = "
  
 /* Format pattern for 'a' */
 .balign 4
