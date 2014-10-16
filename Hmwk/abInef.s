@@ -139,11 +139,13 @@ _exit:
 	/* a/b Actual Print */
     ldr R0, address_of_message3      /* r0 ← &message5 */
 	ldr R1, address_of_ab
+	ldr R1, [R1]
     bl printf                        /* call to printf */
 	
 	/* a%b Actual Print */
     ldr r0, address_of_message4      /* r0 ← &message5 */
     ldr R1, address_of_a_b
+	ldr R1, [R1]
 	bl printf
  
 	/*EXIT*/
