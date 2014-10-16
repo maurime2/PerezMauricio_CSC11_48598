@@ -51,15 +51,15 @@ main:
     ldr r1, address_of_return        /* r1 ← &address_of_return */
     str lr, [r1]                     /* *r1 ← lr */
  
-    ldr r0, address_of_message1      /* r0 ← &message1 */
+    ldr r0, address_of_message6      /* r0 ← &message1 */
     bl printf                        /* call to printf */
  
     ldr r0, address_of_scan_a  		/* r0 ← &scan_pattern */
     ldr r1, address_of_number_a   	/* r1 ← &number_read */
     bl scanf                         /* call to scanf */
  
-    ldr r0, address_of_message2      /* r0 ← &message2 */
-    ldr r1, address_of_number_a   /* r1 ← &number_read */
+    ldr r0, address_of_message6      /* r0 ← &message2 */
+    ldr r1, address_of_number_a  	 /* r1 ← &number_read */
     ldr r1, [r1]                     /* r1 ← *r1 */
     bl printf                        /* call to printf */
  
