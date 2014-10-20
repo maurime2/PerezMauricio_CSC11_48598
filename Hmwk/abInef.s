@@ -156,9 +156,11 @@ _exit:
 	ADD R0, R6, #0			@ Test: Shows R4/R5 without remainder
 	@ ADD R0, R4, #0		@ Test: Shows R4%R5
 
+	/*Return*/
     ldr lr, address_of_return       /* lr ← &address_of_return */
     ldr lr, [lr]                    /* lr ← *lr */
     bx lr                           /* return from main using lr */
+	
 address_of_message1 : .word message1
 address_of_message2 : .word message2
 address_of_message3 : .word message3
