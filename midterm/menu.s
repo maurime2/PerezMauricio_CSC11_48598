@@ -71,18 +71,18 @@ main:
 	b _end
 	
 	/*Problem 1*/
-_p1;
+_p1:
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-_p2;
+_p2:
 	/*Problem 2*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-_p3;
+_p3:
 	/*Problem 3*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
-_end;		
+_end:		
 	/*End*/
 	ldr r0, address_of_select4     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */		
