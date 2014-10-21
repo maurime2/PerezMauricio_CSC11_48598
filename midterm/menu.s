@@ -45,7 +45,8 @@ return: .word 0
  
 .global main
 main:
-	str lr, [PC]					/*Link Register into Stack Pointer*/
+_menu;
+	str lr, [sp]					/*Link Register into Stack Pointer*/
 	/*Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
@@ -75,22 +76,19 @@ main:
 _p1:
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-	ldr lr, [sp]
-	bx lr 
+	bx _menu
 	
 _p2:
 	/*Problem 2*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf						/* call to printf */
-	ldr lr, [sp]
-	bx lr 
+	bx _menu 
 	
 _p3:
 	/*Problem 3*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
-	ldr lr, [sp]
-	bx lr 
+	bx _menu
 	
 _end:		
 	/*End*/
