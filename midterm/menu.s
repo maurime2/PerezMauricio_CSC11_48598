@@ -64,8 +64,11 @@ main:
     bl printf                       /* call to printf */
 
 	/*Problem 1*/
+
+	ldr r1, address_of_return        /* r1 ← &address_of_return */
+    str lr, [r1]                     /* *r1 ← lr */
+	
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
-	mov r1, #1       /* r1 ? &address_of_return */
     bl printf                       /* call to printf */
 	
 	
