@@ -63,28 +63,27 @@ main:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 
+	/*Compare*/
+    ldr r1, address_of_choice	  	/* r1 ← &number_a */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+	cmp r1, #2         				/* compare r0 and 0 */
+    bcc _p2						    /* if r0 != 0 then branch */
+	b _end
+	
 	/*Problem 1*/
-	@ldr r1, address_of_select        /* r1 ← &address_of_select */
-    @ldr lr, [r1]                     /* *r1 ← lr */	
+_p1;
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-
+_p2;
 	/*Problem 2*/
-	@ldr r1, address_of_select        /* r1 ← &address_of_select */
-    @ldr lr, [r1]                     /* *r1 ← lr */	
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-
+_p3;
 	/*Problem 3*/
-	@ldr r1, address_of_select        /* r1 ← &address_of_select */
-    @ldr lr, [r1]                     /* *r1 ← lr */	
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
-	
-	
+_end;		
 	/*End*/
-	@ldr r1, address_of_select        /* r1 ← &address_of_select */
-    @ldr lr, [r1]                     /* *r1 ← lr */	
 	ldr r0, address_of_select4     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */		
 	
