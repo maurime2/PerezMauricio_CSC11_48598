@@ -64,13 +64,22 @@ main:
     bl printf                       /* call to printf */
 
 	/*Problem 1*/
-
 	ldr r1, address_of_select        /* r1 ← &address_of_select */
-    ldr lr, [r1]                     /* *r1 ← lr */
-	
+    ldr lr, [r1]                     /* *r1 ← lr */	
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-	
+
+	/*Problem 2*/
+	ldr r1, address_of_select        /* r1 ← &address_of_select */
+    ldr lr, [r1]                     /* *r1 ← lr */	
+	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
+    bl printf                       /* call to printf */
+
+	/*Problem 3*/
+	ldr r1, address_of_select        /* r1 ← &address_of_select */
+    ldr lr, [r1]                     /* *r1 ← lr */	
+	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
+    bl printf                       /* call to printf */	
 	
 	/*Exit*/
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
