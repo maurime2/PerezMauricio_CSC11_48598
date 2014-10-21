@@ -45,7 +45,7 @@ return: .word 0
  
 .global main
 main:
-	str lr, [sp]					/*Link Register into Stack Pointer*/
+	str lr, [PC]					/*Link Register into Stack Pointer*/
 	/*Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
