@@ -13,6 +13,22 @@ prob: .asciz "Problem Chosen: %d\n"
 .balign 4
 select: .asciz "Select a Problem: "
 
+/* Select 1 */
+.balign 4
+select1: .asciz "Problem 1:  "
+
+/* Select 2 */
+.balign 4
+select2: .asciz "Problem 2: "
+
+/* Select 3 */
+.balign 4
+select3: .asciz "Problem 3: "
+
+/* Midterm End! */
+.balign 4
+selectend: .asciz "Midterm Complete!!! "
+
 /* Format pattern for scanf */
 .balign 4
 scan_pattern : .asciz "%d" 
@@ -46,6 +62,8 @@ main:
     ldr r1, address_of_choice	  	/* r1 ← &number_a */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
+
+
 	
 	
 	/*Exit*/
@@ -53,11 +71,14 @@ main:
 	SWI 0					@ Software Interrupt: Exit
 
 /*Messages*/
-address_of_prob : .word prob
-address_of_select : .word select
-address_of_scan_pattern : .word scan_pattern
-address_of_choice : .word choice
-address_of_return : .word return
+address_of_prob : .word prob					/*"Problem Chosen %d"*/
+address_of_select : .word select				/*"Select a Problem:"*/
+address_of_select1 : .word select1				/*"Problem 1: "*/
+address_of_select2 : .word select2				/*"Problem 2: "*/
+address_of_select3 : .word select3				/*"Problem 3: "*/
+address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
+address_of_choice : .word choice				/*Address of Chosen Problem Value*/
+address_of_return : .word return				/*Address of Return*/
 
 /* External */
 .global printf
