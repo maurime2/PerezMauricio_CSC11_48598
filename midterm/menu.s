@@ -65,7 +65,7 @@ main:
 
 	/*Problem 1*/
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
-	ldr r1, #1       /* r1 ? &address_of_return */
+	mov r1, #1       /* r1 ? &address_of_return */
     bl printf                       /* call to printf */
 	
 	
