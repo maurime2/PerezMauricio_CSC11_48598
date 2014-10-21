@@ -61,30 +61,27 @@ _again:
 
 	/*Problem Chosen*/
 	ldr r0, address_of_prob     	/* r0 ← &Problem Selected */
-    ldr r1, address_of_choice	  	/* r1 ← &number_a */
+    ldr r1, address_of_choice	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 
 	/*Compare 1*/
-    ldr r1, address_of_choice	  	/* r1 ← &number_a */
+    ldr r1, address_of_choice	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
-	cmp r1, #1         				/* compare r0 and 0 */
-    beq _p1						    /* if r0 != 0 then branch */
-	b _end
-	
+	cmp r1, #1         				/* compare r0 and 1 */
+    beq _p1						    /* if r0 != 1 then branch */
 	
 	/*Compare 2*/
-    ldr r1, address_of_choice	  	/* r1 ← &number_a */
+    ldr r1, address_of_choice	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
-	cmp r1, #2         				/* compare r0 and 0 */
-    beq _p2						    /* if r0 != 0 then branch */
-	b _end
+	cmp r1, #2         				/* compare r0 and 2 */
+    beq _p2						    /* if r0 != 2 then branch */
 	
 	/*Compare 3*/
-    ldr r1, address_of_choice	  	/* r1 ← &number_a */
+    ldr r1, address_of_choice	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
-	cmp r1, #3         				/* compare r0 and 0 */
-    beq _p3						    /* if r0 != 0 then branch */
+	cmp r1, #3         				/* compare r0 and 3 */
+    beq _p3						    /* if r0 != 3 then branch */
 	b _end
 	
 	/*Problem 1*/
