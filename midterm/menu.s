@@ -15,15 +15,15 @@ select: .asciz "Select a Problem: "
 
 /* Select 1 */
 .balign 4
-select1: .asciz "Problem %d:  \n"
+select1: .asciz "Problem %d :  \n"
 
 /* Select 2 */
 .balign 4
-select2: .asciz "Problem %d: \n"
+select2: .asciz "Problem %d : \n"
 
 /* Select 3 */
 .balign 4
-select3: .asciz "Problem %d: \n"
+select3: .asciz "Problem %d : \n"
 
 /* Midterm End! */
 .balign 4
