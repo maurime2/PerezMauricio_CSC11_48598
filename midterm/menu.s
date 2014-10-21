@@ -7,7 +7,7 @@ Menu
 .data
 /* Problem Chosen */
 .balign 4
-prob: .asciz "Actual Answer a/b = %d\n"
+prob: .asciz "Problem Chosen: %d\n"
 
 /* Select Message */
 .balign 4
@@ -36,10 +36,18 @@ main:
     ldr r0, address_of_select     	/* Load Address of Select */
     bl printf                       /* call to printf */
 	
+	/*Scan Choice*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
     ldr r1, address_of_choice   	/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
 
+	/*Problem Chosen*/
+	ldr r0, address_of_prob     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_choice	  	/* r1 ← &number_a */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */
+	
+	
 	/*Exit*/
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
 	SWI 0					@ Software Interrupt: Exit
