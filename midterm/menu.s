@@ -15,15 +15,15 @@ select: .asciz "Select a Problem: "
 
 /* Select 1 */
 .balign 4
-select1: .asciz "Problem 1:  "
+select1: .asciz "Problem %d:  "
 
 /* Select 2 */
 .balign 4
-select2: .asciz "Problem 2: "
+select2: .asciz "Problem %d: "
 
 /* Select 3 */
 .balign 4
-select3: .asciz "Problem 3: "
+select3: .asciz "Problem %d: "
 
 /* Midterm End! */
 .balign 4
@@ -65,8 +65,8 @@ main:
 
 	/*Problem 1*/
 
-	ldr r1, address_of_return        /* r1 ← &address_of_return */
-    str lr, [r1]                     /* *r1 ← lr */
+	ldr r1, address_of_select        /* r1 ← &address_of_select */
+    ldr lr, [r1]                     /* *r1 ← lr */
 	
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
