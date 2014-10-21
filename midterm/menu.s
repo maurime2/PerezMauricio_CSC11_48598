@@ -63,7 +63,9 @@ main:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 
-
+	/*Problem 1*/
+	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
+    bl printf                       /* call to printf */
 	
 	
 	/*Exit*/
