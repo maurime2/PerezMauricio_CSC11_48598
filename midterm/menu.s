@@ -33,8 +33,12 @@ main:
 	ldr r1, address_of_return        /* r1 ? &address_of_return */
     str lr, [r1]                     /* *r1 ? lr */
 
-    ldr r0, address_of_select     /* Load Address of Select */
-    bl printf                        /* call to printf */
+    ldr r0, address_of_select     	/* Load Address of Select */
+    bl printf                       /* call to printf */
+	
+	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
+    ldr r1, address_of_choice   	/* r1 ← &number_a */
+    bl scanf                        /* call to scanf */
 
 	/*Exit*/
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
