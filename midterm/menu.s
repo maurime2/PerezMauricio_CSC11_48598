@@ -67,7 +67,7 @@ main:
     ldr r1, address_of_choice	  	/* r1 ← &number_a */
     ldr r1, [r1]                    /* r1 ← *r1 */
 	cmp r1, #2         				/* compare r0 and 0 */
-    bcc _p2						    /* if r0 != 0 then branch */
+    beq _p2						    /* if r0 != 0 then branch */
 	b _end
 	
 	/*Problem 1*/
