@@ -1,4 +1,8 @@
-/*p1-pay.s File*/
+/*p1-pay.s File
+Mauricio S. Perez
+Midterm: CSC11-48598
+Program 1: PAY
+*/
 
 .global _start1
 
@@ -66,6 +70,7 @@ return: .word 0
 .text
  
 _start1:
+	/*PRINT PROMPT: ASK FOR HOURS*/
 	str lr, [sp]					/*Link Register into Stack Pointer*/
 	/*Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
@@ -79,11 +84,19 @@ _start1:
     ldr r1, address_of_hours   	/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
 
-	/*Print Input*/
+	/*Print BACK HOURS*/
 	ldr r0, address_of_hwork     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
+	
+_h1:
+	mov r2, 0						/*Holds Total pay for class amount*/
+	mov r4, 0						/*Holds count for total hours worked(of each class)*/
+	mov r5, address_of_hours		/*Holds address of total hours (all hours)*/
+	ldr r5, r5						/*Holds total hours (all hours)*/
+	mov r6, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
+	
 	
 _pr1:
 	/*Print Straight Hours*/
@@ -111,7 +124,7 @@ _pr3:
 	ldr r2, address_of_pay3	  		/* r1 ← &choice */
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
-@	bl _ret
+
 
 _pre:
 	/*Print Error*/
@@ -119,7 +132,7 @@ _pre:
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */	
-@	bl _ret	
+
 
 	/*Return to main*/
 _ret:
