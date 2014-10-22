@@ -92,8 +92,10 @@ _start1:
 	
 _h1:
 	/*Set Up for Straight Time*/
-	mov r2, #0						/*Holds Total pay for class amount*/
 	mov r1, #0						/*Holds count for total hours worked(of each class)*/
+	mov r2, #0						/*Holds Total pay for class amount*/
+	ldr r6, address_of_pay1	  		/* r6 ← &_pay1  */
+    ldr r6, [r6]                    /* r6 ← *r6 ($8)*/
 	ldr r4, address_of_hours		/*Holds address of total hours (all hours)*/
 	ldr r4, [r4]					/*Holds total hours (all hours)*/
 	ldr r5, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
@@ -109,13 +111,12 @@ _h1c:
 	
 _pr1:
 	/*Print Straight Hours*/
-	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
-    ldr r1, address_of_hours	  	/* r1 ← &choice */
-    ldr r1, [r1]                    /* r1 ← *r1 */
-	ldr r2, address_of_pay1	  		/* r1 ← &choice */
-    ldr r2, [r2]                    /* r1 ← *r1 */
-    bl printf                       /* call to printf */
-	b _ret							/*Branch Back to Menu*/
+	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
+    @ ldr r1, address_of_hours	  	 /* r1 ← &choice */
+    @ ldr r1, [r1]                   /* r1 ← *r1 */
+	mov r2, r6						 /*move r6 to r2 for print*/
+    bl printf                        /* call to printf */
+	b _ret							 /*Branch Back to Menu*/
 	
 _pr2:
 	/*Print Double Hours*/
