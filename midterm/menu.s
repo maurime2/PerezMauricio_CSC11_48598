@@ -44,6 +44,9 @@ return: .word 0
 .balign 8
 divider: .asciz "\n********* MENU - Select 1, 2 or 3 ******************\n"
 
+/* Divider 0 */
+.balign 8
+divider0: .asciz "\n*****************************************************\n"
  
 .text
  
@@ -54,7 +57,21 @@ main:
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
 
+    ldr r0, address_of_divider0     /* Prompt for Hours */
+    bl printf                       /* call to printf */
+
+	/*Print Divider Bar*/
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
+
     ldr r0, address_of_divider     	/* Prompt for Hours */
+    bl printf                       /* call to printf */
+	
+	/*Print Divider Bar*/
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
+
+    ldr r0, address_of_divider0     /* Prompt for Hours */
     bl printf                       /* call to printf */
 	
 @_again:
@@ -137,6 +154,7 @@ address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_choice : .word choice				/*Address of Chosen Problem Value*/
 address_of_return : .word return				/*Address of Return*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
+address_of_divider0 : .word divider0			/*"Divider Bar for prompt"*/
 
 /* External */
 .global printf
