@@ -23,6 +23,10 @@ select3: .asciz "41-60 Hours - Triple Time: $24 An Hour\n"
 .balign 4
 select4: .asciz "Midterm Complete!!! \n"
 
+/* Hours Worked */
+.balign 4
+hwork: .asciz "Hours Worked: %d\n"
+
 /* Format pattern for scanf */
 .balign 4
 scan_pattern : .asciz "%d" 
@@ -43,15 +47,22 @@ _start1:
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
 
-    ldr r0, address_of_select     	/* Load Address of Select */
+    ldr r0, address_of_select     	/* Prompt for Hours */
     bl printf                       /* call to printf */
 	
-	/*Scan Choice*/
+	/*Scan Hours*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
     ldr r1, address_of_hours   	/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
+
+	/*Print Input*/
+	ldr r0, address_of_hwork     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_hours	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */
+
+	/*Return to main*/
 	bal main						@ Branch to Main and output Problem Select
-	
 
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
@@ -61,6 +72,7 @@ address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
+address_of_choice : .word hwork				/*Address of Hours Worked*/
 address_of_return : .word return				/*Address of Return*/
 
 /* External */
