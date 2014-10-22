@@ -2,9 +2,12 @@
 
 .global _start1
 
-
-
 .data
+
+/* Format pattern for scanf */
+.balign 4
+scan_pattern : .asciz "%d" 
+
 .text
  
 _start1:
@@ -13,7 +16,9 @@ _start1:
 	
 
 /*Messages*/
-	
+address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
+
+
 /* External */
 .global printf
 .global scanf
