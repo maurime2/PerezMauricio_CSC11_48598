@@ -1,8 +1,7 @@
 /*p1-pay.s File*/
 
-.global _p1pay
+.global _pay
 
-_p1pay:
-	
+_pay:
 	bx lr
 	
