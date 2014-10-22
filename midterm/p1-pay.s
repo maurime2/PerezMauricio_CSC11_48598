@@ -112,6 +112,7 @@ _pr1:
 	ldr r2, address_of_pay1	  		/* r1 ← &choice */
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
+	b _ret							/*Branch Back to Menu*/
 	
 _pr2:
 	/*Print Double Hours*/
@@ -121,7 +122,8 @@ _pr2:
 	ldr r2, address_of_pay2	  		/* r1 ← &choice */
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
-
+	b _ret							/*Branch Back to Menu*/
+	
 _pr3:
 	/*Print Triple Hours*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
@@ -130,7 +132,7 @@ _pr3:
 	ldr r2, address_of_pay3	  		/* r1 ← &choice */
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
-
+	b _ret							/*Branch Back to Menu*/
 
 _pre:
 	/*Print Error*/
