@@ -77,14 +77,31 @@ _start1:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
 	
-	/*Print Total*/
-	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
+	/*Print Straight Hours*/
+	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
 	ldr r2, address_of_pay1	  		/* r1 ← &choice */
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
+	
+	/*Print Double Hours*/
+	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_hours	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+	ldr r2, address_of_pay2	  		/* r1 ← &choice */
+    ldr r2, [r2]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */
 
+	/*Print Triple Hours*/
+	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_hours	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+	ldr r2, address_of_pay3	  		/* r1 ← &choice */
+    ldr r2, [r2]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */
+	
+	
 	/*Return to main*/
 	bal main						@ Branch to Main and output Problem Select
 
