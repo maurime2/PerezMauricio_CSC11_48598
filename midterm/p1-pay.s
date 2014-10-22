@@ -4,5 +4,5 @@
 
 _start1:
 	mov r0, #5
-	bal _p1r
+	bal main
 	
