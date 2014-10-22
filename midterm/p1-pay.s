@@ -27,11 +27,30 @@ select4: .asciz "Midterm Complete!!! \n"
 .balign 4
 scan_pattern : .asciz "%d" 
 
+/* Hours */
+.balign 4
+hours: .word 0
+
+/*Return*/
+.balign 4
+return: .word 0
+
 .text
  
 _start1:
-	mov r0, #5
-	bal main
+	str lr, [sp]					/*Link Register into Stack Pointer*/
+	/*Print*/
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
+
+    ldr r0, address_of_select     	/* Load Address of Select */
+    bl printf                       /* call to printf */
+	
+	/*Scan Choice*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
+    ldr r1, address_of_hours   	/* r1 ← &number_a */
+    bl scanf                        /* call to scanf */
+	bal main						@ Branch to Main and output Problem Select
 	
 
 /*Messages*/
@@ -41,6 +60,8 @@ address_of_select1 : .word select1				/*"Problem 1: "*/
 address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
+address_of_hours : .word hours					/*Address of Hours*/
+address_of_return : .word return				/*Address of Return*/
 
 /* External */
 .global printf
