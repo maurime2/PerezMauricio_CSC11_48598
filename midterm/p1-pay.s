@@ -94,7 +94,7 @@ _h1:
 	mov r2, #0						/*Holds Total pay for class amount*/
 	mov r4, #0						/*Holds count for total hours worked(of each class)*/
 	ldr r5, address_of_hours		/*Holds address of total hours (all hours)*/
-	ldr r5, r5						/*Holds total hours (all hours)*/
+	ldr r5, [r5]						/*Holds total hours (all hours)*/
 	ldr r6, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
 	
 	
