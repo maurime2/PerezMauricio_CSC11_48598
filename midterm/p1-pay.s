@@ -21,7 +21,7 @@ select3: .asciz "Triple Time (41-60 Hrs): $24 An Hour for %d Hrs = %d\n"
 
 /* Select 4 */
 .balign 4
-select4: .asciz "Midterm Complete!!! \n"
+select4: .asciz "Total Pay: %d Hrs = %d Dollars \n"
 
 /* Hours Worked */
 .balign 4
@@ -34,6 +34,10 @@ scan_pattern : .asciz "%d"
 /* Hours */
 .balign 4
 hours: .word 0
+
+/* Total */
+.balign 4
+total: .word 0
 
 /*Return*/
 .balign 4
@@ -59,6 +63,14 @@ _start1:
 	ldr r0, address_of_hwork     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf 
+	
+	/*Print Total*/
+	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_hours	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+	ldr r2, address_of_hours	  	/* r1 ← &choice */
+    ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 
 	/*Return to main*/
@@ -72,6 +84,7 @@ address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
+address_of_total : .word total					/*Address of Total Pay*/
 address_of_hwork : .word hwork				/*Address of Hours Worked*/
 address_of_return : .word return				/*Address of Return*/
 
