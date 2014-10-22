@@ -97,8 +97,10 @@ _h1:
 	ldr r4, address_of_hours		/*Holds address of total hours (all hours)*/
 	ldr r4, [r4]					/*Holds total hours (all hours)*/
 	ldr r5, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
-	cmp r4, #0         				/* compare r4 and 0 */
-    beq _pre						/* if r0 != 2 then branch */
+	cmp r4, #-1         				/* compare r4 and 0 */
+    ble _pre						/* if r0 <= 0 then branch */
+	cmp r4, #60         			/* compare r4 and 60 */
+	ble _pre						/* if r4 <= 60 then branch */
 	
 _h1c:
 	/*Calculate Straight Time*/
