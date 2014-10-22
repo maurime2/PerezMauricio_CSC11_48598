@@ -3,5 +3,6 @@
 .global _pay
 
 _pay:
-	bx lr
+	MOV R7, #1
+	SWI 0
 	
