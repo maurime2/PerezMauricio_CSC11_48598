@@ -88,6 +88,7 @@ _again:
 _p1:
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
+	bal _start1
 	bl _again
 	
 _p2:
