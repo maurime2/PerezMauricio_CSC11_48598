@@ -41,15 +41,15 @@ total: .word 0
 
 /* Pay1 */
 .balign 4
-pay1: .word 8
+pay1: .word #8
 
 /* Pay2 */
 .balign 4
-pay2: .word 16
+pay2: .word #16
 
 /* Pay3 */
 .balign 4
-pay3: .word 24
+pay3: .word #24
 
 /*Return*/
 .balign 4
