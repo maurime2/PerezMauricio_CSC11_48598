@@ -42,7 +42,7 @@ return: .word 0
 
 /* Divider */
 .balign 8
-divider: .asciz "\n*********** MENU - Select 1, 2 or 3 ****************"
+divider: .asciz "\n*********** MENU - Select 1, 2 or 3 ****************\n"
 
 /* Divider 0 */
 .balign 8
