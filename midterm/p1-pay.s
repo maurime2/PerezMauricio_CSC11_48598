@@ -74,6 +74,14 @@ divider: .asciz "\n************************************************\n"
 .text
  
 _start1:
+	/*Print Divider Bar*/
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
+
+    ldr r0, address_of_divider     	/* Prompt for Hours */
+    bl printf                       /* call to printf */
+	
+	
 	/*PRINT PROMPT: ASK FOR HOURS*/
 	str lr, [sp]					/*Link Register into Stack Pointer*/
 	/*Print*/
@@ -82,7 +90,7 @@ _start1:
 
     ldr r0, address_of_select     	/* Prompt for Hours */
     bl printf                       /* call to printf */
-	
+		
 	/*Scan Hours*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
     ldr r1, address_of_hours   	/* r1 ← &number_a */
