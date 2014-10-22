@@ -41,15 +41,15 @@ total: .word 0
 
 /* Pay1 */
 .balign 4
-pay1: .word #8
+pay1: .word 8
 
 /* Pay2 */
 .balign 4
-pay2: .word #16
+pay2: .word 16
 
 /* Pay3 */
 .balign 4
-pay3: .word #24
+pay3: .word 24
 
 /*Return*/
 .balign 4
@@ -97,9 +97,9 @@ address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
 address_of_total : .word total					/*Address of Total Pay*/
-address_of_pay1 : .word total					/*Address of Pay1*/
-address_of_pay2 : .word total					/*Address of Pay2*/
-address_of_pay3 : .word total					/*Address of Pay3*/
+address_of_pay1 : .word pay1					/*Address of Pay1*/
+address_of_pay2 : .word pay2					/*Address of Pay2*/
+address_of_pay3 : .word pay3					/*Address of Pay3*/
 address_of_hwork : .word hwork				/*Address of Hours Worked*/
 address_of_return : .word return				/*Address of Return*/
 
