@@ -8,15 +8,15 @@
 select: .asciz "Input Total Hours Worked (Max 60): "
 
 /* Select 1 */
-.balign 6
+.balign 8
 select1: .asciz "Straight Time(0-20 Hrs): $ 8 An Hour for %d Hrs = %d\n"
 
 /* Select 2 */
-.balign 6
+.balign 8
 select2: .asciz "Double Time (21-40 Hrs): $16 An Hour for %d Hrs = %d\n"
 
 /* Select 3 */
-.balign 6
+.balign 8
 select3: .asciz "Triple Time (41-60 Hrs): $24 An Hour for %d Hrs = %d\n"
 
 /* Select 4 */
