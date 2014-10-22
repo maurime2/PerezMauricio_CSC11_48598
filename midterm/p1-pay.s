@@ -4,6 +4,5 @@
 
 _start1:
 	mov r0, #5
-	MOV R7, #1
-	SWI 0
+	bal _p1r
 	
