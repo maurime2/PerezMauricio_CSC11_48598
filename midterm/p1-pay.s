@@ -91,11 +91,17 @@ _start1:
     bl printf                       /* call to printf 
 	
 _h1:
+	/*Set Up for Straight Time*/
 	mov r2, #0						/*Holds Total pay for class amount*/
-	mov r4, #0						/*Holds count for total hours worked(of each class)*/
-	ldr r5, address_of_hours		/*Holds address of total hours (all hours)*/
-	ldr r5, [r5]						/*Holds total hours (all hours)*/
-	ldr r6, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
+	mov r1, #0						/*Holds count for total hours worked(of each class)*/
+	ldr r4, address_of_hours		/*Holds address of total hours (all hours)*/
+	ldr r4, [r4]					/*Holds total hours (all hours)*/
+	ldr r5, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
+	cmp r4, #0         				/* compare r4 and 0 */
+    beq _pre						/* if r0 != 2 then branch */
+	
+_h1c:
+	/*Calculate Straight Time*/
 	
 	
 _pr1:
