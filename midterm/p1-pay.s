@@ -67,6 +67,10 @@ count: .word 20
 .balign 4
 return: .word 0
 
+/* Divider */
+.balign 8
+divider: .asciz "\n************************************************\n"
+
 .text
  
 _start1:
@@ -166,6 +170,7 @@ address_of_pay3 : .word pay3					/*Address of Pay3*/
 address_of_count : .word count					/*Address of count*/
 address_of_hwork : .word hwork				/*Address of Hours Worked*/
 address_of_return : .word return				/*Address of Return*/
+address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 
 /* External */
 .global printf
