@@ -11,7 +11,7 @@ prob: .asciz "Problem Chosen: %d\n"
 
 /* Select Message */
 .balign 4
-select: .asciz "Select a Problem: "
+select: .asciz "Select a Problem (1-3): "
 
 /* Select 1 */
 .balign 4
