@@ -1,8 +1,8 @@
 /*p1-pay.s File*/
 
-.global _p1-pay
+.global _p1pay
 
-_p1-start:
+_p1start:
 	
 	bx lr
 	
