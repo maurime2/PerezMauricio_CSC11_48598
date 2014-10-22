@@ -7,9 +7,13 @@
 .balign 4
 select: .asciz "Input Total Hours Worked (Max 60): "
 
+/* Select 0 */
+.balign 8
+select0: .asciz "Error: Please Try Again\n"
+
 /* Select 1 */
 .balign 8
-select1: .asciz "Straight Time(0-20 Hrs): $ 8 An Hour for %d Hrs = %d\n"
+select1: .asciz "Straight Time(1-20 Hrs): $ 8 An Hour for %d Hrs = %d\n"
 
 /* Select 2 */
 .balign 8
@@ -50,6 +54,10 @@ pay2: .word 16
 /* Pay3 */
 .balign 4
 pay3: .word 24
+
+/* count */
+.balign 4
+count: .word 20
 
 /*Return*/
 .balign 4
@@ -100,14 +108,22 @@ _start1:
 	ldr r2, address_of_pay3	  		/* r1 ← &choice */
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
-	
-	
+@	bl _ret
+
+	/*Print Error*/
+	ldr r0, address_of_select0     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_hours	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf */	
+@	bl _ret	
 	/*Return to main*/
+_ret:
 	bal main						@ Branch to Main and output Problem Select
 
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_select : .word select				/*"Select a Problem:"*/
+address_of_select0 : .word select0				/*"Problem 0: Error "*/
 address_of_select1 : .word select1				/*"Problem 1: "*/
 address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
@@ -117,6 +133,7 @@ address_of_total : .word total					/*Address of Total Pay*/
 address_of_pay1 : .word pay1					/*Address of Pay1*/
 address_of_pay2 : .word pay2					/*Address of Pay2*/
 address_of_pay3 : .word pay3					/*Address of Pay3*/
+address_of_count : .word count					/*Address of count*/
 address_of_hwork : .word hwork				/*Address of Hours Worked*/
 address_of_return : .word return				/*Address of Return*/
 
