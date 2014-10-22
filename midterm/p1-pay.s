@@ -138,7 +138,7 @@ _pre:
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */	
-
+	b _start1						/*Branch Back to Start*/
 
 	/*Return to main*/
 _ret:
