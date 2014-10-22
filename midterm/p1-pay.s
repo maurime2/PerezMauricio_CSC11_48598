@@ -72,7 +72,7 @@ address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
-address_of_choice : .word hwork				/*Address of Hours Worked*/
+address_of_hwork : .word hwork				/*Address of Hours Worked*/
 address_of_return : .word return				/*Address of Return*/
 
 /* External */
