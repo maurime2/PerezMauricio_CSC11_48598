@@ -17,15 +17,15 @@ select0: .asciz "Error: Please Try Again\n"
 
 /* Select 1 */
 .balign 8
-select1: .asciz "Straight Time(1-20 Hrs): $ 8 An Hour for %d Hrs = %d\n"
+select1: .asciz "Straight Time(1-20 Hrs): $ 8 An Hour for %d Hrs = $%d\n"
 
 /* Select 2 */
 .balign 8
-select2: .asciz "Double Time (21-40 Hrs): $16 An Hour for %d Hrs = %d\n"
+select2: .asciz "Double Time (21-40 Hrs): $16 An Hour for %d Hrs = $%d\n"
 
 /* Select 3 */
 .balign 8
-select3: .asciz "Triple Time (41-60 Hrs): $24 An Hour for %d Hrs = %d\n"
+select3: .asciz "Triple Time (41-60 Hrs): $24 An Hour for %d Hrs = $%d\n"
 
 /* Select 4 */
 .balign 4
