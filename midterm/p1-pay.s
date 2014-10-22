@@ -2,7 +2,7 @@
 
 .global _p1pay
 
-_p1start:
+_p1pay:
 	
 	bx lr
 	
