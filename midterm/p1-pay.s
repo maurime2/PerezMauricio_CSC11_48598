@@ -1,8 +1,8 @@
 /*p1-pay.s File*/
 
-.global _pay
+.global _start
 
-_pay:
+_start:
 	MOV R7, #1
 	SWI 0
 	
