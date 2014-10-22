@@ -85,6 +85,7 @@ _start1:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
 	
+_pr1:
 	/*Print Straight Hours*/
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
@@ -93,6 +94,7 @@ _start1:
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	
+_pr2:
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
@@ -101,6 +103,7 @@ _start1:
     ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 
+_pr3:
 	/*Print Triple Hours*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
@@ -110,12 +113,14 @@ _start1:
     bl printf                       /* call to printf */
 @	bl _ret
 
+_pre:
 	/*Print Error*/
 	ldr r0, address_of_select0     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */	
 @	bl _ret	
+
 	/*Return to main*/
 _ret:
 	bal main						@ Branch to Main and output Problem Select
