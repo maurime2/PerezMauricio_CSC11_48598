@@ -131,31 +131,27 @@ _h1c:
 	b _h1c
 	
 _pr1:
-	cmp r5, #0
-	bpl _pr2
 	/*Print Straight Hours*/
 	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
     bl printf                        /* call to printf */
+	cmp r5, #0
+	beq _ret							 /*Branch Back to Menu*/
+	
+	/*Set Up for Double Pay*/
 	mov r5, #20
-	@ b _ret							 /*Branch Back to Menu*/
+	ldr r6, address_of_pay2	  		/* r6 ← &_pay1  */
+    ldr r6, [r6]                    /* r6 ← *r6 ($8)*/
+	b _h1c
 	
 _pr2:
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
-    ldr r1, address_of_hours	  	/* r1 ← &choice */
-    ldr r1, [r1]                    /* r1 ← *r1 */
-	ldr r2, address_of_pay2	  		/* r1 ← &choice */
-    ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	b _ret							/*Branch Back to Menu*/
 	
 _pr3:
 	/*Print Triple Hours*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
-    ldr r1, address_of_hours	  	/* r1 ← &choice */
-    ldr r1, [r1]                    /* r1 ← *r1 */
-	ldr r2, address_of_pay3	  		/* r1 ← &choice */
-    ldr r2, [r2]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	b _ret							/*Branch Back to Menu*/
 
