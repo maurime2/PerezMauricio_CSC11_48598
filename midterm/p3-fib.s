@@ -86,7 +86,7 @@ _start3:
 	
 _error:
 	b _start3
-	
+
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
 
