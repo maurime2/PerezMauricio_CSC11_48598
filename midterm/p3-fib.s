@@ -51,6 +51,7 @@ divider: .asciz "\n*****************************************************\n"
 comma: .asciz ", "
 
 _start3:	
+_loop:
 	/*Print Bar*/
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
     bl printf                       /* call to printf */
@@ -85,7 +86,7 @@ _start3:
 	
 	
 _error:
-	b _start3
+	b _loop
 
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
