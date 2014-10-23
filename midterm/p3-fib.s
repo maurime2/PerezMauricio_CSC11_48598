@@ -113,10 +113,7 @@ _f2:
 	sub r5, r1, #2					/*Fib in as a counter*/	
 	mov r3, #0						/*To calculate new FibOut, Ready r3 and r4 to prepare the rest of the sequence*/
 	mov r4, #1
-	
 
-
-	
 	
 _pcom:
 	/*Print Comma*/
@@ -125,22 +122,17 @@ _pcom:
 	str r1, [r0]
 	ldr r0, address_of_comma     	/* r0 ← &Prompt comma */
 	bl printf
-
-	add r3, r4, #0					/*Calculate Next number in sequence*/
-	ldr r4, address_of_fibout
 	
+	/*Set Up for next value in Sequence*/
+	add r3, r4, #0					/*Move r4 to r3*/
+	ldr r4, address_of_fibout		/*load last calculated fib out into r4*/
+	ldr r4, [r4]
+	
+	/*Check for more FIb Sequence Prints*/
 	sub r5, r5, #1					/*CHeck if more Prints are needed*/
 	cmp r5, #0
 	ble _menu
 	b _pcom
-	
-	@/*Prompt up to Fib 2*/
-	@ldr r0, address_of_prompt2     	/* Prompt for Fib Term */
-	@bl printf                       /* call to printf */
-	
-	@b _menu
-
-
 	
 _menu:
 	/*Print Bar*/
