@@ -32,11 +32,11 @@ prompt: .asciz "What Fibonacci term would you like to Output?:  "
 
 /* Prompt0 */
 .balign 8
-prompt0: .asciz "Fibonacci Sequence up to %d: 0"
+prompt0: .asciz "Fibonacci Sequence up to %d: 0\n"
 
 /* Prompt1 */
 .balign 8
-prompt1: .asciz "Fibonacci Sequence up to %d: 0, 1"
+prompt1: .asciz "Fibonacci Sequence up to %d: 0, 1\n"
 
 /* Prompt2 */
 .balign 8
