@@ -102,10 +102,17 @@ _f2:
 	ldr r1, address_of_fibout	  	/* r1 ← &fib out */
 	mov r0, #1
 	str r0, [r1]
+	cmp r1, #2						/* Fib <= 2. Branch to menu*/
+	ble _menu 
 	
 	/*Prep Fot the rest of the sequence*/
 	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
 	mov r4, #1
+	
+	/*Print Comma*/
+	ldr r0, address_of_comma     	/* r0 ← &Prompt comma */
+	bl printf
+
 	b _menu
 
 _er:
