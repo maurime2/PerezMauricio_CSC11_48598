@@ -135,7 +135,7 @@ _pr1:
 	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
     bl printf                        /* call to printf */
 	ldr r0, address_of_total		/*Store total before cont*/
-	str, r2, [r0]
+	str r2, [r0]
 	
 	/*Set Up for Double Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
