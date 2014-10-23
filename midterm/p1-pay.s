@@ -215,15 +215,16 @@ _pr2:
 	add r5, r2, r0					/*Add totals together*/
 	ldr r0, address_of_total		/*Store total before cont*/
 	str r5, [r0]					/*Store again*/
-
+	add r5, r2, #0					/*Temp Store r2 into r5*/
+	
+	
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
 	add r3, r2, #0					/*LAST MINUTE FIX: Had 2 output registers for prompts:*/
 	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
 	add r1, r6, #0					/*  by one, Then change them back after Print*/
     bl printf                       /*Call to printf */
-	ldr r2, address_of_total
-	ldr r2, [r2]
+	add r2, r5, #0
 	mov r3, #0
 	
 	/*Set Up for Triple Pay*/
