@@ -72,21 +72,25 @@ _loop:
 	ldr r1, address_of_fibin   		/* r1 ← &fibin */
 	ldr r1, [r1]
 	cmp r1, #0
-
+	beq 
 	
-	
-	
+_f1:
 	/*Print term 1*/
 	ldr r0, address_of_prompt0     	/* r0 ← &Prompt Fib */
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
-	
+	b _fn
+_f2:
 	/*Print term 2*/
 	ldr r0, address_of_prompt1     	/* r0 ← &Prompt Fib */
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
+	
+_fx:
+
+_fn:	
 	
 	
 _err:
@@ -94,8 +98,6 @@ _err:
 
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
-
-
 	
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
