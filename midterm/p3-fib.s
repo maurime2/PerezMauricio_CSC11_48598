@@ -130,7 +130,7 @@ _pcom:
 	ldr r4, address_of_fibout
 	
 	sub r5, r5, #1					/*CHeck if more Prints are needed*/
-	com r5, #0
+	cmp r5, #0
 	ble _menu
 	b _pcom
 	
