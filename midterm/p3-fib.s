@@ -44,9 +44,12 @@ prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d"
 
 /* Divider */
 .balign 8
-divider: .asciz "\n*****************************************************\n"
+divider: .asciz "*****************************************************\n"
 
 _start3:	
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* Prompt for Fib Term */
+    bl printf                       /* call to printf */
 
 	/*Ask User for Fib Term*/
 	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
@@ -57,11 +60,18 @@ _start3:
     ldr r1, address_of_fibin   	/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
 	
-	/*Print BACK HOURS*/
+	/*Print term 1*/
 	ldr r0, address_of_prompt0     	/* r0 ← &Prompt Fib */
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
+	
+	/*Print term 2*/
+	ldr r0, address_of_prompt1     	/* r0 ← &Prompt Fib */
+    ldr r1, address_of_fibin	  	/* r1 ← &fib in */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf                       /* call to printf 
+	
 	
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
