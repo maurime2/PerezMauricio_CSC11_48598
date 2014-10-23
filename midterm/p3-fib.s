@@ -46,6 +46,10 @@ prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d"
 .balign 8
 divider: .asciz "\n*****************************************************\n"
 
+/* Comma */
+.balign 4
+comma: .asciz ", "
+
 _start3:	
 	/*Print Bar*/
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
@@ -55,10 +59,17 @@ _start3:
 	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
     bl printf                       /* call to printf */
 
-	/*Scan Hours*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
-    ldr r1, address_of_fibin   	/* r1 ← &number_a */
+	/*Scan Fib*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_fibin   		/* r1 ← &fibin */
     bl scanf                        /* call to scanf */
+	
+	ldr r1, address_of_fibin   		/* r1 ← &fibin */
+	ldr r1, [r1]
+	cmp r1, #0
+	ble _error 
+	
+	
 	
 	/*Print term 1*/
 	ldr r0, address_of_prompt0     	/* r0 ← &Prompt Fib */
@@ -72,6 +83,9 @@ _start3:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
 	
+	
+_error:
+	b _start3
 	
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
@@ -87,8 +101,9 @@ address_of_prompt : .word prompt				/*"Prompt for input"*/
 address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
 address_of_prompt1 : .word prompt1				/*"Prompt 1"*/
 address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
-address_of_divider : .word divider				/*"Divider Bar for prompt
-address_of_error : .word error					/*"Divider Bar for prompt
+address_of_divider : .word divider				/*"Divider Bar for prompt"*/
+address_of_comma : .word divider				/*"comma Print"*/
+address_of_error : .word error					/*"Divider Bar for prompt"*/
 
 
 /* External */
