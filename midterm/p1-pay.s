@@ -166,11 +166,11 @@ _pr2:
     bl printf                       /* call to printf */
 
 	/*Save Total*/
-	ldr r0, address_of_total		/*Store total before cont*/
-	ldr r0, [r0]					/*Load Last Total*/
-	add r2, r2, r0					/*Add totals together*/
-	ldr r0, address_of_total		/*Store total before cont*/
-	str r2, [r0]					/*Store again*/
+@	ldr r0, address_of_total		/*Store total before cont*/
+@	ldr r0, [r0]					/*Load Last Total*/
+@	add r2, r2, r0					/*Add totals together*/
+@	ldr r0, address_of_total		/*Store total before cont*/
+@	str r2, [r0]					/*Store again*/
 	
 
 
@@ -200,11 +200,11 @@ _pr3:
     bl printf                       /* call to printf */
 
 	/*Save Total*/
-	ldr r0, address_of_total		/*Store total before cont*/
-	ldr r0, [r0]					/*Load Last Total*/
-	add r2, r2, r0					/*Add totals together*/
-	ldr r0, address_of_total		/*Store total before cont*/
-	str r2, [r0]					/*Store again*/	
+@	ldr r0, address_of_total		/*Store total before cont*/
+@	ldr r0, [r0]					/*Load Last Total*/
+@	add r2, r2, r0					/*Add totals together*/
+@	ldr r0, address_of_total		/*Store total before cont*/
+@	str r2, [r0]					/*Store again*/	
 	
 	b _ret							/*Branch Back to Menu*/
 
