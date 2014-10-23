@@ -69,7 +69,7 @@ return: .word 0
 
 /* Divider */
 .balign 8
-divider: .asciz "\n************************************************\n"
+divider: .asciz "\n*****************************************************\n"
 
 .text
  
@@ -77,10 +77,8 @@ _start1:
 	/*Print Divider Bar*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
-
     ldr r0, address_of_divider     	/* Prompt for Hours */
     bl printf                       /* call to printf */
-	
 	
 	/*PRINT PROMPT: ASK FOR HOURS*/
 	str lr, [sp]					/*Link Register into Stack Pointer*/
@@ -117,9 +115,11 @@ _h1:
 	ble _h1c						/* if r4 <= 60 then branch to _h1c */
 	b _pre							/* r4 >= 60, branch to _pre */
 	
-_h1c:
+_h1c[:
 	/*Calculate Straight Time*/
-	
+	cmp r1, r4         				/* compare Count in r0 to total hours in r4 */
+    beq _pr1						/* Branch to print */
+	b _ret
 	
 _pr1:
 	/*Print Straight Hours*/
