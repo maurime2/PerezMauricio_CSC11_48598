@@ -76,11 +76,7 @@ _start3:
 	ble _f1
 	cmp r1, #2						/*If Fib in is 2, Output 2 FIb Sequence*/
 	beq _f2
-	
-	/*Prep Fot the rest of the sequence*/
-	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
-	mov r4, #1
-	b _f2
+	b _f2							/*Fib is greater than 2, Output 2 FIb Sequence*/
 	
 _f1:
 	/*Print term 1*/
@@ -96,6 +92,11 @@ _f2:
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
+	
+	
+	/*Prep Fot the rest of the sequence*/
+	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
+	mov r4, #1
 	
 _menu:
 	/*Print Bar*/
