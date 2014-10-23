@@ -134,14 +134,26 @@ _pr1:
 	/*Print Straight Hours*/
 	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
     bl printf                        /* call to printf */
-	cmp r5, #0
-	beq _ret							 /*Branch Back to Menu*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	str, r2, [r0]
 	
 	/*Set Up for Double Pay*/
-	mov r5, #20
-	ldr r6, address_of_pay2	  		/* r6 ← &_pay1  */
-    ldr r6, [r6]                    /* r6 ← *r6 ($8)*/
-	b _h1c
+	cmp r4, #0						/*Compare total hours, If zero, End*/
+	beq _ret						
+	mov r5, #20						/*Reset Counter*/
+	ldr r6, address_of_pay2			/*Load Pay 2*/
+	ldr r6, [r6]
+	
+_h2c:
+	add r1, r1, #1					/*Add increment to hours*/
+	add r2, r2, r6					/*Add hourly pay*/
+	sub r4, r4, #1					/*Decriment total hours*/
+	sub r5, r5, #1					/*Decriment Count*/
+	cmp r4, #0						/*Compare total hours, If zero, Print*/
+	beq _pr2						/**/
+	cmp r5, #0						/*Compare total hours, If zero, Print*/
+	beq _pr2						/**/
+	b _h2c
 	
 _pr2:
 	/*Print Double Hours*/
