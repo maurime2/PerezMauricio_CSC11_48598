@@ -1,4 +1,4 @@
-/*p3-fib.s File*/
+/*p3-fib.s File
 Mauricio S. Perez
 Midterm: CSC11-48598
 Program 3: Fibonacci Print
