@@ -44,7 +44,7 @@ prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d"
 
 /* Divider */
 .balign 8
-divider: .asciz "*****************************************************\n"
+divider: .asciz "\n*****************************************************\n"
 
 _start3:	
 	/*Print Bar*/
