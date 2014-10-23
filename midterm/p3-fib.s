@@ -22,6 +22,10 @@ return: .word 0
 
 .text
 
+/* Format pattern for scanf */
+.balign 4
+scan_pattern : .asciz "%d" 
+
 /* Prompt */
 .balign 8
 prompt: .asciz "What Fibonacci term would you like to Output?:  "
@@ -43,7 +47,9 @@ prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d"
 divider: .asciz "\n*****************************************************\n"
 
 _start3:	
-	
+	/*Ask User for Fib Term*/
+	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
+    bl printf                       /* call to printf */
 	
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
@@ -51,6 +57,7 @@ _start3:
 
 	
 /*Messages*/
+address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_fibin : .word fibin					/*"Fib Input"*/
 address_of_fibout : .word fibout				/*"Fib Out"*/
 address_of_return : .word return				/*"Address Of Return"*/
