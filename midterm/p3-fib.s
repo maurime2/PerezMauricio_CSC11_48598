@@ -20,8 +20,6 @@ fibout: .word 0
 .balign 4
 return: .word 0
 
-.text
-
 /* Format pattern for scanf */
 .balign 4
 scan_pattern : .asciz "%d" 
@@ -54,8 +52,9 @@ error: .asciz "\n*****************************************************\n"
 .balign 4
 comma: .asciz ", "
 
+.text
+
 _start3:	
-_loop:
 	/*Print Bar*/
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
     bl printf                       /* call to printf */
@@ -80,7 +79,8 @@ _f1:
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */ 
-	b _fn
+	b _menu
+	
 _f2:
 	/*Print term 2*/
 	ldr r0, address_of_prompt1     	/* r0 ← &Prompt Fib */
@@ -88,7 +88,7 @@ _f2:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	
-
+_menu:
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
 	
