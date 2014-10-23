@@ -131,13 +131,13 @@ _h1c:
 	b _h1c
 	
 _pr1:
+	cmp r5, #0
+	bne _pr2
 	/*Print Straight Hours*/
 	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
-    @ ldr r1, address_of_hours	  	 /* r1 ← &choice */
-    @ ldr r1, [r1]                   /* r1 ← *r1 */
-	@mov r2, r6						 /*move r6 to r2 for print*/
     bl printf                        /* call to printf */
-	b _ret							 /*Branch Back to Menu*/
+	mov r5, #20
+	@ b _ret							 /*Branch Back to Menu*/
 	
 _pr2:
 	/*Print Double Hours*/
