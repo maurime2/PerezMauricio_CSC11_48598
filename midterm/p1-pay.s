@@ -33,7 +33,7 @@ select4: .asciz "Total Pay: %d Hrs = %d Dollars \n"
 
 /* Select 5 */
 .balign 8
-select5: .asciz "                               TOTAL PAY (%d Hrs): $%d\n"
+select5: .asciz "                              TOTAL PAY (%d Hrs): $%d\n"
 
 /* Hours Worked */
 .balign 4
@@ -163,19 +163,16 @@ _h2c:
 	b _h2c
 	
 _pr2:
+	/*Save 2*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	ldr r0, [r0]					/*Load Last Total*/
+	add r2, r2, r0					/*Add totals together*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	str r2, [r0]					/*Store again*/
+
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-
-	/*Save Total*/
-@	ldr r0, address_of_total		/*Store total before cont*/
-@	ldr r0, [r0]					/*Load Last Total*/
-@	add r2, r2, r0					/*Add totals together*/
-@	ldr r0, address_of_total		/*Store total before cont*/
-@	str r2, [r0]					/*Store again*/
-	
-
-
 
 	/*Set Up for Triple Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
