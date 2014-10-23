@@ -21,7 +21,7 @@ select0: .asciz "Error: Please Try Again\n"
 
 /* Select 1 */
 .balign 8
-select1: .asciz "Straight Time(1-20 Hrs): $ 8 An Hour for %d Hrs = $%d\n"
+select1: .asciz "Straight Time(1-20 Hrs): $ %d An Hour for %d Hrs = $%d\n"
 
 /* Select 2 */
 .balign 8
@@ -180,8 +180,14 @@ _pr1:
 	str r2, [r0]
 
 	/*Print Straight Hours*/
-	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
+	ldr r0, address_of_select1     	/* r0 ← &Straight Time Prompt*/
+	add r3, r2, #0					
+	add r2, r1, #0
+	add r1, r6, #0
     bl printf                       /* call to printf */
+	add r2, r3, #0
+	add r1, r2, #0
+	
 	
 	/*Set Up for Double Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
