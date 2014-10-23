@@ -115,7 +115,7 @@ _h1:
 	ble _h1c						/* if r4 <= 60 then branch to _h1c */
 	b _pre							/* r4 >= 60, branch to _pre */
 	
-_h1c[:
+_h1c:
 	/*Calculate Straight Time*/
 	cmp r1, r4         				/* compare Count in r0 to total hours in r4 */
     beq _pr1						/* Branch to print */
