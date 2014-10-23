@@ -108,18 +108,27 @@ _h1:
     ldr r6, [r6]                    /* r6 ← *r6 ($8)*/
 	ldr r4, address_of_hours		/*Holds address of total hours (all hours)*/
 	ldr r4, [r4]					/*Holds total hours (all hours)*/
-	ldr r5, address_of_hwork		/*Holds address of hours worked for class (For save and print)*/
+	mov r5, #20						/*Count 20 for each class */
+	/*Input Validation: Ask for prompt again if Hours<0, or greater than 60*/
 	cmp r4, #-1         			/* compare r4 and 0 */
     ble _pre						/* if r0 <= 0 then branch error */
 	cmp r4, #60         			/* compare r4 and 60 */
 	ble _h1c						/* if r4 <= 60 then branch to _h1c */
 	b _pre							/* r4 >= 60, branch to _pre */
 	
-_h1c:
 	/*Calculate Straight Time*/
 	cmp r1, r4         				/* compare Count in r0 to total hours in r4 */
-    beq _pr1						/* Branch to print */
-	b _ret
+    beq _pr1						/* Branch to print if zero hours */
+_h1c:
+	add r1, r1, #1					/*Add increment to hours*/
+	add r2, r2, r6					/*Add hourly pay*/
+	sub r4, r4, #1					/*Decriment total hours*/
+	sub r5, r5, #1					/*Decriment Count*/
+	cmp r4, #0						/*Compare total hours, If zero, Print*/
+	beq _pr1						/**/
+	cmp r5, #0						/*Compare total hours, If zero, Print*/
+	beq _pr1						/**/
+	b h1c
 	
 _pr1:
 	/*Print Straight Hours*/
