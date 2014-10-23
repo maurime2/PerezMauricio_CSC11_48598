@@ -78,8 +78,8 @@ _start3:
 	beq _f2
 	
 	/*Prep Fot the rest of the sequence*/
-	ldr r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
-	ldr r4, #1
+	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
+	mov r4, #1
 	b f2
 	
 _f1:
