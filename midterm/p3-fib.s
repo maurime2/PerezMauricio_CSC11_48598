@@ -80,7 +80,7 @@ _start3:
 	/*Prep Fot the rest of the sequence*/
 	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
 	mov r4, #1
-	b f2
+	b _f2
 	
 _f1:
 	/*Print term 1*/
