@@ -103,7 +103,7 @@ _f2:
 	mov r0, #1
 	str r0, [r1]
 	cmp r1, #2						/* Fib <= 2. Branch to menu*/
-	ble _menu 
+	beq _menu 
 	
 	/*Prep Fot the rest of the sequence*/
 	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
