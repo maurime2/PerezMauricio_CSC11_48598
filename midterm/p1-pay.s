@@ -160,7 +160,33 @@ _pr2:
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-	b _ret							/*Branch Back to Menu*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	ldr r0, [r0]					/*Load Last Total*/
+	add r2, r2, r0					/*Add totals together*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	str r2, [r0]					/*Store again*/
+	
+
+
+
+	/*Set Up for Triple Pay*/
+	cmp r4, #0						/*Compare total hours, If zero, End*/
+	beq _ret	
+	mov r1, #0
+	mov r5, #20						/*Reset Counter*/
+	ldr r6, address_of_pay3			/*Load Pay 2*/
+	ldr r6, [r6]
+	
+_h3c:
+	add r1, r1, #1					/*Add increment to hours*/
+	add r2, r2, r6					/*Add hourly pay*/
+	sub r4, r4, #1					/*Decriment total hours*/
+	sub r5, r5, #1					/*Decriment Count*/
+	cmp r4, #0						/*Compare total hours, If zero, Print*/
+	beq _pr3						/**/
+	cmp r5, #0						/*Compare total hours, If zero, Print*/
+	beq _pr3						/**/
+	b _h3c
 	
 _pr3:
 	/*Print Triple Hours*/
