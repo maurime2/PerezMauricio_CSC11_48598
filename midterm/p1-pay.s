@@ -43,6 +43,10 @@ select5: .asciz "                              TOTAL PAY (%d Hrs): $%d\n\n"
 .balign 4
 hwork: .asciz "Hours Worked: %d\n"
 
+/* Wage Per Hour*/
+.balign 4
+wph: .asciz "Wage Per Hour : %d\n"
+
 /* Format pattern for scanf */
 .balign 4
 scan_pattern : .asciz "%d" 
@@ -123,6 +127,12 @@ _start1:
 	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
     ldr r1, address_of_pay1   		/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
+	
+	/*Print BACK HOURS*/
+	ldr r0, address_of_wph     	/* r0 ← &Problem Selected */
+    ldr r1, address_of_pay1	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+    bl printf  
 	
 	
 	
@@ -253,7 +263,7 @@ _ret:
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_select : .word select				/*"Select a Problem:"*/
-address_of_selectw : .word select				/*"Select a Problem:"*/
+address_of_selectw : .word selectw				/*"Select a Problem:"*/
 address_of_select0 : .word select0				/*"Problem 0: Error "*/
 address_of_select1 : .word select1				/*"Problem 1: "*/
 address_of_select2 : .word select2				/*"Problem 2: "*/
@@ -266,7 +276,8 @@ address_of_pay1 : .word pay1					/*Address of Pay1*/
 address_of_pay2 : .word pay2					/*Address of Pay2*/
 address_of_pay3 : .word pay3					/*Address of Pay3*/
 address_of_count : .word count					/*Address of count*/
-address_of_hwork : .word hwork				/*Address of Hours Worked*/
+address_of_hwork : .word hwork					/*Address of Hours Worked*/
+address_of_wph : .word wph						/*Address of Wage Per Hour*/
 address_of_return : .word return				/*Address of Return*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 
