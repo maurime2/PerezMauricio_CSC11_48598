@@ -185,14 +185,12 @@ _pr1:
 	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
 	add r1, r6, #0					/*  by one, Then change them back after Print*/
     bl printf                       /*Call to printf */
-	ldr r2, address_of_total
-	ldr r2, [r2]
-	mov r3, #0
 	
 	/*Set Up for Double Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
 	beq _ret	
 	mov r1, #0
+	mov r2, #0
 	mov r5, #20						/*Reset Counter*/
 	ldr r6, address_of_pay2			/*Load Pay 2*/
 	ldr r6, [r6]
