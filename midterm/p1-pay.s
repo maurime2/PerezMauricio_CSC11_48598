@@ -128,7 +128,7 @@ _h1c:
 	beq _pr1						/**/
 	cmp r5, #0						/*Compare total hours, If zero, Print*/
 	beq _pr1						/**/
-	b h1c
+	b _h1c
 	
 _pr1:
 	/*Print Straight Hours*/
