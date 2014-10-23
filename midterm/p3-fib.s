@@ -88,13 +88,6 @@ _f2:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	
-_fx:
-
-_fn:	
-	
-	
-_err:
-	b _loop
 
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
@@ -109,7 +102,7 @@ address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
 address_of_prompt1 : .word prompt1				/*"Prompt 1"*/
 address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
-address_of_comma : .word divider				/*"comma Print"*/
+address_of_comma : .word comma					/*"comma Print"*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 
 
