@@ -79,14 +79,14 @@ _f1:
 	ldr r0, address_of_prompt0     	/* r0 ← &Prompt Fib */
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
-    bl printf                       /* call to printf 
+    bl printf                       /* call to printf */ 
 	b _fn
 _f2:
 	/*Print term 2*/
 	ldr r0, address_of_prompt1     	/* r0 ← &Prompt Fib */
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
-    bl printf                       /* call to printf 
+    bl printf                       /* call to printf */
 	
 _fx:
 
