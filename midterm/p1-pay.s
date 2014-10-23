@@ -185,9 +185,9 @@ _pr1:
 	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
 	add r1, r6, #0					/*  by one, Then change them back after Print*/
     bl printf                       /*Call to printf */
-	add r2, r3, #0
-	add r1, r2, #0
-	
+	ldr r2, address_of_total
+	ldr r2, [r2]
+	mov r3, #0
 	
 	/*Set Up for Double Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
@@ -222,8 +222,9 @@ _pr2:
 	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
 	add r1, r6, #0					/*  by one, Then change them back after Print*/
     bl printf                       /*Call to printf */
-	add r2, r3, #0
-	add r1, r2, #0
+	ldr r2, address_of_total
+	ldr r2, [r2]
+	mov r3, #0
 	
 	/*Set Up for Triple Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
@@ -258,8 +259,9 @@ _pr3:
 	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
 	add r1, r6, #0					/*  by one, Then change them back after Print*/
     bl printf                       /*Call to printf */
-	add r2, r3, #0
-	add r1, r2, #0
+	ldr r2, address_of_total
+	ldr r2, [r2]
+	mov r3, #0
 	b _ret							/*Branch Back to Menu*/
 
 _pre:
@@ -292,6 +294,7 @@ address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_select5 : .word select5				/*"Total Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
+address_of_hours : .word thours					/*Address of Total Hours*/
 address_of_total : .word total					/*Address of Total Pay*/
 address_of_pay1 : .word pay1					/*Address of Pay1*/
 address_of_pay2 : .word pay2					/*Address of Pay2*/
