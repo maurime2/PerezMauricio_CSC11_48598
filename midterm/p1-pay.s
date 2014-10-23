@@ -21,15 +21,15 @@ select0: .asciz "Error: Please Try Again\n"
 
 /* Select 1 */
 .balign 8
-select1: .asciz "Straight Time(1-20 Hrs): $ %d An Hour for %d Hrs = $%d\n"
+select1: .asciz "Straight Time(1-20 Hrs): $%d An Hour for %d Hrs = $%d\n"
 
 /* Select 2 */
 .balign 8
-select2: .asciz "Double Time (21-40 Hrs): $16 An Hour for %d Hrs = $%d\n"
+select2: .asciz "Double Time (21-40 Hrs): $%d An Hour for %d Hrs = $%d\n"
 
 /* Select 3 */
 .balign 8
-select3: .asciz "Triple Time (41-60 Hrs): $24 An Hour for %d Hrs = $%d\n"
+select3: .asciz "Triple Time (41-60 Hrs): $%d An Hour for %d Hrs = $%d\n"
 
 /* Select 4 */
 .balign 4
@@ -181,10 +181,10 @@ _pr1:
 
 	/*Print Straight Hours*/
 	ldr r0, address_of_select1     	/* r0 ← &Straight Time Prompt*/
-	add r3, r2, #0					
-	add r2, r1, #0
-	add r1, r6, #0
-    bl printf                       /* call to printf */
+	add r3, r2, #0					/*LAST MINUTE FIX: Had 2 output registers for prompts:*/
+	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
+	add r1, r6, #0					/*  by one, Then change them back after Print*/
+    bl printf                       /*Call to printf */
 	add r2, r3, #0
 	add r1, r2, #0
 	
@@ -218,8 +218,13 @@ _pr2:
 
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
-    bl printf                       /* call to printf */
-
+	add r3, r2, #0					/*LAST MINUTE FIX: Had 2 output registers for prompts:*/
+	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
+	add r1, r6, #0					/*  by one, Then change them back after Print*/
+    bl printf                       /*Call to printf */
+	add r2, r3, #0
+	add r1, r2, #0
+	
 	/*Set Up for Triple Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
 	beq _ret	
@@ -249,8 +254,12 @@ _pr3:
 
 	/*Print Triple Hours*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
-    bl printf                       /* call to printf */
-
+    add r3, r2, #0					/*LAST MINUTE FIX: Had 2 output registers for prompts:*/
+	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
+	add r1, r6, #0					/*  by one, Then change them back after Print*/
+    bl printf                       /*Call to printf */
+	add r2, r3, #0
+	add r1, r2, #0
 	b _ret							/*Branch Back to Menu*/
 
 _pre:
