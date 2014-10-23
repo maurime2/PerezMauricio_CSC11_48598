@@ -70,12 +70,17 @@ _start3:
 	
 	ldr r1, address_of_fibin   		/* r1 ← &fibin */
 	ldr r1, [r1]
-	cmp r1, #0
+	cmp r1, #0						/*If Less than 0. Branch to Error*/
 	ble _menu 
-	cmp r1, #1
+	cmp r1, #1						/*If Fib in is 1, Output 1 FIb Sequence*/
 	ble _f1
-	cmp r1, #2
+	cmp r1, #2						/*If Fib in is 2, Output 2 FIb Sequence*/
 	beq _f2
+	
+	/*Prep Fot the rest of the sequence*/
+	ldr r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
+	ldr r4, #1
+	b f2
 	
 _f1:
 	/*Print term 1*/
