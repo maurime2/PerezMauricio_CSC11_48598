@@ -129,14 +129,20 @@ _start1:
     bl scanf                        /* call to scanf */
 	
 	/*Print BACK HOURS*/
-	ldr r0, address_of_wph     	/* r0 ← &Problem Selected */
-    ldr r1, address_of_pay1	  	/* r1 ← &choice */
+	ldr r0, address_of_wph     		/* r0 ← &Problem Selected */
+    ldr r1, address_of_pay1	  		/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf  
 	
-	
-	
-	
+	/*Save Double and Triple Wage Per Hour*/
+	ldr r1, address_of_pay1	  		/* r1 ← &pay1 */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+	add r2, r1, r1					/*Double Pay*/
+	ldr r0, address_of_pay2	  		/*Double Pay Store*/
+	str r2, [r0]
+	add r2, r2, r1					/*Triple Pay*/
+	ldr r0, address_of_pay3	  		/*Triple Pay Store*/
+	str r2, [r0]
 	
 _h1:
 	/*Set Up for Straight Time*/
@@ -174,8 +180,8 @@ _pr1:
 	str r2, [r0]
 
 	/*Print Straight Hours*/
-	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
-    bl printf                        /* call to printf */
+	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
+    bl printf                       /* call to printf */
 	
 	/*Set Up for Double Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
