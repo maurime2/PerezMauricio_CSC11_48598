@@ -294,7 +294,6 @@ address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_select5 : .word select5				/*"Total Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
-address_of_hours : .word thours					/*Address of Total Hours*/
 address_of_total : .word total					/*Address of Total Pay*/
 address_of_pay1 : .word pay1					/*Address of Pay1*/
 address_of_pay2 : .word pay2					/*Address of Pay2*/
