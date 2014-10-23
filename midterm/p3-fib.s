@@ -34,11 +34,11 @@ prompt0: .asciz "Fibonacci Sequence up to %d: 0\n"
 
 /* Prompt1 */
 .balign 8
-prompt1: .asciz "Fibonacci Sequence up to %d: 0, 1\n"
+prompt1: .asciz "Fibonacci Sequence up to %d: 0, 1"
 
 /* Prompt2 */
 .balign 4
-prompt2: .asciz "F[%d]= %d\n"
+prompt2: .asciz "\nF[%d]= %d\n"
 
 /* Divider */
 .balign 8
@@ -50,7 +50,7 @@ error: .asciz "\n!!!ERROR: Please Input a number greater than zero...!!!\n"
 
 /* Comma */
 .balign 4
-comma: .asciz ", "
+comma: .asciz ", %d"
 
 .text
 
@@ -108,22 +108,39 @@ _f2:
 	ldr r1, [r1]
 	cmp r1, #2						/* Fib <= 2. Branch to menu*/
 	ble _menu 
-	
-	/*Prep Fot the rest of the sequence*/
-	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
+
+	/*Prep Fot the rest of the sequence*/	
+	sub r5, r1, #2					/*Fib in as a counter*/	
+	mov r3, #0						/*To calculate new FibOut, Ready r3 and r4 to prepare the rest of the sequence*/
 	mov r4, #1
 	
+
+
+	
+	
+_pcom:
 	/*Print Comma*/
+	add r1, r3, r4					/*Save New Fib Term*/
+	ldr r0, address_of_fibout	  	
+	str r1, [r0]
 	ldr r0, address_of_comma     	/* r0 ← &Prompt comma */
 	bl printf
 
-	b _menu
+	add r3, r4, #0					/*Calculate Next number in sequence*/
+	ldr r4, address_of_fibout
+	
+	sub r5, r5, #1					/*CHeck if more Prints are needed*/
+	com r5, #0
+	ble _menu
+	b _pcom
+	
+	@/*Prompt up to Fib 2*/
+	@ldr r0, address_of_prompt2     	/* Prompt for Fib Term */
+	@bl printf                       /* call to printf */
+	
+	@b _menu
 
-_er:
-	/*Print Error*/
-	ldr r0, address_of_error     	/* r0 ← &Prompt Fib */
-    bl printf                       /* call to printf */ 
-	b _start3
+
 	
 _menu:
 	/*Print Bar*/
@@ -136,6 +153,13 @@ _menu:
 
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
+
+_er:
+	/*Print Error*/
+	ldr r0, address_of_error     	/* r0 ← &Prompt Fib */
+    bl printf                       /* call to printf */ 
+	b _start3
+
 	
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
