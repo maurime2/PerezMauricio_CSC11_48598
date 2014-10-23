@@ -166,9 +166,9 @@ _pr2:
 	/*Save 2*/
 	ldr r0, address_of_total		/*Store total before cont*/
 	ldr r0, [r0]					/*Load Last Total*/
-	add r2, r2, r0					/*Add totals together*/
+	add r5, r2, r0					/*Add totals together*/
 	ldr r0, address_of_total		/*Store total before cont*/
-	str r2, [r0]					/*Store again*/
+	str r5, [r0]					/*Store again*/
 
 	/*Print Double Hours*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
@@ -194,17 +194,17 @@ _h3c:
 	b _h3c
 	
 _pr3:
+	/*Save 3*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	ldr r0, [r0]					/*Load Last Total*/
+	add r5, r2, r0					/*Add totals together*/
+	ldr r0, address_of_total		/*Store total before cont*/
+	str r5, [r0]					/*Store again*/
+
 	/*Print Triple Hours*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
 
-	/*Save Total*/
-@	ldr r0, address_of_total		/*Store total before cont*/
-@	ldr r0, [r0]					/*Load Last Total*/
-@	add r2, r2, r0					/*Add totals together*/
-@	ldr r0, address_of_total		/*Store total before cont*/
-@	str r2, [r0]					/*Store again*/	
-	
 	b _ret							/*Branch Back to Menu*/
 
 _pre:
