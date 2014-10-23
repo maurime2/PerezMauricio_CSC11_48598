@@ -31,6 +31,10 @@ select3: .asciz "Triple Time (41-60 Hrs): $24 An Hour for %d Hrs = $%d\n"
 .balign 4
 select4: .asciz "Total Pay: %d Hrs = %d Dollars \n"
 
+/* Select 5 */
+.balign 8
+select5: .asciz "                               TOTAL PAY (%d Hrs): $%d\n"
+
 /* Hours Worked */
 .balign 4
 hwork: .asciz "Hours Worked: %d\n"
@@ -204,6 +208,13 @@ _pre:
 
 	/*Return to main*/
 _ret:
+	ldr r1, address_of_hours
+	ldr r1, [r1]
+	ldr r2, address_of_total
+	ldr r2, [r2]
+	ldr r0, address_of_select5     	/* r0 ← &Total Print */
+    bl printf                       /* call to printf */
+
 	bal main						@ Branch to Main and output Problem Select
 
 /*Messages*/
@@ -214,6 +225,7 @@ address_of_select1 : .word select1				/*"Problem 1: "*/
 address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
+address_of_select5 : .word select5				/*"Total Prompt"*/
 address_of_hours : .word hours					/*Address of Hours*/
 address_of_total : .word total					/*Address of Total Pay*/
 address_of_pay1 : .word pay1					/*Address of Pay1*/
