@@ -38,7 +38,7 @@ prompt1: .asciz "Fibonacci Sequence up to %d: 0, 1\n"
 
 /* Prompt2 */
 .balign 8
-prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d"
+prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d\n"
 
 /* Divider */
 .balign 8
