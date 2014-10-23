@@ -139,7 +139,8 @@ _pr1:
 	
 	/*Set Up for Double Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
-	beq _ret						
+	beq _ret	
+	mov r1, #0
 	mov r5, #20						/*Reset Counter*/
 	ldr r6, address_of_pay2			/*Load Pay 2*/
 	ldr r6, [r6]
