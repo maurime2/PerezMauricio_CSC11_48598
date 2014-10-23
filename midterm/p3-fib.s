@@ -84,6 +84,9 @@ _f1:
     ldr r1, address_of_fibin	  	/* r1 ← &fib in */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */ 
+	ldr r1, address_of_fibout	  	/* r1 ← &fib out */
+	mov r0, #0
+	str r0, [r1]
 	b _menu
 	
 _f2:
@@ -93,6 +96,11 @@ _f2:
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf */
 	
+	ldr r1, address_of_fibout	  	/* r1 ← &fib out */
+	mov r0, #1
+	str r0, [r1]
+	
+	
 	
 	/*Prep Fot the rest of the sequence*/
 	mov r3, #0						/*If Fib in is greater than that, Ready r3 and r4 to prepare the rest of the sequence*/
@@ -100,7 +108,11 @@ _f2:
 	
 _menu:
 	/*Print Bar*/
-	ldr r0, address_of_divider     	/* Prompt for Fib Term */
+	ldr r0, address_of_prompt2     	/* Prompt for Fib Term */
+	ldr r1, address_of_fibin     	/* Load Fib In */
+	ldr r1, [r1]
+	ldr r2, address_of_fibout     	/* Load Fib Out */
+	ldr r2, [r2]
     bl printf                       /* call to printf */
 
 	/*Branch Back to main menu*/
