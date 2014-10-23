@@ -132,7 +132,7 @@ _h1c:
 	
 _pr1:
 	cmp r5, #0
-	bne _pr2
+	bpl _pr2
 	/*Print Straight Hours*/
 	ldr r0, address_of_select1     	 /* r0 ← &Problem Selected */
     bl printf                        /* call to printf */
