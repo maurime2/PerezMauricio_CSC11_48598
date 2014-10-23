@@ -72,7 +72,7 @@ _loop:
 	ldr r1, address_of_fibin   		/* r1 ← &fibin */
 	ldr r1, [r1]
 	cmp r1, #0
-	ble _error 
+	ble _err 
 	
 	
 	
@@ -89,7 +89,7 @@ _loop:
     bl printf                       /* call to printf 
 	
 	
-_error:
+_err:
 	b _loop
 
 	/*Branch Back to main menu*/
