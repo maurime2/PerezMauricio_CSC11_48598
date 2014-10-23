@@ -46,7 +46,7 @@ divider: .asciz "\n*****************************************************\n"
 
 /* Error */
 .balign 8
-error: .asciz "\n*****************************************************\n"
+error: .asciz "\n!!!ERROR: Please Input a number greater than zero...!!!\n"
 
 /* Comma */
 .balign 4
@@ -70,8 +70,12 @@ _start3:
 	
 	ldr r1, address_of_fibin   		/* r1 ← &fibin */
 	ldr r1, [r1]
+	cmp r1, #0
+	ble _menu 
 	cmp r1, #1
-	beq _f2 
+	ble _f1
+	cmp r1, #2
+	beq _f2
 	
 _f1:
 	/*Print term 1*/
@@ -89,6 +93,10 @@ _f2:
     bl printf                       /* call to printf */
 	
 _menu:
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* Prompt for Fib Term */
+    bl printf                       /* call to printf */
+
 	/*Branch Back to main menu*/
 	bal main						@ Branch to Main and output Problem Select
 	
