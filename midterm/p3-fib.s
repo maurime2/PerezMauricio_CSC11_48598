@@ -46,6 +46,10 @@ prompt2: .asciz "Your Term is %d, Fibonacci Term is: %d"
 .balign 8
 divider: .asciz "\n*****************************************************\n"
 
+/* Error */
+.balign 8
+error: .asciz "\n*****************************************************\n"
+
 /* Comma */
 .balign 4
 comma: .asciz ", "
