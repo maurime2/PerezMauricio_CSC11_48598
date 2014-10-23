@@ -11,6 +11,10 @@ Program 1: PAY
 .balign 4
 select: .asciz "Input Total Hours Worked (Max 60): "
 
+/* Select Message */
+.balign 4
+selectw: .asciz "Input  Hourly  Wage (No Decimal) : "
+
 /* Select 0 */
 .balign 8
 select0: .asciz "Error: Please Try Again\n"
@@ -33,7 +37,7 @@ select4: .asciz "Total Pay: %d Hrs = %d Dollars \n"
 
 /* Select 5 */
 .balign 8
-select5: .asciz "                              TOTAL PAY (%d Hrs): $%d\n"
+select5: .asciz "                              TOTAL PAY (%d Hrs): $%d\n\n"
 
 /* Hours Worked */
 .balign 4
@@ -53,15 +57,15 @@ total: .word 0
 
 /* Pay1 */
 .balign 4
-pay1: .word 8
+pay1: .word 0
 
 /* Pay2 */
 .balign 4
-pay2: .word 16
+pay2: .word 0
 
 /* Pay3 */
 .balign 4
-pay3: .word 24
+pay3: .word 0
 
 /* count */
 .balign 4
@@ -103,6 +107,26 @@ _start1:
     ldr r1, address_of_hours	  	/* r1 ← &choice */
     ldr r1, [r1]                    /* r1 ← *r1 */
     bl printf                       /* call to printf 
+	
+	
+	
+	/*Ask For Wage*/
+	str lr, [sp]					/*Link Register into Stack Pointer*/
+	/*Print*/
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
+
+    ldr r0, address_of_selectw     	/* Prompt for Hours */
+    bl printf                       /* call to printf */
+		
+	/*Scan Hours*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
+    ldr r1, address_of_pay1   		/* r1 ← &number_a */
+    bl scanf                        /* call to scanf */
+	
+	
+	
+	
 	
 _h1:
 	/*Set Up for Straight Time*/
@@ -229,6 +253,7 @@ _ret:
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_select : .word select				/*"Select a Problem:"*/
+address_of_selectw : .word select				/*"Select a Problem:"*/
 address_of_select0 : .word select0				/*"Problem 0: Error "*/
 address_of_select1 : .word select1				/*"Problem 1: "*/
 address_of_select2 : .word select2				/*"Problem 2: "*/
