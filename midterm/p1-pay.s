@@ -210,7 +210,6 @@ _pr2:
 	/*Save 2*/
 	ldr r0, address_of_total		/*Store total before cont*/
 	ldr r0, [r0]					/*Load Last Total*/
-	add r8, r2, #0					/*Temp Store r2 into r5*/
 	add r5, r2, r0					/*Add totals together*/
 	ldr r0, address_of_total		/*Store total before cont*/
 	str r5, [r0]					/*Store again*/
@@ -222,13 +221,13 @@ _pr2:
 	add r2, r1, #0					/*  Changed it to 3 last minute, Had to shift registers */
 	add r1, r6, #0					/*  by one, Then change them back after Print*/
     bl printf                       /*Call to printf */
-	add r2, r8, #0
 	mov r3, #0
 	
 	/*Set Up for Triple Pay*/
 	cmp r4, #0						/*Compare total hours, If zero, End*/
 	beq _ret	
 	mov r1, #0
+	mov r2, #0
 	mov r5, #20						/*Reset Counter*/
 	ldr r6, address_of_pay3			/*Load Pay 2*/
 	ldr r6, [r6]
