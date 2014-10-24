@@ -30,7 +30,7 @@ prompt: .asciz "An ISP has 3 different subscription packages\n	1)  $30 per month
 
 /* Prompt0 */
 .balign 8
-prompt0: .asciz "Select a Service: \n"
+prompt0: .asciz "Select a Service: "
 
 
 
@@ -52,7 +52,7 @@ divider: .asciz "\n*****************************************************\n"
 
 /* Error */
 .balign 8
-error: .asciz "\n!!!ERROR: Please Input a number greater than zero...!!!\n"
+error: .asciz "\n!!!ERROR: Please Input 1, 2, or 3!!!\n"
 
 /* Comma */
 .balign 4
@@ -90,12 +90,20 @@ _start2:
 	beq _start2
 	cmp r1, #3						/*If Fib in is 2, Output 2 FIb Sequence*/
 	beq _start2
-	b _end							/*Fib is greater than 2, Output 2 FIb Sequence*/
+	b _err							/*Fib is greater than 2, Output 2 FIb Sequence*/
+	
+	
 	
 _end:
 	/*Return to main */
 	bal main						@ Return to Main and output Problem Select
 
+_err:
+	/*Print Error*/
+	ldr r0, address_of_error     	/* r0 ← &Prompt Fib */
+    bl printf                       /* call to printf */ 
+	b _start2
+	
 	/*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*"Scan Pattern"*/
 address_of_monthrate : .word monthrate			/*"Access Hours"*/
