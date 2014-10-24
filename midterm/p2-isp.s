@@ -38,13 +38,9 @@ prompt0: .asciz "Select a Service: "
 prompt1: .asciz "How many Hours have you Used this Month?: "
 
 
-
-
 /* Prompt2 */
-.balign 4
-prompt2: .asciz "\nF[%d]= %d\n"
-
-
+.balign 8
+prompt2: .asciz "You Have Chosen Service Pack %d, at a total of %d hours....\n Your bill will now be calculated...\n******************************************"
 
 /* Divider */
 .balign 8
@@ -109,11 +105,15 @@ _hours:
 	ldr r1, address_of_hours   		/* r1 ← &fibin */
 	ldr r1, [r1]
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
-	beq _end
+	beq _prIns
 	cmp r1, #-1						/* Fib <= 0. Branch to Error*/
 	ble _err2 
 	 
-
+_prIns:
+	/*Prompt Inputs and Input Check before Calc's*/
+	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
+    bl printf                       /* call to printf */
+	
 
 	
 _end:
