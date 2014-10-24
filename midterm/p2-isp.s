@@ -115,24 +115,12 @@ _start2:
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
 	ble _err 
 	cmp r1, #1						/*If 1, Go to correct*/
-	ble _correct
+	ble _l1
 	cmp r1, #2						/*If 2, Go to correct*/
-	beq _correct
-	cmp r1, #3						/*If 3, Go to correct*/
-	beq _correct
-	b _err							/*If input is greater than 3, Output Error*/
-	
-
-_correct:
-	/*Correct Pay*/
-	ldr r0, address_of_rate			/*Correct/Load rates if its 1, 2 or 3 and Also if it gets re-run for accurate readings*/
-	ldr r0, [r0]
-	cmp r0, #1						/*if 1, Branch to _l1*/
-	beq _l1
-	cmp r0, #2						/*if 2, Branch to _l2*/
 	beq _l2
-	cmp r0, #1						/*if 3, Branch to _l3*/
+	cmp r1, #3						/*If 3, Go to correct*/
 	beq _l3
+	b _err							/*If input is greater than 3, Output Error*/
 
 _l1:
 	ldr r0, address_of_access		/*Corrects Package 1 Rates for Use*/
