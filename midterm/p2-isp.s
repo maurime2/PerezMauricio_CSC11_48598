@@ -16,6 +16,10 @@ access: .word 0
 .balign 4
 rate: .word 0
 
+/* Hours */
+.balign 4
+hours: .asciz ", %d"
+
 /*Return*/
 .balign 4
 return: .word 0
@@ -32,15 +36,13 @@ prompt: .asciz "An ISP has 3 different subscription packages\n	1)  $30 per month
 .balign 8
 prompt0: .asciz "Select a Service: "
 
-
 /* Prompt1 */
 .balign 8
 prompt1: .asciz "How many Hours have you Used this Month?: "
 
-
 /* Prompt2 */
 .balign 8
-prompt2: .asciz "*****************************************************\nYou Have Chosen Service Pack %d, at a total of %d hours....\n Your bill will now be calculated...\n*****************************************************\n"
+prompt2: .asciz "*****************************************************\nYou Chosen SP%d, at a total of %d hours of use.\nYour bill will now be calculated...\n*****************************************************\n"
 
 /* Divider */
 .balign 8
@@ -54,9 +56,6 @@ error: .asciz "\n!!!ERROR: Please Input 1, 2, or 3!!!\n"
 .balign 8
 error2: .asciz "\n!!!ERROR: Please Input Non Negative Hours!!!\n"
 
-/* Hours */
-.balign 4
-hours: .asciz ", %d"
 
 .text
 _start2:
