@@ -168,6 +168,8 @@ _calc:
 	/*Calculation*/
 	cmp r1, r5					/*If user Input is Zero for Hours, Branch to Print*/
 	beq _calcP
+	
+_calcl:
 	add r3, r2, r3				/*Increment Total*/
 	add r1, r1, #1				/*Increment Hours to be printed*/
 	sub r4, r4, #1				/*Increment Hours to be printed*/
@@ -176,7 +178,7 @@ _calc:
 	beq _calcP
 	cmp r5, #0
 	beq _calcP
-	b _calc
+	b _calcl
 	
 _calcP:	
 	/*Prints Individual Rate Totals*/
