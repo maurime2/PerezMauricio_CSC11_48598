@@ -82,15 +82,16 @@ _start2:
 	ldr r1, address_of_rate   		/* r1 ← &fibin */
 	ldr r1, [r1]
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
-	ble _end 
-
-	cmp r1, #1						/*If Fib <= 1, Output 1 FIb Sequence*/
+	ble _err 
+	cmp r1, #1						/*If 1, Go to next User Input*/
 	ble _start2
-	cmp r1, #2						/*If Fib in is 2, Output 2 FIb Sequence*/
+	cmp r1, #2						/*If 2, Go to next User Input*/
 	beq _start2
-	cmp r1, #3						/*If Fib in is 2, Output 2 FIb Sequence*/
+	cmp r1, #3						/*If 3, Go to next User Input*/
 	beq _start2
-	b _err							/*Fib is greater than 2, Output 2 FIb Sequence*/
+	b _err							/*If input is greater than 3, Output Error*/
+	
+	
 	
 	
 	
