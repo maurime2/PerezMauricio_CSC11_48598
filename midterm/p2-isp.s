@@ -166,8 +166,21 @@ _calc1:
 
 _calc:
 	/*Calculation*/
-	/*Prompt ISP Rates*/
-	ldr r0, address_of_prompt3     	/* Prompt for Fib Term */
+	cmp r1, r5					/*If user Input is Zero for Hours, Branch to Print*/
+	beq _calcP
+	add r3, r2, r3				/*Increment Total*/
+	add r1, r1, #1				/*Increment Hours to be printed*/
+	sub r4, r4, #1				/*Increment Hours to be printed*/
+	sub r5, r5, #1				/*Increment Hours to be printed*/
+	cmp r4, #0
+	beq _calcP
+	cmp r5, #0
+	beq _calcP
+	b _calc
+	
+_calcP:	
+	/*Prints Individual Rate Totals*/
+	ldr r0, address_of_prompt3     	/*Prints Total Hours, Rate And Total for Individual Rate*/
 	ldr r6, address_of_total		/*Load Contents of total*/
 	ldr r6, [r6]					
 	add r8, r6, r3					/*New Total*/
@@ -176,6 +189,7 @@ _calc:
     bl printf  
 	
 	
+_totalPrint:
 	/*Prompt Grand Total*/
 	ldr r0, address_of_prompt4     	/*Prompt for Fib Term */
 	ldr r1, address_of_total		/*Load Totals for Prompt*/
