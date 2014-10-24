@@ -66,7 +66,7 @@ prompt3: .asciz "$%d hours at $%d per month = $%d\n"
 
 /* Prompt4 */
 .balign 8
-prompt4: .asciz "-------------------------------------------------------\n                       Your Total This Month: $%d\n"
+prompt4: .asciz "-------------------------------------------------------\n                       Your Total This Month: $%d\n\n\n"
 
 /* Divider */
 .balign 8
