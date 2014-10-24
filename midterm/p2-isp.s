@@ -109,19 +109,21 @@ _start2:
     ldr r1, address_of_rate   		/* r1 ← &Rate Stored Here */
     bl scanf                        /* call to scanf */
 
-	/*Test Input*/
-	ldr r1, address_of_rate   		/* r1 ← &fibin */
-	ldr r1, [r1]
+	/*Test Input: Checks for input*/
+	ldr r1, address_of_rate   		/*Rate Loaded into r1 to check if its within scope of 1-3 */
+	ldr r1, [r1]					/*If it is, We will need to load values into memory*/
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
 	ble _err 
-	cmp r1, #1						/*If 1, Go to next User Input*/
-	ble _hours
-	cmp r1, #2						/*If 2, Go to next User Input*/
-	beq _hours
-	cmp r1, #3						/*If 3, Go to next User Input*/
-	beq _hours
+	cmp r1, #1						/*If 1, Go to correct*/
+	ble _correct
+	cmp r1, #2						/*If 2, Go to correct*/
+	beq _correct
+	cmp r1, #3						/*If 3, Go to correct*/
+	beq _correct
 	b _err							/*If input is greater than 3, Output Error*/
 	
+
+_correct:
 	/*Correct Pay*/
 	ldr r0, address_of_rate			/*Correct/Load rates if its 1, 2 or 3 and Also if it gets re-run for accurate readings*/
 	ldr r0, [r0]
