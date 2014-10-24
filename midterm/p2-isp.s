@@ -80,6 +80,10 @@ error: .asciz "\n!!!ERROR: Please Input 1, 2, or 3!!!\n"
 .balign 8
 error2: .asciz "\n!!!ERROR: Please Input Non Negative Hours!!!\n"
 
+/* Error3 */
+.balign 8
+error3: .asciz "\n!!!ERROR: Please Input 0 - 744 Hours!!!\n"
+
 
 .text
 _start2:
@@ -131,7 +135,10 @@ _hours:
 	beq _prIns
 	cmp r1, #-1						/* Fib <= 0. Branch to Error*/
 	ble _err2 
-	 
+	cmp r1, #744					/* Hours less than or Equal to 744 pass, Branch to prIns*/
+	ble _prIns
+	b _err3							/*Hours out of scope of a months use, 744 hours in 31 day month*/
+	
 _prIns:
 	/*Prompt Inputs and Input Check before Calc's*/
 	ldr r0, address_of_prompt2     	/* Prompt for Fib Term */
@@ -192,6 +199,11 @@ _err2:
     bl printf                       /* call to printf */ 
 	b _hours
 
+_err3:
+	/*Print Error*/
+	ldr r0, address_of_error3     	/* r0 ← &Prompt Fib */
+    bl printf                       /* call to printf */ 
+	b _hours
 	
 	/*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*"Scan Pattern"*/
@@ -211,8 +223,9 @@ address_of_prompt2 : .word prompt2				/*"Prompt 2: Check Inputs Prompt and Total
 address_of_prompt3 : .word prompt3				/*"Prompt 3: Totals for each Hourly Rate"*/
 address_of_prompt4 : .word prompt4				/*"Prompt 3: Totals Output"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
-address_of_error : .word error					/*"Error Prompt 1"*/
-address_of_error2 : .word error2					/*"Error Prompt 2"*/
+address_of_error : .word error					/*"Error Prompt 1: Did not select a package 1-3"*/
+address_of_error2 : .word error2				/*"Error Prompt 2: Hours input were Negative"*/
+address_of_error2 : .word error2				/*"Error Prompt 3: Hours not in scope of 0-744 hours"*/
 
 /* External */
 .global printf
