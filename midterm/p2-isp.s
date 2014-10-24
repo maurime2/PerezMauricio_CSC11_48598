@@ -4,13 +4,13 @@
 
 .data
 
-/* FIB in */
+/* Month Rate */
 .balign 4
-fibin: .word 0
+monthrate: .word 0
 
-/* FIB OUT */
+/* access */
 .balign 4
-fibout: .word 0
+access: .word 0
 
 /*Return*/
 .balign 4
@@ -51,13 +51,14 @@ comma: .asciz ", %d"
 .text
 _start2:
 
+
 	/*Return to main */
 	bal main						@ Return to Main and output Problem Select
 
 	/*Messages*/
-address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
-address_of_fibin : .word fibin					/*"Fib Input"*/
-address_of_fibout : .word fibout				/*"Fib Out"*/
+address_of_scan_pattern : .word scan_pattern	/*"Scan Pattern"*/
+address_of_monthrate : .word monthrate			/*"Access Hours"*/
+address_of_access : .word access				/*"Access Hours"*/
 address_of_return : .word return				/*"Address Of Return"*/
 address_of_prompt : .word prompt				/*"Prompt for input"*/
 address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
