@@ -22,7 +22,7 @@ scan_pattern : .asciz "%d"
 
 /* Prompt */
 .balign 8
-prompt: .asciz "What Fibonacci term would you like to Output?:  "
+prompt: .asciz "An ISP has 3 different subscription packages\n	a)  $30 per month, 11 hours access.  Additional hours\n	    are $3 up to 22 hours then $6 for all additional\n		hours.\n\n	b)  $35 per month, 22 hours access.  Additional hours\n        are $2 up to 44 hours then $4 for each\n		hour above this limit.\n\n	c)  $40 per month, 33 hours access.  Additional hours\n        are $1 up to 66 hours then $2 for each\n\n		hour above this limit.\n\n"
 
 /* Prompt0 */
 .balign 8
@@ -49,7 +49,14 @@ error: .asciz "\n!!!ERROR: Please Input a number greater than zero...!!!\n"
 comma: .asciz ", %d"
 
 .text
-_start2:
+_start2
+	/*Print DIvider*/
+	ldr r0, address_of_divider     	/* Prompt for Fib Term */
+    bl printf                       /* call to printf */
+
+	/*Prompt ISP Rates*/
+	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
+    bl printf                       /* call to printf */
 
 
 	/*Return to main */
