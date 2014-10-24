@@ -139,10 +139,10 @@ _prIns:
 	
 /*Calculate at Specific Rates*/
 _calc1:	
-	mov r0, #0					/*Hours For Print*/
-	ldr r1, address_of_monthrate/*Load Rate 1 to r1*/
-	ldr r1, [r1]
-	mov r2, #0					/*Clear R2 for total*/
+	mov r1, #1					/*Hours For Print*/
+	ldr r2, address_of_monthrate/*Load Rate 1 to r1*/
+	ldr r2, [r2]
+	mov r3, #0					/*Clear R2 for total*/
 	ldr r4, address_of_access	/*Load Access to r4*/
 	ldr r4, [r4]
 	ldr r5, address_of_hours	/*Load Access to r5*/
