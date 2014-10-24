@@ -10,20 +10,20 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 prob: .asciz "Problem Chosen: %d\n"
 
 /* Select Message */
-.balign 4
+.balign 8
 select: .asciz "Select a Problem (1-3): "
 
 /* Select 1 */
 .balign 4
-select1: .asciz "Problem 1: Gross Pay\n"
+select1: .asciz "Problem 1: Gross Pay\n\n"
 
 /* Select 2 */
 .balign 4
-select2: .asciz "Problem 2: ISP Packages\n"
+select2: .asciz "Problem 2: ISP Packages\n\n"
 
 /* Select 3 */
 .balign 4
-select3: .asciz "Problem 3: Fibonacci Sequence\n"
+select3: .asciz "Problem 3: Fibonacci Sequence\n\n"
 
 /* Midterm End! */
 .balign 4
@@ -42,7 +42,7 @@ return: .word 0
 
 /* Divider */
 .balign 8
-divider: .asciz "************ MENU - Select 1, 2 or 3 ****************\n"
+divider: .asciz "************** CSC11-48598 MIDTERM MENU **************\n"
 
 /* Divider 0 */
 .balign 8
