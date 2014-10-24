@@ -111,7 +111,7 @@ _hours:
 	 
 _prIns:
 	/*Prompt Inputs and Input Check before Calc's*/
-	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
+	ldr r0, address_of_prompt2     	/* Prompt for Fib Term */
 	ldr r1, address_of_rate   		/* r1 ← &Hours loaded into r1*/
 	ldr r1, [r1]
 	ldr r2, address_of_hours  		/* r1 ← &fibin */
