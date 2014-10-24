@@ -33,18 +33,18 @@ prompt: .asciz "An ISP has 3 different subscription packages\n	1)  $30 per month
 prompt0: .asciz "Select a Service: "
 
 
-
-
-
-
-
 /* Prompt1 */
 .balign 8
-prompt1: .asciz "Fibonacci Sequence up to %d: 0, 1"
+prompt1: .asciz "How many Hours have you Used this Month?: "
+
+
+
 
 /* Prompt2 */
 .balign 4
 prompt2: .asciz "\nF[%d]= %d\n"
+
+
 
 /* Divider */
 .balign 8
@@ -54,9 +54,9 @@ divider: .asciz "\n*****************************************************\n"
 .balign 8
 error: .asciz "\n!!!ERROR: Please Input 1, 2, or 3!!!\n"
 
-/* Comma */
+/* Hours */
 .balign 4
-comma: .asciz ", %d"
+hours: .asciz ", %d"
 
 .text
 _start2:
@@ -84,14 +84,22 @@ _start2:
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
 	ble _err 
 	cmp r1, #1						/*If 1, Go to next User Input*/
-	ble _start2
+	ble _hours
 	cmp r1, #2						/*If 2, Go to next User Input*/
-	beq _start2
+	beq _hours
 	cmp r1, #3						/*If 3, Go to next User Input*/
-	beq _start2
+	beq _hours
 	b _err							/*If input is greater than 3, Output Error*/
 	
+_hours:	
+	/*Prompt User for Input: Hours Used*/
+	ldr r0, address_of_prompt1     	/* Prompt for Input */
+    bl printf
 	
+	/*Scan Input*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &scan_pattern */
+    ldr r1, address_of_hours   		/* r1 ← &Rate Stored Here */
+    bl scanf                        /* call to scanf */
 	
 	
 	
@@ -116,9 +124,12 @@ address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
 
 
 address_of_prompt1 : .word prompt1				/*"Prompt 1"*/
+address_of_hours : .word hours					/*"comma Print"*/
+
+
 address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
-address_of_comma : .word comma					/*"comma Print"*/
+
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 
 
