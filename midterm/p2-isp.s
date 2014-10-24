@@ -82,7 +82,7 @@ error2: .asciz "\n!!!ERROR: Please Input Non Negative Hours!!!\n"
 
 /* Error3 */
 .balign 8
-error3: .asciz "\n!!!ERROR: Please Input 0 - 744 Hours!!!\n"
+error3: .asciz "\n!!!ERROR: Please Input (0-744) Hours!!!\n"
 
 
 .text
