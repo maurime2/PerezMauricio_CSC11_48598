@@ -62,7 +62,7 @@ prompt2: .asciz "-------------------------------------------------------\nYou Ch
 
 /* Prompt3 */
 .balign 8
-prompt3: .asciz "$%d hours at $%d per month = $%d\n"
+prompt3: .asciz "%d hours at $%d per month = $%d\n"
 
 /* Prompt4 */
 .balign 8
@@ -121,6 +121,70 @@ _start2:
 	cmp r1, #3						/*If 3, Go to next User Input*/
 	beq _hours
 	b _err							/*If input is greater than 3, Output Error*/
+	
+	/*Correct Pay*/
+	ldr r0, address_of_rate			/*Correct/Load rates if its 1, 2 or 3 and Also if it gets re-run for accurate readings*/
+	ldr r0, [r0]
+	cmp r0, #1						/*if 1, Branch to _l1*/
+	b _l1
+	cmp r0, #2						/*if 2, Branch to _l2*/
+	b _l2
+	cmp r0, #1						/*if 3, Branch to _l3*/
+	b _l3
+
+_l1:
+	ldr r0, address_of_access		/*Corrects Package 1 Rates for Use*/
+	mov r1, #11
+	str r1, [r0]
+	ldr r0, address_of_access2
+	mov r1, #22
+	str r1, [r0]
+	ldr r0, address_of_monthrate
+	mov r1, #30
+	str r1, [r0]
+	ldr r0, address_of_monthrate2
+	mov r1, #3
+	str r1, [r0]
+	ldr r0, address_of_monthrate3
+	mov r1, #6
+	str r1, [r0]
+	b _hours
+
+_l2:
+	ldr r0, address_of_access		/*Corrects Package 2 Rates for Use*/
+	mov r1, #22
+	str r1, [r0]
+	ldr r0, address_of_access2
+	mov r1, #44
+	str r1, [r0]
+	ldr r0, address_of_monthrate
+	mov r1, #35
+	str r1, [r0]
+	ldr r0, address_of_monthrate2
+	mov r1, #2
+	str r1, [r0]
+	ldr r0, address_of_monthrate3
+	mov r1, #4
+	str r1, [r0]
+	b _hours
+	
+_l3:	
+	ldr r0, address_of_access		/*Corrects Package 3 Rates for Use*/
+	mov r1, #33
+	str r1, [r0]
+	ldr r0, address_of_access2
+	mov r1, #66
+	str r1, [r0]
+	ldr r0, address_of_monthrate
+	mov r1, #40
+	str r1, [r0]
+	ldr r0, address_of_monthrate2
+	mov r1, #1
+	str r1, [r0]
+	ldr r0, address_of_monthrate3
+	mov r1, #2
+	str r1, [r0]
+	b _hours
 	
 _hours:	
 	/*Prompt User for Input: Hours Used*/
