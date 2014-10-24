@@ -62,7 +62,7 @@ prompt2: .asciz "-------------------------------------------------------\nYou Ch
 
 /* Prompt3 */
 .balign 8
-prompt3: .asciz "$%d hours at $%d per month = $%d"
+prompt3: .asciz "$%d hours at $%d per month = $%d\n"
 
 /* Divider */
 .balign 8
