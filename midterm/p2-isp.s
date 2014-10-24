@@ -60,6 +60,10 @@ prompt1: .asciz "How many Hours have you Used this Month?: "
 .balign 8
 prompt2: .asciz "-------------------------------------------------------\nYou Chosen SP%d, at a total of %d hours of use.\nYour bill will now be calculated...\n-------------------------------------------------------\n"
 
+/* Prompt3 */
+.balign 8
+prompt3: .asciz "$%d hours at $%d per month = $%d"
+
 /* Divider */
 .balign 8
 divider: .asciz "-------------------------------------------------------\n"
@@ -133,6 +137,13 @@ _prIns:
 	ldr r2, [r2]
     bl printf                       /* call to printf */
 	
+/*Calculate at Specific Rates*/
+@_calc1:	
+
+@_calc2:
+
+@_calc3:	
+
 
 _end:
 	/*Return to main */
@@ -162,10 +173,11 @@ address_of_access2 : .word access2				/*"Access Hours2"*/
 address_of_rate : .word rate					/*"Rate Chosen for ISP Service"*/
 address_of_hours : .word hours					/*"comma hours"*/
 address_of_return : .word return				/*"Address Of Return"*/
-address_of_prompt : .word prompt				/*"Prompt for input"*/
-address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
-address_of_prompt1 : .word prompt1				/*"Prompt 1"*/
-address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
+address_of_prompt : .word prompt				/*"Prompt  : Rates"*/
+address_of_prompt0 : .word prompt0				/*"Prompt 0: Service Prompt"*/
+address_of_prompt1 : .word prompt1				/*"Prompt 1: Hours Prompt"*/
+address_of_prompt2 : .word prompt2				/*"Prompt 2: Check Inputs Prompt and Total Calc Notification"*/
+address_of_prompt3 : .word prompt3				/*"Prompt 3: Totals for each Hourly Rate"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 address_of_error : .word error					/*"Error Prompt 1"*/
 address_of_error2 : .word error2					/*"Error Prompt 2"*/
