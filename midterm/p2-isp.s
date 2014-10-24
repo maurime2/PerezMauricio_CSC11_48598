@@ -126,11 +126,11 @@ _start2:
 	ldr r0, address_of_rate			/*Correct/Load rates if its 1, 2 or 3 and Also if it gets re-run for accurate readings*/
 	ldr r0, [r0]
 	cmp r0, #1						/*if 1, Branch to _l1*/
-	b _l1
+	beq _l1
 	cmp r0, #2						/*if 2, Branch to _l2*/
-	b _l2
+	beq _l2
 	cmp r0, #1						/*if 3, Branch to _l3*/
-	b _l3
+	beq _l3
 
 _l1:
 	ldr r0, address_of_access		/*Corrects Package 1 Rates for Use*/
