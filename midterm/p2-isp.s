@@ -105,7 +105,7 @@ _hours:
 	ldr r1, address_of_rate   		/* r1 ← &fibin */
 	ldr r1, [r1]
 	cmp r1, #-1						/* Fib <= 0. Branch to Error*/
-	ble _err 
+	ble _err2 
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
 	beq _end 
 
@@ -120,6 +120,13 @@ _err:
 	ldr r0, address_of_error     	/* r0 ← &Prompt Fib */
     bl printf                       /* call to printf */ 
 	b _start2
+
+_err2:
+	/*Print Error*/
+	ldr r0, address_of_error     	/* r0 ← &Prompt Fib */
+    bl printf                       /* call to printf */ 
+	b _hours
+
 	
 	/*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*"Scan Pattern"*/
