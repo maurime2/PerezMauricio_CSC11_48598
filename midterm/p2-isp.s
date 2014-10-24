@@ -42,7 +42,7 @@ prompt1: .asciz "How many Hours have you Used this Month?: "
 
 /* Prompt2 */
 .balign 8
-prompt2: .asciz "*****************************************************\nYou Chosen SP%d, at a total of %d hours of use.\nYour bill will now be calculated...\n*****************************************************\n"
+prompt2: .asciz "-------------------------------------------------------\nYou Chosen SP%d, at a total of %d hours of use.\nYour bill will now be calculated...\n-------------------------------------------------------\n"
 
 /* Divider */
 .balign 8
