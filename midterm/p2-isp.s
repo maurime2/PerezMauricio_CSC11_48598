@@ -24,13 +24,19 @@ return: .word 0
 .balign 4
 scan_pattern : .asciz "%d" 
 
-/* Prompt0 */
+/* Prompt */
 .balign 8
 prompt: .asciz "An ISP has 3 different subscription packages\n	1)  $30 per month, 11 hours access.  Additional hours\n	    are $3 up to 22 hours then $6 for all additional\n		hours.\n\n	2)  $35 per month, 22 hours access.  Additional hours\n        are $2 up to 44 hours then $4 for each\n		hour above this limit.\n\n	3)  $40 per month, 33 hours access.  Additional hours\n        are $1 up to 66 hours then $2 for each\n		hour above this limit.\n\n"
 
-/* Prompt */
+/* Prompt0 */
 .balign 8
 prompt0: .asciz "Select a Service: \n"
+
+
+
+
+
+
 
 /* Prompt1 */
 .balign 8
@@ -60,11 +66,11 @@ _start2:
     bl printf                       /* call to printf */
 
 	/*Prompt ISP Rates*/
-	ldr r0, address_of_prompt0     	/* Prompt for Fib Term */
+	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
     bl printf                       /* call to printf */
 	
 	/*Prompt User for Input: Rate 1-3*/
-	ldr r0, address_of_prompt     	/* Prompt for Input */
+	ldr r0, address_of_prompt0     	/* Prompt for Input */
     bl printf
 	
 	/*Scan Input*/
