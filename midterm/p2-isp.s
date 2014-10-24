@@ -162,11 +162,26 @@ _calc1:
 	ldr r4, [r4]
 	ldr r5, address_of_hours	/*Load Access to r5*/
 	ldr r5, [r5]
+	mov r9, #1
 	b _calc
 	
-@_calc2:
-
-@_calc3:	
+_calc2:
+	mov r1, #0						/*Hours For Print*/
+	ldr r2, address_of_monthrate2 	/*Load Rate 1 to r1*/
+	ldr r2, [r2]
+	mov r3, #0					/*Clear R2 for Total Bill*/
+	ldr r4, address_of_access2	/*Load Access to r4*/
+	ldr r4, [r4]
+	mov r9, #1
+	b _calc
+_calc3:	
+	mov r1, #0						/*Hours For Print*/
+	ldr r2, address_of_monthrate3 	/*Load Rate 1 to r1*/
+	ldr r2, [r2]
+	mov r3, #0					/*Clear R2 for Total Bill*/
+	add r4, r5, #0				/*Load Remainder of counts to Access to r4*/
+	mov r9, #1
+	b _calc
 
 _calc:
 	/*Calculation*/
@@ -183,9 +198,6 @@ _calcl:
 	cmp r5, #0
 	beq _calcP
 	b _calcl
-	ldr r6, address_of_access2	/**/
-	ldr r6, [r6]
-	
 	
 _calcP:	
 	/*Prints Individual Rate Totals*/
@@ -197,8 +209,13 @@ _calcP:
 	str r8, [r6]					/*Store Before Printing*/
     bl printf  
 	
-	
-_totalPrint:
+	/*Branch When Needed*/
+	cmp r9, #1
+	beq _calc2
+	cmp r9, #2
+	beq _calc3
+
+	_totalPrint:
 	/*Prompt Grand Total*/
 	ldr r0, address_of_prompt4     	/*Prompt for Fib Term */
 	ldr r1, address_of_total		/*Load Totals for Prompt*/
