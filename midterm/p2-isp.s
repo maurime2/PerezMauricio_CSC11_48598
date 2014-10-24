@@ -54,6 +54,10 @@ divider: .asciz "\n*****************************************************\n"
 .balign 8
 error: .asciz "\n!!!ERROR: Please Input 1, 2, or 3!!!\n"
 
+/* Error2 */
+.balign 8
+error2: .asciz "\n!!!ERROR: Please Input Non Negative Hours!!!\n"
+
 /* Hours */
 .balign 4
 hours: .asciz ", %d"
@@ -146,8 +150,8 @@ address_of_hours : .word hours					/*"comma Print"*/
 address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 
-address_of_error : .word error					/*"Divider Bar for prompt"*/
-
+address_of_error : .word error					/*"Error Prompt 1"*/
+address_of_error2 : .word error					/*"Error Prompt 2"*/
 
 /* External */
 .global printf
