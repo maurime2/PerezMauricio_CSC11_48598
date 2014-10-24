@@ -128,7 +128,7 @@ _err:
 
 _err2:
 	/*Print Error*/
-	ldr r0, address_of_error     	/* r0 ← &Prompt Fib */
+	ldr r0, address_of_error2     	/* r0 ← &Prompt Fib */
     bl printf                       /* call to printf */ 
 	b _hours
 
