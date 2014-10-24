@@ -184,7 +184,7 @@ _calcl:
 	beq _calcP
 	b _calcl
 	ldr r6, address_of_access2	/**/
-	ldr, r6, [r6]
+	ldr r6, [r6]
 	
 	
 _calcP:	
