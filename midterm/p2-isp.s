@@ -151,7 +151,7 @@ address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 
 address_of_error : .word error					/*"Error Prompt 1"*/
-address_of_error2 : .word error					/*"Error Prompt 2"*/
+address_of_error2 : .word error2					/*"Error Prompt 2"*/
 
 /* External */
 .global printf
