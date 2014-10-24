@@ -49,7 +49,8 @@ error: .asciz "\n!!!ERROR: Please Input a number greater than zero...!!!\n"
 comma: .asciz ", %d"
 
 .text
-_start2
+_start2:
+
 	/*Print DIvider*/
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
     bl printf                       /* call to printf */
