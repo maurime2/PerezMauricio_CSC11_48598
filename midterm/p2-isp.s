@@ -6,11 +6,27 @@
 
 /* Month Rate */
 .balign 4
-monthrate: .word 0
+monthrate: .word 30
+
+/* Month Rate 2*/
+.balign 4
+monthrate2: .word 3
+
+/* Month Rate 3*/
+.balign 4
+monthrate3: .word 6
 
 /* access */
 .balign 4
-access: .word 0
+access: .word 11
+
+/* access2 */
+.balign 4
+access2: .word 22
+
+/* TOTAL */
+.balign 4
+total: .word 0
 
 /* Rate */
 .balign 4
@@ -118,7 +134,6 @@ _prIns:
     bl printf                       /* call to printf */
 	
 
-	
 _end:
 	/*Return to main */
 	bal main						@ Return to Main and output Problem Select
@@ -138,21 +153,20 @@ _err2:
 	
 	/*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*"Scan Pattern"*/
+address_of_total : .word total			/*"Monthly Rate"*/
 address_of_monthrate : .word monthrate			/*"Monthly Rate"*/
+address_of_monthrate2 : .word monthrate2		/*"Monthly Rate2"*/
+address_of_monthrate3 : .word monthrate3		/*"Monthly Rate3"*/
 address_of_access : .word access				/*"Access Hours"*/
+address_of_access2 : .word access2				/*"Access Hours2"*/
 address_of_rate : .word rate					/*"Rate Chosen for ISP Service"*/
+address_of_hours : .word hours					/*"comma hours"*/
 address_of_return : .word return				/*"Address Of Return"*/
 address_of_prompt : .word prompt				/*"Prompt for input"*/
 address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
-
-
 address_of_prompt1 : .word prompt1				/*"Prompt 1"*/
-address_of_hours : .word hours					/*"comma Print"*/
-
-
 address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
-
 address_of_error : .word error					/*"Error Prompt 1"*/
 address_of_error2 : .word error2					/*"Error Prompt 2"*/
 
