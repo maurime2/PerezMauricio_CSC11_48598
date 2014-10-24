@@ -87,7 +87,11 @@ error3: .asciz "\n!!!ERROR: Please Input (0-744) Hours!!!\n"
 
 .text
 _start2:
-
+	/*Store Zero into TOTAL before executing*/
+	ldr r6, address_of_total		/*Load Contents of total*/					
+	mov r0, #0
+	str r0, [r6]
+	
 	/*Print Divider*/
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
     bl printf                       /* call to printf */
@@ -179,6 +183,9 @@ _calcl:
 	cmp r5, #0
 	beq _calcP
 	b _calcl
+	ldr r6, address_of_access2	/**/
+	ldr, r6, [r6]
+	
 	
 _calcP:	
 	/*Prints Individual Rate Totals*/
