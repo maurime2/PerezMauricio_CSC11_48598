@@ -42,7 +42,7 @@ return: .word 0
 
 /* Divider */
 .balign 8
-divider: .asciz "************** CSC11-48598 MIDTERM MENU **************\n"
+divider: .asciz "************** CSC11-48598 MIDTERM MENU *************\n"
 
 /* Divider 0 */
 .balign 8
