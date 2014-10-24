@@ -172,7 +172,7 @@ _calc2:
 	mov r3, #0					/*Clear R2 for Total Bill*/
 	ldr r4, address_of_access2	/*Load Access to r4*/
 	ldr r4, [r4]
-	mov r9, #1
+	add r9, r9, #1
 	b _calc
 _calc3:	
 	mov r1, #0						/*Hours For Print*/
@@ -180,7 +180,7 @@ _calc3:
 	ldr r2, [r2]
 	mov r3, #0					/*Clear R2 for Total Bill*/
 	add r4, r5, #0				/*Load Remainder of counts to Access to r4*/
-	mov r9, #1
+	add r9, r9, #1
 	b _calc
 
 _calc:
