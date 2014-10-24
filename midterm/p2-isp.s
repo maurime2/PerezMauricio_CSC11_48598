@@ -102,12 +102,13 @@ _hours:
     bl scanf                        /* call to scanf */
 	
 		/*Test Input*/
-	ldr r1, address_of_rate   		/* r1 ← &fibin */
+	ldr r1, address_of_hours   		/* r1 ← &fibin */
 	ldr r1, [r1]
+	cmp r1, #0						/* Fib <= 0. Branch to Error*/
+	beq _end
 	cmp r1, #-1						/* Fib <= 0. Branch to Error*/
 	ble _err2 
-	cmp r1, #0						/* Fib <= 0. Branch to Error*/
-	beq _end 
+	 
 
 
 	
