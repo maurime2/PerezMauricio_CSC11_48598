@@ -112,6 +112,10 @@ _hours:
 _prIns:
 	/*Prompt Inputs and Input Check before Calc's*/
 	ldr r0, address_of_prompt     	/* Prompt for Fib Term */
+	ldr r1, address_of_rate   		/* r1 ← &Hours loaded into r1*/
+	ldr r1, [r1]
+	ldr r2, address_of_hours  		/* r1 ← &fibin */
+	ldr r2, [r2]
     bl printf                       /* call to printf */
 	
 
@@ -135,9 +139,9 @@ _err2:
 	
 	/*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*"Scan Pattern"*/
-address_of_monthrate : .word monthrate			/*"Access Hours"*/
+address_of_monthrate : .word monthrate			/*"Monthly Rate"*/
 address_of_access : .word access				/*"Access Hours"*/
-address_of_rate : .word rate			/*"Access Hours"*/
+address_of_rate : .word rate					/*"Rate Chosen for ISP Service"*/
 address_of_return : .word return				/*"Address Of Return"*/
 address_of_prompt : .word prompt				/*"Prompt for input"*/
 address_of_prompt0 : .word prompt0				/*"Prompt 0"*/
