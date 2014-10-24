@@ -64,6 +64,10 @@ prompt2: .asciz "-------------------------------------------------------\nYou Ch
 .balign 8
 prompt3: .asciz "$%d hours at $%d per month = $%d\n"
 
+/* Prompt4 */
+.balign 8
+prompt4: .asciz "-------------------------------------------------------\n                            Your Total This Month: %d\n"
+
 /* Divider */
 .balign 8
 divider: .asciz "-------------------------------------------------------\n"
@@ -142,7 +146,7 @@ _calc1:
 	mov r1, #0					/*Hours For Print*/
 	ldr r2, address_of_monthrate/*Load Rate 1 to r1*/
 	ldr r2, [r2]
-	mov r3, #0					/*Clear R2 for total*/
+	mov r3, #0					/*Clear R2 for Total Bill*/
 	ldr r4, address_of_access	/*Load Access to r4*/
 	ldr r4, [r4]
 	ldr r5, address_of_hours	/*Load Access to r5*/
@@ -157,8 +161,19 @@ _calc:
 	/*Calculation*/
 	/*Prompt ISP Rates*/
 	ldr r0, address_of_prompt3     	/* Prompt for Fib Term */
+	ldr r6, address_of_total		/*Load Contents of total*/
+	ldr r6, [r6]					
+	add r8, r6, r3					/*New Total*/
+	ldr r6, address_of_total
+	str r8, [r6]					/*Store Before Printing*/
     bl printf  
 	
+	
+	/*Prompt Grand Total*/
+	ldr r0, address_of_prompt4     	/*Prompt for Fib Term */
+	ldr r1, address_of_total		/*Load Totals for Prompt*/
+	ldr r1, [r1]
+    bl printf 
 	
 	
 _end:
@@ -194,6 +209,7 @@ address_of_prompt0 : .word prompt0				/*"Prompt 0: Service Prompt"*/
 address_of_prompt1 : .word prompt1				/*"Prompt 1: Hours Prompt"*/
 address_of_prompt2 : .word prompt2				/*"Prompt 2: Check Inputs Prompt and Total Calc Notification"*/
 address_of_prompt3 : .word prompt3				/*"Prompt 3: Totals for each Hourly Rate"*/
+address_of_prompt4 : .word prompt4				/*"Prompt 3: Totals Output"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 address_of_error : .word error					/*"Error Prompt 1"*/
 address_of_error2 : .word error2					/*"Error Prompt 2"*/
