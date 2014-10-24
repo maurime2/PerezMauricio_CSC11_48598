@@ -225,7 +225,7 @@ address_of_prompt4 : .word prompt4				/*"Prompt 3: Totals Output"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 address_of_error : .word error					/*"Error Prompt 1: Did not select a package 1-3"*/
 address_of_error2 : .word error2				/*"Error Prompt 2: Hours input were Negative"*/
-address_of_error2 : .word error2				/*"Error Prompt 3: Hours not in scope of 0-744 hours"*/
+address_of_error3 : .word error3				/*"Error Prompt 3: Hours not in scope of 0-744 hours"*/
 
 /* External */
 .global printf
