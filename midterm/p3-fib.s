@@ -48,6 +48,10 @@ divider: .asciz "-------------------------------------------------------\n"
 .balign 8
 error: .asciz "\n!!!ERROR: Please Input a number greater than zero...!!!\n"
 
+/* Error2 */
+.balign 8
+error2: .asciz "\n!!!ERROR: Please Input a number between (1 - 47)!!!\n"
+
 /* Comma */
 .balign 4
 comma: .asciz ", %d"
@@ -73,7 +77,10 @@ _start3:
 	ldr r1, [r1]
 	cmp r1, #0						/* Fib <= 0. Branch to Error*/
 	ble _er 
-
+	cmp r1, #47						/* Fib <= 0. Branch to Error*/
+	ble _f
+	b _er2
+_f:
 	cmp r1, #1						/*If Fib <= 1, Output 1 FIb Sequence*/
 	ble _f1
 	cmp r1, #2						/*If Fib in is 2, Output 2 FIb Sequence*/
@@ -152,6 +159,11 @@ _er:
     bl printf                       /* call to printf */ 
 	b _start3
 
+_er2:
+	/*Print Error*/
+	ldr r0, address_of_error2     	/* r0 ← &Prompt Fib */
+    bl printf                       /* call to printf */ 
+	b _start3
 	
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
@@ -165,7 +177,7 @@ address_of_prompt2 : .word prompt2				/*"Prompt 2"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 address_of_comma : .word comma					/*"comma Print"*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
-
+address_of_error2 : .word error2					/*"Overflow Error Prompt"*/
 
 /* External */
 .global printf
