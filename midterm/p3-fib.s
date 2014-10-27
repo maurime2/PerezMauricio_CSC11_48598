@@ -26,7 +26,7 @@ scan_pattern : .asciz "%d"
 
 /* Prompt */
 .balign 8
-prompt: .asciz "What Fibonacci term would you like to Output?:  "
+prompt: .asciz "What Fibonacci term would you like to Output (1-47)?:  "
 
 /* Prompt0 */
 .balign 8
