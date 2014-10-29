@@ -106,6 +106,11 @@ _start1:
     ldr r1, address_of_hours   	/* r1 ← &number_a */
     bl scanf                        /* call to scanf */
 
+	
+	
+	
+	
+	
 	/*Print BACK HOURS*/
 	ldr r0, address_of_hwork     	/* r0 ← &Problem Selected */
     ldr r1, address_of_hours	  	/* r1 ← &choice */
@@ -156,6 +161,8 @@ _h1:
 	/*Input Validation: Ask for prompt again if Hours<0, or greater than 60*/
 	cmp r4, #-1         			/* compare r4 and 0 */
     ble _pre						/* if r0 <= 0 then branch error */
+	cmp r4, #-0         			/* compare r4 and 0 */
+    ble _zero						/* if r0 <= 0 then branch error */
 	cmp r4, #60         			/* compare r4 and 60 */
 	ble _h1c						/* if r4 <= 60 then branch to _h1c */
 	b _pre							/* r4 >= 60, branch to _pre */
@@ -281,6 +288,15 @@ _ret:
 
 	bal main						@ Branch to Main and output Problem Select
 
+_zero:
+	ldr r1, address_of_hours
+	ldr r1, [r1]
+	ldr r2, address_of_total
+	ldr r2, [r2]
+	ldr r0, address_of_select5     	/* r0 ← &Total Print */	
+	bal main						@ Branch to Main and output Problem Select
+	
+	
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_select : .word select				/*"Select a Problem:"*/
