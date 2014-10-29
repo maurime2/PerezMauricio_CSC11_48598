@@ -39,6 +39,10 @@ select4: .asciz "Total Pay: %d Hrs = %d Dollars \n"
 .balign 8
 select5: .asciz "                              TOTAL PAY (%d Hrs): $%d\n\n"
 
+/* Select 6 */
+.balign 8
+select6: .asciz "                              TOTAL PAY (%d Hrs): $%d\n\n"
+
 /* Hours Worked */
 .balign 4
 hwork: .asciz "Hours Worked: %d\n"
@@ -307,6 +311,7 @@ address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
 address_of_select4 : .word select4				/*"End Prompt"*/
 address_of_select5 : .word select5				/*"Total Prompt"*/
+address_of_select6 : .word select6				/*"No Hours Worked"*/
 address_of_hours : .word hours					/*Address of Hours*/
 address_of_total : .word total					/*Address of Total Pay*/
 address_of_pay1 : .word pay1					/*Address of Pay1*/
