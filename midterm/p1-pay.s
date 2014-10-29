@@ -297,7 +297,8 @@ _zero:
 	ldr r1, [r1]
 	ldr r2, address_of_total
 	ldr r2, [r2]
-	ldr r0, address_of_select6     	/* r0 ← &Total Print */	
+	ldr r0, address_of_select6     	/* r0 ← &Total Print */
+    bl printf                       /* call to printf */	
 	bal main						@ Branch to Main and output Problem Select
 	
 	
