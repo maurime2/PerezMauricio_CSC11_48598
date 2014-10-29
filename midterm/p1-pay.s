@@ -90,6 +90,11 @@ divider: .asciz "-------------------------------------------------------\n"
 .text
  
 _start1:
+	/*Clear total in address_of_total from previous run*/
+	mov r0, #0						/*Clear address_of_total with Zero*/
+	ldr r1, address_of_total
+	str r0, [r1]
+	
 	/*Print Divider Bar*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
