@@ -165,8 +165,8 @@ _h1:
 	/*Input Validation: Ask for prompt again if Hours<0, or greater than 60*/
 	cmp r4, #-1         			/* compare r4 and 0 */
     ble _pre						/* if r0 <= 0 then branch error */
-	cmp r4, #-0         			/* compare r4 and 0 */
-    ble _zero						/* if r0 <= 0 then branch error */
+	cmp r4, #0         			/* compare r4 and 0 */
+    beq _zero						/* if r0 == 0 then branch to _zero where it will prompt no Hours Worked */
 	cmp r4, #60         			/* compare r4 and 60 */
 	ble _h1c						/* if r4 <= 60 then branch to _h1c */
 	b _pre							/* r4 >= 60, branch to _pre */
@@ -297,7 +297,7 @@ _zero:
 	ldr r1, [r1]
 	ldr r2, address_of_total
 	ldr r2, [r2]
-	ldr r0, address_of_select5     	/* r0 ← &Total Print */	
+	ldr r0, address_of_select6     	/* r0 ← &Total Print */	
 	bal main						@ Branch to Main and output Problem Select
 	
 	
