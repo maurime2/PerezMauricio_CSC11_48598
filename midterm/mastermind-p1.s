@@ -25,8 +25,6 @@ peg7: .word 7
 peg8: .word 8
 count: .word 1
 
-.text
-
 /* Prompt */
 .balign 8
 prompt: .asciz "CODEMAKER: Pick a Value for Peg (1-6): "
@@ -39,7 +37,7 @@ Error: .asciz "Error, Value must be within (1-6), Try Again"
 .balign 8
 divider: .asciz "-------------------------------------------------------\n"
 
-
+.text
 
 _mastermind:
 	
