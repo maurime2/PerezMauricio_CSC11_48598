@@ -145,7 +145,7 @@ _p4:
 	/*Problem 4*/
 	ldr r0, address_of_select4     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
-	bal __mastermind
+	bal _mastermind
 @	bl _again
 	
 _end:		
