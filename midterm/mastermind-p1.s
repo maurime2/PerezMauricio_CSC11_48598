@@ -46,11 +46,6 @@ _mastermind:
 	/*Print Bar*/
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
     bl printf    
-	
-	ldr r1, address_of_return       /* r1 ? &address_of_return */
-    str lr, [r1]                    /* *r1 ? lr */
-	ldr r0, address_of_prompt
-	bl printf
 
 	/*Branch Back to main menu*/
 	bal main
