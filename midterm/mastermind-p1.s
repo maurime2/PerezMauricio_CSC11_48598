@@ -6,6 +6,7 @@
 .balign 4
 scan_pattern : .asciz "%d"
 
+/* Address of return */
 .balign 4
 return: .word 0 
 
@@ -37,9 +38,10 @@ Error: .asciz "Error, Value must be within (1-6), Try Again"
 _mastermind:
 	
 /*Prompt CODEMAKER for Peg values*/
-	ldr r0, address_of_prompt
+	
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
+	ldr r0, address_of_prompt
 	bl printf
 
 /*Branch Back to main menu*/
@@ -56,17 +58,11 @@ address_of_peg5 : .word peg5					/*Address of peg5: Code to Guess*/
 address_of_peg6 : .word peg6					/*Address of peg6: Code to Guess*/
 address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
-
 address_of_error : .word error					/*"Divider Bar for prompt"*/
-
-
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 
 @address_of_comma : .word comma					/*"comma Print"*/
 @address_of_error2 : .word error2					/*"Overflow Error Prompt"*/
-
-
-
 
 /* External */
 .global printf
