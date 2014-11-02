@@ -40,7 +40,7 @@ _mastermind:
 	ldr r0, address_of_prompt
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
-	printf
+	bl printf
 
 /*Branch Back to main menu*/
 bal main
