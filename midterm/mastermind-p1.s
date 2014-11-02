@@ -34,7 +34,7 @@ _mastermind:
 	
 	/*Prompt CODEMAKER for Peg values*/
 	ldr r0, address_of_prompt
-
+	printf
 
 	/*Branch Back to main menu*/
 	bal main
