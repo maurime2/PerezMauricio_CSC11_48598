@@ -11,7 +11,7 @@ prob: .asciz "Problem Chosen: %d\n"
 
 /* Select Message */
 .balign 8
-select: .asciz "Select a Problem (1-3): "
+select: .asciz "Select a Problem (1-3) 4 for MASTERMIND: "
 
 /* Select 1 */
 .balign 4
@@ -25,9 +25,13 @@ select2: .asciz "Problem 2: ISP Packages\n\n"
 .balign 4
 select3: .asciz "Problem 3: Fibonacci Sequence\n\n"
 
+/* Select 4 */
+.balign 4
+select4: .asciz "PROJECT: MASTERMIND\n\n"
+
 /* Midterm End! */
 .balign 4
-select4: .asciz "Midterm Complete!!! \n"
+select5: .asciz "Midterm Complete!!! \n"
 
 /* Format pattern for scanf */
 .balign 4
@@ -111,6 +115,12 @@ main:
     ldr r1, [r1]                    /* r1 ← *r1 */
 	cmp r1, #3         				/* compare r0 and 3 */
     beq _p3						    /* if r0 != 3 then branch */
+	
+	/*Compare 4*/
+    ldr r1, address_of_choice	  	/* r1 ← &choice */
+    ldr r1, [r1]                    /* r1 ← *r1 */
+	cmp r1, #4         				/* compare r0 and 3 */
+    beq _p4	
 	b _end
 	
 	/*Problem 1*/
@@ -118,25 +128,29 @@ _p1:
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
 	bal _start1
-@	bl _again
 	
 _p2:
 	/*Problem 2*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf						/* call to printf */
 	bal _start2
-@	bl _again 
 	
 _p3:
 	/*Problem 3*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
 	bal _start3
+
+_p4:
+	/*Problem 4*/
+	ldr r0, address_of_select4     	/* r0 ← &Problem Selected */
+    bl printf                       /* call to printf */	
+	bal __mastermind
 @	bl _again
 	
 _end:		
 	/*End*/
-	ldr r0, address_of_select4     	/* r0 ← &Problem Selected */
+	ldr r0, address_of_select5     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */		
 	
 	/*Exit*/
@@ -149,7 +163,8 @@ address_of_select : .word select				/*"Select a Problem:"*/
 address_of_select1 : .word select1				/*"Problem 1: "*/
 address_of_select2 : .word select2				/*"Problem 2: "*/
 address_of_select3 : .word select3				/*"Problem 3: "*/
-address_of_select4 : .word select4				/*"End Prompt"*/
+address_of_select4 : .word select4				/*"PROJECT MASTERMIND "*/
+address_of_select5 : .word select5				/*"End Prompt"*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_choice : .word choice				/*Address of Chosen Problem Value*/
 address_of_return : .word return				/*Address of Return*/
