@@ -2,6 +2,10 @@
 
 .global _mastermind
 
+/* Format pattern for scanf */
+.balign 4
+scan_pattern : .asciz "%d" 
+
 .data
 
 /* Pegs */
