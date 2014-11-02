@@ -32,12 +32,12 @@ Error: .asciz "Error, Value must be within (1-6), Try Again"
 
 _mastermind:
 	
-	/*Prompt CODEMAKER for Peg values*/
-	ldr r0, address_of_prompt
-	printf
+/*Prompt CODEMAKER for Peg values*/
+ldr r0, address_of_prompt
+printf
 
-	/*Branch Back to main menu*/
-	bal main
+/*Branch Back to main menu*/
+bal main
 
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
