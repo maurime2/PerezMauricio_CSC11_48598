@@ -4,7 +4,11 @@
 
 /* Format pattern for scanf */
 .balign 4
-scan_pattern : .asciz "%d" 
+scan_pattern : .asciz "%d"
+
+.balign 4
+return: .word 0 
+
 
 .data
 
@@ -33,14 +37,17 @@ Error: .asciz "Error, Value must be within (1-6), Try Again"
 _mastermind:
 	
 /*Prompt CODEMAKER for Peg values*/
-ldr r0, address_of_prompt
-printf
+	ldr r0, address_of_prompt
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
+	printf
 
 /*Branch Back to main menu*/
 bal main
 
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
+address_of_return : .word return				/*Address of Return*/
 address_of_peg1 : .word peg1					/*Address of peg1: Code to Break*/
 address_of_peg2 : .word peg2					/*Address of peg2: Code to Break*/
 address_of_peg3 : .word peg3					/*Address of peg3: Code to Break*/
