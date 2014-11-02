@@ -27,7 +27,7 @@ count: .word 1
 
 /* Prompt */
 .balign 8
-prompt: .asciz "CODEMAKER: Pick a Value for Peg%d (1-6): "
+prompt: .asciz "CODEMAKER: Pick a Value for Peg (1-6): "
 
 /* Error */
 .balign 8
