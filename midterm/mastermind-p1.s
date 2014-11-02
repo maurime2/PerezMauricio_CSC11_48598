@@ -25,6 +25,8 @@ peg7: .word 7
 peg8: .word 8
 count: .word 1
 
+.text
+
 /* Prompt */
 .balign 8
 prompt: .asciz "CODEMAKER: Pick a Value for Peg (1-6): "
@@ -33,19 +35,27 @@ prompt: .asciz "CODEMAKER: Pick a Value for Peg (1-6): "
 .balign 8
 Error: .asciz "Error, Value must be within (1-6), Try Again"
 
-.text
+/* Divider */
+.balign 8
+divider: .asciz "-------------------------------------------------------\n"
+
+
 
 _mastermind:
 	
 /*Prompt CODEMAKER for Peg values*/
+	
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* Prompt for Fib Term */
+    bl printf    
 	
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
 	ldr r0, address_of_prompt
 	bl printf
 
-/*Branch Back to main menu*/
-bal main
+	/*Branch Back to main menu*/
+	bal main
 
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
@@ -62,7 +72,9 @@ address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 
 @address_of_comma : .word comma					/*"comma Print"*/
-@address_of_error2 : .word error2					/*"Overflow Error Prompt"*/
+@address_of_error2 : .word error2				/*"Overflow Error Prompt"*/
+
+address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 
 /* External */
 .global printf
