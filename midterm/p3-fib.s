@@ -165,6 +165,10 @@ _er2:
     bl printf                       /* call to printf */ 
 	b _start3
 	
+_end:
+	/*Return to main */
+	bal main	
+	
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_fibin : .word fibin					/*"Fib Input"*/
