@@ -28,7 +28,7 @@ color: .word 0	/*Count of Guesses of right colors, wrong place*/
 
 /* Prompt */
 .balign 8
-prompt: .asciz "CODEMAKER: Pick a Value for Peg (1-6): "
+prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
 /* Error */
 .balign 8
