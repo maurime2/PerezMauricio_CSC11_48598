@@ -34,7 +34,7 @@ prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
 /* Prompt Play Again */
 .balign 8
-againp: .asciz "Play Again? "1" for YES, else for NO "
+againp: .asciz "Play Again? [1] for YES, else for NO "
 
 
 
@@ -93,6 +93,7 @@ _again:
 	cmp r1, #1					/*  will branch to _main		   */
 	beq _mastermind
 	b _main
+	
 /*Prompt CODEMAKER for Peg values*/
 	
 _err:
