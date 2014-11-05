@@ -45,16 +45,20 @@ _mastermind:
 /*Prompt CODEMAKER for Peg values*/
 	
 	/*Print Bar*/
-	ldr r0, address_of_divider     	/* Prompt for Fib Term */
+	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
     bl printf    
 
 	
 	/*CODEMKER INPUT START*/
-	ldr r2, address_of_count
-	mov r1, #4
-	str r1, [r2]
-	
+	ldr r5, address_of_count	 /*Count Will be used to keep track    */
+	mov r1, #1					/* 	of sequence of inputs by Codemaker*/
+	str r1, [r5]
 
+	/*Address peg1*/
+	ldr r0, address_of_prompt
+	ldr r1, address_of_count
+	ldr r1, [r1]
+	bl printf
 	
 	
 	
