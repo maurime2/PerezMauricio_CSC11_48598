@@ -54,9 +54,7 @@ _mastermind:
 	mov r1, #4
 	str r1, [r2]
 	
-	
-	
-	
+
 	
 	
 	
