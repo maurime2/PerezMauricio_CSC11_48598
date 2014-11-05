@@ -32,7 +32,7 @@ prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
 /* Error */
 .balign 8
-Error: .asciz "Error, Value must be within (1-6), Try Again"
+error: .asciz "Error, Value must be within (1-6), Try Again"
 
 /* Divider */
 .balign 8
@@ -60,11 +60,18 @@ _mastermind:
 	ldr r1, [r1]
 	bl printf
 	
+_p1s:
 	/*Scan Peg1*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
     ldr r1, address_of_peg1   		/* r1 ← &fibin */
     bl scanf                        /* call to scanf */
 	
+	
+	
+_err:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf
 	
 	/*Branch Back to main menu*/
 	bal main
