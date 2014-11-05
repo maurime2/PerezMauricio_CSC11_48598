@@ -60,7 +60,7 @@ _mastermind:
 	
 	/*CODEMKER INPUT START*/
 	ldr r5, address_of_count	 /*Count Will be used to keep track    */
-	mov r1, #1					/* 	of sequence of inputs by Codemaker*/
+	mov r1, #1					/* 	of sequence of inputs by CODEMAKER*/
 	str r1, [r5]
 
 	/*Address peg1*/
