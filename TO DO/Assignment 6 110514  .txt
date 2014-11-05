@@ -1,0 +1,10 @@
+Timing study,
+
+Use the collatz function from ThinkingGeek, and the timing function refered to in the random number creator.  
+*Compare the relative times between branching 
+
+*Compare the relative times between  predicates.
+
+http://thinkingeek.com/2013/03/16/arm-assembler-raspberry-pi-chapter-11/
+
+Post to the repository, post here and send an email to the usual places.
