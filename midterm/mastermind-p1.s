@@ -60,7 +60,10 @@ _mastermind:
 	ldr r1, [r1]
 	bl printf
 	
-	
+	/*Scan Peg1*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_peg1   		/* r1 ← &fibin */
+    bl scanf                        /* call to scanf */
 	
 	
 	/*Branch Back to main menu*/
