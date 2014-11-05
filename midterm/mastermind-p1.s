@@ -10,20 +10,21 @@ scan_pattern : .asciz "%d"
 .balign 4
 return: .word 0 
 
-
 .data
 
 /* Pegs */
 .balign 8
-peg1: .word 1
-peg2: .word 2
-peg3: .word 3
-peg4: .word 4
-peg5: .word 5
-peg6: .word 6
-peg7: .word 7
-peg8: .word 8
-count: .word 1
+peg1: .word 1	/*code peg 1*/
+peg2: .word 2	/*code peg 2*/
+peg3: .word 3	/*code peg 3*/
+peg4: .word 4	/*code peg 4*/
+peg5: .word 5	/*code peg 5*/
+peg6: .word 6	/*code peg 6*/
+peg7: .word 7	/*code peg 7*/
+peg8: .word 8	/*code peg 8*/
+count: .word 0	/*Count of Pegs*/
+place: .word 0	/*Count of Guesses of right place and colors*/
+color: .word 0	/*Count of Guesses of right colors, wrong place*/
 
 /* Prompt */
 .balign 8
@@ -63,6 +64,8 @@ address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
+address_of_place : .word place					/*"address_of_place"*/
+address_of_color : .word color					/*"address_of_color"*/
 
 @address_of_comma : .word comma					/*"comma Print"*/
 @address_of_error2 : .word error2				/*"Overflow Error Prompt"*/
