@@ -48,6 +48,19 @@ _mastermind:
 	ldr r0, address_of_divider     	/* Prompt for Fib Term */
     bl printf    
 
+	
+	/*CODEMKER INPUT START*/
+	ldr r2, address_of_count
+	mov r1, #4
+	str r1, [r2]
+	
+	
+	
+	
+	
+	
+	
+	
 	/*Branch Back to main menu*/
 	bal main
 
@@ -67,7 +80,7 @@ address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG 
 address_of_place : .word place					/*"address_of_place"*/
 address_of_color : .word color					/*"address_of_color"*/
 
-@address_of_comma : .word comma					/*"comma Print"*/
+address_of_count : .word count					/*"address_of_count when needed"*/
 @address_of_error2 : .word error2				/*"Overflow Error Prompt"*/
 
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
