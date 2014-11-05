@@ -25,14 +25,23 @@ peg8: .word 8	/*code peg 8*/
 count: .word 0	/*Count of Pegs*/
 place: .word 0	/*Count of Guesses of right place and colors*/
 color: .word 0	/*Count of Guesses of right colors, wrong place*/
+again: .word 0	/*1 = Play Again when asked*/
+
 
 /* Prompt */
 .balign 8
 prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
+/* Prompt Play Again */
+.balign 8
+againp: .asciz "Play Again? "1" for YES, else for NO "
+
+
+
+
 /* Error */
 .balign 8
-error: .asciz "Error, Value must be within (1-6), Try Again"
+error: .asciz "Error, Value must be within (1-6), Try Again\n"
 
 /* Divider */
 .balign 8
@@ -68,11 +77,31 @@ _p1s:
 	
 	
 	
+	
+_again:
+	/*Prompt Play Again*/
+	ldr r0, address_of_againp
+	bl printf
+	
+	/*Scan for Play Again*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_again   		/* r1 ← &fibin */
+    bl scanf                        /* call to scanf */
+	
+	ldr r1, address_of_again	  /*If Adress of again is equal to 1 */
+	ldr r1, [r1]				 /* the player will play again, else*/
+	cmp r1, #1					/*  will branch to _main		   */
+	beq _mastermind
+	b _main
+/*Prompt CODEMAKER for Peg values*/
+	
 _err:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf
 	
+	
+_main:	
 	/*Branch Back to main menu*/
 	bal main
 
@@ -89,6 +118,8 @@ address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
+address_of_againp : .word againp				/*"Prompt: For Play Again"*/
+address_of_again : .word again				/*"Prompt: For Play Again"*/
 address_of_place : .word place					/*"address_of_place"*/
 address_of_color : .word color					/*"address_of_color"*/
 
