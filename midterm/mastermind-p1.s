@@ -200,8 +200,6 @@ _cont:
     bl scanf                        /* call to scanf */
 	b _again
 	
-	
-	
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
@@ -271,7 +269,7 @@ address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
-address_of_cont : .word cont				/*"Prompt: For CODEMAKER - Typr anything to cont..."*/
+address_of_cont : .word cont					/*"Prompt: For CODEMAKER - Typr anything to cont..."*/
 address_of_code : .word code					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code2 : .word code2					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_againp : .word againp				/*"Prompt: For Play Again"*/
