@@ -87,7 +87,11 @@ _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+    bl printf    
 	b _p1s
+	
 	
 	
 _again:
