@@ -82,11 +82,13 @@ _p2s:
 	/*Print Bar*/
 	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
     bl printf
-	add r5, r5, #1
+	
+	ldr r5, address_of_count	 /*Count Will be used to keep track    */
+	mov r1, #2					/* 	of sequence of inputs by CODEMAKER*/
+	str r1, [r5]
 	
 	/*Address peg1*/
 	ldr r0, address_of_prompt
-	add r1, r5, #0
 	bl printf	
 
 	/*Scan Peg1*/
@@ -99,10 +101,8 @@ _p2s:
 	cmp r4, #0
 	ble _err2
 	cmp r4, #6
-	ble _p2s
+	ble _again
 	b _err2
-	
-	
 	
 _err1:
 	/*Prompt error: Wrong Peg Number*/
