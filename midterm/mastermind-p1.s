@@ -101,15 +101,69 @@ _p2s:
 	cmp r4, #0
 	ble _err2
 	cmp r4, #6
-	ble _again
+	ble _p3s
 	b _err2
+	
+_p3s:
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+    bl printf
+	
+	ldr r5, address_of_count	 /*Count Will be used to keep track    */
+	mov r1, #3					/* 	of sequence of inputs by CODEMAKER*/
+	str r1, [r5]
+	
+	/*Address peg1*/
+	ldr r0, address_of_prompt
+	bl printf	
+
+	/*Scan Peg1*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_peg3   		/* r1 ← &fibin */
+    bl scanf                        /* call to scanf */
+		
+	ldr r4, address_of_peg3
+	ldr r4, [r4]
+	cmp r4, #0
+	ble _err3
+	cmp r4, #6
+	ble _p4s
+	b _err3
+
+_p4s:
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+    bl printf
+	
+	ldr r5, address_of_count	 /*Count Will be used to keep track    */
+	mov r1, #4					/* 	of sequence of inputs by CODEMAKER*/
+	str r1, [r5]
+	
+	/*Address peg1*/
+	ldr r0, address_of_prompt
+	bl printf	
+
+	/*Scan Peg1*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_peg4   		/* r1 ← &fibin */
+    bl scanf                        /* call to scanf */
+		
+	ldr r4, address_of_peg4
+	ldr r4, [r4]
+	cmp r4, #0
+	ble _err4
+	cmp r4, #6
+	ble _again
+	b _err4
+
+
 	
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	/*Print Bar*/
-	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER */
     bl printf    
 	b _p1s
 	
@@ -117,10 +171,20 @@ _err2:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
-	/*Print Bar*/
-	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
-    bl printf    
 	b _p2s	
+
+_err4:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	b _p3s	
+	
+_err4:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	b _p4s	
+
 	
 _again:
 	/*Prompt Play Again*/
