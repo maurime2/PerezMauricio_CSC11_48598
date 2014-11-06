@@ -33,7 +33,7 @@ prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
 /* CODEMAKER CODE PRINT */
 .balign 8
-code: .asciz "CODEMAKER: Your CODE is: <%d%d%d%d>"
+code: .asciz "CODEMAKER: Your CODE is: <%d%d%d%d>\n"
 
 /* Prompt Play Again */
 .balign 8
@@ -167,9 +167,13 @@ _code:
 	
 	ldr r0, address_of_code
 	ldr r1, address_of_peg1
+	ldr r1, [r1]
 	ldr r2, address_of_peg2
+	ldr r2, [r2]
 	ldr r3, address_of_peg3
+	ldr r3, [r3]
 	ldr r4, address_of_peg4
+	ldr r4, [r4]
 	bl printf
 	b _again
 	
