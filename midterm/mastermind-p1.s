@@ -195,7 +195,7 @@ _cont:
 	
 	/*Scan Anything*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-    ldr r1, address_of_peg5   		/* r1 ← &peg 5 TEMP */
+    ldr r1, address_of_return   		/* r1 ← &peg 5 TEMP */
     bl scanf                        /* call to scanf */
 	
 	b _again
