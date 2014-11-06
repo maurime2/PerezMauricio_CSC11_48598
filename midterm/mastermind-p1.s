@@ -62,13 +62,13 @@ _mastermind:
 	mov r1, #1					/* 	of sequence of inputs by CODEMAKER*/
 	str r1, [r5]
 
+_p1s:
 	/*Address peg1*/
 	ldr r0, address_of_prompt
 	ldr r1, address_of_count
 	ldr r1, [r1]
-	bl printf
-	
-_p1s:
+	bl printf	
+
 	/*Scan Peg1*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
     ldr r1, address_of_peg1   		/* r1 ← &fibin */
