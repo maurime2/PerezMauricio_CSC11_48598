@@ -77,7 +77,7 @@ _p1s:
 	ldr r4, address_of_peg1	
 	ldr r4, [r4]
 	cmp r4, #0
-	ble _err
+	ble _err1
 	cmp r4, #6
 	ble _again
 	b _err1
@@ -86,7 +86,7 @@ _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
-	b _p1s
+	bal _p1s
 	
 	
 _again:
