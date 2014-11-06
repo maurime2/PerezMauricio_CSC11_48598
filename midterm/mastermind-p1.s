@@ -179,7 +179,7 @@ _code:
 	ldr r3, [r3]
 	bl printf
 	
-	ldr r0, address_of_code
+	ldr r0, address_of_code2
 	ldr r1, address_of_peg4
 	ldr r1, [r1]
 	bl printf
