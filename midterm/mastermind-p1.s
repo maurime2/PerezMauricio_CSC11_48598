@@ -14,6 +14,7 @@ return: .word 0
 
 /* Pegs */
 .balign 8
+peg0: .word 0	/*code peg 1*/
 peg1: .word 1	/*code peg 1*/
 peg2: .word 2	/*code peg 2*/
 peg3: .word 3	/*code peg 3*/
@@ -195,7 +196,7 @@ _cont:
 	
 	/*Scan Anything*/
 	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-    ldr r1, address_of_return   		/* r1 ← &peg 5 TEMP */
+    ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
     bl scanf                        /* call to scanf */
 	
 	b _again
@@ -258,6 +259,7 @@ _main:
 /*Messages*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
 address_of_return : .word return				/*Address of Return*/
+address_of_peg0 : .word peg0					/*Address of peg1: Code to Break*/
 address_of_peg1 : .word peg1					/*Address of peg1: Code to Break*/
 address_of_peg2 : .word peg2					/*Address of peg2: Code to Break*/
 address_of_peg3 : .word peg3					/*Address of peg3: Code to Break*/
