@@ -173,7 +173,7 @@ _err2:
 	bl printf	
 	b _p2s	
 
-_err4:
+_err3:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
