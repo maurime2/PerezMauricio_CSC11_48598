@@ -47,7 +47,6 @@ againp: .asciz "Play Again? [1] for YES, else for NO "
 .balign 8
 cont: .asciz "Type anything to continue..."
 
-
 /* Error */
 .balign 8
 error: .asciz "Error, Value must be within (1-6), Try Again\n"
@@ -194,6 +193,11 @@ _cont:
 	ldr r0, address_of_cont
 	bl printf
 	
+	/*Scan Anything*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+    ldr r1, address_of_peg5   		/* r1 ← &peg 5 TEMP */
+    bl scanf                        /* call to scanf */
+	
 	b _again
 	
 _err1:
@@ -222,7 +226,6 @@ _err4:
 	ldr r0, address_of_error
 	bl printf	
 	b _p4s	
-
 	
 _again:
 	/*Prompt Play Again*/
