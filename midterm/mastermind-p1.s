@@ -198,7 +198,7 @@ _cont:
 	ldr r0, address_of_scan_pattern	/* r0 ← &scan Pattern */
     ldr r1, address_of_return   	/* r1 ← &Temp Hold anything typed */
     bl scanf                        /* call to scanf */
-		
+	bal _again
 	
 	
 	
