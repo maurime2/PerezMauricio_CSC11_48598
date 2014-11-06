@@ -33,7 +33,12 @@ prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
 /* CODEMAKER CODE PRINT */
 .balign 8
-code: .asciz "CODEMAKER: Your CODE is: <%d%d%d%d>\n"
+code: .asciz "CODEMAKER: Your CODE is: <%d%d%d"
+
+/* CODEMAKER CODE PRINT */
+.balign 8
+code2: .asciz "%d>\n"
+
 
 /* Prompt Play Again */
 .balign 8
@@ -172,11 +177,13 @@ _code:
 	ldr r2, [r2]
 	ldr r3, address_of_peg3
 	ldr r3, [r3]
-	ldr r4, address_of_peg4
-	ldr r4, [r4]
+	bl printf
+	
+	ldr r0, address_of_code
+	ldr r1, address_of_peg4
+	ldr r1, [r1]
 	bl printf
 	b _again
-	
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
@@ -247,6 +254,7 @@ address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 address_of_code : .word code					/*"Prompt: For CODEMAKER - Prints final Code"*/
+address_of_code2 : .word code2					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_againp : .word againp				/*"Prompt: For Play Again"*/
 address_of_again : .word again					/*"Prompt: For Play Again"*/
 address_of_place : .word place					/*"address_of_place"*/
