@@ -39,10 +39,14 @@ code: .asciz "CODEMAKER: Your CODE is: <%d%d%d"
 .balign 8
 code2: .asciz "%d>\n"
 
-
 /* Prompt Play Again */
 .balign 8
 againp: .asciz "Play Again? [1] for YES, else for NO "
+
+/*PROMPT: Type anything to continue*/
+.balign 8
+cont: .asciz "Type anything to continue..."
+
 
 /* Error */
 .balign 8
@@ -75,8 +79,8 @@ _p1s:
 	bl printf	
 
 	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
-    ldr r1, address_of_peg1   		/* r1 ← &fibin */
+	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+    ldr r1, address_of_peg1   		/* r1 ← &peg1 */
     bl scanf                        /* call to scanf */
 	
 	ldr r4, address_of_peg1	
@@ -101,8 +105,8 @@ _p2s:
 	bl printf	
 
 	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
-    ldr r1, address_of_peg2   		/* r1 ← &fibin */
+	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+    ldr r1, address_of_peg2   		/* r1 ← &peg 2 */
     bl scanf                        /* call to scanf */
 		
 	ldr r4, address_of_peg2
@@ -127,8 +131,8 @@ _p3s:
 	bl printf	
 
 	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
-    ldr r1, address_of_peg3   		/* r1 ← &fibin */
+	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+    ldr r1, address_of_peg3   		/* r1 ← &peg3 */
     bl scanf                        /* call to scanf */
 		
 	ldr r4, address_of_peg3
@@ -153,8 +157,8 @@ _p4s:
 	bl printf	
 
 	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
-    ldr r1, address_of_peg4   		/* r1 ← &fibin */
+	ldr r0, address_of_scan_pattern	/* r0 ← &Scan Pattern */
+    ldr r1, address_of_peg4   		/* r1 ← &Peg4 */
     bl scanf                        /* call to scanf */
 		
 	ldr r4, address_of_peg4
@@ -183,7 +187,21 @@ _code:
 	ldr r1, address_of_peg4
 	ldr r1, [r1]
 	bl printf
-	b _again
+	b _cont
+	
+_cont:	
+	/*Prompt: Type anything to continue*/
+	ldr r0, address_of_cont
+	bl printf
+	
+	/*Scan Anything*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &scan Pattern */
+    ldr r1, address_of_return   	/* r1 ← &Temp Hold anything typed */
+    bl scanf                        /* call to scanf */
+		
+	
+	
+	
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
@@ -253,6 +271,7 @@ address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
+address_of_cont : .word cont				/*"Prompt: For CODEMAKER - Typr anything to cont..."*/
 address_of_code : .word code					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code2 : .word code2					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_againp : .word againp				/*"Prompt: For Play Again"*/
