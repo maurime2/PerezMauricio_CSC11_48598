@@ -82,11 +82,12 @@ _p1s:
 	ble _again
 	b _err1
 	
+	
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
-	bal _p1s
+	b _p1s
 	
 	
 _again:
