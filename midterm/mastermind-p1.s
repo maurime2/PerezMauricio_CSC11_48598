@@ -61,8 +61,9 @@ _mastermind:
 	/*CODEMKER INPUT START*/
 	@ldr r6, PC					/*Stores the address of PC to address of return*/
 	@ldr r6, [r6]				/*This will allow the return after printing errors*/
-	ldr r5, address_of_return
-	str pc, [r5]
+	@ldr r5, address_of_return
+	@str pc, [r5]
+
 	ldr r5, address_of_count	 /*Count Will be used to keep track    */
 	mov r1, #1					/* 	of sequence of inputs by CODEMAKER*/
 	str r1, [r5]
