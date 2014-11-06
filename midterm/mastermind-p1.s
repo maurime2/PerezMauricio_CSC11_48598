@@ -194,10 +194,6 @@ _cont:
 	ldr r0, address_of_cont
 	bl printf
 	
-	/*Scan Anything*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &scan Pattern */
-    ldr r1, address_of_return   	/* r1 ← &Temp Hold anything typed */
-    bl scanf                        /* call to scanf */
 	b _again
 	
 _err1:
@@ -276,10 +272,7 @@ address_of_againp : .word againp				/*"Prompt: For Play Again"*/
 address_of_again : .word again					/*"Prompt: For Play Again"*/
 address_of_place : .word place					/*"address_of_place"*/
 address_of_color : .word color					/*"address_of_color"*/
-
 address_of_count : .word count					/*"address_of_count when needed"*/
-@address_of_error2 : .word error2				/*"Overflow Error Prompt"*/
-
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 
 /* External */
