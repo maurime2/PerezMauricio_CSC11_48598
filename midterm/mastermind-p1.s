@@ -57,13 +57,7 @@ _mastermind:
 	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
     bl printf    
 
-	
 	/*CODEMKER INPUT START*/
-	@ldr r6, PC					/*Stores the address of PC to address of return*/
-	@ldr r6, [r6]				/*This will allow the return after printing errors*/
-	@ldr r5, address_of_return
-	@str pc, [r5]
-
 	ldr r5, address_of_count	 /*Count Will be used to keep track    */
 	mov r1, #1					/* 	of sequence of inputs by CODEMAKER*/
 	str r1, [r5]
@@ -80,13 +74,20 @@ _p1s:
     ldr r1, address_of_peg1   		/* r1 ← &fibin */
     bl scanf                        /* call to scanf */
 	
-	ldr r4, address_of_peg1
+	ldr r4, address_of_peg1	
 	ldr r4, [r4]
 	cmp r4, #0
-	beq _err
+	ble _err
 	cmp r4, #6
-	beq _again
-	b _err
+	ble _again
+	b _err1
+	
+_err1:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	b _p1s
+	
 	
 _again:
 	/*Prompt Play Again*/
