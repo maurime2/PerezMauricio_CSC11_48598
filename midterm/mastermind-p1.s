@@ -27,7 +27,6 @@ place: .word 0	/*Count of Guesses of right place and colors*/
 color: .word 0	/*Count of Guesses of right colors, wrong place*/
 again: .word 0	/*1 = Play Again when asked*/
 
-
 /* Prompt */
 .balign 8
 prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
@@ -35,9 +34,6 @@ prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 /* Prompt Play Again */
 .balign 8
 againp: .asciz "Play Again? [1] for YES, else for NO "
-
-
-
 
 /* Error */
 .balign 8
@@ -79,8 +75,33 @@ _p1s:
 	cmp r4, #0
 	ble _err1
 	cmp r4, #6
-	ble _again
+	ble _p2s
 	b _err1
+	
+_p2s:
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+    bl printf
+	add r5, r5, #1
+	
+	/*Address peg1*/
+	ldr r0, address_of_prompt
+	add r1, r5, #0
+	bl printf	
+
+	/*Scan Peg1*/
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_peg2   		/* r1 ← &fibin */
+    bl scanf                        /* call to scanf */
+		
+	ldr r4, address_of_peg2
+	ldr r4, [r4]
+	cmp r4, #0
+	ble _err2
+	cmp r4, #6
+	ble _p2s
+	b _err2
+	
 	
 	
 _err1:
@@ -92,7 +113,14 @@ _err1:
     bl printf    
 	b _p1s
 	
-	
+_err2:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+    bl printf    
+	b _p2s	
 	
 _again:
 	/*Prompt Play Again*/
