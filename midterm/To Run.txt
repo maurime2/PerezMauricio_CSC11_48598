@@ -5,3 +5,4 @@ as -o p2-isp.o p2-isp.s
 as -o p1-pay.o p1-pay.s
 gcc -o menu menu.o p1-pay.o p2-isp.o p3-fib.o mastermind-p1.o
 ./menu
+

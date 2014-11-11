@@ -198,7 +198,6 @@ _cont:
 	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
     ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
     bl scanf                        /* call to scanf */
-	
 	b _again
 	
 _err1:
