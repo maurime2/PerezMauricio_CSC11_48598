@@ -205,8 +205,7 @@ _mastermind:
 		b _again
 
 
-/*Errors*/
-		
+/*Errors*/		
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
@@ -252,7 +251,6 @@ _again:
 	b _main
 	
 /*Prompt CODEMAKER for Peg values*/
-	
 _err:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
