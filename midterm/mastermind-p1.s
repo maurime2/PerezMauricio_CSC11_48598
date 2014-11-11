@@ -56,6 +56,10 @@ error: .asciz "Error, Value must be within (1-6), Try Again\n"
 .balign 8
 divider: .asciz "-------------------------------------------------------\n"
 
+/* Screen Clear */
+.balign 8
+sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+
 .text
 
 _mastermind:
@@ -71,135 +75,138 @@ _mastermind:
 	mov r1, #1					/* 	of sequence of inputs by CODEMAKER*/
 	str r1, [r5]
 
-_p1s:
-	/*Address peg1*/
-	ldr r0, address_of_prompt
-	ldr r1, address_of_count
-	ldr r1, [r1]
-	bl printf	
+	_p1s:
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		ldr r1, address_of_count
+		ldr r1, [r1]
+		bl printf	
 
-	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-    ldr r1, address_of_peg1   		/* r1 ← &peg1 */
-    bl scanf                        /* call to scanf */
-	
-	ldr r4, address_of_peg1	
-	ldr r4, [r4]
-	cmp r4, #0
-	ble _err1
-	cmp r4, #6
-	ble _p2s
-	b _err1
-	
-_p2s:
-	/*Print Bar*/
-	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
-    bl printf
-	
-	ldr r5, address_of_count	 /*Count Will be used to keep track    */
-	mov r1, #2					/* 	of sequence of inputs by CODEMAKER*/
-	str r1, [r5]
-	
-	/*Address peg1*/
-	ldr r0, address_of_prompt
-	bl printf	
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg1   		/* r1 ← &peg1 */
+		bl scanf                        /* call to scanf */
 
-	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-    ldr r1, address_of_peg2   		/* r1 ← &peg 2 */
-    bl scanf                        /* call to scanf */
+		ldr r4, address_of_peg1	
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err1
+		cmp r4, #6
+		ble _p2s
+		b _err1
+	
+	_p2s:
+		/*Print Bar*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
+	
+		ldr r5, address_of_count	 /*Count Will be used to keep track    */
+		mov r1, #2					/* 	of sequence of inputs by CODEMAKER*/
+		str r1, [r5]
+	
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		bl printf	
+
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg2   		/* r1 ← &peg 2 */
+		bl scanf                        /* call to scanf */
 		
-	ldr r4, address_of_peg2
-	ldr r4, [r4]
-	cmp r4, #0
-	ble _err2
-	cmp r4, #6
-	ble _p3s
-	b _err2
+		ldr r4, address_of_peg2
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err2
+		cmp r4, #6
+		ble _p3s
+		b _err2
 	
-_p3s:
-	/*Print Bar*/
-	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
-    bl printf
-	
-	ldr r5, address_of_count	 /*Count Will be used to keep track    */
-	mov r1, #3					/* 	of sequence of inputs by CODEMAKER*/
-	str r1, [r5]
-	
-	/*Address peg1*/
-	ldr r0, address_of_prompt
-	bl printf	
+	_p3s:
+		/*Print Bar*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
 
-	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-    ldr r1, address_of_peg3   		/* r1 ← &peg3 */
-    bl scanf                        /* call to scanf */
+		ldr r5, address_of_count	 /*Count Will be used to keep track    */
+		mov r1, #3					/* 	of sequence of inputs by CODEMAKER*/
+		str r1, [r5]
+	
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		bl printf	
+
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg3   		/* r1 ← &peg3 */
+		bl scanf                        /* call to scanf */
 		
-	ldr r4, address_of_peg3
-	ldr r4, [r4]
-	cmp r4, #0
-	ble _err3
-	cmp r4, #6
-	ble _p4s
-	b _err3
+		ldr r4, address_of_peg3
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err3
+		cmp r4, #6
+		ble _p4s
+		b _err3
 
-_p4s:
-	/*Print Bar*/
-	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
-    bl printf
+	_p4s:
+		/*Print Bar*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
 	
-	ldr r5, address_of_count	 /*Count Will be used to keep track    */
-	mov r1, #4					/* 	of sequence of inputs by CODEMAKER*/
-	str r1, [r5]
+		ldr r5, address_of_count	 /*Count Will be used to keep track    */
+		mov r1, #4					/* 	of sequence of inputs by CODEMAKER*/
+		str r1, [r5]
 	
-	/*Address peg1*/
-	ldr r0, address_of_prompt
-	bl printf	
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		bl printf	
 
-	/*Scan Peg1*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Scan Pattern */
-    ldr r1, address_of_peg4   		/* r1 ← &Peg4 */
-    bl scanf                        /* call to scanf */
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan Pattern */
+		ldr r1, address_of_peg4   		/* r1 ← &Peg4 */
+		bl scanf                        /* call to scanf */
 		
-	ldr r4, address_of_peg4
-	ldr r4, [r4]
-	cmp r4, #0
-	ble _err4
-	cmp r4, #6
-	ble _code
-	b _err4
+		ldr r4, address_of_peg4
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err4
+		cmp r4, #6
+		ble _code
+		b _err4
 
-_code:
-	/*Print Final Code*/
-	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
-    bl printf
+	_code:
+		/*Print Final Code*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
 	
-	ldr r0, address_of_code
-	ldr r1, address_of_peg1
-	ldr r1, [r1]
-	ldr r2, address_of_peg2
-	ldr r2, [r2]
-	ldr r3, address_of_peg3
-	ldr r3, [r3]
-	bl printf
+		ldr r0, address_of_code
+		ldr r1, address_of_peg1
+		ldr r1, [r1]
+		ldr r2, address_of_peg2
+		ldr r2, [r2]
+		ldr r3, address_of_peg3
+		ldr r3, [r3]
+		bl printf
 	
-	ldr r0, address_of_code2
-	ldr r1, address_of_peg4
-	ldr r1, [r1]
-	bl printf
-	b _cont
+		ldr r0, address_of_code2
+		ldr r1, address_of_peg4
+		ldr r1, [r1]
+		bl printf
+		b _cont
 	
-_cont:	
-	/*Prompt: Type anything to continue*/
-	ldr r0, address_of_cont
-	bl printf
+	_cont:	
+		/*Prompt: Type anything to continue*/
+		ldr r0, address_of_cont
+		bl printf
 	
-	/*Scan Anything*/
-	ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-    ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
-    bl scanf                        /* call to scanf */
-	b _again
-	
+		/*Scan Anything*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
+		bl scanf                        /* call to scanf */
+		b _again
+
+
+/*Errors*/
+		
 _err1:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
@@ -226,7 +233,8 @@ _err4:
 	ldr r0, address_of_error
 	bl printf	
 	b _p4s	
-	
+
+/*PLAY AGAIN?*/	
 _again:
 	/*Prompt Play Again*/
 	ldr r0, address_of_againp
@@ -250,7 +258,7 @@ _err:
 	ldr r0, address_of_error
 	bl printf
 	
-	
+/*Back to Main*/
 _main:	
 	/*Branch Back to main menu*/
 	bal main
@@ -278,6 +286,7 @@ address_of_place : .word place					/*"address_of_place"*/
 address_of_color : .word color					/*"address_of_color"*/
 address_of_count : .word count					/*"address_of_count when needed"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
+address_of_sclear : .word sclear					/*"Prompt: CLEARS THE SCREEN WITH 30 \n"*/
 
 /* External */
 .global printf
