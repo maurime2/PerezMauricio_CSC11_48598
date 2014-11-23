@@ -54,12 +54,36 @@ error: .asciz "Error, Value must be within (1-6), Try Again\n"
 
 /* Divider */
 .balign 8
-divider: .asciz "-------------------------------------------------------\n"
+divider: .asciz "--------------------------------------\n"
 
 /* Screen Clear */
 .balign 8
 sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 
+/*Board Print Prompts*/
+	.balign 8
+	board1: .asciz "[Exact][Color]__________%d Trys Left!\n"
+		/*EXACT PEG PRINT*/
+		.balign 8
+		board2: .asciz "| %d%d%d"
+		.balign 8
+		board3: .asciz "%d|"
+		/*Color match PEG PRINT*/
+		.balign 8
+		board4: .asciz "| %d%d%d"
+		.balign 8
+		board5: .asciz "%d|"
+		/*Code Inputed by user*/
+		.balign 8
+		board6: .asciz " %d-%d-%d-"
+		.balign 8
+		board7: .asciz "%d |/n"
+
+		.balign 8
+		match: .asciz "ALL MATCH !!!YOU WIN!!!"
+		.balign 8
+		nomatch: .asciz "NO MATCH -You Lose-"
+		
 .text
 
 _mastermind:
@@ -285,6 +309,16 @@ address_of_color : .word color					/*"address_of_color"*/
 address_of_count : .word count					/*"address_of_count when needed"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 address_of_sclear : .word sclear					/*"Prompt: CLEARS THE SCREEN WITH 30 \n"*/
+address_of_board1 : .word board1					/*"Prints first part of the board: with Trys left"*/
+address_of_board2 : .word board2					/*"Prints second part of the board: First Match Pegs"*/
+address_of_board3 : .word board3					/*"Prints third of the board: Second Match Pegs"*/
+address_of_board4 : .word board4					/*"Prints fourth part of the board: First Color Pegs"*/
+address_of_board5 : .word board5					/*"Prints fifth part of the board: Second Color Pegs"*/
+address_of_board6 : .word board6					/*"Prints sixth part of the board: Code Input (first 3)"*/
+address_of_board7 : .word board7					/*"Prints seventh part of the board: Code Input (last peg)"*/
+address_of_board8 : .word board7					/*"Prints last part of the board: Code Input (last peg)"*/
+address_of_match : .word match						/*"Prints win prompt"*/
+address_of_nomatch : .word nomatch					/*"Prints loss prompt"*/
 
 /* External */
 .global printf
