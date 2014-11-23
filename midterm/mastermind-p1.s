@@ -231,9 +231,111 @@ _mastermind:
 		ldr r0, address_of_sclear		/* r0 ← &12 RETURNS (/n) */
 		bl printf
 		
+/****************************************************************************************/
+	
+_p5s:
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		ldr r1, address_of_count
+		ldr r1, [r1]
+		bl printf	
+
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg5   		/* r1 ← &peg1 */
+		bl scanf                        /* call to scanf */
+
+		ldr r4, address_of_peg5	
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err1
+		cmp r4, #6
+		ble _p2s
+		b _err1
+	
+	_p6s:
+		/*Print Bar*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
+	
+		ldr r5, address_of_count	 /*Count Will be used to keep track    */
+		mov r1, #2					/* 	of sequence of inputs by CODEMAKER*/
+		str r1, [r5]
+	
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		bl printf	
+
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg6   		/* r1 ← &peg 2 */
+		bl scanf                        /* call to scanf */
 		
+		ldr r4, address_of_peg6
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err2
+		cmp r4, #6
+		ble _p3s
+		b _err2
+	
+	_p7s:
+		/*Print Bar*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
+
+		ldr r5, address_of_count	 /*Count Will be used to keep track    */
+		mov r1, #3					/* 	of sequence of inputs by CODEMAKER*/
+		str r1, [r5]
+	
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		bl printf	
+
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg7   		/* r1 ← &peg3 */
+		bl scanf                        /* call to scanf */
 		
-				b _again
+		ldr r4, address_of_peg7
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err3
+		cmp r4, #6
+		ble _p4s
+		b _err3
+
+	_p8s:
+		/*Print Bar*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
+	
+		ldr r5, address_of_count	 /*Count Will be used to keep track    */
+		mov r1, #4					/* 	of sequence of inputs by CODEMAKER*/
+		str r1, [r5]
+	
+		/*Address peg1*/
+		ldr r0, address_of_prompt
+		bl printf	
+
+		/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan Pattern */
+		ldr r1, address_of_peg8   		/* r1 ← &Peg4 */
+		bl scanf                        /* call to scanf */
+		
+		ldr r4, address_of_peg8
+		ldr r4, [r4]
+		cmp r4, #0
+		ble _err4
+		cmp r4, #6
+		ble _code
+		b _err4
+	
+	
+	
+/****************************************************************************************/
+	
+	b _again
 /*Errors*/		
 _err1:
 	/*Prompt error: Wrong Peg Number*/
@@ -260,7 +362,39 @@ _err4:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
-	b _p4s	
+	b _p4s
+
+
+/***********************************************/
+_err5:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	/*Print Bar*/
+	ldr r0, address_of_divider     	/* PRINT DIVIDER */
+    bl printf    
+	b _p5s
+	
+_err6:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	b _p6s	
+
+_err7:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	b _p7s	
+	
+_err8:
+	/*Prompt error: Wrong Peg Number*/
+	ldr r0, address_of_error
+	bl printf	
+	b _p8s
+/***********************************************/
+
+	
 
 /*PLAY AGAIN?*/	
 _again:
