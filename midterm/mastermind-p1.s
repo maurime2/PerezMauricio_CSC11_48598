@@ -46,7 +46,7 @@ againp: .asciz "Play Again? [1] for YES, else for NO "
 
 /*PROMPT: Type anything to continue*/
 .balign 8
-cont: .asciz "Type anything to continue..."
+cont: .asciz "Type ANY NUMBER to Clear Screen..."
 
 /* Error */
 .balign 8
@@ -226,9 +226,14 @@ _mastermind:
 		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
 		ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
 		bl scanf                        /* call to scanf */
-		b _again
-
-
+		
+	_clear:
+		ldr r0, address_of_sclear		/* r0 ← &12 RETURNS (/n) */
+		bl printf
+		
+		
+		
+				b _again
 /*Errors*/		
 _err1:
 	/*Prompt error: Wrong Peg Number*/
