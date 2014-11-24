@@ -1,0 +1,15 @@
+Many of these Weekly updates were taken from ThinkingGeek
+
+They do a great job in supplementing our text book!
+
+Refer to all the following for Chapters 1 to 21.
+
+http://thinkingeek.com/2013/01/09/arm-assembler-raspberry-pi-chapter-1/ to
+http://thinkingeek.com/2014/08/23/arm-assembler-raspberry-pi-chapter-21/
+
+We won't use all the material but will use the elements that
+correspond to our book.
+
+Especially those related to creating functions, arrays, and
+floating point variables.  If you can find any other useful 
+references, let me know!
