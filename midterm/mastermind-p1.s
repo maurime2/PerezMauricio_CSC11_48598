@@ -24,6 +24,7 @@ peg6: .word 6	/*code peg 6*/
 peg7: .word 7	/*code peg 7*/
 peg8: .word 8	/*code peg 8*/
 count: .word 0	/*Count of Pegs*/
+trys: .word 12	/*Trys Left*/
 place: .word 0	/*Count of Guesses of right place and colors*/
 color: .word 0	/*Count of Guesses of right colors, wrong place*/
 again: .word 0	/*1 = Play Again when asked*/
@@ -57,6 +58,9 @@ againp: .asciz "Play Again? [1] for YES, else for NO "
 cont: .asciz "Type ANY NUMBER to Clear Screen..."
 .balign 8
 cont2: .asciz "Type ANY NUMBER to Print Board..."
+
+hit: .asciz "*"	/*1 = Play Again when asked*/
+space: .asciz " "	/*1 = Play Again when asked*/
 
 
 /* Error */
@@ -98,7 +102,9 @@ sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 .text
 
 _mastermind:
-	
+/****************************************************************************************/
+/*							CODEMAKER INPUTS CODE										*/
+/****************************************************************************************/	
 /*Prompt CODEMAKER for Peg values*/
 	
 	/*Print Bar*/
@@ -243,7 +249,8 @@ _mastermind:
 		bl printf
 		
 /****************************************************************************************/
-	
+/*								PLAYER INPUTS Guesses									*/
+/****************************************************************************************/
 _p5s:
 		/*Address peg1*/
 		ldr r0, address_of_prompt2
@@ -377,7 +384,8 @@ _p5s:
 		bl printf
 		
 /****************************************************************************************/
-	
+/*					COMPARE Pegs and Print														*/
+/****************************************************************************************/
 	
 	
 		b _again
@@ -490,6 +498,9 @@ address_of_code : .word code					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code2 : .word code2					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code3 : .word code3					/*"Prompt: For PLAYER - Prints final Code"*/
 address_of_code4 : .word code4					/*"Prompt: For PLAYER - Prints final Code"*/
+address_of_hit : .word hit						/*"HIT"*/
+address_of_space : .word space					/*"SPACE"*/
+address_of_trys : .word trys					/*"TRYS LEFT"*/
 address_of_againp : .word againp				/*"Prompt: For Play Again"*/
 address_of_again : .word again					/*"Prompt: For Play Again"*/
 address_of_place : .word place					/*"address_of_place"*/
