@@ -401,7 +401,7 @@ _addP1:
 		ldr r2, peg5
 		ldr r2, [r2]
 		cmp r1, r2
-		beq _add_1:
+		beq _add_1
 		b	_addP2
 _add_1:	add r4, r4, #1
 _addP2:
@@ -410,7 +410,7 @@ _addP2:
 		ldr r2, peg6
 		ldr r2, [r2]
 		cmp r1, r2
-		beq _add_2:
+		beq _add_2
 		b	_addP3
 _add_2:	add r4, r4, #1
 _addP3:
@@ -419,7 +419,7 @@ _addP3:
 		ldr r2, peg7
 		ldr r2, [r2]
 		cmp r1, r2
-		beq _add_3:
+		beq _add_3
 		b	_addP4
 _add_3:	add r4, r4, #1		
 _addP4:
@@ -428,7 +428,7 @@ _addP4:
 		ldr r2, peg8
 		ldr r2, [r2]
 		cmp r1, r2
-		beq _add_4:
+		beq _add_4
 		b	_printb1
 _add_4:	add r4, r4, #1		
 
