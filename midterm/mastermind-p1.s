@@ -55,6 +55,9 @@ againp: .asciz "Play Again? [1] for YES, else for NO "
 /*PROMPT: Type anything to continue*/
 .balign 8
 cont: .asciz "Type ANY NUMBER to Clear Screen..."
+.balign 8
+cont2: .asciz "Type ANY NUMBER to Print Board..."
+
 
 /* Error */
 .balign 8
@@ -231,12 +234,12 @@ _mastermind:
 		bl printf
 	
 		/*Scan Anything*/
-		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-		ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
-		bl scanf                        /* call to scanf */
+		ldr r0, address_of_scan_pattern				/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg0   					/* r1 ← &peg 5 TEMP */
+		bl scanf                       				/* call to scanf */
 		
 	_clear:
-		ldr r0, address_of_sclear		/* r0 ← &12 RETURNS (/n) */
+		ldr r0, address_of_sclear					/* r0 ← &12 RETURNS (/n) */
 		bl printf
 		
 /****************************************************************************************/
@@ -249,9 +252,9 @@ _p5s:
 		bl printf	
 
 		/*Scan Peg1*/
-		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-		ldr r1, address_of_peg5   		/* r1 ← &peg1 */
-		bl scanf                        /* call to scanf */
+		ldr r0, address_of_scan_pattern			/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg5   				/* r1 ← &peg1 */
+		bl scanf                        		/* call to scanf */
 
 		ldr r4, address_of_peg5	
 		ldr r4, [r4]
@@ -263,11 +266,11 @@ _p5s:
 	
 	_p6s:
 		/*Print Bar*/
-		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		ldr r0, address_of_divider    		 	/* PRINT DIVIDER 						*/
 		bl printf
 	
-		ldr r5, address_of_count	 /*Count Will be used to keep track    */
-		mov r1, #2					/* 	of sequence of inputs by CODEMAKER*/
+		ldr r5, address_of_count			 /*Count Will be used to keep track    */
+		mov r1, #2							/* 	of sequence of inputs by CODEMAKER*/
 		str r1, [r5]
 	
 		/*Address peg1*/
@@ -275,9 +278,9 @@ _p5s:
 		bl printf	
 
 		/*Scan Peg1*/
-		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-		ldr r1, address_of_peg6   		/* r1 ← &peg 2 */
-		bl scanf                        /* call to scanf */
+		ldr r0, address_of_scan_pattern			/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg6   				/* r1 ← &peg 2 */
+		bl scanf                       			/* call to scanf */
 		
 		ldr r4, address_of_peg6
 		ldr r4, [r4]
@@ -289,11 +292,11 @@ _p5s:
 	
 	_p7s:
 		/*Print Bar*/
-		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		ldr r0, address_of_divider     				/* PRINT DIVIDER 						*/
 		bl printf
 
-		ldr r5, address_of_count	 /*Count Will be used to keep track    */
-		mov r1, #3					/* 	of sequence of inputs by CODEMAKER*/
+		ldr r5, address_of_count				 /*Count Will be used to keep track    */
+		mov r1, #3								/* 	of sequence of inputs by CODEMAKER*/
 		str r1, [r5]
 	
 		/*Address peg1*/
@@ -301,9 +304,9 @@ _p5s:
 		bl printf	
 
 		/*Scan Peg1*/
-		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-		ldr r1, address_of_peg7   		/* r1 ← &peg3 */
-		bl scanf                        /* call to scanf */
+		ldr r0, address_of_scan_pattern			/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg7   				/* r1 ← &peg3 */
+		bl scanf                        		/* call to scanf */
 		
 		ldr r4, address_of_peg7
 		ldr r4, [r4]
@@ -315,11 +318,11 @@ _p5s:
 
 	_p8s:
 		/*Print Bar*/
-		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		ldr r0, address_of_divider     						/* PRINT DIVIDER */
 		bl printf
 	
-		ldr r5, address_of_count	 /*Count Will be used to keep track    */
-		mov r1, #4					/* 	of sequence of inputs by CODEMAKER*/
+		ldr r5, address_of_count	 						/*Count Will be used to keep track    */
+		mov r1, #4											/* 	of sequence of inputs by CODEMAKER*/
 		str r1, [r5]
 	
 		/*Address peg1*/
@@ -327,9 +330,9 @@ _p5s:
 		bl printf	
 
 		/*Scan Peg1*/
-		ldr r0, address_of_scan_pattern	/* r0 ← &Scan Pattern */
-		ldr r1, address_of_peg8   		/* r1 ← &Peg4 */
-		bl scanf                        /* call to scanf */
+		ldr r0, address_of_scan_pattern						/* r0 ← &Scan Pattern */
+		ldr r1, address_of_peg8   							/* r1 ← &Peg4 */
+		bl scanf                        					/* call to scanf */
 		
 		ldr r4, address_of_peg8
 		ldr r4, [r4]
@@ -341,7 +344,7 @@ _p5s:
 	
 		_code2:
 		/*Print Final Code*/
-		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		ldr r0, address_of_divider     						/* PRINT DIVIDER */
 		bl printf
 	
 		ldr r0, address_of_code3
@@ -360,17 +363,17 @@ _p5s:
 		b _cont2
 	
 		_cont2:	
-		/*Prompt: Type anything to continue*/
-		ldr r0, address_of_cont
+		/*Prompt: Type anything to continue*/					/*Type any number to cont*/
+		ldr r0, address_of_cont2
 		bl printf
 	
 		/*Scan Anything*/
-		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
-		ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
-		bl scanf                        /* call to scanf */
+		ldr r0, address_of_scan_pattern							/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg0   								/* r1 ← &peg 5 TEMP */
+		bl scanf                        						/* call to scanf */
 		
 	_clear2:
-		ldr r0, address_of_sclear		/* r0 ← &12 RETURNS (/n) */
+		ldr r0, address_of_sclear								/* r0 ← &12 RETURNS (/n) */
 		bl printf
 		
 /****************************************************************************************/
@@ -481,7 +484,8 @@ address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 address_of_prompt2 : .word prompt2				/*"Prompt: For PLAYER - Will ask for PEG inputs"*/
-address_of_cont : .word cont					/*"Prompt: For CODEMAKER - Typr anything to cont..."*/
+address_of_cont : .word cont					/*"Prompt: For CODEMAKER - Type anything to cont..."*/
+address_of_cont2 : .word cont2					/*"Prompt: For PLAYER - Type anything to cont..."*/
 address_of_code : .word code					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code2 : .word code2					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code3 : .word code3					/*"Prompt: For PLAYER - Prints final Code"*/
