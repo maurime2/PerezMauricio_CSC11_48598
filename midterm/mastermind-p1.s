@@ -510,15 +510,15 @@ _printP1:
 _printP0:
 		ldr r0, address_of_board2
 		ldr r1, address_of_space
-		ldr r1, [r1]
+		/*ldr r1, [r1]*/
 		ldr r2, address_of_space
-		ldr r2, [r2]
+		/*ldr r2, [r2]*/
 		ldr r3, address_of_space
-		ldr r3, [r3]
+		/*ldr r3, [r3]*/
 		bl printf
 		ldr r0, address_of_board3
 		ldr r1, address_of_space
-		ldr r1, [r1]
+		/*ldr r1, [r1]*/
 		bl printf		
 		b _again
 
