@@ -251,7 +251,11 @@ _mastermind:
 /****************************************************************************************/
 /*								PLAYER INPUTS Guesses									*/
 /****************************************************************************************/
-_p5s:
+_p5s:	/*Clear Count*/
+		ldr r1, address_of_count
+		mov r2, #1
+		str r2, [r1]
+		
 		/*Address peg1*/
 		ldr r0, address_of_prompt2
 		ldr r1, address_of_count
