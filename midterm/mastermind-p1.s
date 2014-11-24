@@ -396,36 +396,36 @@ _p5s:	/*Clear Count*/
 /****************************************************************************************/
 		mov r4, #0
 _addP1:
-		ldr r1, peg1
+		ldr r1, address_of_peg1
 		ldr r1, [r1]
-		ldr r2, peg5
+		ldr r2, address_of_peg5
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_1
 		b	_addP2
 _add_1:	add r4, r4, #1
 _addP2:
-		ldr r1, peg2
+		ldr r1, address_of_peg2
 		ldr r1, [r1]
-		ldr r2, peg6
+		ldr r2, address_of_peg6
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_2
 		b	_addP3
 _add_2:	add r4, r4, #1
 _addP3:
-		ldr r1, peg3
+		ldr r1, address_of_peg3
 		ldr r1, [r1]
-		ldr r2, peg7
+		ldr r2, address_of_peg7
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_3
 		b	_addP4
 _add_3:	add r4, r4, #1		
 _addP4:
-		ldr r1, peg4
+		ldr r1, address_of_peg4
 		ldr r1, [r1]
-		ldr r2, peg8
+		ldr r2, address_of_peg8
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_4
@@ -444,7 +444,7 @@ _printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will 
 		beq _printP4
 		b _printP0
 _printP4:
-		ldr r0, board1
+		ldr r0, address_of_board1
 		ldr r1, address_of_hit
 		ldr r1, [r1]
 		ldr r2, address_of_hit
@@ -452,14 +452,14 @@ _printP4:
 		ldr r3, address_of_hit
 		ldr r3, [r3]
 		bl printf
-		ldr r0, board2
+		ldr r0, address_of_board2
 		ldr r1, address_of_hit
 		ldr r1, [r1]
 		bl printf
 		
 		b _again
 _printP3:
-		ldr r0, board1
+		ldr r0, address_of_board1
 		ldr r1, address_of_hit
 		ldr r1, [r1]
 		ldr r2, address_of_hit
@@ -467,14 +467,14 @@ _printP3:
 		ldr r3, address_of_hit
 		ldr r3, [r3]
 		bl printf
-		ldr r0, board2
+		ldr r0, address_of_board2
 		ldr r1, address_of_space
 		ldr r1, [r1]
 		bl printf
 
 		b _again
 _printP2:
-		ldr r0, board1
+		ldr r0, address_of_board1
 		ldr r1, address_of_hit
 		ldr r1, [r1]
 		ldr r2, address_of_hit
@@ -482,13 +482,13 @@ _printP2:
 		ldr r3, address_of_space
 		ldr r3, [r3]
 		bl printf
-		ldr r0, board2
+		ldr r0, address_of_board2
 		ldr r1, address_of_space
 		ldr r1, [r1]
 		bl printf
 		b _again
 _printP1:
-		ldr r0, board1
+		ldr r0, address_of_board1
 		ldr r1, address_of_hit
 		ldr r1, [r1]
 		ldr r2, address_of_space
@@ -496,13 +496,13 @@ _printP1:
 		ldr r3, address_of_space
 		ldr r3, [r3]
 		bl printf
-		ldr r0, board2
+		ldr r0, address_of_board2
 		ldr r1, address_of_space
 		ldr r1, [r1]
 		bl printf
 		b _again
 _printP0:
-		ldr r0, board1
+		ldr r0, address_of_board1
 		ldr r1, address_of_space
 		ldr r1, [r1]
 		ldr r2, address_of_space
@@ -510,7 +510,7 @@ _printP0:
 		ldr r3, address_of_space
 		ldr r3, [r3]
 		bl printf
-		ldr r0, board2
+		ldr r0, address_of_board2
 		ldr r1, address_of_space
 		ldr r1, [r1]
 		bl printf		
