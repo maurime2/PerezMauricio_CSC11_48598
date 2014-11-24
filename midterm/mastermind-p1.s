@@ -33,13 +33,21 @@ again: .word 0	/*1 = Play Again when asked*/
 prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 
 /* CODEMAKER CODE PRINT */
-.balign 8
-code: .asciz "CODEMAKER: Your CODE is: <%d%d%d"
+	.balign 8
+	code: .asciz "CODEMAKER: Your CODE is: <%d%d%d"
+	.balign 8
+	code2: .asciz "%d>\n"
 
-/* CODEMAKER CODE PRINT */
-.balign 8
-code2: .asciz "%d>\n"
+/* PLAYER CODE PRINT */
+	.balign 8
+	prompt2: .asciz "PLAYER: Pick a Value for Peg %d (1-6): "
 
+	.balign 8
+	code3: .asciz "PLAYER: Your CODE is: <%d%d%d"
+	.balign 8
+	code4: .asciz "%d>\n"
+	
+	
 /* Prompt Play Again */
 .balign 8
 againp: .asciz "Play Again? [1] for YES, else for NO "
@@ -248,10 +256,10 @@ _p5s:
 		ldr r4, address_of_peg5	
 		ldr r4, [r4]
 		cmp r4, #0
-		ble _err1
+		ble _err5
 		cmp r4, #6
-		ble _p2s
-		b _err1
+		ble _p6s
+		b _err5
 	
 	_p6s:
 		/*Print Bar*/
@@ -274,10 +282,10 @@ _p5s:
 		ldr r4, address_of_peg6
 		ldr r4, [r4]
 		cmp r4, #0
-		ble _err2
+		ble _err6
 		cmp r4, #6
-		ble _p3s
-		b _err2
+		ble _p7s
+		b _err6
 	
 	_p7s:
 		/*Print Bar*/
@@ -300,10 +308,10 @@ _p5s:
 		ldr r4, address_of_peg7
 		ldr r4, [r4]
 		cmp r4, #0
-		ble _err3
+		ble _err7
 		cmp r4, #6
-		ble _p4s
-		b _err3
+		ble _p8s
+		b _err7
 
 	_p8s:
 		/*Print Bar*/
@@ -326,16 +334,50 @@ _p5s:
 		ldr r4, address_of_peg8
 		ldr r4, [r4]
 		cmp r4, #0
-		ble _err4
+		ble _err8
 		cmp r4, #6
-		ble _code
-		b _err4
+		ble _code2
+		b _err8
 	
+		_code2:
+		/*Print Final Code*/
+		ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
+		bl printf
 	
+		ldr r0, address_of_code3
+		ldr r1, address_of_peg5
+		ldr r1, [r1]
+		ldr r2, address_of_peg6
+		ldr r2, [r2]
+		ldr r3, address_of_peg7
+		ldr r3, [r3]
+		bl printf
 	
+		ldr r0, address_of_code4
+		ldr r1, address_of_peg8
+		ldr r1, [r1]
+		bl printf
+		b _cont2
+	
+		_cont2:	
+		/*Prompt: Type anything to continue*/
+		ldr r0, address_of_cont
+		bl printf
+	
+		/*Scan Anything*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg0   		/* r1 ← &peg 5 TEMP */
+		bl scanf                        /* call to scanf */
+		
+	_clear:
+		ldr r0, address_of_sclear		/* r0 ← &12 RETURNS (/n) */
+		bl printf
+		
 /****************************************************************************************/
 	
-	b _again
+	
+	
+		b _again
 /*Errors*/		
 _err1:
 	/*Prompt error: Wrong Peg Number*/
@@ -438,9 +480,12 @@ address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
+address_of_prompt2 : .word prompt2				/*"Prompt: For PLAYER - Will ask for PEG inputs"*/
 address_of_cont : .word cont					/*"Prompt: For CODEMAKER - Typr anything to cont..."*/
 address_of_code : .word code					/*"Prompt: For CODEMAKER - Prints final Code"*/
 address_of_code2 : .word code2					/*"Prompt: For CODEMAKER - Prints final Code"*/
+address_of_code3 : .word code3					/*"Prompt: For PLAYER - Prints final Code"*/
+address_of_code4 : .word code4					/*"Prompt: For PLAYER - Prints final Code"*/
 address_of_againp : .word againp				/*"Prompt: For Play Again"*/
 address_of_again : .word again					/*"Prompt: For Play Again"*/
 address_of_place : .word place					/*"address_of_place"*/
