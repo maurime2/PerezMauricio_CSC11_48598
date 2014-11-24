@@ -243,7 +243,7 @@ _mastermind:
 	
 _p5s:
 		/*Address peg1*/
-		ldr r0, address_of_prompt
+		ldr r0, address_of_prompt2
 		ldr r1, address_of_count
 		ldr r1, [r1]
 		bl printf	
@@ -271,7 +271,7 @@ _p5s:
 		str r1, [r5]
 	
 		/*Address peg1*/
-		ldr r0, address_of_prompt
+		ldr r0, address_of_prompt2
 		bl printf	
 
 		/*Scan Peg1*/
@@ -297,7 +297,7 @@ _p5s:
 		str r1, [r5]
 	
 		/*Address peg1*/
-		ldr r0, address_of_prompt
+		ldr r0, address_of_prompt2
 		bl printf	
 
 		/*Scan Peg1*/
@@ -323,7 +323,7 @@ _p5s:
 		str r1, [r5]
 	
 		/*Address peg1*/
-		ldr r0, address_of_prompt
+		ldr r0, address_of_prompt2
 		bl printf	
 
 		/*Scan Peg1*/
