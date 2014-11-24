@@ -459,15 +459,15 @@ _printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will 
 _printP4:
 		ldr r0, address_of_board2
 		bl printf
-		ldr r1, address_of_hit
+		ldr r0, address_of_hit
 		bl printf
-		ldr r2, address_of_hit
+		ldr r0, address_of_hit
 		bl printf
-		ldr r3, address_of_hit
+		ldr r0, address_of_hit
 		bl printf
 		ldr r0, address_of_board3
 		bl printf
-		ldr r1, address_of_hit
+		ldr r0, address_of_hit
 		bl printf
 		
 		b _again
