@@ -59,8 +59,9 @@ cont: .asciz "Type ANY NUMBER to Clear Screen..."
 .balign 8
 cont2: .asciz "Type ANY NUMBER to Print Board..."
 
-hit: .asciz "*"	/*1 = Play Again when asked*/
-space: .asciz " "	/*1 = Play Again when asked*/
+.balign 8
+hit: .asciz 	"*"	/*HIT*/
+space: .asciz 	" "	/*SPACE*/
 
 
 /* Error */
@@ -442,6 +443,12 @@ _printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will 
 		mov r1, r4			/*the following will print out*/
 		cmp r1, #1
 		beq _printP1
+		
+		cmp r1, #4
+		beq _printP4
+		
+				b _again
+				
 		cmp r1, #2
 		beq _printP2
 		cmp r1, #3
@@ -452,15 +459,15 @@ _printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will 
 _printP4:
 		ldr r0, address_of_board2
 		ldr r1, address_of_hit
-		ldr r1, [r1]
+			@ldr r1, [r1]
 		ldr r2, address_of_hit
-		ldr r2, [r2]
+		@ldr r2, [r2]
 		ldr r3, address_of_hit
-		ldr r3, [r3]
+		@ldr r3, [r3]
 		bl printf
 		ldr r0, address_of_board3
 		ldr r1, address_of_hit
-		ldr r1, [r1]
+		@ldr r1, [r1]
 		bl printf
 		
 		b _again
