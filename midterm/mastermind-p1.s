@@ -13,7 +13,7 @@ return: .word 0
 .data
 
 /* Pegs */
-.balign 8
+.balign 4
 peg0: .word 0	/*code peg 1*/
 peg1: .word 1	/*code peg 1*/
 peg2: .word 2	/*code peg 2*/
