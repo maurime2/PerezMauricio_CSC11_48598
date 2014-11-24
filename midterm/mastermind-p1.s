@@ -81,9 +81,9 @@ sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 	board1: .asciz "[Exact][Color]__________%d Trys Left!\n"
 		/*EXACT PEG PRINT*/
 		.balign 8
-		board2: .asciz "| %d%d%d"
+		board2: .asciz "| "
 		.balign 8
-		board3: .asciz "%d|"
+		board3: .asciz "|"
 		/*Color match PEG PRINT*/
 		.balign 8
 		board4: .asciz "| %d%d%d"
@@ -458,16 +458,16 @@ _printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will 
 		b _printP0
 _printP4:
 		ldr r0, address_of_board2
+		bl printf
 		ldr r1, address_of_hit
-			@ldr r1, [r1]
+		bl printf
 		ldr r2, address_of_hit
-		@ldr r2, [r2]
+		bl printf
 		ldr r3, address_of_hit
-		@ldr r3, [r3]
 		bl printf
 		ldr r0, address_of_board3
+		bl printf
 		ldr r1, address_of_hit
-		@ldr r1, [r1]
 		bl printf
 		
 		b _again
