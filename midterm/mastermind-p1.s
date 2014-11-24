@@ -14,7 +14,7 @@ return: .word 0
 
 /* Pegs */
 .balign 4
-peg0: .word 0	/*code peg 1*/
+peg0: .asciz x0000	/*code peg 1*/
 peg1: .word 1	/*code peg 1*/
 peg2: .word 2	/*code peg 2*/
 peg3: .word 3	/*code peg 3*/
