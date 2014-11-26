@@ -446,10 +446,10 @@ _addP4:
 _add_4:	add r4, r4, #1		
 
 _printb1:							/*Based on count of Correct Pegs in Correct spots, the logic will print	*/
-		ldr r0, address_of_place	/*the following will print out. Address of place will also store # of right pegs*/
-		str r4, [r0]
+		ldr r1, address_of_place	/*the following will print out. Address of place will also store # of right pegs*/
+		str r4, [r1]
+		ldr r1, address_of_place
 		ldr r1, [r1]
-		@mov r1, r4					
 		cmp r1, #1
 		beq _printP1
 		cmp r1, #2
