@@ -23,6 +23,12 @@ peg5: .word 5	/*code peg 5*/
 peg6: .word 6	/*code peg 6*/
 peg7: .word 7	/*code peg 7*/
 peg8: .word 8	/*code peg 8*/
+pegT0: .word 0	/*code peg 8*/
+pegT1: .word 0	/*code peg 8*/
+pegT2: .word 0	/*code peg 8*/
+pegT3: .word 0	/*code peg 8*/
+pegT4: .word 0	/*code peg 8*/
+
 count: .word 0	/*Count of Pegs*/
 trys: .word 12	/*Trys Left*/
 place: .word 0	/*Count of Guesses of right place and colors*/
@@ -393,7 +399,7 @@ _p5s:	/*Clear Count*/
 		bl printf
 		
 /****************************************************************************************/
-/*					COMPARE Pegs and Print	Board										*/
+/*					COMPARE Pegs and Print Board: EXACT PEGS							*/
 /****************************************************************************************/
 		mov r4, #0
 		ldr r0, address_of_trys
@@ -439,8 +445,11 @@ _addP4:
 		b	_printb1
 _add_4:	add r4, r4, #1		
 
-_printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will print	*/
-		mov r1, r4			/*the following will print out*/
+_printb1:							/*Based on count of Correct Pegs in Correct spots, the logic will print	*/
+		ldr r0, address_of_place	/*the following will print out. Address of place will also store # of right pegs*/
+		str r4, [r0]
+		ldr r1, [r1]
+		@mov r1, r4					
 		cmp r1, #1
 		beq _printP1
 		cmp r1, #2
@@ -450,7 +459,7 @@ _printb1:					/*Based on count of Correct Pegs in COrrect spots, the logic will 
 		cmp r1, #4
 		beq _printP4
 		b _printP0
-_printP4:
+_printP4:											/*Prints 4 "*"* as a correct guess*/
 		ldr r0, address_of_board2
 		bl printf
 		ldr r0, address_of_hit
@@ -463,8 +472,8 @@ _printP4:
 		bl printf
 		ldr r0, address_of_board3
 		bl printf
-		b _again
-_printP3:
+		b _wSpace
+_printP3:											/*Prints 3 "*"* as a correct guess with 1 space*/
 		ldr r0, address_of_board2
 		bl printf
 		ldr r0, address_of_hit
@@ -477,8 +486,8 @@ _printP3:
 		bl printf
 		ldr r0, address_of_board3
 		bl printf
-		b _again
-_printP2:
+		b _wSpace
+_printP2:												/*Prints 2 "*"* as a correct guess with 2 space*/
 		ldr r0, address_of_board2
 		bl printf
 		ldr r0, address_of_hit
@@ -491,8 +500,8 @@ _printP2:
 		bl printf
 		ldr r0, address_of_board3
 		bl printf
-		b _again
-_printP1:
+		b _wSpace
+_printP1:												/*Prints 1 "*"* as a correct guess with 3 space*/
 		ldr r0, address_of_board2
 		bl printf
 		ldr r0, address_of_hit
@@ -505,8 +514,8 @@ _printP1:
 		bl printf
 		ldr r0, address_of_board3
 		bl printf
-		b _again
-_printP0:
+		b _wSpace
+_printP0:								/*Prints Spaces, None were guessed correctly*/
 		ldr r0, address_of_board2
 		bl printf
 		ldr r0, address_of_space
@@ -519,6 +528,13 @@ _printP0:
 		bl printf
 		ldr r0, address_of_board3
 		bl printf
+		b _wSpace
+		
+/****************************************************************************************/
+/*					COMPARE Pegs and Print Board: Wrong Place, Right Color  PEGS		*/
+/****************************************************************************************/	
+		
+_wSpace:
 		b _again
 
 /*Errors*/		
@@ -621,6 +637,12 @@ address_of_peg5 : .word peg5					/*Address of peg5: Code to Guess*/
 address_of_peg6 : .word peg6					/*Address of peg6: Code to Guess*/
 address_of_peg7 : .word peg7					/*Address of peg7: Code to Guess*/
 address_of_peg8 : .word peg8					/*Address of peg8: Code to Guess*/
+address_of_pegT0 : .word pegT0					/*Address of pegT1: Place holder: VALUE ZERO ALWAYS*/
+address_of_pegT1 : .word pegT1					/*Address of pegT1: Place holder*/
+address_of_pegT2 : .word pegT2					/*Address of pegT2: Place holder*/
+address_of_pegT3 : .word pegT3					/*Address of pegT3: Place holder*/
+address_of_pegT4 : .word pegT4					/*Address of pegT4: Place holder*/
+
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 address_of_prompt2 : .word prompt2				/*"Prompt: For PLAYER - Will ask for PEG inputs"*/
