@@ -545,7 +545,7 @@ _Ccheck1:
 		ldr r2, address_of_peg5
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Ccheck2:
+		beq	_Ccheck2
 		
 		ldr r1, address_of_peg1
 		ldr r1, [r1]
@@ -558,9 +558,9 @@ _Ccheck1:
 
 		cmp r1, r2
 		beq _addC1
-_c12	cmp r1, r3
+_c12:	cmp r1, r3
 		beq _addC2
-_c13	cmp r1, r4
+_c13:	cmp r1, r4
 		beq _addC3
 		
 _addC1:
