@@ -536,7 +536,7 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 		
 _wSpace:					/*With Spaces: Logic will print out pegs that are in the wrong spot but*/
 		mov r5, #0			/*are the right colour. */
-		ldr r0, board2
+		ldr r0, address_of_board2
 		bl printf
 		
 		/*Temp Pegs*/							/*loads guessers Pegs to Temporary pegs. These will be used to find the wrong placed pegs*/
