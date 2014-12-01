@@ -539,6 +539,24 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are in the wrong spot
 		ldr r0, board2
 		bl printf
 		
+		/*Temp Pegs*/							/*loads guessers Pegs to Temporary pegs. These will be used to find the wrong placed pegs*/
+		ldr r0, address_of_pegT1	/**/
+		ldr r1, address_of_peg5		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		ldr r0, address_of_pegT2	/**/
+		ldr r1, address_of_peg6		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		ldr r0, address_of_pegT3	/**/
+		ldr r1, address_of_peg7		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		ldr r0, address_of_pegT4	/**/
+		ldr r1, address_of_peg8		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		
 _Ccheck1:
 		ldr r1, address_of_peg1
 		ldr r1, [r1]
