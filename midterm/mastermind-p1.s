@@ -401,8 +401,8 @@ _p5s:	/*Clear Count*/
 /****************************************************************************************/
 /*					COMPARE Pegs and Print Board: EXACT PEGS							*/
 /****************************************************************************************/
-		mov r4, #0
-		ldr r0, address_of_trys
+		mov r4, #0					/* this will count the exact pegs*/
+		ldr r0, address_of_trys		/* RESETS the number of tries, will be moved later*/
 		mov r1, #12
 		str r1, [r0]
 		ldr r0, address_of_board1
@@ -416,7 +416,7 @@ _addP1:
 		cmp r1, r2
 		beq _add_1
 		b	_addP2
-_add_1:	add r4, r4, #1
+	_add_1:	add r4, r4, #1
 _addP2:
 		ldr r1, address_of_peg2
 		ldr r1, [r1]
@@ -425,7 +425,7 @@ _addP2:
 		cmp r1, r2
 		beq _add_2
 		b	_addP3
-_add_2:	add r4, r4, #1
+	_add_2:	add r4, r4, #1
 _addP3:
 		ldr r1, address_of_peg3
 		ldr r1, [r1]
@@ -434,7 +434,7 @@ _addP3:
 		cmp r1, r2
 		beq _add_3
 		b	_addP4
-_add_3:	add r4, r4, #1		
+	_add_3:	add r4, r4, #1		
 _addP4:
 		ldr r1, address_of_peg4
 		ldr r1, [r1]
@@ -442,13 +442,17 @@ _addP4:
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_4
-		b	_printb0
-_add_4:	add r4, r4, #1		
+		b	_store_e_1															/*THIS LINE GOES TO PRINT ZERO*/
+	_add_4:	add r4, r4, #1		
 
+	_store_e_1:
+			ldr r1, address_of_place	 /*STORES THE CORRECT NUMBER OF PLACES GUESSED:   */
+			str r4, [r1]				/*Address of place will also store # of right pegs 	  */
+			ldr r0, address_of_board2	/*Prints first part of the correct guess bracket*/
+			bl printf
+	
 _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
-		ldr r1, address_of_place	 /*the logic will print the following will print out.  */
-		str r4, [r1]				/*Address of place will also store # of right pegs 	  */
-		ldr r1, address_of_place
+		ldr r1, address_of_place		
 		ldr r1, [r1]
 		cmp r1, #1
 		beq _printP1
@@ -460,8 +464,6 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 		beq _printP4
 		b _printP0
 	_printP4:								/*Prints 4 "*"* as a correct guess*/
-			ldr r0, address_of_board2
-			bl printf
 			ldr r0, address_of_hit
 			bl printf
 			ldr r0, address_of_hit
@@ -474,8 +476,6 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 			bl printf
 			b _wSpace
 	_printP3:											/*Prints 3 "*"* as a correct guess with 1 space*/
-			ldr r0, address_of_board2
-			bl printf
 			ldr r0, address_of_hit
 			bl printf
 			ldr r0, address_of_hit
@@ -488,8 +488,6 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 			bl printf
 			b _wSpace
 	_printP2:												/*Prints 2 "*"* as a correct guess with 2 space*/
-			ldr r0, address_of_board2
-			bl printf
 			ldr r0, address_of_hit
 			bl printf
 			ldr r0, address_of_hit
@@ -502,8 +500,6 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 			bl printf
 			b _wSpace
 	_printP1:												/*Prints 1 "*"* as a correct guess with 3 space*/
-			ldr r0, address_of_board2
-			bl printf
 			ldr r0, address_of_hit
 			bl printf
 			ldr r0, address_of_space
@@ -515,9 +511,7 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 			ldr r0, address_of_board3
 			bl printf
 			b _wSpace
-	_printP0:								/*Prints Spaces, None were guessed correctly*/
-			ldr r0, address_of_board2
-			bl printf
+	_printP0:												/*Prints Spaces, None were guessed correctly*/
 			ldr r0, address_of_space
 			bl printf
 			ldr r0, address_of_space
@@ -535,6 +529,10 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
 /****************************************************************************************/	
 		
 _wSpace:					/*With Spaces: Logic will print out pegs that are in the wrong spot but*/
+		
+		
+		bl _again
+		
 		mov r5, #0			/*are the right colour. */
 		ldr r0, address_of_board2
 		bl printf
