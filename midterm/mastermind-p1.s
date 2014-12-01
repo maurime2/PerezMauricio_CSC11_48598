@@ -442,7 +442,7 @@ _addP4:
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_4
-		b	_printb1
+		b	_printb0
 _add_4:	add r4, r4, #1		
 
 _printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
