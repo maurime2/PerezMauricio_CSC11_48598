@@ -248,7 +248,7 @@ _mastermind:
 		ldr r1, address_of_trys						/*Reset Trys*/
 		mov r2, #12
 		str r2, [r1]
-		
+_trys:	b _p5s
 		
 /****************************************************************************************/
 /*								PLAYER INPUTS Guesses									*/
@@ -392,10 +392,13 @@ _p5s:	/*Clear Count*/
 /****************************************************************************************/
 /*					COMPARE Pegs and Print Board: EXACT PEGS							*/
 /****************************************************************************************/
-		mov r4, #0					/* this will count the exact pegs*/
-		ldr r0, address_of_trys		/* RESETS the number of tries, will be moved later*/
-		mov r1, #12
-		str r1, [r0]
+		ldr r2, address_of_trys		/* RESETS the number of tries, will be moved later*/
+		ldr r1, [r2]
+		sub r1, r1, #1
+		str r1, r2
+		
+		ldr r1, address_of_trys		/* RESETS the number of tries, will be moved later*/
+		ldr r1, [r1]
 		ldr r0, address_of_board1
 		bl printf
 		
