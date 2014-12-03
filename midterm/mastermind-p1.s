@@ -656,10 +656,10 @@ _again:
     ldr r1, address_of_again   		/* r1 ← &fibin */
     bl scanf                        /* call to scanf */
 	
-	ldr r1, address_of_again	  /*If Adress of again is equal to 1 */
-	ldr r1, [r1]				 /* the player will play again, else*/
-	cmp r1, #1					/*  will branch to _main		   */
-	beq _mastermind
+	ldr r1, address_of_again	  /*If Adress of again is equal to 1 	   */
+	ldr r1, [r1]				 /* the player will play again, else	  */
+	cmp r1, #1					/*  will branch to _main		  		 */
+	beq _trys				   /*_trys will start at player guess input */
 	b _main
 	
 /*Prompt CODEMAKER for Peg values*/
