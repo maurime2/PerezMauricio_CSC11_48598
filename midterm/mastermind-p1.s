@@ -395,7 +395,7 @@ _p5s:	/*Clear Count*/
 		ldr r2, address_of_trys		/* RESETS the number of tries, will be moved later*/
 		ldr r1, [r2]
 		sub r1, r1, #1
-		str r1, r2
+		str r1, [r2]
 		
 		ldr r1, address_of_trys		/* RESETS the number of tries, will be moved later*/
 		ldr r1, [r1]
