@@ -23,12 +23,11 @@ peg5: .word 5	/*code peg 5*/
 peg6: .word 6	/*code peg 6*/
 peg7: .word 7	/*code peg 7*/
 peg8: .word 8	/*code peg 8*/
-pegT0: .word 0	/*code peg 8*/
-pegT1: .word 0	/*code peg 8*/
-pegT2: .word 0	/*code peg 8*/
-pegT3: .word 0	/*code peg 8*/
-pegT4: .word 0	/*code peg 8*/
-
+pegT0: .word 0	/*code peg TEMPORARY 0*/
+pegT1: .word 0	/*code peg TEMPORARY 1*/
+pegT2: .word 0	/*code peg TEMPORARY 2*/
+pegT3: .word 0	/*code peg TEMPORARY 3*/
+pegT4: .word 0	/*code peg TEMPORARY 4*/
 count: .word 0	/*Count of Pegs*/
 trys: .word 12	/*Trys Left*/
 place: .word 0	/*Count of Guesses of right place and colors*/
@@ -36,75 +35,67 @@ color: .word 0	/*Count of Guesses of right colors, wrong place*/
 again: .word 0	/*1 = Play Again when asked*/
 
 /* Prompt */
-.balign 8
-prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
-
-/* CODEMAKER CODE PRINT */
 	.balign 8
+	prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
+/*PROMPTS: CODEMAKER PRINT */
+		.balign 8
 	code: .asciz "CODEMAKER: Your CODE is: <%d%d%d"
-	.balign 8
+		.balign 8
 	code2: .asciz "%d>\n"
 
-/* PLAYER CODE PRINT */
-	.balign 8
+/*PROMPTS: PLAYER PRINT */
+		.balign 8
 	prompt2: .asciz "PLAYER: Pick a Value for Peg %d (1-6): "
-
-	.balign 8
+		.balign 8
 	code3: .asciz "PLAYER: Your CODE is: <%d%d%d"
-	.balign 8
+		.balign 8
 	code4: .asciz "%d>\n"
 	
-	
-/* Prompt Play Again */
-.balign 8
-againp: .asciz "Play Again? [1] for YES, else for NO "
+/*PROMPT: Play Again */
+		.balign 8
+	againp: .asciz "Play Again? [1] for YES, else for NO "
 
 /*PROMPT: Type anything to continue*/
-.balign 8
-cont: .asciz "Type ANY NUMBER to Clear Screen..."
-.balign 8
-cont2: .asciz "Type ANY NUMBER to Print Board..."
-
-.balign 8
-hit: .asciz 	"*"	/*HIT*/
-space: .asciz 	" "	/*SPACE*/
-
-
-/* Error */
-.balign 8
-error: .asciz "Error, Value must be within (1-6), Try Again\n"
-
+		.balign 8
+	cont: .asciz "Type ANY NUMBER to Clear Screen..."
+		.balign 8
+	cont2: .asciz "Type ANY NUMBER to Print Board..."
+/*PRINTS: HIT and SPACE*/
+		.balign 8
+	hit: .asciz 	"*"	/*HIT*/
+	space: .asciz 	" "	/*SPACE*/
+/* ERROR: RETRY INPUT*/
+		.balign 8
+	error: .asciz "Error, Value must be within (1-6), Try Again\n"
 /* Divider */
-.balign 8
-divider: .asciz "--------------------------------------\n"
-
-/* Screen Clear */
-.balign 8
-sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-
-/*Board Print Prompts*/
-	.balign 8
+		.balign 8
+	divider: .asciz "--------------------------------------\n"
+/*Screen Clear*/
+		.balign 8
+	sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+/*PROMPTS: Board Print*/
+		.balign 8
 	board1: .asciz "[Exact][Color]__________%d Trys Left!\n"
 		/*EXACT PEG PRINT*/
 		.balign 8
-		board2: .asciz "| "
+	board2: .asciz "| "
 		.balign 8
-		board3: .asciz "|"
+	board3: .asciz "|"
 		/*Color match PEG PRINT*/
 		.balign 8
-		board4: .asciz "| %d%d%d"
+	board4: .asciz "| %d%d%d"
 		.balign 8
-		board5: .asciz "%d|"
+	board5: .asciz "%d|"
 		/*Code Inputed by user*/
 		.balign 8
-		board6: .asciz " %d-%d-%d-"
+	board6: .asciz " %d-%d-%d-"
 		.balign 8
-		board7: .asciz "%d |/n"
-
+	board7: .asciz "%d |/n"
+/*PROMPTS: YOU WIN*/
 		.balign 8
-		match: .asciz "ALL MATCH !!!YOU WIN!!!"
+	match: .asciz "ALL MATCH !!!YOU WIN!!!"
 		.balign 8
-		nomatch: .asciz "NO MATCH -You Lose-"
+	nomatch: .asciz "NO MATCH -You Lose-"
 		
 .text
 
@@ -442,19 +433,19 @@ _addP4:
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _add_4
-		b	_store_e_1															/*THIS LINE GOES TO PRINT ZERO*/
+		b	_store_e_1					/*THIS LINE GOES TO PRINT ZERO*/
 	_add_4:	add r4, r4, #1		
 
 	_store_e_1:
-			ldr r1, address_of_place	 /*STORES THE CORRECT NUMBER OF PLACES GUESSED:   */
-			str r4, [r1]				/*Address of place will also store # of right pegs 	  */
-			ldr r0, address_of_board2	/*Prints first part of the correct guess bracket*/
+			ldr r1, address_of_place	  /*STORES THE CORRECT NUMBER OF PLACES GUESSED:     */
+			str r4, [r1]				 /*Address of place will also store # of right pegs */
+			ldr r0, address_of_board2	/*Prints first part of the correct guess bracket   */
 			bl printf
 	
-_printb1:							  /*Based on count of Correct Pegs in Correct spots, 	*/
-		ldr r1, address_of_place		
-		ldr r1, [r1]
-		cmp r1, #1
+_printb1:							  /*Based on count of Correct Pegs in Correct spots,		  */
+		ldr r1, address_of_place	 /*_printb1 is responsible for comparing correct pin guesses,*/	
+		ldr r1, [r1]				/*If its 4 correct pins, _printP4 will be called out, 		*/
+		cmp r1, #1					/*If its 3 correct pins, _printP3 will be called out, etc..*/
 		beq _printP1
 		cmp r1, #2
 		beq _printP2
