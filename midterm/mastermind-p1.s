@@ -355,9 +355,9 @@ _p5s:	/*Clear Count*/
 		ble _code2
 		b _err8
 	
-		_code2:
-		/*Print Final Code*/
-		ldr r0, address_of_divider     						/* PRINT DIVIDER */
+	_code2:											/*This Prints Final Code the Player Will Guess			 */
+		/*Print Final Code*/					   /*can only print the contents of 3 registers at one time,*/
+		ldr r0, address_of_divider     			  /* so will need to call printf twice to print code	   */
 		bl printf
 	
 		ldr r0, address_of_code3
@@ -376,20 +376,20 @@ _p5s:	/*Clear Count*/
 		b _cont2
 	
 		_cont2:	
-		/*Prompt: Type anything to continue*/					/*Type any number to cont*/
-		ldr r0, address_of_cont2
-		bl printf
+			/*Prompt: Type anything to continue*/					/*Type any number to continue*/
+			ldr r0, address_of_cont2
+			bl printf
 	
-		/*Scan Anything*/
-		ldr r0, address_of_scan_pattern							/* r0 ← &Scan pattern */
-		ldr r1, address_of_peg0   								/* r1 ← &peg 5 TEMP */
-		bl scanf                        						/* call to scanf */
+			/*Scan Anything*/
+			ldr r0, address_of_scan_pattern							/* r0 ← &Scan pattern */
+			ldr r1, address_of_peg0   								/* r1 ← &peg 5 TEMP */
+			bl scanf                        						/* call to scanf */
 		
 	_clear2:
-		ldr r0, address_of_sclear								/* r0 ← &12 RETURNS (/n) */
+		ldr r0, address_of_sclear								/* Clears Screen with 12 RETURNS (/n) */
 		bl printf
 		
-/****************************************************************************************/
+/************************************************************************************************************************************************************/
 /*					COMPARE Pegs and Print Board: EXACT PEGS							*/
 /****************************************************************************************/
 		ldr r2, address_of_trys		/* RESETS the number of tries, will be moved later*/
