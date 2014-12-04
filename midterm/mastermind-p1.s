@@ -401,6 +401,7 @@ _p5s:	/*Clear Count*/
 		ldr r1, [r1]
 		ldr r0, address_of_board1
 		bl printf
+		mov r4, #0
 		
 _addP1:
 		ldr r1, address_of_peg1
