@@ -389,12 +389,12 @@ _p5s:	/*Clear Count*/
 		ldr r0, address_of_sclear								/* Clears Screen with 12 RETURNS (/n) */
 		bl printf
 		
-/************************************************************************************************************************************************************/
+/****************************************************************************************/
 /*					COMPARE Pegs and Print Board: EXACT PEGS							*/
 /****************************************************************************************/
-		ldr r2, address_of_trys		/* RESETS the number of tries, will be moved later*/
-		ldr r1, [r2]
-		sub r1, r1, #1
+		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
+		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
+		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
 		str r1, [r2]
 		
 		ldr r1, address_of_trys		/* RESETS the number of tries, will be moved later*/
