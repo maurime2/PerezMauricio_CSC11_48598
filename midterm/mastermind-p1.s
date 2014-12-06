@@ -742,7 +742,7 @@ address_of_board4 : .word board4					/*"Prints fourth part of the board: First C
 address_of_board5 : .word board5					/*"Prints fifth part of the board: Second Color Pegs"*/
 address_of_board6 : .word board6					/*"Prints sixth part of the board: Code Input (first 3)"*/
 address_of_board7 : .word board7					/*"Prints seventh part of the board: Code Input (last peg)"*/
-address_of_board8 : .word board8					/*"Prints last part of the board: Code Input (last peg)"*/
+
 address_of_win1   : .word win1						/*"Prints last part of the board: Spaces on pegs of wrong Color"*/
 address_of_win2   : .word win2						/*"Prints last part of the board: Last Part of input code"*/
 
