@@ -104,7 +104,7 @@ again: .word 0	/*1 = Play Again when asked*/
 		.balign 8
 	match: .asciz "ALL MATCH !!!YOU WIN!!!"
 		.balign 8
-	nomatch: .asciz "NO MATCH -You Lose-"
+	nomatch: .asciz "No Tries Left!!!! GAME OVER! "
 		
 .text
 
@@ -406,8 +406,10 @@ _p5s:	/*Clear Count*/
 		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
 		str r1, [r2]
 		
-		ldr r1, address_of_trys		/* RESETS the number of tries, will be moved later*/
+		ldr r1, address_of_trys		/* PRINTS BOARD 1: EXACT, COLOR, AND TRYS*/
 		ldr r1, [r1]
+		cmp r1, #0
+		beq _gOVER
 		ldr r0, address_of_board1
 		bl printf
 		mov r4, #0
@@ -693,6 +695,12 @@ _win:
 		cmp r1, #1
 		beq _mastermind
 		b _main							/*Returns to main menu*/
+		
+_gOVER:
+	ldr r0, address_of_nomatch
+	bl printf
+	bl _again
+		
 /*PLAY AGAIN?*/	
 _again:
 	/*Prompt Play Again*/
