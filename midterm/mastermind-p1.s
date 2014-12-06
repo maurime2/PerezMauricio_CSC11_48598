@@ -53,7 +53,7 @@ again: .word 0	/*1 = Play Again when asked*/
 	
 /*PROMPT: Play Again */
 		.balign 8
-	againp: .asciz "Play Again? [1] for YES, else for NO "
+	againp: .asciz "Play Again? Type [1] for YES, else for NO "
 
 /*PROMPT: Type anything to continue*/
 		.balign 8
@@ -98,7 +98,7 @@ again: .word 0	/*1 = Play Again when asked*/
 			.balign 8
 	win3:	.asciz "%d-%d|\\"
 			.balign 8
-	win4:	.asciz "\n ALL MATCH !!!YOU WIN!!! \nPlay Again? Type [1] for YES, ELSE for NO: "	
+	win4:	.asciz "\n ALL MATCH !!!YOU WIN!!! \nPlay Again? Type [1] for YES, else for NO: "	
 		
 /*PROMPTS: YOU WIN*/
 		.balign 8
@@ -692,7 +692,7 @@ _win:
 		ldr r1, [r1]
 		cmp r1, #1
 		beq _mastermind
-
+		b _main							/*Returns to main menu*/
 /*PLAY AGAIN?*/	
 _again:
 	/*Prompt Play Again*/
