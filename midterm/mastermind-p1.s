@@ -75,7 +75,9 @@ again: .word 0	/*1 = Play Again when asked*/
 	sclear: .asciz "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 /*PROMPTS: Board Print*/
 		.balign 8
-	board1: .asciz "[Exact][Color]__________%d Trys Left!\n"
+	board0: .asciz "[Exact][Color]__________LAST TRY! MAKE IT COUNT!\n"
+		.balign 8
+	board1: .asciz "[Exact][Color]__________Try: %d\n"
 		/*EXACT PEG PRINT*/
 		.balign 8
 	board2: .asciz "| "
@@ -104,7 +106,7 @@ again: .word 0	/*1 = Play Again when asked*/
 		.balign 8
 	match: .asciz "ALL MATCH !!!YOU WIN!!!"
 		.balign 8
-	nomatch: .asciz "No Tries Left!!!! GAME OVER! "
+	nomatch0: .asciz "No Tries Left!!!! NO MATCHES!!! GAME OVER! "
 		
 .text
 
@@ -401,10 +403,7 @@ _p5s:	/*Clear Count*/
 /****************************************************************************************/
 /*					COMPARE Pegs and Print Board: EXACT PEGS							*/
 /****************************************************************************************/
-		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
-		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
-		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
-		str r1, [r2]
+
 		
 		ldr r1, address_of_trys		/* PRINTS BOARD 1: EXACT, COLOR, AND TRYS*/
 		ldr r1, [r1]
@@ -412,6 +411,12 @@ _p5s:	/*Clear Count*/
 		beq _gOVER
 		ldr r0, address_of_board1
 		bl printf
+				/*DECRIMENT*/
+		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
+		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
+		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
+		str r1, [r2]
+		
 		mov r4, #0
 		
 _addP1:
@@ -597,6 +602,14 @@ _addC3:
 _Ccheck2:	
 		b _again
 
+		
+		/*DECRIMENT*/
+		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
+		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
+		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
+		str r1, [r2]		
+		
+		
 /*Errors*/		
 _err1:
 	/*Prompt error: Wrong Peg Number*/
@@ -697,7 +710,7 @@ _win:
 		b _main							/*Returns to main menu*/
 		
 _gOVER:
-	ldr r0, address_of_nomatch
+	ldr r0, address_of_nomatch0
 	bl printf
 	bl _again
 		
@@ -766,6 +779,7 @@ address_of_color : .word color					/*"address_of_color"*/
 address_of_count : .word count					/*"address_of_count when needed"*/
 address_of_divider : .word divider				/*"Divider Bar for prompt"*/
 address_of_sclear : .word sclear					/*"Prompt: CLEARS THE SCREEN WITH 30 \n"*/
+address_of_board0 : .word board0					/*"Prints first part of the board: LAST TRY!!!"*/
 address_of_board1 : .word board1					/*"Prints first part of the board: with Trys left"*/
 address_of_board2 : .word board2					/*"Prints second part of the board: First Match Pegs"*/
 address_of_board3 : .word board3					/*"Prints third of the board: Second Match Pegs"*/
@@ -780,7 +794,7 @@ address_of_win3   : .word win3						/*"Prints last part of the board: Last Part 
 address_of_win4   : .word win4						/*"Prints last part of the board: Last Part of input code"*/
 
 address_of_match : .word match						/*"Prints win prompt"*/
-address_of_nomatch : .word nomatch					/*"Prints loss prompt"*/
+address_of_nomatch0 : .word nomatch0				/*"Prints loss prompt"*/
 
 /* External */
 .global printf
