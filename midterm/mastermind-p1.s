@@ -671,7 +671,7 @@ _win:
 	ldr r3, [r3]
 	bl printf
 	
-	ldr r0, address_of_win2
+	ldr r0, address_of_win3
 	ldr r1, address_of_peg3
 	ldr r1, [r1]
 	ldr r2, address_of_peg4
