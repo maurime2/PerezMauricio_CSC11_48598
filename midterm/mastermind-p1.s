@@ -661,8 +661,8 @@ _win:
 	bl printf
 	
 	ldr r0, address_of_win2
-	ldr r8, address_of_peg8
-	ldr r8, [r8]
+	ldr r1, address_of_peg8
+	ldr r1, [r1]
 	bl printf
 	
 	bl _again
