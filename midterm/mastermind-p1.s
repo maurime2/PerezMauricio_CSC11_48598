@@ -683,6 +683,16 @@ _win:
 	ldr r0, address_of_win4
 	bl printf
 	
+	/*Scan Peg1*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_peg0   		/* r1 ← &peg1 */
+		bl scanf                        /* call to scanf */
+		
+		ldr r0, address_of_peg0
+		ldr r1, [r1]
+		cmp r1, #1
+		beq _mastermind
+		
 	bl _again
 	
 
