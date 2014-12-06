@@ -96,8 +96,10 @@ again: .word 0	/*1 = Play Again when asked*/
 			.balign 8
 	win2:	.asciz "%d | /|%d-%d-"
 			.balign 8
-	win3:	.asciz "%d-%d|\\n ALL MATCH !!!YOU WIN!!! \nPlay Again? Type [1] for YES, ELSE for NO: "
-	
+	win3:	.asciz "%d-%d|\"
+			.balign 8
+	win4:	.asciz "\n ALL MATCH !!!YOU WIN!!! \nPlay Again? Type [1] for YES, ELSE for NO: "	
+		
 /*PROMPTS: YOU WIN*/
 		.balign 8
 	match: .asciz "ALL MATCH !!!YOU WIN!!!"
@@ -651,9 +653,9 @@ _err8:
 	b _p8s
 /***********************************************/
 
-
+/*Winning Board*/
 _win:
-	ldr r0, address_of_win1
+	ldr r0, address_of_win1							/*PRINTS WINNING BOARD*/
 	ldr r1, address_of_peg5
 	ldr r1, [r1]
 	ldr r2, address_of_peg6
@@ -676,6 +678,9 @@ _win:
 	ldr r1, [r1]
 	ldr r2, address_of_peg4
 	ldr r2, [r2]
+	bl printf
+	
+	ldr r0, address_of_win4
 	bl printf
 	
 	bl _again
@@ -759,7 +764,7 @@ address_of_board7 : .word board7					/*"Prints seventh part of the board: Code I
 address_of_win1   : .word win1						/*"Prints last part of the board: Spaces on pegs of wrong Color"*/
 address_of_win2   : .word win2						/*"Prints last part of the board: Last Part of input code"*/
 address_of_win3   : .word win3						/*"Prints last part of the board: Last Part of input code"*/
-
+address_of_win4   : .word win4						/*"Prints last part of the board: Last Part of input code"*/
 
 address_of_match : .word match						/*"Prints win prompt"*/
 address_of_nomatch : .word nomatch					/*"Prints loss prompt"*/
