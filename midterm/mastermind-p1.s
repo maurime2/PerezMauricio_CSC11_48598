@@ -96,7 +96,7 @@ again: .word 0	/*1 = Play Again when asked*/
 			.balign 8
 	win2:	.asciz "%d | /|%d-%d-"
 			.balign 8
-	win3:	.asciz "%d-%d|\"
+	win3:	.asciz "%d-%d|\\"
 			.balign 8
 	win4:	.asciz "\n ALL MATCH !!!YOU WIN!!! \nPlay Again? Type [1] for YES, ELSE for NO: "	
 		
