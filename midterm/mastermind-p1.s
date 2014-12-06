@@ -90,7 +90,12 @@ again: .word 0	/*1 = Play Again when asked*/
 		.balign 8
 	board6: .asciz " %d-%d-%d-"
 		.balign 8
-	board7: .asciz "%d |/n"
+	board7: .asciz "%d |\n"
+		.balign 8
+	win1:	.asciz "[     ]%d-%d-%d-"
+			.balign 8
+	win2:	.asciz "%d |\n"ALL MATCH !!!YOU WIN!!!"
+	
 /*PROMPTS: YOU WIN*/
 		.balign 8
 	match: .asciz "ALL MATCH !!!YOU WIN!!!"
@@ -469,7 +474,7 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots,		  */
 			bl printf
 			ldr r0, address_of_board3
 			bl printf
-			b _wSpace
+			b _win
 	_printP3:											/*Prints 3 "*"* as a correct guess with 1 space*/
 			ldr r0, address_of_hit
 			bl printf
@@ -644,6 +649,25 @@ _err8:
 	b _p8s
 /***********************************************/
 
+
+_win:
+	ldr r0, address_of_win1
+	ldr r1, address_of_peg5
+	ldr r1, [r1]
+	ldr r2, address_of_peg6
+	ldr r2, [r2]
+	ldr r3, address_of_peg7
+	ldr r3, [r3]
+	bl printf
+	
+	ldr r0, address_of_win2
+	ldr r8, address_of_peg8
+	ldr r8, [r8]
+	bl printf
+	
+	bl _again
+	
+
 	
 
 /*PLAY AGAIN?*/	
@@ -718,7 +742,11 @@ address_of_board4 : .word board4					/*"Prints fourth part of the board: First C
 address_of_board5 : .word board5					/*"Prints fifth part of the board: Second Color Pegs"*/
 address_of_board6 : .word board6					/*"Prints sixth part of the board: Code Input (first 3)"*/
 address_of_board7 : .word board7					/*"Prints seventh part of the board: Code Input (last peg)"*/
-address_of_board8 : .word board7					/*"Prints last part of the board: Code Input (last peg)"*/
+address_of_board8 : .word board8					/*"Prints last part of the board: Code Input (last peg)"*/
+address_of_win1   : .word win1						/*"Prints last part of the board: Spaces on pegs of wrong Color"*/
+address_of_win2   : .word win2						/*"Prints last part of the board: Last Part of input code"*/
+
+
 address_of_match : .word match						/*"Prints win prompt"*/
 address_of_nomatch : .word nomatch					/*"Prints loss prompt"*/
 
