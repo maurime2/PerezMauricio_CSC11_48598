@@ -94,7 +94,7 @@ again: .word 0	/*1 = Play Again when asked*/
 		.balign 8
 	win1:	.asciz "[     ]%d-%d-%d-"
 			.balign 8
-	win2:	.asciz "%d |\n"ALL MATCH !!!YOU WIN!!!"
+	win2:	.asciz "%d |\n ALL MATCH !!!YOU WIN!!!"
 	
 /*PROMPTS: YOU WIN*/
 		.balign 8
