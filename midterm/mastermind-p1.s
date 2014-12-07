@@ -810,8 +810,8 @@ _dec:					/*DECRIMENT*/
 						sub r1, r1, #1			  /* I.E you start with 12 trys					*/
 						str r1, [r2]
 						
-						ldr r0, address_of_scan_pattern
-						bl printf		
+						@ldr r0, address_of_scan_pattern
+						@bl printf		
 		b _again
 		
 /*Errors*/		
