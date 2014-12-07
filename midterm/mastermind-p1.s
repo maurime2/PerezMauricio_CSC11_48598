@@ -1021,7 +1021,7 @@ _win:
 _gOVER:
 	ldr r0, address_of_nomatch0
 	bl printf
-	bl _again
+	bl _again2
 		
 /*PLAY AGAIN?*/	
 _again:
@@ -1030,6 +1030,7 @@ _again:
 	cmp r1, #0
 	beq _gOVER
 	
+_again2:
 	/*Prompt Play Again*/
 	ldr r0, address_of_againp
 	ldr r1, address_of_trys		/* Decrements the number of trys left by one, */
