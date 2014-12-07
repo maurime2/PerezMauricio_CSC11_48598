@@ -543,7 +543,9 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are */
 		
 		bl _again
 		
-		mov r5, #0			/*are the right colour. */
+		mov r5, #0					/*r5 holds the right colour. */
+		ldr r2, address_of_color
+		str r5, [r2]
 		ldr r0, address_of_board2
 		bl printf
 		
@@ -565,10 +567,58 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are */
 		ldr r1, [r1]
 		str r1, [r0]
 		
+		/*Check for Same Input Value*/
+		ldr r0, address_of_pegT1	/**/
+		ldr r0, [r0]
+		ldr r1, address_of_peg1	/**/
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T1-0
+		b _T2
+_T1-0:	mov r1, #0
+		ldr r0, address_of_pegT1	/**/
+		str r1, [r0]
+				
+_T2:	ldr r0, address_of_pegT2	/**/
+		ldr r0, [r0]
+		ldr r1, address_of_peg2	/**/
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T2-0
+		b _T3
+_T2-0:	mov r1, #0
+		ldr r0, address_of_pegT2	/**/
+		str r1, [r0]
+		
+_T3:	ldr r0, address_of_pegT3	/**/
+		ldr r0, [r0]
+		ldr r1, address_of_peg3	/**/
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T3-0
+		b _T4
+_T3-0:	mov r1, #0
+		ldr r0, address_of_pegT3	/**/
+		str r1, [r0]
+
+		
+_T4:	ldr r0, address_of_pegT4	/**/
+		ldr r0, [r0]
+		ldr r1, address_of_peg4	/**/
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T4-0
+		b _Ccheck1
+_T4-0:	mov r1, #0
+		ldr r0, address_of_pegT4	/**/
+		str r1, [r0]		
+		
+		
+		
 _Ccheck1:
 		ldr r1, address_of_peg1
 		ldr r1, [r1]
-		ldr r2, address_of_peg5
+		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Ccheck2
