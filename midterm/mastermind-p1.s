@@ -604,28 +604,25 @@ _T4_0:	mov r1, #0						/*Here T4 is set to Zero*/
 		ldr r0, address_of_pegT4
 		str r1, [r0]		
 		
-_Cch1:	ldr r1, address_of_peg1		  /*Check Color 1 Checks Temp 1 Peg against all of the Coder's Pegs   */			
-		ldr r1, [r1]				 /*If it finds a similar peg, it Increment the Color Mach count and  */
-		ldr r2, address_of_pegT1	/*Set the Temp 1 peg to #0										    */
+_Cch1:	 /*Check Color 1 Checks Temp 1 Peg against all of the Coder's Pegs   */			
+		/*If it finds a similar peg, it Increment the Color Mach count and  */
+	   /*Set the Temp 1 peg to #0										   */
+		
+		ldr r1, address_of_peg2
+		ldr r1, [r1]
+		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch1_A
-		ble	_Cch2
-		ldr r1, address_of_peg1
+		ldr r1, address_of_peg3
 		ldr r1, [r1]
-		ldr r2, address_of_pegT2
+		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch1_A
-		ldr r1, address_of_peg1
+		ldr r1, address_of_peg4
 		ldr r1, [r1]
-		ldr r2, address_of_pegT3
-		ldr r2, [r2]
-		cmp r1, r2
-		beq	_Cch1_A
-		ldr r1, address_of_peg1
-		ldr r1, [r1]
-		ldr r2, address_of_pegT4
+		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch1_A
@@ -638,29 +635,23 @@ _Cch1_A:Add r5, r5, #1
 						mov r1, #1
 						bl printf	
 
-_Cch2:	ldr r1, address_of_peg2
+_Cch2:	ldr r1, address_of_peg1
 		ldr r1, [r1]
 		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch2_A
 		ble	_Cch3
-		ldr r1, address_of_peg2
+		ldr r1, address_of_peg3
 		ldr r1, [r1]
-		ldr r2, address_of_pegT1
+		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch2_A
 
-		ldr r1, address_of_peg2
+		ldr r1, address_of_peg4
 		ldr r1, [r1]
-		ldr r2, address_of_pegT3
-		ldr r2, [r2]
-		cmp r1, r2
-		beq	_Cch2_A		
-		ldr r1, address_of_peg2
-		ldr r1, [r1]
-		ldr r2, address_of_pegT4
+		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch2_A		
@@ -673,28 +664,22 @@ _Cch2_A:Add r5, r5, #1
 						mov r1, #2
 						bl printf
 
-_Cch3:	ldr r1, address_of_peg3
+_Cch3:	ldr r1, address_of_peg1
 		ldr r1, [r1]
 		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch3_A
 		ble _Cch4
-		ldr r1, address_of_peg3
+		ldr r1, address_of_peg2
 		ldr r1, [r1]
-		ldr r2, address_of_pegT1
+		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch3_A
-		ldr r1, address_of_peg3
+		ldr r1, address_of_peg4
 		ldr r1, [r1]
-		ldr r2, address_of_pegT2
-		ldr r2, [r2]
-		cmp r1, r2
-		beq	_Cch3_A
-		ldr r1, address_of_peg3
-		ldr r1, [r1]
-		ldr r2, address_of_pegT4
+		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch3_A
@@ -707,25 +692,19 @@ _Cch3_A:Add r5, r5, #1
 						mov r1, #3
 						bl printf
 		
-_Cch4:	ldr r1, address_of_peg4
+_Cch4:	ldr r1, address_of_peg1
 		ldr r1, [r1]
-		ldr r2, address_of_pegT1
+		ldr r2, address_of_pegT4
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch4_A
-		ldr r1, address_of_peg4
+		ldr r1, address_of_peg2
 		ldr r1, [r1]
-		ldr r2, address_of_pegT2
+		ldr r2, address_of_pegT4
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch4_A
-		ldr r1, address_of_peg4
-		ldr r1, [r1]
-		ldr r2, address_of_pegT3
-		ldr r2, [r2]
-		cmp r1, r2
-		beq	_Cch4_A
-		ldr r1, address_of_peg4
+		ldr r1, address_of_peg3
 		ldr r1, [r1]
 		ldr r2, address_of_pegT4
 		ldr r2, [r2]
