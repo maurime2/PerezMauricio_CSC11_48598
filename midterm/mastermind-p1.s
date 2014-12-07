@@ -670,7 +670,7 @@ _Cch2_A:Add r5, r5, #1
 		mov r0, #0
 		str r0, [r2]
 						ldr r0, address_of_scan_pattern
-						mov r1, #22
+						mov r1, #2
 						bl printf
 
 _Cch3:	ldr r1, address_of_peg3
@@ -704,7 +704,7 @@ _Cch3_A:Add r5, r5, #1
 		mov r0, #0
 		str r0, [r2]
 						ldr r0, address_of_scan_pattern
-						mov r1, #333
+						mov r1, #3
 						bl printf
 		
 _Cch4:	ldr r1, address_of_peg4
@@ -737,7 +737,7 @@ _Cch4_A:Add r5, r5, #1
 		mov r0, #0
 		str r0, [r2]
 						ldr r0, address_of_scan_pattern
-						mov r1, #444
+						mov r1, #4
 						bl printf
 		
 		/*Store Final Increment of Color Spaces*/
