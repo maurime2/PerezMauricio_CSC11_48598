@@ -546,73 +546,8 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are */
 		ldr r2, address_of_color
 		str r5, [r2]
 		
-		/*Temp Pegs*/							/*loads guessers Pegs to Temporary pegs. These will be used to find the wrong placed pegs*/
-		ldr r0, address_of_pegT1	/**/
-		ldr r1, address_of_peg5		/**/
-		ldr r1, [r1]
-		str r1, [r0]
-		ldr r0, address_of_pegT2	/**/
-		ldr r1, address_of_peg6		/**/
-		ldr r1, [r1]
-		str r1, [r0]
-		ldr r0, address_of_pegT3	/**/
-		ldr r1, address_of_peg7		/**/
-		ldr r1, [r1]
-		str r1, [r0]
-		ldr r0, address_of_pegT4	/**/
-		ldr r1, address_of_peg8		/**/
-		ldr r1, [r1]
-		str r1, [r0]
-		
-		/*Check for Same Input Value*/
-		ldr r0, address_of_pegT1		/*If Peg1 == PegT1, then PegT1 will be set to #0*/
-		ldr r0, [r0]
-		ldr r1, address_of_peg1
-		ldr r1, [r1]
-		cmp r0, r1
-		beq _T1_0
-		b _T2
-_T1_0:	mov r1, #0						/*Here T1 is set to Zero*/
-		ldr r0, address_of_pegT1		
-		str r1, [r0]
-				
-_T2:	ldr r0, address_of_pegT2		/*If Peg2 == PegT2, then PegT2 will be set to #0*/
-		ldr r0, [r0]
-		ldr r1, address_of_peg2	
-		ldr r1, [r1]
-		cmp r0, r1
-		beq _T2_0
-		b _T3
-_T2_0:	mov r1, #0						/*Here T2 is set to Zero*/
-		ldr r0, address_of_pegT2	
-		str r1, [r0]
-		
-_T3:	ldr r0, address_of_pegT3		/*If Peg3 == PegT3, then PegT3 will be set to #0*/
-		ldr r0, [r0]
-		ldr r1, address_of_peg3
-		ldr r1, [r1]
-		cmp r0, r1
-		beq _T3_0
-		b _T4
-_T3_0:	mov r1, #0
-		ldr r0, address_of_pegT3		/*Here T3 is set to Zero*/
-		str r1, [r0]
-
-		
-_T4:	ldr r0, address_of_pegT4		/*If Peg4 == PegT4, then PegT4 will be set to #0*/
-		ldr r0, [r0]
-		ldr r1, address_of_peg4	
-		ldr r1, [r1]
-		cmp r0, r1
-		beq _T4_0
-		b _Cch1
-_T4_0:	mov r1, #0						/*Here T4 is set to Zero*/
-		ldr r0, address_of_pegT4
-		str r1, [r0]	
-
-		
-		/**********************************************************/
-		/***	Temp CODER VALUES: Nessesary for COLOR CHECK	***/
+		  /**********************************************************/
+		 /***	Temp CODER VALUES: Nessesary for COLOR CHECK	 ***/
 		/**********************************************************/
 		ldr r0, address_of_peg1
 		ldr r0, [r0]
@@ -633,6 +568,85 @@ _T4_0:	mov r1, #0						/*Here T4 is set to Zero*/
 		ldr r0, [r0]
 		ldr r1, address_of_pegT44
 		str r0, [r1]
+		
+		  /**********************************************************/
+		 /***	Temp PLAYER VALUES: Nessesary for COLOR CHECK	 ***/
+		/**********************************************************/
+		ldr r0, address_of_pegT1	/**/
+		ldr r1, address_of_peg5		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		ldr r0, address_of_pegT2	/**/
+		ldr r1, address_of_peg6		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		ldr r0, address_of_pegT3	/**/
+		ldr r1, address_of_peg7		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		ldr r0, address_of_pegT4	/**/
+		ldr r1, address_of_peg8		/**/
+		ldr r1, [r1]
+		str r1, [r0]
+		
+		/*Check for Same Input Value*/
+		ldr r0, address_of_pegT1		/*If Peg1 == PegT1, then PegT1 will be set to #0*/
+		ldr r0, [r0]
+		ldr r1, address_of_pegT11
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T1_0
+		b _T2
+_T1_0:	mov r1, #0						/*Here T1 is set to Zero*/
+		ldr r0, address_of_pegT1		
+		str r1, [r0]
+		mov r1, #8						/*Here T1 is set to Zero*/
+		ldr r0, address_of_pegT11		
+		str r1, [r0]
+				
+_T2:	ldr r0, address_of_pegT2		/*If Peg2 == PegT2, then PegT2 will be set to #0*/
+		ldr r0, [r0]
+		ldr r1, address_of_pegT22	
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T2_0
+		b _T3
+_T2_0:	mov r1, #0						/*Here T2 is set to Zero*/
+		ldr r0, address_of_pegT2	
+		str r1, [r0]
+		mov r1, #8						/*Here T2 is set to Zero*/
+		ldr r0, address_of_pegT22	
+		str r1, [r0]
+		
+_T3:	ldr r0, address_of_pegT3		/*If Peg3 == PegT3, then PegT3 will be set to #0*/
+		ldr r0, [r0]
+		ldr r1, address_of_pegT33
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T3_0
+		b _T4
+_T3_0:	mov r1, #0
+		ldr r0, address_of_pegT3		/*Here T3 is set to Zero*/
+		str r1, [r0]
+		mov r1, #8
+		ldr r0, address_of_pegT33		/*Here T3 is set to Zero*/
+		str r1, [r0]
+
+		
+_T4:	ldr r0, address_of_pegT4		/*If Peg4 == PegT4, then PegT4 will be set to #0*/
+		ldr r0, [r0]
+		ldr r1, address_of_pegT44	
+		ldr r1, [r1]
+		cmp r0, r1
+		beq _T4_0
+		b _Cch1
+_T4_0:	mov r1, #0						/*Here T4 is set to Zero*/
+		ldr r0, address_of_pegT4
+		str r1, [r0]
+		mov r1, #8						/*Here T4 is set to Zero*/
+		ldr r0, address_of_pegT44
+		str r1, [r0]
+	
 		
 _Cch1:	 /*Check Color 1 Checks Temp 1 Peg against all of the Coder's Pegs   */			
 		/*If it finds a similar peg, it Increment the Color Mach count and  */
