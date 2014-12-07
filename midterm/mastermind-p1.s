@@ -568,57 +568,54 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are */
 		str r1, [r0]
 		
 		/*Check for Same Input Value*/
-		ldr r0, address_of_pegT1	/**/
+		ldr r0, address_of_pegT1		/*If Peg1 == PegT1, then PegT1 will be set to #0*/
 		ldr r0, [r0]
-		ldr r1, address_of_peg1	/**/
+		ldr r1, address_of_peg1
 		ldr r1, [r1]
 		cmp r0, r1
 		beq _T1_0
 		b _T2
-_T1_0:	mov r1, #0
-		ldr r0, address_of_pegT1	/**/
+_T1_0:	mov r1, #0						/*Here T1 is set to Zero*/
+		ldr r0, address_of_pegT1		
 		str r1, [r0]
 				
-_T2:	ldr r0, address_of_pegT2	/**/
+_T2:	ldr r0, address_of_pegT2		/*If Peg2 == PegT2, then PegT2 will be set to #0*/
 		ldr r0, [r0]
-		ldr r1, address_of_peg2	/**/
+		ldr r1, address_of_peg2	
 		ldr r1, [r1]
 		cmp r0, r1
 		beq _T2_0
 		b _T3
-_T2_0:	mov r1, #0
-		ldr r0, address_of_pegT2	/**/
+_T2_0:	mov r1, #0						/*Here T2 is set to Zero*/
+		ldr r0, address_of_pegT2	
 		str r1, [r0]
 		
-_T3:	ldr r0, address_of_pegT3	/**/
+_T3:	ldr r0, address_of_pegT3		/*If Peg3 == PegT3, then PegT3 will be set to #0*/
 		ldr r0, [r0]
-		ldr r1, address_of_peg3	/**/
+		ldr r1, address_of_peg3
 		ldr r1, [r1]
 		cmp r0, r1
 		beq _T3_0
 		b _T4
 _T3_0:	mov r1, #0
-		ldr r0, address_of_pegT3	/**/
+		ldr r0, address_of_pegT3		/*Here T3 is set to Zero*/
 		str r1, [r0]
 
 		
-_T4:	ldr r0, address_of_pegT4	/**/
+_T4:	ldr r0, address_of_pegT4		/*If Peg4 == PegT4, then PegT4 will be set to #0*/
 		ldr r0, [r0]
-		ldr r1, address_of_peg4	/**/
+		ldr r1, address_of_peg4	
 		ldr r1, [r1]
 		cmp r0, r1
 		beq _T4_0
 		b _Cch1
-_T4_0:	mov r1, #0
-		ldr r0, address_of_pegT4	/**/
+_T4_0:	mov r1, #0						/*Here T4 is set to Zero*/
+		ldr r0, address_of_pegT4
 		str r1, [r0]		
 		
-		
-		
-_Cch1:
-		ldr r1, address_of_peg1
-		ldr r1, [r1]
-		ldr r2, address_of_pegT1
+_Cch1:	ldr r1, address_of_peg1		  /*Check Color 1 Checks Temp 1 Peg against all of the Coder's Pegs   */			
+		ldr r1, [r1]				 /*If it finds a similar peg, it Increment the Color Mach count and  */
+		ldr r2, address_of_pegT1	/*Set the Temp 1 peg to #0										    */
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch1_A
@@ -640,14 +637,103 @@ _Cch1:
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch1_A
-		bl _Cch2
+		b _Cch2
 _Cch1_A:Add r5, r5, #1
 		ldr r2, address_of_pegT1
 		mov r0, #0
 		str r0, [r2]
 
-_Cch2:		
+_Cch2:	ldr r1, address_of_peg2
+		ldr r1, [r1]
+		ldr r2, address_of_pegT1
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch2_A
+		ldr r1, address_of_peg2
+		ldr r1, [r1]
+		ldr r2, address_of_pegT2
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch2_A
+		ldr r1, address_of_peg2
+		ldr r1, [r1]
+		ldr r2, address_of_pegT3
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch2_A		
+		ldr r1, address_of_peg2
+		ldr r1, [r1]
+		ldr r2, address_of_pegT4
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch2_A		
+		b	_Cch3
+_Cch2_A:Add r5, r5, #1
+		ldr r2, address_of_pegT2
+		mov r0, #0
+		str r0, [r2]
 
+_Cch3:	ldr r1, address_of_peg3
+		ldr r1, [r1]
+		ldr r2, address_of_pegT1
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch3_A
+		ldr r1, address_of_peg3
+		ldr r1, [r1]
+		ldr r2, address_of_pegT2
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch3_A
+		ldr r1, address_of_peg3
+		ldr r1, [r1]
+		ldr r2, address_of_pegT3
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch3_A
+		ldr r1, address_of_peg3
+		ldr r1, [r1]
+		ldr r2, address_of_pegT4
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch3_A
+		b	_Cch4
+_Cch3_A:Add r5, r5, #1
+		ldr r2, address_of_pegT3
+		mov r0, #0
+		str r0, [r2]
+		
+_Cch4:	ldr r1, address_of_peg4
+		ldr r1, [r1]
+		ldr r2, address_of_pegT1
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch4_A
+		ldr r1, address_of_peg4
+		ldr r1, [r1]
+		ldr r2, address_of_pegT2
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch4_A
+		ldr r1, address_of_peg4
+		ldr r1, [r1]
+		ldr r2, address_of_pegT3
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch4_A
+		ldr r1, address_of_peg4
+		ldr r1, [r1]
+		ldr r2, address_of_pegT4
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch4_A
+_Cch4_A:Add r5, r5, #1
+		ldr r2, address_of_pegT4
+		mov r0, #0
+		str r0, [r2]
+		
+		mov r0, r5
+		bl printf
 		
 		/*DECRIMENT*/
 		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
