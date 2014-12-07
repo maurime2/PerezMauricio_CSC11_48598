@@ -911,6 +911,7 @@ _finPri:ldr r0, address_of_board6	/*Prints the Players Code on the board*/
 		
 		ldr r0, address_of_board7
 		ldr r1, address_of_peg8
+		ldr r1, [r1]
 		bl printf
 		
 		ldr r1, address_of_trys
