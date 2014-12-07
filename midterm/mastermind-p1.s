@@ -815,7 +815,7 @@ _dec:	/*DECRIMENT*/
 		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
 		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
 		str r1, [r2]		
-		
+		b _again
 		
 /*Errors*/		
 _err1:
