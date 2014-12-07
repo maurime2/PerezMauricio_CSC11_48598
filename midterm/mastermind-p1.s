@@ -416,6 +416,10 @@ _p5s:	/*Clear Count*/
 						ldr r1, [r2]			   /* At the start, prompt should display 11,    */
 						sub r1, r1, #1			  /* I.E you start with 12 trys					*/
 						str r1, [r2]
+						
+						ldr r0, address_of_scan_pattern
+						bl printf
+						
 	/*THIS SECTION CREATES THE COUNT OF EXACT PEGS*/	
 		mov r4, #0
 	_addP1:
@@ -543,8 +547,6 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are */
 		mov r5, #0					/*r5 holds the right colour. */
 		ldr r2, address_of_color
 		str r5, [r2]
-		ldr r0, address_of_board2
-		bl printf
 		
 		/*Temp Pegs*/							/*loads guessers Pegs to Temporary pegs. These will be used to find the wrong placed pegs*/
 		ldr r0, address_of_pegT1	/**/
