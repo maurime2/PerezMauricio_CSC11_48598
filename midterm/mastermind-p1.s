@@ -610,6 +610,7 @@ _Cch1:	ldr r1, address_of_peg1		  /*Check Color 1 Checks Temp 1 Peg against all 
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch1_A
+		ble	_Cch2
 		ldr r1, address_of_peg1
 		ldr r1, [r1]
 		ldr r2, address_of_pegT2
@@ -636,16 +637,18 @@ _Cch1_A:Add r5, r5, #1
 
 _Cch2:	ldr r1, address_of_peg2
 		ldr r1, [r1]
-		ldr r2, address_of_pegT1
-		ldr r2, [r2]
-		cmp r1, r2
-		beq	_Cch2_A
-		ldr r1, address_of_peg2
-		ldr r1, [r1]
 		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch2_A
+		ble	_Cch3
+		ldr r1, address_of_peg2
+		ldr r1, [r1]
+		ldr r2, address_of_pegT1
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch2_A
+
 		ldr r1, address_of_peg2
 		ldr r1, [r1]
 		ldr r2, address_of_pegT3
@@ -666,6 +669,13 @@ _Cch2_A:Add r5, r5, #1
 
 _Cch3:	ldr r1, address_of_peg3
 		ldr r1, [r1]
+		ldr r2, address_of_pegT3
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch3_A
+		ble _Cch4
+		ldr r1, address_of_peg3
+		ldr r1, [r1]
 		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
@@ -673,12 +683,6 @@ _Cch3:	ldr r1, address_of_peg3
 		ldr r1, address_of_peg3
 		ldr r1, [r1]
 		ldr r2, address_of_pegT2
-		ldr r2, [r2]
-		cmp r1, r2
-		beq	_Cch3_A
-		ldr r1, address_of_peg3
-		ldr r1, [r1]
-		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch3_A
@@ -718,13 +722,14 @@ _Cch4:	ldr r1, address_of_peg4
 		ldr r2, [r2]
 		cmp r1, r2
 		beq	_Cch4_A
+		b 	_CchS
 _Cch4_A:Add r5, r5, #1
 		ldr r2, address_of_pegT4
 		mov r0, #0
 		str r0, [r2]
 		
 		/*Store Final Increment of Color Spaces*/
-		ldr r2, address_of_color
+_CchS:	ldr r2, address_of_color
 		str r5, [r2]
 		
 	/*Final Board Print*/
