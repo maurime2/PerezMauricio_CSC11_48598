@@ -689,9 +689,9 @@ _Cch1_A:Add r5, r5, #1
 		ldr r2, address_of_pegT1
 		mov r0, #0
 		str r0, [r2]
-						ldr r0, address_of_scan_pattern
-						mov r1, #1
-						bl printf	
+						@ldr r0, address_of_scan_pattern
+						@mov r1, #1
+						@bl printf	
 
 _Cch2:	ldr r1, address_of_pegT11
 		ldr r1, [r1]
@@ -728,9 +728,9 @@ _Cch2_A:Add r5, r5, #1
 		ldr r2, address_of_pegT2
 		mov r0, #0
 		str r0, [r2]
-						ldr r0, address_of_scan_pattern
-						mov r1, #2
-						bl printf
+						@ldr r0, address_of_scan_pattern
+						@mov r1, #2
+						@bl printf
 
 _Cch3:	ldr r1, address_of_pegT11
 		ldr r1, [r1]
@@ -767,9 +767,9 @@ _Cch3_A:Add r5, r5, #1
 		ldr r2, address_of_pegT3
 		mov r0, #0
 		str r0, [r2]
-						ldr r0, address_of_scan_pattern
-						mov r1, #3
-						bl printf
+						@ldr r0, address_of_scan_pattern
+						@mov r1, #3
+						@bl printf
 		
 _Cch4:	ldr r1, address_of_pegT11
 		ldr r1, [r1]
@@ -806,9 +806,9 @@ _Cch4_A:Add r5, r5, #1
 		ldr r2, address_of_pegT4
 		mov r0, #0
 		str r0, [r2]
-						ldr r0, address_of_scan_pattern
-						mov r1, #4
-						bl printf
+						@ldr r0, address_of_scan_pattern
+						@mov r1, #4
+						@bl printf
 		
 		/*Store Final Increment of Color Spaces*/
 _CchS:	ldr r2, address_of_color
@@ -888,7 +888,7 @@ _printC:							  /*Based on count of Correct Pegs in Correct spots,		  */
 			ldr r0, address_of_space
 			bl printf
 			ldr r0, address_of_board3
-			bl printf		
+			bl printf
 			b _dec
 			
 _dec:					/*DECRIMENT*/
@@ -896,9 +896,23 @@ _dec:					/*DECRIMENT*/
 						ldr r1, [r2]			   /* At the start, prompt should display 11,    */
 						sub r1, r1, #1			  /* I.E you start with 12 trys					*/
 						str r1, [r2]
-						
-						@ldr r0, address_of_scan_pattern
-						@bl printf		
+					
+						@ldr r0, address_of_scan_pattern /*TEST WHATS IN r1 - COUNT OF COLOR PEGS*/
+						@bl printf	
+
+_finPri:ldr r0, address_of_board6	/*Prints the Players Code on the board*/
+		ldr r1, address_of_peg5
+		ldr r2, address_of_peg6
+		ldr r3, address_of_peg7
+		bl printf		
+		
+		ldr r0, address_of_board7
+		ldr r1, address_of_peg8
+		bl printf
+		
+		ldr r1, address_of_trys
+		cmp r1, #0
+		beq _gOVER
 		b _again
 		
 /*Errors*/		
