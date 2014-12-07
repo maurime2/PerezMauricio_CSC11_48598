@@ -732,10 +732,88 @@ _Cch4_A:Add r5, r5, #1
 		mov r0, #0
 		str r0, [r2]
 		
-		mov r0, r5
-		bl printf
+		/*Store Final Increment of Color Spaces*/
+		ldr r2, address_of_color
+		str r5, [r2]
 		
-		/*DECRIMENT*/
+	/*Final Board Print*/
+	ldr r0, address_of_board2	/*Prints first part of the correct guess bracket   */
+	bl printf
+	
+_printC:							  /*Based on count of Correct Pegs in Correct spots,		  */
+		ldr r1, address_of_color	 /*_printb1 is responsible for comparing correct pin guesses,*/	
+		ldr r1, [r1]				/*If its 4 correct pins, _printP4 will be called out, 		*/
+		cmp r1, #1					/*If its 3 correct pins, _printP3 will be called out, etc..*/
+		beq _printC1
+		cmp r1, #2
+		beq _printC2
+		cmp r1, #3
+		beq _printC3
+		cmp r1, #4
+		beq _printC4
+		b _printC0
+	_printC4:							/*Prints 4 "*"* as a correct guess*/
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_board3
+			bl printf
+			b _dec
+	_printC3:							/*Prints 3 "*"* as a correct guess*/
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_board3
+			bl printf
+			b _dec
+	_printC2:							/*Prints 2 "*"* as a correct guess*/
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_board3
+			bl printf
+			b _dec
+	_printC1:							/*Prints 1 "*"* as a correct guess*/
+			ldr r0, address_of_hit
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_board3
+			bl printf
+			b _dec
+	_printC0:							/*Prints 1 "*"* as a correct guess*/
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_space
+			bl printf
+			ldr r0, address_of_board3
+			bl printf		
+			b _dec
+			
+_dec:	/*DECRIMENT*/
 		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
 		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
 		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
