@@ -1,5 +1,4 @@
 /*mastermind Project 1*/
-
 .global _mastermind
 
 /* Format pattern for scanf */
@@ -928,26 +927,21 @@ _err1:
 	ldr r0, address_of_divider     	/* PRINT DIVIDER */
     bl printf    
 	b _p1s
-	
 _err2:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	b _p2s	
-
 _err3:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	b _p3s	
-	
 _err4:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	b _p4s
-
-
 /***********************************************/
 _err5:
 	/*Prompt error: Wrong Peg Number*/
@@ -957,26 +951,22 @@ _err5:
 	ldr r0, address_of_divider     	/* PRINT DIVIDER */
     bl printf    
 	b _p5s
-	
 _err6:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	b _p6s	
-
 _err7:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	b _p7s	
-	
 _err8:
 	/*Prompt error: Wrong Peg Number*/
 	ldr r0, address_of_error
 	bl printf	
 	b _p8s
 /***********************************************/
-
 /*Winning Board*/
 _win:
 	ldr r0, address_of_win1							/*PRINTS WINNING BOARD*/
@@ -1086,7 +1076,6 @@ address_of_pegT11 : .word pegT11					/*Address of pegT11: Place holder for CODEM
 address_of_pegT22 : .word pegT22					/*Address of pegT22: Place holder for CODEMAKER*/
 address_of_pegT33 : .word pegT33					/*Address of pegT33: Place holder for CODEMAKER*/
 address_of_pegT44 : .word pegT44					/*Address of pegT44: Place holder for CODEMAKER*/
-
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 address_of_prompt2 : .word prompt2				/*"Prompt: For PLAYER - Will ask for PEG inputs"*/
@@ -1114,12 +1103,10 @@ address_of_board4 : .word board4					/*"Prints fourth part of the board: First C
 address_of_board5 : .word board5					/*"Prints fifth part of the board: Second Color Pegs"*/
 address_of_board6 : .word board6					/*"Prints sixth part of the board: Code Input (first 3)"*/
 address_of_board7 : .word board7					/*"Prints seventh part of the board: Code Input (last peg)"*/
-
 address_of_win1   : .word win1						/*"Prints last part of the board: Spaces on pegs of wrong Color"*/
 address_of_win2   : .word win2						/*"Prints last part of the board: Last Part of input code"*/
 address_of_win3   : .word win3						/*"Prints last part of the board: Last Part of input code"*/
 address_of_win4   : .word win4						/*"Prints last part of the board: Last Part of input code"*/
-
 address_of_match : .word match						/*"Prints win prompt"*/
 address_of_nomatch0 : .word nomatch0				/*"Prints loss prompt"*/
 
