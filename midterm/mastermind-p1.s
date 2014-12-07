@@ -608,48 +608,45 @@ _T4:	ldr r0, address_of_pegT4	/**/
 		ldr r1, [r1]
 		cmp r0, r1
 		beq _T4_0
-		b _Ccheck1
+		b _Cch1
 _T4_0:	mov r1, #0
 		ldr r0, address_of_pegT4	/**/
 		str r1, [r0]		
 		
 		
 		
-_Ccheck1:
+_Cch1:
 		ldr r1, address_of_peg1
 		ldr r1, [r1]
 		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Ccheck2
-		
+		beq	_Cch1_A
 		ldr r1, address_of_peg1
 		ldr r1, [r1]
-		ldr r2, address_of_peg2
+		ldr r2, address_of_pegT2
 		ldr r2, [r2]
-		ldr r3, address_of_peg3
-		ldr r3, [r3]
-		ldr r4, address_of_peg4
-		ldr r4, [r4]		
-
 		cmp r1, r2
-		beq _addC1
-_c12:	cmp r1, r3
-		beq _addC2
-_c13:	cmp r1, r4
-		beq _addC3
-		
-_addC1:
-	add r5, r5, #1
-	b _c12
-_addC2:
-	add r5, r5, #1
-	b	_c13
-_addC3:
-	add r5, r5, #1
+		beq	_Cch1_A
+		ldr r1, address_of_peg1
+		ldr r1, [r1]
+		ldr r2, address_of_pegT3
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch1_A
+		ldr r1, address_of_peg1
+		ldr r1, [r1]
+		ldr r2, address_of_pegT4
+		ldr r2, [r2]
+		cmp r1, r2
+		beq	_Cch1_A
+		bl _Cch2
+_Cch1_A:Add r5, r5, #1
+		ldr r2, address_of_pegT1
+		mov r0, #0
+		str r0, [r2]
 
-_Ccheck2:	
-		b _again
+_Cch2:		
 
 		
 		/*DECRIMENT*/
