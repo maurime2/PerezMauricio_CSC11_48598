@@ -1021,7 +1021,6 @@ _win:
 _gOVER:
 	ldr r0, address_of_nomatch0
 	bl printf
-	bl _again2
 	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
     ldr r1, address_of_again   		/* r1 ← &fibin */
     bl scanf                        /* call to scanf */
