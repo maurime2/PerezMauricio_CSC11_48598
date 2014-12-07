@@ -112,7 +112,7 @@ again: .word 0	/*1 = Play Again when asked*/
 		.balign 8
 	match: .asciz "ALL MATCH !!!YOU WIN!!!"
 		.balign 8
-	nomatch0: .asciz "No Tries Left!!!! NO MATCHES!!! GAME OVER! "
+	nomatch0: .asciz "No Tries Left!!!! NO MATCHES!!! GAME OVER! \n\nPlay New Round??? Type [1] for YES, else for NO:"
 		
 .text
 
@@ -1022,6 +1022,14 @@ _gOVER:
 	ldr r0, address_of_nomatch0
 	bl printf
 	bl _again2
+	ldr r0, address_of_scan_pattern	/* r0 ← &Prompt_fibin Scan */
+    ldr r1, address_of_again   		/* r1 ← &fibin */
+    bl scanf                        /* call to scanf */
+	ldr r1, address_of_again	  /*If Adress of again is equal to 1 	   */
+	ldr r1, [r1]				 /* the player will play again, else	  */
+	cmp r1, #1					/*  will branch to _main		  		 */
+	beq _mastermind
+	b _main
 		
 /*PLAY AGAIN?*/	
 _again:
@@ -1029,8 +1037,7 @@ _again:
 	ldr r1, [r1]			   /* At the start, prompt should display 11,    */
 	cmp r1, #0
 	beq _gOVER
-	
-_again2:
+
 	/*Prompt Play Again*/
 	ldr r0, address_of_againp
 	ldr r1, address_of_trys		/* Decrements the number of trys left by one, */
