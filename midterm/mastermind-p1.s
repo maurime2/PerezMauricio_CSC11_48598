@@ -411,14 +411,6 @@ _p5s:	/*Clear Count*/
 		beq _gOVER
 		ldr r0, address_of_board1
 		bl printf
-						/*DECRIMENT*/
-						ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
-						ldr r1, [r2]			   /* At the start, prompt should display 11,    */
-						sub r1, r1, #1			  /* I.E you start with 12 trys					*/
-						str r1, [r2]
-						
-						ldr r0, address_of_scan_pattern
-						bl printf
 						
 	/*THIS SECTION CREATES THE COUNT OF EXACT PEGS*/	
 		mov r4, #0
@@ -812,11 +804,14 @@ _printC:							  /*Based on count of Correct Pegs in Correct spots,		  */
 			bl printf		
 			b _dec
 			
-_dec:	/*DECRIMENT*/
-		ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
-		ldr r1, [r2]			   /* At the start, prompt should display 11,    */
-		sub r1, r1, #1			  /* I.E you start with 12 trys					*/
-		str r1, [r2]		
+_dec:					/*DECRIMENT*/
+						ldr r2, address_of_trys		/* Decrements the number of trys left by one, */
+						ldr r1, [r2]			   /* At the start, prompt should display 11,    */
+						sub r1, r1, #1			  /* I.E you start with 12 trys					*/
+						str r1, [r2]
+						
+						ldr r0, address_of_scan_pattern
+						bl printf		
 		b _again
 		
 /*Errors*/		
