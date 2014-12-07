@@ -28,6 +28,12 @@ pegT1: .word 0	/*code peg TEMPORARY 1*/
 pegT2: .word 0	/*code peg TEMPORARY 2*/
 pegT3: .word 0	/*code peg TEMPORARY 3*/
 pegT4: .word 0	/*code peg TEMPORARY 4*/
+
+pegT11: .word 0	/*code peg TEMPORARY 1*/
+pegT22: .word 0	/*code peg TEMPORARY 2*/
+pegT33: .word 0	/*code peg TEMPORARY 3*/
+pegT44: .word 0	/*code peg TEMPORARY 4*/
+
 count: .word 0	/*Count of Pegs*/
 trys: .word 12	/*Trys Left*/
 place: .word 0	/*Count of Guesses of right place and colors*/
@@ -602,31 +608,69 @@ _T4:	ldr r0, address_of_pegT4		/*If Peg4 == PegT4, then PegT4 will be set to #0*
 		b _Cch1
 _T4_0:	mov r1, #0						/*Here T4 is set to Zero*/
 		ldr r0, address_of_pegT4
-		str r1, [r0]		
+		str r1, [r0]	
+
+		
+		/**********************************************************/
+		/***	Temp CODER VALUES: Nessesary for COLOR CHECK	***/
+		/**********************************************************/
+		ldr r0, address_of_peg1
+		ldr r0, [r0]
+		ldr r1, address_of_pegT11
+		str r0, [r1]
+		
+		ldr r0, address_of_peg2
+		ldr r0, [r0]
+		ldr r1, address_of_pegT22
+		str r0, [r1]
+
+		ldr r0, address_of_peg3
+		ldr r0, [r0]
+		ldr r1, address_of_pegT33
+		str r0, [r1]
+		
+		ldr r0, address_of_peg4
+		ldr r0, [r0]
+		ldr r1, address_of_pegT44
+		str r0, [r1]
 		
 _Cch1:	 /*Check Color 1 Checks Temp 1 Peg against all of the Coder's Pegs   */			
 		/*If it finds a similar peg, it Increment the Color Mach count and  */
-	   /*Set the Temp 1 peg to #0										   */
+	   /*Set the Temp 1 peg to #0, and Temp 11 to #8					   */
+	  /* This Will cause the Count to skip Matches already accounted for  */
 		
-		ldr r1, address_of_peg2
+		ldr r1, address_of_pegT22
 		ldr r1, [r1]
 		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch1_A
-		ldr r1, address_of_peg3
+		beq	_Cch1_2
+		ldr r1, address_of_pegT33
 		ldr r1, [r1]
 		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch1_A
-		ldr r1, address_of_peg4
+		beq	_Cch1_3
+		ldr r1, address_of_pegT44
 		ldr r1, [r1]
 		ldr r2, address_of_pegT1
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch1_A
+		beq	_Cch1_4
 		b _Cch2
+_Cch1_2:ldr r1, address_of_pegT22
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch1_A
+_Cch1_3:ldr r1, address_of_pegT33
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch1_A
+_Cch1_4:ldr r1, address_of_pegT44
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch1_A
+		
 _Cch1_A:Add r5, r5, #1
 		ldr r2, address_of_pegT1
 		mov r0, #0
@@ -635,27 +679,37 @@ _Cch1_A:Add r5, r5, #1
 						mov r1, #1
 						bl printf	
 
-_Cch2:	ldr r1, address_of_peg1
+_Cch2:	ldr r1, address_of_pegT11
 		ldr r1, [r1]
 		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch2_A
-		ble	_Cch3
-		ldr r1, address_of_peg3
+		beq	_Cch2_1
+		ldr r1, address_of_pegT33
 		ldr r1, [r1]
 		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch2_A
-
-		ldr r1, address_of_peg4
+		beq	_Cch2_3
+		ldr r1, address_of_pegT44
 		ldr r1, [r1]
 		ldr r2, address_of_pegT2
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch2_A		
+		beq	_Cch2_4		
 		b	_Cch3
+_Cch2_1:ldr r1, address_of_pegT11
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch2_A	
+_Cch2_3:ldr r1, address_of_pegT33
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch2_A	
+_Cch2_4:ldr r1, address_of_pegT44
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch2_A	
 _Cch2_A:Add r5, r5, #1
 		ldr r2, address_of_pegT2
 		mov r0, #0
@@ -664,26 +718,37 @@ _Cch2_A:Add r5, r5, #1
 						mov r1, #2
 						bl printf
 
-_Cch3:	ldr r1, address_of_peg1
+_Cch3:	ldr r1, address_of_pegT11
 		ldr r1, [r1]
 		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch3_A
-		ble _Cch4
-		ldr r1, address_of_peg2
+		beq	_Cch3_1
+		ldr r1, address_of_pegT22
 		ldr r1, [r1]
 		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch3_A
-		ldr r1, address_of_peg4
+		beq	_Cch3_2
+		ldr r1, address_of_pegT44
 		ldr r1, [r1]
 		ldr r2, address_of_pegT3
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch3_A
+		beq	_Cch3_4
 		b	_Cch4
+_Cch3_1:ldr r1, address_of_pegT11
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch3_A	
+_Cch3_2:ldr r1, address_of_pegT22
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch3_A	
+_Cch3_4:ldr r1, address_of_pegT44
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch3_A
 _Cch3_A:Add r5, r5, #1
 		ldr r2, address_of_pegT3
 		mov r0, #0
@@ -692,25 +757,37 @@ _Cch3_A:Add r5, r5, #1
 						mov r1, #3
 						bl printf
 		
-_Cch4:	ldr r1, address_of_peg1
+_Cch4:	ldr r1, address_of_pegT11
 		ldr r1, [r1]
 		ldr r2, address_of_pegT4
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch4_A
-		ldr r1, address_of_peg2
+		beq	_Cch4_1
+		ldr r1, address_of_pegT22
 		ldr r1, [r1]
 		ldr r2, address_of_pegT4
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch4_A
-		ldr r1, address_of_peg3
+		beq	_Cch4_2
+		ldr r1, address_of_pegT33
 		ldr r1, [r1]
 		ldr r2, address_of_pegT4
 		ldr r2, [r2]
 		cmp r1, r2
-		beq	_Cch4_A
+		beq	_Cch4_3
 		b 	_CchS
+_Cch4_1:ldr r1, address_of_pegT11
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch4_A
+_Cch4_2:ldr r1, address_of_pegT22
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch4_A
+_Cch4_3:ldr r1, address_of_pegT33
+		mov r0, #8
+		str r0, [r1]
+		b	_Cch4_A
 _Cch4_A:Add r5, r5, #1
 		ldr r2, address_of_pegT4
 		mov r0, #0
@@ -961,6 +1038,10 @@ address_of_pegT1 : .word pegT1					/*Address of pegT1: Place holder*/
 address_of_pegT2 : .word pegT2					/*Address of pegT2: Place holder*/
 address_of_pegT3 : .word pegT3					/*Address of pegT3: Place holder*/
 address_of_pegT4 : .word pegT4					/*Address of pegT4: Place holder*/
+address_of_pegT11 : .word pegT11					/*Address of pegT11: Place holder for CODEMAKER*/
+address_of_pegT22 : .word pegT22					/*Address of pegT22: Place holder for CODEMAKER*/
+address_of_pegT33 : .word pegT33					/*Address of pegT33: Place holder for CODEMAKER*/
+address_of_pegT44 : .word pegT44					/*Address of pegT44: Place holder for CODEMAKER*/
 
 address_of_error : .word error					/*"Divider Bar for prompt"*/
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
