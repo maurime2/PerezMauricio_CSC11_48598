@@ -902,8 +902,11 @@ _dec:					/*DECRIMENT*/
 
 _finPri:ldr r0, address_of_board6	/*Prints the Players Code on the board*/
 		ldr r1, address_of_peg5
+		ldr r1, [r1]
 		ldr r2, address_of_peg6
+		ldr r2, [r2]
 		ldr r3, address_of_peg7
+		ldr r3, [r3]
 		bl printf		
 		
 		ldr r0, address_of_board7
