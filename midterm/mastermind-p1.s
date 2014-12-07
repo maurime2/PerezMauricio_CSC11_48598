@@ -1025,6 +1025,11 @@ _gOVER:
 		
 /*PLAY AGAIN?*/	
 _again:
+	ldr r1, address_of_trys		/* Decrements the number of trys left by one, */
+	ldr r1, [r1]			   /* At the start, prompt should display 11,    */
+	cmp r1, #0
+	beq _gOVER
+	
 	/*Prompt Play Again*/
 	ldr r0, address_of_againp
 	ldr r1, address_of_trys		/* Decrements the number of trys left by one, */
