@@ -573,9 +573,9 @@ _wSpace:					/*With Spaces: Logic will print out pegs that are */
 		ldr r1, address_of_peg1	/**/
 		ldr r1, [r1]
 		cmp r0, r1
-		beq _T1-0
+		beq _T1_0
 		b _T2
-_T1-0:	mov r1, #0
+_T1_0:	mov r1, #0
 		ldr r0, address_of_pegT1	/**/
 		str r1, [r0]
 				
@@ -584,9 +584,9 @@ _T2:	ldr r0, address_of_pegT2	/**/
 		ldr r1, address_of_peg2	/**/
 		ldr r1, [r1]
 		cmp r0, r1
-		beq _T2-0
+		beq _T2_0
 		b _T3
-_T2-0:	mov r1, #0
+_T2_0:	mov r1, #0
 		ldr r0, address_of_pegT2	/**/
 		str r1, [r0]
 		
@@ -595,9 +595,9 @@ _T3:	ldr r0, address_of_pegT3	/**/
 		ldr r1, address_of_peg3	/**/
 		ldr r1, [r1]
 		cmp r0, r1
-		beq _T3-0
+		beq _T3_0
 		b _T4
-_T3-0:	mov r1, #0
+_T3_0:	mov r1, #0
 		ldr r0, address_of_pegT3	/**/
 		str r1, [r0]
 
@@ -607,9 +607,9 @@ _T4:	ldr r0, address_of_pegT4	/**/
 		ldr r1, address_of_peg4	/**/
 		ldr r1, [r1]
 		cmp r0, r1
-		beq _T4-0
+		beq _T4_0
 		b _Ccheck1
-_T4-0:	mov r1, #0
+_T4_0:	mov r1, #0
 		ldr r0, address_of_pegT4	/**/
 		str r1, [r0]		
 		
