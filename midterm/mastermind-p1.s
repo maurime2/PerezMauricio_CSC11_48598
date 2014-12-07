@@ -53,7 +53,7 @@ again: .word 0	/*1 = Play Again when asked*/
 	
 /*PROMPT: Play Again */
 		.balign 8
-	againp: .asciz "Play Again? Type [1] for YES, else for NO "
+	againp: .asciz "%d Trys Left!!!\nPlay Again? Type [1] for YES, else for NO "
 
 /*PROMPT: Type anything to continue*/
 		.balign 8
@@ -922,6 +922,8 @@ _gOVER:
 _again:
 	/*Prompt Play Again*/
 	ldr r0, address_of_againp
+	ldr r1, address_of_trys		/* Decrements the number of trys left by one, */
+	ldr r1, [r1]			   /* At the start, prompt should display 11,    */
 	bl printf
 	
 	/*Scan for Play Again*/
