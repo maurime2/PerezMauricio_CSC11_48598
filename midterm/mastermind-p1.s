@@ -540,9 +540,6 @@ _printb1:							  /*Based on count of Correct Pegs in Correct spots,		  */
 		
 _wSpace:					/*With Spaces: Logic will print out pegs that are */
 						   /*	in the wrong spot but correct number 		 */
-		
-		bl _again
-		
 		mov r5, #0					/*r5 holds the right colour. */
 		ldr r2, address_of_color
 		str r5, [r2]
