@@ -48,7 +48,7 @@ again: .word 0	/*1 = Play Again when asked*/
 	Title2: .asciz "                The Player will only have PEGS\n                as Feedb\n"
 			.balign 16
 	Title3: .asciz "                exact value and placement. COLOR\n                Pegs r"
-			.balign 20
+			.balign 16
 	Title4: .asciz "                place. Game ends after 12 trys.\n**************************"	
 /* Prompt*/
 	.balign 8
