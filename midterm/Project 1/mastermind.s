@@ -49,7 +49,7 @@ again: .word 0	/*1 = Play Again when asked*/
 			.balign 16
 	Title3: .asciz "                exact value and placement. COLOR\n                Pegs r"
 			.balign 16
-	Title4: .asciz "                place. Game ends after 12 trys.\n**************************"	
+	Title4: .asciz "                place. Game ends after 12 trys.\n***********************"	
 /* Prompt*/
 	.balign 8
 	prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
