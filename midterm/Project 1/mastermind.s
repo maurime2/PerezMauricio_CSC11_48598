@@ -1006,7 +1006,7 @@ _win:
 		ldr r1, [r1]
 		cmp r1, #1
 		beq _mastermind
-		bl _main							/*Returns to main menu*/
+		bl _Exit							/*Returns to main menu*/
 		
 _gOVER:
 	ldr r0, address_of_nomatch0
@@ -1018,7 +1018,7 @@ _gOVER:
 	ldr r1, [r1]				 /* the player will play again, else	  */
 	cmp r1, #1					/*  will branch to _main		  		 */
 	beq _mastermind
-	bl _main
+	bl _Exit
 		
 /*PLAY AGAIN?*/	
 _again:
@@ -1042,7 +1042,7 @@ _again:
 	ldr r1, [r1]				 /* the player will play again, else	  */
 	cmp r1, #1					/*  will branch to _main		  		 */
 	beq _trys				   /*_trys will start at player guess input */
-	bl _main
+	bl _Exit
 	
 /*Prompt CODEMAKER for Peg values*/
 _err:
@@ -1051,7 +1051,7 @@ _err:
 	bl printf
 	
 /*Back to Main*/
-_main:	
+_Exit:	
 	/*Exit*/
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
 	SWI 0	
