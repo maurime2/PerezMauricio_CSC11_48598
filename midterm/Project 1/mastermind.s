@@ -41,7 +41,7 @@ again: .word 0	/*1 = Play Again when asked*/
 
 /* Prompt*/
 		.balign 8
-	Title0: .asciz "***********************************************\n"
+	Title0: .asciz "***********************************************\n***		  MASTERMIND		    ***\n***********************************************\n"
 		.balign 8
 	Title1: .asciz "INSTRUCTIONS: 	The CODEMAKER will make a code.\n"
 			.balign 8
