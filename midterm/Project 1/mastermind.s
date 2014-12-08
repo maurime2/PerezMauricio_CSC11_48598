@@ -115,6 +115,7 @@ again: .word 0	/*1 = Play Again when asked*/
 		
 .text
 
+.global main
 main:
 _mastermind:
 /****************************************************************************************/
