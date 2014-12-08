@@ -41,15 +41,15 @@ again: .word 0	/*1 = Play Again when asked*/
 
 /* Prompt*/
 		.balign 16
-	Title0: .asciz "***********************************************\n***		  MASTERMIND"
+	Title0: .asciz "***********************************************\n"
 		.balign 16
-	Title1: .asciz "INSTRUCTIONS: 	The CODEMAKER will make a code.\n                The PLA"
+	Title1: .asciz "INSTRUCTIONS: 	The CODEMAKER will make a code.\n"
 			.balign 16
-	Title2: .asciz "                The Player will only have PEGS\n                as Feedb\n"
+	Title2: .asciz "                The Player will only have PEGS\n"
 			.balign 16
-	Title3: .asciz "                exact value and placement. COLOR\n                Pegs r"
+	Title3: .asciz "                exact value and placement. COLOR\n"
 			.balign 16
-	Title4: .asciz "                place. Game ends after 12 trys.\n***********************"	
+	Title4: .asciz "                place. Game ends after 12 trys.\n"	
 /* Prompt*/
 	.balign 8
 	prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
