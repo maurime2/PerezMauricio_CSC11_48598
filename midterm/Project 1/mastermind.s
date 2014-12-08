@@ -39,7 +39,12 @@ place: .word 0	/*Count of Guesses of right place and colors*/
 color: .word 0	/*Count of Guesses of right colors, wrong place*/
 again: .word 0	/*1 = Play Again when asked*/
 
-/* Prompt */
+/* Prompt*/
+		.balign 8
+	Title0: .asciz "***********************************************\n***		  MASTERMIND		    ***\n***********************************************\nINSTRUCTIONS: 	The CODEMAKER will make a code.\n                The PLAYER will have 12 TRYS to\n                guess the code.\n"
+		.balign 8
+	Title1: .asciz "The Player will only have PEGS\n                as Feedback into guessing the\n                code. EXACT Pegs represent\n                exact value and placement. COLOR\n                Pegs represent Pegs that are the\n                right value, but are in the wrong\n                place. Game ends after 12 trys.\n************************************************"
+/* Prompt*/
 	.balign 8
 	prompt: .asciz "CODEMAKER: Pick a Value for Peg %d (1-6): "
 /*PROMPTS: CODEMAKER PRINT */
@@ -122,6 +127,13 @@ _mastermind:
 /*							CODEMAKER INPUTS CODE										*/
 /****************************************************************************************/	
 /*Prompt CODEMAKER for Peg values*/
+	/*Print INSTRUCTIONS*/
+	ldr r0, address_of_Title0     	/* PRINT DIVIDER 						*/
+    bl printf
+	ldr r0, address_of_Title1     	/* PRINT DIVIDER 						*/
+    bl printf   
+	
+	
 	
 	/*Print Bar*/
 	ldr r0, address_of_divider     	/* PRINT DIVIDER 						*/
@@ -1080,6 +1092,8 @@ address_of_pegT22 : .word pegT22					/*Address of pegT22: Place holder for CODEM
 address_of_pegT33 : .word pegT33					/*Address of pegT33: Place holder for CODEMAKER*/
 address_of_pegT44 : .word pegT44					/*Address of pegT44: Place holder for CODEMAKER*/
 address_of_error : .word error					/*"Divider Bar for prompt"*/
+address_of_Title0 : .word Title0				/*"Prompt: TITLE SCREEN AND INSTRUCTIONS
+address_of_Title1 : .word Title1				/*"Prompt: TITLE SCREEN AND INSTRUCTIONS
 address_of_prompt : .word prompt				/*"Prompt: For CODEMAKER - Will ask for PEG inputs"*/
 address_of_prompt2 : .word prompt2				/*"Prompt: For PLAYER - Will ask for PEG inputs"*/
 address_of_cont : .word cont					/*"Prompt: For CODEMAKER - Type anything to cont..."*/
