@@ -40,15 +40,15 @@ color: .word 0	/*Count of Guesses of right colors, wrong place*/
 again: .word 0	/*1 = Play Again when asked*/
 
 /* Prompt*/
-		.balign 8
+		.balign 32
 	Title0: .asciz "***********************************************\n***		  MASTERMIND		    ***\n***********************************************\n"
-		.balign 8
+		.balign 32
 	Title1: .asciz "INSTRUCTIONS: 	The CODEMAKER will make a code.\n                The PLAYER will have 12 TRYS to\n                guess the code.\n"
-			.balign 8
+			.balign 32
 	Title2: .asciz "                The Player will only have PEGS\n                as Feedback into guessing the\n                code. EXACT Pegs represent\n"
-			.balign 8
+			.balign 32
 	Title3: .asciz "                exact value and placement. COLOR\n                Pegs represent Pegs that are the\n                right value, but are in the wrong\n"
-			.balign 8
+			.balign 32
 	Title4: .asciz "                place. Game ends after 12 trys.\n************************************************"	
 /* Prompt*/
 	.balign 8
