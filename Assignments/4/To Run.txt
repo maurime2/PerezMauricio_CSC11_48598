@@ -1,0 +1,17 @@
+as -o menu.o menu.s
+as -o divMod.o divMod.s
+as -o scaleLeft.o scaleLeft.s
+as -o addSub.o addSub.s               
+as -o scaleRight.o scaleRight.s
+gcc -o menu menu.o divMod.o scaleLeft.o addSub.o scaleRight.o
+./menu
+
+
+
+
+
+
+as -o divMod.o divMod.s
+as -o scaleLeft.o scaleLeft.s
+as -o addSub.o addSub.s               
+as -o scaleRight.o scaleRight.s
