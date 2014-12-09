@@ -27,9 +27,9 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 
 	/*Temp Store for A and B*/
 	.balign 8
-	A: .word 0
+	A: .word 1
 	.balign 8
-	B: .word 0
+	B: .word 2
 
 	/*Function Prompts*/
 	.balign 8
@@ -67,9 +67,41 @@ main:
 	/*RETURN so it can Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
+
 	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
 
+	ldr r0, address_of_scaleLeft   	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_addSub     	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_scaleRight  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */	
+
+	ldr r0, address_of_actual1	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_actual2	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */	
+
+	ldr r0, address_of_prob		  	/* r0 ← &Problem Selected*/
+	ldr r1, address_of_A
+	ldr r1, [r1]
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_prob		  	/* r0 ← &Problem Selected*/
+	ldr r1, address_of_B
+	ldr r1, [r1]
+	bl printf                       /* call to printf */
+		
 /*divMod*/
 _div:
 		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
