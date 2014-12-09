@@ -79,6 +79,9 @@ swap:
 end:
 	bx lr
 	
+	/*Exit*/
+	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
+	SWI 0	
 	
 address_of_prmt0 : .word prmt0					/*"Problem Chosen %d"*/
 address_of_prmt1 : .word prmt1					/*"Problem Chosen %d"*/
