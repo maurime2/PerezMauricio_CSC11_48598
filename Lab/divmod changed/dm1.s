@@ -32,6 +32,10 @@ prmt4: .asciz "A%B= %d"
 .balign 4
 prmt5: .asciz "Number: %d"
 
+NumA: .word 0	/*A*/
+NumB: .word 0	/*B*/
+
+
 /* Format pattern for scanf */
 .balign 4
 scan_pattern : .asciz "%d" 
@@ -42,7 +46,19 @@ main:
 	/* Initialize */
 	mov r2, #111     /* a=111 */
 	mov r3, #5       /* b=5 */
+	
+	/*Print Values that were Initialized*/
+	ldr r0, address_of_NumA
+	str r2, [r0]
+	ldr r0, address_of_NumB
+	str r3, [r0]
 
+	/*Relode Initialized Values*/
+	ldr r2, address_of_NumA
+	ldr r2, [r2]
+	ldr r3, address_of_NumB
+	ldr r3, [r3]
+	
 	ldr r0, address_of_prmt1	     /* Prompt for Hours */
 	mov r1, r2
     bl printf                       /* call to printf */
@@ -50,6 +66,12 @@ main:
 	ldr r0, address_of_prmt1	     /* Prompt for Hours */
 	mov r1, r3
     bl printf                       /* call to printf */
+	
+	/*Relode Initialized Values*/
+	ldr r2, address_of_NumA
+	ldr r2, [r2]
+	ldr r3, address_of_NumB
+	ldr r3, [r3]
 	
 	mov r0, #0       /* r0=0 -> counter */
 	mov r1, r2       /* r1=a=111 */
@@ -96,6 +118,10 @@ address_of_prmt3 : .word prmt3					/*"Problem Chosen %d"*/
 address_of_prmt4 : .word prmt4					/*"Problem Chosen %d"*/
 address_of_prmt5 : .word prmt5					/*"Problem Chosen %d"*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern*/
+
+address_of_NumA : .word NumA					/*Address of peg1: Code to Break*/
+address_of_NumB : .word NumB					/*Address of peg1: Code to Break*/
+
 	
 /* External */
 .global printf
