@@ -77,6 +77,9 @@ swap:
 	mov r0, r1
 	mov r1, r5
 end:
+	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
+	SWI 0	
+	
 	bx lr
 	
 	/*Exit*/
