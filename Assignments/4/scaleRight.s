@@ -90,7 +90,9 @@ divider: .asciz "-------------------------------------------------------\n"
 .text
  
 _scaleRight:
-
+	ldr r0, address_of_divider
+	bl printf                       /* call to printf */
+	
 	bal main						@ Branch to Main and output Problem Select
 	
 	
