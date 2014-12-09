@@ -63,29 +63,29 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 .global main
 main:
 
-/*Print Divider Bar*/
+	/*Print Divider Bar*/
 	ldr r1, address_of_divider      /* r1 ? &address_of_return */
 	bl printf                       /* call to printf */
 
 	/*divMod*/
-	_div:
+_div:
 		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 		bl printf                       /* call to printf */
 		@bal _divMod
 	
-	_scL:
+_scL:
 		/*scaleLeft*/
 		ldr r0, address_of_scaleLeft     	/* r0 ← &Problem Selected */
 		bl printf						   /* call to printf */
 		@bal _scaleLeft
 	
-	_aSu:
+_aSu:
 		/*addSub*/
 		ldr r0, address_of_addSub     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
 		@bal _addSub
 
-	_sRt:
+_sRt:
 		/*scaleRight*/
 		ldr r0, address_of_scaleRight     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
