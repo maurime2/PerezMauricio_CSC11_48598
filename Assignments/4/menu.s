@@ -62,6 +62,8 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
  
 .global main
 main:
+	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
 
 /*divMod*/
 _div:
