@@ -77,8 +77,9 @@ swap:
 	mov r0, r1
 	mov r1, r5
 end:
-	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT
-	SWI 0	
+	ldr r0, address_of_prmt1	     /* Prompt for Hours */
+	mov r1, #1
+    bl printf 
 	
 	bx lr
 	
