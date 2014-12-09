@@ -51,8 +51,6 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	/* Choice */
 	.balign 4
 	choice: .word 0
- 	.balign 4
-	return: .word 0
 
 	/* Divider */
 	.balign 8
@@ -106,7 +104,7 @@ _endProgram:
 	SWI 0					@ Software Interrupt: Exit
 
 /*Messages*/
-address_of_return : .word return				/*Address of Return*/
+address_of_return : .word return				/*Address of Return					*/
 address_of_prob 	: .word prob				/*"Problem Chosen %d"				*/
 address_of_actual1 	: .word actual1				/*"Actual Answer a/b = :"			*/
 address_of_actual2 	: .word actual2				/*"Actual Answer a/b = :"			*/
@@ -121,7 +119,7 @@ address_of_scaleRight 	: .word scaleRight		/*"Divmod Prompt"					*/
 address_of_end			: .word end				/*"Divmod Prompt"					*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern						*/
 address_of_choice 	: .word choice				/*Address of Chosen Problem Value	*/
-address_of_return 	: .word return				/*Address of Return					*/
+
 address_of_divider 	: .word divider				/*"Divider Bar for prompt"			*/
 address_of_divider0 : .word divider0			/*"Divider Bar for prompt"			*/
 
