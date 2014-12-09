@@ -10,7 +10,7 @@ gcc -o dm1 dm1.o
 
 as -o moddiv.o moddiv.s
 gcc -o moddiv moddiv.o
-./dm1
+./moddiv
 
 
 gdb ./moddiv
