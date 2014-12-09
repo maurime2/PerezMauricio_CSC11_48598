@@ -5,6 +5,10 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 */
 
 .data
+/* Address of Return */
+	.balign 4
+	return: .word 0
+
 /* Problem Chosen */
 	.balign 4
 	prob: .asciz "Problem Chosen: %d\n"
@@ -62,6 +66,9 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
  
 .global main
 main:
+	/*RETURN so it can Print*/
+	ldr r1, address_of_return       /* r1 ? &address_of_return */
+    str lr, [r1]                    /* *r1 ? lr */
 	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
 
@@ -99,6 +106,7 @@ _endProgram:
 	SWI 0					@ Software Interrupt: Exit
 
 /*Messages*/
+address_of_return : .word return				/*Address of Return*/
 address_of_prob 	: .word prob				/*"Problem Chosen %d"				*/
 address_of_actual1 	: .word actual1				/*"Actual Answer a/b = :"			*/
 address_of_actual2 	: .word actual2				/*"Actual Answer a/b = :"			*/
