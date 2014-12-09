@@ -6,9 +6,11 @@ Flowchart and code the above using the example attahment.
 
 Compile like this
 
-as -o prog.o prog.s
 
-gcc -o prog prog.o
+
+as -o moddiv.o moddiv.s
+gcc -o moddiv moddiv.o
+gdb ./moddiv
 
 Debug like this -> http://www.yolinux.com/TUTORIALS/GDB-Commands.html
 
