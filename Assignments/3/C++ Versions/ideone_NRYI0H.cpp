@@ -46,7 +46,7 @@ void scale(int &r1,int &r3,int &r8,int &r9,int &r6,int &r7){
 		r7=r3*r6;//subtraction factor
 		r9=r7*r8;//next subtraction factor to test
 	}
-}
+}r1>=r7
 
 //void divMod(int &a,int &b,int &flag,int &q,int &r)
 void divMod(int &r2,int &r3,int &r4,int &r5,int &r6,

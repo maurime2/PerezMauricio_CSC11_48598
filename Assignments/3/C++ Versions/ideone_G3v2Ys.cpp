@@ -39,4 +39,6 @@ void divmod(int &r2,int &r3,int &r4,int &r5,int &r0,int &r1){
 	}
 	//Swap if flag is set
 	if(r4){int r5=r0;r0=r1;r1=r5;}	
+
+	
 }
