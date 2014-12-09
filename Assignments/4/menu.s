@@ -71,25 +71,25 @@ main:
 _div:
 		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 		bl printf                       /* call to printf */
-		@bal _divMod
+		/*bal _divMod*/
 	
 _scL:
 		/*scaleLeft*/
 		ldr r0, address_of_scaleLeft     	/* r0 ← &Problem Selected */
 		bl printf						   /* call to printf */
-		@bal _scaleLeft
+		/*bal _scaleLeft*/
 	
 _aSu:
 		/*addSub*/
 		ldr r0, address_of_addSub     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
-		@bal _addSub
+		/*bal _addSub*/
 
 _sRt:
 		/*scaleRight*/
 		ldr r0, address_of_scaleRight     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
-		@bal _scaleRight
+		/*bal _scaleRight*/
 	
 _endProgram:		
 	/*End*/
