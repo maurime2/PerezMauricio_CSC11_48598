@@ -56,12 +56,13 @@ main:
 	/*Relode Initialized Values*/
 	ldr r2, address_of_NumA
 	ldr r2, [r2]
-	ldr r3, address_of_NumB
-	ldr r3, [r3]
 	
 	ldr r0, address_of_prmt1	     /* Prompt for Hours */
 	mov r1, r2
     bl printf                       /* call to printf */
+
+	ldr r3, address_of_NumB
+	ldr r3, [r3]
 	
 	ldr r0, address_of_prmt1	     /* Prompt for Hours */
 	mov r1, r3
@@ -96,15 +97,7 @@ swap:
 	mov r0, r1
 	mov r1, r5
 end:
-
-	mov r2, r1
-	mov r1, r0
-	ldr r0, address_of_prmt3	     /* Prompt for Hours */
-    bl printf                       /* call to printf */
-	
-	ldr r0, address_of_prmt4	     /* Prompt for Hours */
-	mov r1, r2
-    bl printf                       /* call to printf */
+	bx lr
 	
 	/*Exit*/
 	MOV R7, #1				@ Prepare Software Interrupt 1: EXIT

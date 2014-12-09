@@ -17,6 +17,10 @@
 	This is done so it can be used as a function in future programs.
  */
  
+ /* Format pattern for scanf */
+.balign 4
+scan_pattern : .asciz "%d" 
+ 
  .data
 /* Prompt */
 .balign 4
@@ -32,11 +36,6 @@ prmt4: .asciz "A%B= %d"
 .balign 4
 prmt5: .asciz "Number: %d"
 
-
-
-/* Format pattern for scanf */
-.balign 4
-scan_pattern : .asciz "%d" 
  
 .text
 .global main
@@ -44,16 +43,6 @@ main:
 	/* Initialize */
 	mov r2, #111     /* a=111 */
 	mov r3, #5       /* b=5 */
-
-	ldr r0, address_of_prmt1	     /* Prompt for Hours */
-	mov r1, r2
-    bl printf                       /* call to printf */
-	
-	ldr r0, address_of_prmt1	     /* Prompt for Hours */
-	mov r1, r2
-    bl printf                       /* call to printf */
-	
-	
 	mov r0, #0       /* r0=0 -> counter */
 	mov r1, r2       /* r1=a=111 */
 	mov r4, #0       /* if 1 swap r0 and r1 on exit else 0*/
@@ -77,10 +66,6 @@ swap:
 	mov r0, r1
 	mov r1, r5
 end:
-	ldr r0, address_of_prmt1	     /* Prompt for Hours */
-	mov r1, #1
-    bl printf 
-	
 	bx lr
 	
 	/*Exit*/
