@@ -1,7 +1,9 @@
 /*
+Assignment 5 101914  
 Mauricio S. Perez
 Midterm: CSC11-48598
 Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
+Assignment 5 101914  
 
 	a/b -> counter contained in r0
 	a%b -> remainder contained in r1
@@ -9,6 +11,14 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	b -> contained in r3
 	Divisor Scale -> r4 
 	Subtraction Scale -> r5 = b*r4
+
+TO RUN: COPY THE FOLLOWING
+
+as -o menu.o menu.s
+as -o divMod.o divMod.s
+gcc -o menu menu.o divMod.o
+./menu	
+	
 */
 
 .data
