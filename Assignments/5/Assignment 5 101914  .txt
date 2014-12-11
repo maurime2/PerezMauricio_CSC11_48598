@@ -9,4 +9,5 @@ in the last program
 
 http://ideone.com/xpRDfX
 
-Develop the code in your repository, zip and submit here as well as sending an email which copies yourself to mark.lehr@rcc.edu with subject:  Lastname, Firstname - Assignment 5 - 48598
+Develop the code in your repository, zip and submit here as well as sending an email which copies yourself to mark.lehr@rcc.edu with subject:  
+Perez, Mauricio - Assignment 6 - 48598

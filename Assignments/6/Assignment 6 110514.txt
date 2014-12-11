@@ -1,5 +1,21 @@
 Timing study,
 
-Use the collatz function from ThinkingGeek, and the timing function refered to in the random number creator.  Compare the relative times between branching a using predicates.
+Use the collatz function from ThinkingGeek, and the timing function 
+refered to in the random number creator.  
+
+Compare the relative times between:
+	Branching
+	Predicates.
 
 Post to the repository, post here and send an email to the usual places.
+
+Perez, Mauricio - Assignment 6 - 48598
+
+
+
+RANDOM NUMBER GENERATOR RUN
+
+as -o randTest.o randTest.s
+
+gcc -o randTest randTest.o
+./menu
