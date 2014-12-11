@@ -2,29 +2,35 @@
 Mauricio S. Perez
 Midterm: CSC11-48598
 Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
+
 	a/b -> counter contained in r0
 	a%b -> remainder contained in r1
 	a -> contained in r2
 	b -> contained in r3
 	Divisor Scale -> r4 
 	Subtraction Scale -> r5 = b*r4
-
 */
 
 .data
 /* Address of Return */
 	.balign 4
 	return: .word 0
+	.balign 4
+	jump: .word 0
 
 /* Problem Chosen */
 	.balign 4
 	prob: .asciz "\nProblem Chosen: %d\n"
-
+	.balign 4
+	Input1: .asciz "\nInput Number 1: "
+	.balign 4
+	Input2: .asciz "\nInput Number 2: "	
+	
 	/* Select Message */
 	.balign 8
-	actual1: .asciz "\nActual Answer a/b = "
+	actual1: .asciz "\nActual Answer    a/b (of 111/5) = 22.2"
 	.balign 8
-	actual2: .asciz "\nAcutal Remainder a%b = "
+	actual2: .asciz "\nAcutal Remainder a%b (of 111/5) = 2\n"
 
 	/*Calculate Prompt*/
 	.balign 8
@@ -74,13 +80,35 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
  
 .global main
 main:
+
 	/*RETURN so it can Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
-    str lr, [r1]                    /* *r1 ? lr */
+	str lr, [r1]                    /* *r1 ? lr */
+
+	/*Reset Return*/
+	ldr r1, address_of_jump       /* r1 ? &address_of_return */
+	mov r0, #0
+	str r0, [r1]                    /* *r1 ? lr */
 	
+	/*Input Both Numerator (TOP) & Denominator (DENOMINATOR)*/
+	ldr r1, address_of_Input1       /* r0 ? &address_of_return */
+	ldr r0, address_of_scan_pattern       /* r1 ? &address_of_return */
+	bl scanf 
+	
+	/*Input Both Numerator (TOP) & Denominator (DENOMINATOR)*/
+	ldr r1, address_of_Input2       		/* r0 ? &address_of_return */
+	ldr r0, address_of_scan_pattern        /* r1 ? &address_of_return */
+	bl scanf 	
+	
+	/*ACTUAL VALUES OF A/b = 111/5 */
+	ldr r0, address_of_actual1    	 	/* r0 ← &Problem Selected */
+	bl printf						   /* call to printf */
+	ldr r0, address_of_actual2     	/* r0 ← &Problem Selected */
+	bl printf					   /* call to printf */	
+		
 	/*End*/
 	ldr r0, address_of_endP     	 	 /* r0 ← &Problem Selected */
-    bl printf   
+	bl printf   
 		
 /*divMod*/
 _div:
@@ -130,7 +158,11 @@ _endProgram:
 
 /*Messages*/
 address_of_return : .word return				/*Address of Return					*/
+address_of_jump : .word jump					/*Address of Jump					*/
 address_of_prob 	: .word prob				/*"Problem Chosen %d"				*/
+address_of_Input1 	: .word Input1				/*"Prompt: Input1"					*/
+address_of_Input2 	: .word Input2				/*"Prompt: Input1"					*/
+
 address_of_actual1 	: .word actual1				/*"Actual Answer a/b = :"			*/
 address_of_actual2 	: .word actual2				/*"Actual Answer a/b = :"			*/
 address_of_calc1 	: .word calc1				/*" calc1 "							*/
