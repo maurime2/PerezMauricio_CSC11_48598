@@ -88,8 +88,6 @@ main:
 	str lr, [r1]                    /* *r1 ? lr */
 	
 	/*Jump will determine where the program will go*/
-	ldr r5, address_of_jump
-	ldr r5, [r5]
 	cmp r5, #1
 	beq _endProgram
 	
