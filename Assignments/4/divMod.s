@@ -8,14 +8,15 @@ divMod
 .data
 /* divMod */
 	.balign 4
-	divPrompt: .asciz "\nIn Divmod %d%d\n"
+	divPrompt: .asciz "\nIn Divmod: %d/%d:\n"
 
 	/*Temp Store for A and B*/
 	.balign 8
 	TempA: .word 1
 	.balign 8
 	TempB: .word 2
-
+	.balign 8
+	TempC: .word 2
 
 .text
  
@@ -25,6 +26,8 @@ _divMod:
 	str r3, [r0]
 	ldr r0, address_of_TempB
 	str r4, [r0]	
+	ldr r0, address_of_TempC
+	str r5, [r0]	
 	
 	/*DIV MOD PROMPT*/
 	ldr r0, address_of_divPrompt     	/* r0 ← &Problem Selected*/
@@ -33,10 +36,13 @@ _divMod:
 	ldr r2, address_of_TempB
 	ldr r2, [r2]
 	bl printf                       /* call to printf */
+	
+/*DIVISION PROGRAM STARTS HERE*/
 
-	ldr r3, address_of_TempA
+	/*Load to print*/
+	ldr r3, address_of_TempA	/* TEMP A now represents A/B */
 	ldr r3, [r3]
-	ldr r4, address_of_TempB
+	ldr r4, address_of_TempB	/* TEMP B now represents A%B */
 	ldr r4, [r4]
 
 	/*ADD TO COUNT*/
