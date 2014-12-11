@@ -37,13 +37,13 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 
 	/*Function Prompts*/
 	.balign 8
-	divMod: .asciz "\nActual Answer a/b = "
+	divMod: .asciz "\nDIV MOD Start:"
 	.balign 8
-	scaleLeft: .asciz "\nAcutal Remainder a%b = "
+	scaleLeft: .asciz "\nSCALE LEFT Start:"
 	.balign 8
-	addSub: .asciz "\nActual Answer a/b = "
+	addSub: .asciz "\nADD SUB Start:"
 	.balign 8
-	scaleRight: .asciz "\nAcutal Remainder a%b = "
+	scaleRight: .asciz "\nSCALE RIGHT Start:"
 	.balign 8
 	end: .asciz "\nProgram Ends..."
 
@@ -57,7 +57,7 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 
 	/* Divider */
 	.balign 8
-	divider: .asciz "************** CSC11-48598 MIDTERM MENU *************\n"
+	divider: .asciz "******************************************************\n"
 
 	/* Divider 0 */
 	.balign 8
