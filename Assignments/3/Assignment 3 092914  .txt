@@ -6,8 +6,6 @@ Flowchart and code the above using the example attahment.
 
 Compile like this
 
-
-
 as -o moddiv.o moddiv.s
 gcc -o moddiv moddiv.o
 gdb ./moddiv

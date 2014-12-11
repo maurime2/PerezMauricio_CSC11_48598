@@ -1,8 +1,11 @@
-First, program the Factorial program using all the techniques discussed in Week8.
+First, program the Factorial program using all the techniques 
+discussed in Week8.
 
 4 different ways to code the function.
 
-Then, use the final technique to create the 4 functions in the last program
+
+Then, use the final technique to create the 4 functions 
+in the last program
 
 http://ideone.com/xpRDfX
 
