@@ -120,6 +120,8 @@ main:
 
 /*divMod*/
 _div:
+	ldr r3, address_of_A
+	ldr r4, address_of_b
 	bl _divMod
 
 _endProgram:

@@ -17,12 +17,9 @@ divMod
 _divMod:
 
 	ldr r0, address_of_divPrompt     	/* r0 ← &Problem Selected*/
-	mov r1, #22
-	mov r2, #55
+	mov r1, r3
+	mov r2, r4
 	bl printf                       /* call to printf */
-
-	mov r3, #22
-	mov r4, #55
 	
 	/*ADD TO COUNT*/
 	add r5, r5, #1
