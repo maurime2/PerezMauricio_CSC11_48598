@@ -71,24 +71,10 @@ main:
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
 
-	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
-
-	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
-
-	ldr r0, address_of_scaleLeft   	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
-
-	ldr r0, address_of_addSub     	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
-
-	ldr r0, address_of_scaleRight  	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
 
 	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
-
+	
 	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */	
 
@@ -97,16 +83,6 @@ main:
 
 	ldr r0, address_of_actual2	  	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */	
-
-	ldr r0, address_of_prob		  	/* r0 ← &Problem Selected*/
-	ldr r1, address_of_A
-	ldr r1, [r1]
-	bl printf                       /* call to printf */
-
-	ldr r0, address_of_prob		  	/* r0 ← &Problem Selected*/
-	ldr r1, address_of_B
-	ldr r1, [r1]
-	bl printf                       /* call to printf */
 	
 	/*End*/
 	ldr r0, address_of_end     	 	 /* r0 ← &Problem Selected */
@@ -116,7 +92,7 @@ main:
 _div:
 		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 		bl printf                       /* call to printf */
-		/*bal _divMod*/
+		bal _divMod
 	
 _scL:
 		/*scaleLeft*/
