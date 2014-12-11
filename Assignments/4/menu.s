@@ -123,7 +123,7 @@ _div:
 	ldr r3, address_of_A
 	ldr r3, [r3]
 	ldr r4, address_of_B
-	ldr r3, [r4]
+	ldr r4, [r4]
 	bl _divMod
 
 _endProgram:
