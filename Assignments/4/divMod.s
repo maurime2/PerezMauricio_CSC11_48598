@@ -8,16 +8,21 @@ divMod
 .data
 /* divMod */
 	.balign 4
-	divPrompt: .asciz "\nProblem Chosen: %d\n"
+	divPrompt: .asciz "\nIn Divmod %d%d\n"
 
 
 
 .text
  
 _divMod:
-	add r1, r1, #1
+
 	ldr r0, address_of_divPrompt     	/* r0 ← &Problem Selected*/
+	mov r1, r5
+	mov r2, r6
 	bl printf                       /* call to printf */
+	
+	/*ADD TO COUNT*/
+	add r5, r5, #1
 	bal main						@ Branch to Main and output Problem Select
 	
 

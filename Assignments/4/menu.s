@@ -86,7 +86,13 @@ main:
 	/*RETURN so it can Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
 	str lr, [r1]                    /* *r1 ? lr */
-
+	
+	/*Jump will determine where the program will go*/
+	ldr r5, address_of_jump
+	ldr r5, [r5]
+	cmp r5, #1
+	beq _endProgram
+	
 	/*Reset Return*/
 	ldr r1, address_of_jump       /* r1 ? &address_of_return */
 	mov r0, #0
@@ -114,6 +120,13 @@ main:
 	ldr r0, address_of_actual1    	  /* r0 ← & ACTUAL PROMPT	*/
 	bl printf						 /* call to printf 		   */
 
+/*divMod*/
+_div:
+		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
+		bl printf                       /* call to printf */
+		bal _endProgram	
+	
+	
 	
 	/*ACTUAL VALUES OF A/B = 111/5 */
 	ldr r0, address_of_calc0    	 	/* r0 ← &Problem Selected */
@@ -122,32 +135,32 @@ main:
 	ldr r2, address_of_B       			/* r0 ? &address_of_return */
 	ldr r2, [r2]
 	bl printf						   /* call to printf */
-		
-/*divMod*/
-_div:
-		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
-		bl printf                       /* call to printf */
-		/*bal _endProgram*/
+
 	
-_scL:
+/*
+	/*divMod*/
+	_scL:
 		/*scaleLeft*/
 		ldr r0, address_of_scaleLeft     	/* r0 ← &Problem Selected */
 		bl printf						   /* call to printf */
+	
 		/*bal _scaleLeft*/
 	
-_aSu:
+	_aSu:
 		/*addSub*/
 		ldr r0, address_of_addSub     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
 		/*bal _addSub*/
 
-_sRt:
+	_sRt:
 		/*scaleRight*/
 		ldr r0, address_of_scaleRight     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
 		/*bal _scaleRight*/
 		b _endProgram
-
+*/
+		
+		
 _endProgram:
 	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
