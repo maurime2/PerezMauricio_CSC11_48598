@@ -11,19 +11,19 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 
 /* Problem Chosen */
 	.balign 4
-	prob: .asciz "Problem Chosen: %d\n"
+	prob: .asciz "\nProblem Chosen: %d\n"
 
 	/* Select Message */
 	.balign 8
-	actual1: .asciz "Actual Answer a/b = "
+	actual1: .asciz "\nActual Answer a/b = "
 	.balign 8
-	actual2: .asciz "Acutal Remainder a%b = "
+	actual2: .asciz "\nAcutal Remainder a%b = "
 
 	/*Calculate Prompt*/
 	.balign 8
-	calc1: .asciz "Calculated a/b = "
+	calc1: .asciz "\nCalculated a/b = "
 	.balign 8
-	calc2: .asciz "Calculated a%b = "
+	calc2: .asciz "\nCalculated a%b = "
 
 	/*Temp Store for A and B*/
 	.balign 8
@@ -37,16 +37,15 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 
 	/*Function Prompts*/
 	.balign 8
-	divMod: .asciz "Actual Answer a/b = "
+	divMod: .asciz "\nActual Answer a/b = "
 	.balign 8
-	scaleLeft: .asciz "Acutal Remainder a%b = "
+	scaleLeft: .asciz "\nAcutal Remainder a%b = "
 	.balign 8
-	addSub: .asciz "Actual Answer a/b = "
+	addSub: .asciz "\nActual Answer a/b = "
 	.balign 8
-	scaleRight: .asciz "Acutal Remainder a%b = "
-
+	scaleRight: .asciz "\nAcutal Remainder a%b = "
 	.balign 8
-	end: .asciz "Program Ends..."
+	end: .asciz "\nProgram Ends..."
 
 	/* Format pattern for scanf */
 	.balign 4
