@@ -28,7 +28,7 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	
 	/* Select Message */
 	.balign 8
-	actual1: .asciz "\nActual Answer    a/b (of 111/5) = 22.2"
+	actual1: .asciz "\nDEFULT:\nActual Answer    a/b (of 111/5) = 22.2"
 	.balign 8
 	actual2: .asciz "\nAcutal Remainder a%b (of 111/5) = 2\n"
 
