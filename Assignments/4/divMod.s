@@ -10,19 +10,34 @@ divMod
 	.balign 4
 	divPrompt: .asciz "\nIn Divmod %d%d\n"
 
+	/*Temp Store for A and B*/
+	.balign 8
+	TempA: .word 1
+	.balign 8
+	TempB: .word 2
 
 
 .text
  
 _divMod:
-
+	/*STORE TEMP*/
+	ldr r0, address_of_TempA
+	str r3, [r0]
+	ldr r0, address_of_TempB
+	str r4, [r0]	
+	
+	/*DIV MOD PROMPT*/
 	ldr r0, address_of_divPrompt     	/* r0 ← &Problem Selected*/
-	mov r1, r3
-	mov r2, r4
+	ldr r1, address_of_TempA
+	ldr r1, [r1]
+	ldr r2, address_of_TempB
+	ldr r2, [r2]
 	bl printf                       /* call to printf */
 
-	@mov r3, #5
-	@mov r4, #6	
+	ldr r3, address_of_TempA
+	ldr r3, [r3]
+	ldr r4, address_of_TempB
+	ldr r4, [r4]
 
 	/*ADD TO COUNT*/
 	add r5, r5, #1
@@ -32,6 +47,8 @@ _divMod:
 
 /*Messages*/
 address_of_divPrompt 	: .word divPrompt				/*"Problem Chosen %d"				*/
+address_of_TempA 	: .word TempA				/*"Problem Chosen %d"				*/
+address_of_TempB 	: .word TempB				/*"Problem Chosen %d"				*/
 
 /*Messages*/
 /* External */
