@@ -88,7 +88,7 @@ main:
 _div:
 		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 		bl printf                       /* call to printf */
-		@bal _endProgram
+		/*bal _endProgram*/
 	
 _scL:
 		/*scaleLeft*/
