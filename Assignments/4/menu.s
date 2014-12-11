@@ -132,12 +132,16 @@ _endProgram:
 	ldr r0, address_of_AmodB
 	str r4, [r0]
 
-	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
-	mov r1, r3
-	bl printf                       /* call to printf */
 	
-	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
-	mov r1, r4
+	ldr r1, address_of_AdivB
+	ldr r1, [r1]
+	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+
+	ldr r1, address_of_AmodB
+	ldr r1, [r1]	
+	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/s
 	bl printf                       /* call to printf */	
 		
 	/*End*/
