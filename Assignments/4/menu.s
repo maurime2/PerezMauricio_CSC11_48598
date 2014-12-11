@@ -90,15 +90,23 @@ main:
 	mov r0, #0
 	str r0, [r1]                    /* *r1 ? lr */
 	
-	/*Input Both Numerator (TOP) & Denominator (DENOMINATOR)*/
-	ldr r0, address_of_scan_pattern       /* r1 ? &address_of_return */
-	ldr r1, address_of_Input1       /* r0 ? &address_of_return */
-	bl scanf 
+	/*PROMPT INPUT NUMERATOR */
+	ldr r0, address_of_Input1    	 	/* r0 ← &Problem Selected */
+	bl printf						   /* call to printf */
+
+		/*Input Both Numerator (TOP) & Denominator (DENOMINATOR)*/
+		ldr r0, address_of_scan_pattern       /* r1 ? &address_of_return */
+		ldr r1, address_of_A       /* r0 ? &address_of_return */
+		bl scanf 
 	
-	/*Input Both Numerator (TOP) & Denominator (DENOMINATOR)*/
-	ldr r0, address_of_scan_pattern        /* r1 ? &address_of_return */
-	ldr r1, address_of_Input2       		/* r0 ? &address_of_return */
-	bl scanf 	
+	/*PROMPT INPUT NUMERATOR */
+	ldr r0, address_of_Input2    	 	/* r0 ← &Problem Selected */
+	bl printf						   /* call to printf */
+	
+		/*Input Both Numerator (TOP) & Denominator (DENOMINATOR)*/
+		ldr r0, address_of_scan_pattern        /* r1 ? &address_of_return */
+		ldr r1, address_of_B       		/* r0 ? &address_of_return */
+		bl scanf 	
 	
 	/*ACTUAL VALUES OF A/b = 111/5 */
 	ldr r0, address_of_actual1    	 	/* r0 ← &Problem Selected */
