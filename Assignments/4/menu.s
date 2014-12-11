@@ -74,6 +74,9 @@ main:
 	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
 
+	ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
 	ldr r0, address_of_scaleLeft   	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
 
