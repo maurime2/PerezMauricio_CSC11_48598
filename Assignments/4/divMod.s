@@ -18,6 +18,7 @@ _divMod:
 	add r1, r1, #1
 	ldr r0, address_of_divPrompt     	/* r0 ← &Problem Selected*/
 	bl printf                       /* call to printf */
+		b _endProgram
 	bal main						@ Branch to Main and output Problem Select
 	
 

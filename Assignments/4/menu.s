@@ -132,7 +132,7 @@ _sRt:
 		ldr r0, address_of_scaleRight     	/* r0 ← &Problem Selected */
 		bl printf                       /* call to printf */	
 		/*bal _scaleRight*/
-	
+		b _endProgram
 _endProgram:		
 	/*End*/
 	ldr r0, address_of_end     	 	 /* r0 ← &Problem Selected */
