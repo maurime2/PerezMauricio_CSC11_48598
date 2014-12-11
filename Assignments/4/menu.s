@@ -52,7 +52,7 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	.balign 8
 	scaleRight: .asciz "\nSCALE RIGHT Start:"
 	.balign 8
-	endp: .asciz "\nProgram Ends..."
+	endP: .asciz "\nProgram Ends..."
 
 	/* Format pattern for scanf */
 	.balign 4
@@ -81,7 +81,7 @@ main:
 
 	
 	/*End*/
-	ldr r0, address_of_end     	 	 /* r0 ← &Problem Selected */
+	ldr r0, address_of_endP     	 	 /* r0 ← &Problem Selected */
     bl printf   
 		
 /*divMod*/
