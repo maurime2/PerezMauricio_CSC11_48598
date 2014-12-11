@@ -22,9 +22,9 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	.balign 4
 	prob: .asciz "\nProblem Chosen: %d\n"
 	.balign 4
-	Input1: .asciz "\nInput Number 1: "
+	Input1: .asciz "\nInput Number 1 (NUMERATOR):"
 	.balign 4
-	Input2: .asciz "\nInput Number 2: "	
+	Input2: .asciz "\nInput Number 2 (DENOMINATOR):"	
 	
 	/* Select Message */
 	.balign 8
@@ -101,7 +101,7 @@ main:
 		ldr r1, address_of_A       /* r0 ? &address_of_return */
 		bl scanf 
 	
-	/*PROMPT INPUT NUMERATOR */
+	/*PROMPT INPUT DENOMINATOR */
 	ldr r0, address_of_Input2    	 	/* r0 ← &Problem Selected */
 	bl printf						   /* call to printf */
 	
