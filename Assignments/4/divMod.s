@@ -20,7 +20,10 @@ _divMod:
 	mov r1, r3
 	mov r2, r4
 	bl printf                       /* call to printf */
-	
+
+	mov r3, #5
+	mov r4, #6	
+
 	/*ADD TO COUNT*/
 	add r5, r5, #1
 	bal main						@ Branch to Main and output Problem Select
