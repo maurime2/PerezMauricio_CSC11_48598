@@ -21,8 +21,8 @@ _divMod:
 	mov r2, r4
 	bl printf                       /* call to printf */
 
-	mov r3, #5
-	mov r4, #6	
+	@mov r3, #5
+	@mov r4, #6	
 
 	/*ADD TO COUNT*/
 	add r5, r5, #1
