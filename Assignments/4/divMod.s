@@ -42,8 +42,8 @@ _divMod:
 	ldr R4, [r4]
 	ldr R5, address_of_TempB				@ Number to divide by.
 	ldr R5, [r5]
-	ldr R1, address_of_TempC				@ Number to hold times divided by value.
-	ldr R1, [r1]
+	MOV R1, #0								@ Number to hold times divided by value.
+	
 	
 _sub:						@ Subtraction Happens HERE.
 	SUBS R4, R4, R5
@@ -69,7 +69,7 @@ _exit:
 	ldr r3, address_of_TempA	/* TEMP A now represents A/B */
 	ldr r3, [r3]
 	ldr r4, address_of_TempB	/* TEMP B now represents A%B */
-	ldr r0, [r4]
+	ldr r4, [r4]
 	ldr r5, address_of_TempC	/* TEMP B now represents A%B */
 	ldr r5, [r5]
 
