@@ -28,11 +28,13 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	
 	/* Select Message */
 	.balign 8
-	actual1: .asciz "\nDEFULT:\nActual Answer    a/b (of 111/5) = 22.2"
+	actual1: .asciz "\nDEFULT: [IF THESE WERE INPUT]\nActual Answer    a/b (of 111/5) = 22.2"
 	.balign 8
 	actual2: .asciz "\nAcutal Remainder a%b (of 111/5) = 2\n"
 
 	/*Calculate Prompt*/
+	.balign 8
+	calc0: .asciz "\n A/B = %d/%d: "
 	.balign 8
 	calc1: .asciz "\nCalculated a/b = "
 	.balign 8
@@ -108,7 +110,19 @@ main:
 		ldr r1, address_of_B       		/* r0 ? &address_of_return */
 		bl scanf 	
 	
+	
+	
+	
 	/*ACTUAL VALUES OF A/b = 111/5 */
+	ldr r0, address_of_actual0    	 	/* r0 ← &Problem Selected */
+	ldr r1, address_of_A       		/* r0 ? &address_of_return */
+	ldr r1, [r1]
+	ldr r2, address_of_B       		/* r0 ? &address_of_return */
+	ldr r2, [r2]
+	bl printf						   /* call to printf */
+
+	ldr r0, address_of_actual1    	 	/* r0 ← &Problem Selected */
+	bl printf						   /* call to printf */
 	ldr r0, address_of_actual1    	 	/* r0 ← &Problem Selected */
 	bl printf						   /* call to printf */
 	ldr r0, address_of_actual2     	/* r0 ← &Problem Selected */
@@ -168,6 +182,7 @@ address_of_Input2 	: .word Input2				/*"Prompt: Input1"					*/
 
 address_of_actual1 	: .word actual1				/*"Actual Answer a/b = :"			*/
 address_of_actual2 	: .word actual2				/*"Actual Answer a/b = :"			*/
+address_of_calc0 	: .word calc0				/*" calc0 "							*/
 address_of_calc1 	: .word calc1				/*" calc1 "							*/
 address_of_calc2 	: .word calc2				/*" calc2 "							*/
 address_of_A 		: .word A					/*" A "								*/
