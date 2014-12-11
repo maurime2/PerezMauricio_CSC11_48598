@@ -123,6 +123,12 @@ _div:
 	bl _divMod
 
 _endProgram:
+	ldr r0, address_of_AdivB
+	str r3, [r0]
+	ldr r0, address_of_AmodB
+	str r3, [r0]
+	
+	
 	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
 	mov r1, r3
 	bl printf                       /* call to printf */
