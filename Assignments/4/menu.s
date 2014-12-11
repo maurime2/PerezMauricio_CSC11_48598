@@ -2,6 +2,13 @@
 Mauricio S. Perez
 Midterm: CSC11-48598
 Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
+	a/b -> counter contained in r0
+	a%b -> remainder contained in r1
+	a -> contained in r2
+	b -> contained in r3
+	Divisor Scale -> r4 
+	Subtraction Scale -> r5 = b*r4
+
 */
 
 .data
@@ -45,7 +52,7 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	.balign 8
 	scaleRight: .asciz "\nSCALE RIGHT Start:"
 	.balign 8
-	end: .asciz "\nProgram Ends..."
+	endp: .asciz "\nProgram Ends..."
 
 	/* Format pattern for scanf */
 	.balign 4
@@ -72,17 +79,6 @@ main:
     str lr, [r1]                    /* *r1 ? lr */
 
 
-	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
-	
-	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */	
-
-	ldr r0, address_of_actual1	  	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */
-
-	ldr r0, address_of_actual2	  	/* r0 ← &Problem Selected*/
-	bl printf                       /* call to printf */	
 	
 	/*End*/
 	ldr r0, address_of_end     	 	 /* r0 ← &Problem Selected */
@@ -92,7 +88,7 @@ main:
 _div:
 		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
 		bl printf                       /* call to printf */
-		bal _divMod
+		@bal _endProgram
 	
 _scL:
 		/*scaleLeft*/
@@ -112,9 +108,22 @@ _sRt:
 		bl printf                       /* call to printf */	
 		/*bal _scaleRight*/
 		b _endProgram
-_endProgram:		
+_endProgram:
+	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+	
+	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */	
+	
+	ldr r0, address_of_actual1	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */
+
+	ldr r0, address_of_actual2	  	/* r0 ← &Problem Selected*/
+	bl printf                       /* call to printf */	
+
+		
 	/*End*/
-	ldr r0, address_of_end     	 	 /* r0 ← &Problem Selected */
+	ldr r0, address_of_endP     	 	 /* r0 ← &Problem Selected */
     bl printf                       /* call to printf */		
 	
 	/*Exit*/
@@ -137,7 +146,7 @@ address_of_divMod 	 	: .word divMod			/*"divmod Prompt"					*/
 address_of_scaleLeft 	: .word scaleLeft		/*"scaleleft Prompt"				*/
 address_of_addSub 	 	: .word addSub			/*"Addsub Prompt"					*/
 address_of_scaleRight 	: .word scaleRight		/*"Divmod Prompt"					*/
-address_of_end			: .word end				/*"Divmod Prompt"					*/
+address_of_endP			: .word endP			/*"Divmod Prompt"					*/
 address_of_scan_pattern : .word scan_pattern	/*Scan Pattern						*/
 address_of_choice 	: .word choice				/*Address of Chosen Problem Value	*/
 
