@@ -36,9 +36,9 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	.balign 8
 	calc0: .asciz "\n A/B = %d/%d: "
 	.balign 8
-	calc1: .asciz "\nCalculated a/b = %d"
+	calc1: .asciz "\nCalculated a/b [QUOTIENT] = %d"
 	.balign 8
-	calc2: .asciz "\nCalculated a%b = %d "
+	calc2: .asciz "\nCalculated a%b [REMAINDER] = %d "
 
 	/*Temp Store for A and B*/
 	.balign 8
