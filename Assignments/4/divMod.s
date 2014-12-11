@@ -61,9 +61,9 @@ _exit:
 
 	/*STORE */
 	ldr r0, address_of_TempA	/* TEMP A now represents A/B */
-	ldr r3, [r0]
+	str r3, [r0]
 	ldr r0, address_of_TempB	/* TEMP B now represents A%B */
-	ldr r4, [r0]
+	str r4, [r0]
 	
 	/*Load to print*/
 	ldr r3, address_of_TempA	/* TEMP A now represents A/B */
