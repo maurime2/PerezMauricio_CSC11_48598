@@ -36,9 +36,9 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	.balign 8
 	calc0: .asciz "\n A/B = %d/%d: "
 	.balign 8
-	calc1: .asciz "\nCalculated a/b = "
+	calc1: .asciz "\nCalculated a/b = %d"
 	.balign 8
-	calc2: .asciz "\nCalculated a%b = "
+	calc2: .asciz "\nCalculated a%b = %d "
 
 	/*Temp Store for A and B*/
 	.balign 8
@@ -122,29 +122,15 @@ main:
 
 /*divMod*/
 _div:
-		ldr r0, address_of_divMod     	/* r0 ← &Problem Selected*/
-		bl printf                       /* call to printf */
-		bal _endProgram	
-	
-	
-	
-	/*ACTUAL VALUES OF A/B = 111/5 */
-	ldr r0, address_of_calc0    	 	/* r0 ← &Problem Selected */
-	ldr r1, address_of_A       			/* r0 ? &address_of_return */
-	ldr r1, [r1]
-	ldr r2, address_of_B       			/* r0 ? &address_of_return */
-	ldr r2, [r2]
-	bl printf						   /* call to printf */
+	bl _divMod
 
-	
-/* */
-		
-		
 _endProgram:
 	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
+	mov r1, r3
 	bl printf                       /* call to printf */
 	
 	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
+	mov r1, r4
 	bl printf                       /* call to printf */	
 
 		
