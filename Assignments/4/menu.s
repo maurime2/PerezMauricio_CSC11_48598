@@ -137,28 +137,7 @@ _div:
 	bl printf						   /* call to printf */
 
 	
-/*
-	/*divMod*/
-	_scL:
-		/*scaleLeft*/
-		ldr r0, address_of_scaleLeft     	/* r0 ← &Problem Selected */
-		bl printf						   /* call to printf */
-	
-		/*bal _scaleLeft*/
-	
-	_aSu:
-		/*addSub*/
-		ldr r0, address_of_addSub     	/* r0 ← &Problem Selected */
-		bl printf                       /* call to printf */	
-		/*bal _addSub*/
-
-	_sRt:
-		/*scaleRight*/
-		ldr r0, address_of_scaleRight     	/* r0 ← &Problem Selected */
-		bl printf                       /* call to printf */	
-		/*bal _scaleRight*/
-		b _endProgram
-*/
+/* */
 		
 		
 _endProgram:
