@@ -123,16 +123,15 @@ _div:
 	ldr r3, address_of_A
 	ldr r3, [r3]
 	ldr r4, address_of_B
-	ldr r4, [r4]
+	ldr r3, [r4]
 	bl _divMod
 
 _endProgram:
 	ldr r0, address_of_AdivB
 	str r3, [r0]
 	ldr r0, address_of_AmodB
-	str r3, [r0]
-	
-	
+	str r4, [r0]
+
 	ldr r0, address_of_calc1	  	/* r0 ← &Problem Selected*/
 	mov r1, r3
 	bl printf                       /* call to printf */
@@ -140,7 +139,6 @@ _endProgram:
 	ldr r0, address_of_calc2	  	/* r0 ← &Problem Selected*/
 	mov r1, r4
 	bl printf                       /* call to printf */	
-
 		
 	/*End*/
 	ldr r0, address_of_endP     	 	 /* r0 ← &Problem Selected */
