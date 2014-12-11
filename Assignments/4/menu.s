@@ -77,8 +77,6 @@ main:
 	/*RETURN so it can Print*/
 	ldr r1, address_of_return       /* r1 ? &address_of_return */
     str lr, [r1]                    /* *r1 ? lr */
-
-
 	
 	/*End*/
 	ldr r0, address_of_endP     	 	 /* r0 ← &Problem Selected */
