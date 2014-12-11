@@ -31,9 +31,9 @@ Menu: 	EXECUTES PROMPTS AND BRANCHES TO OTHER FILES CONTANINIG PROGRAMS.
 	.balign 8
 	B: .word 2
 	.balign 8
-	A/B: .word 1
+	AdivB: .word 1
 	.balign 8
-	A%B: .word 2
+	AmodB: .word 2
 
 	/*Function Prompts*/
 	.balign 8
@@ -148,8 +148,8 @@ address_of_calc1 	: .word calc1				/*" calc1 "							*/
 address_of_calc2 	: .word calc2				/*" calc2 "							*/
 address_of_A 		: .word A					/*" A "								*/
 address_of_B 		: .word B					/*" B "								*/
-address_of_A/B 		: .word A/B					/*" A "								*/
-address_of_A%B 		: .word A%B					/*" B "								*/
+address_of_AdivB 		: .word AdivB					/*" A "								*/
+address_of_AmodB 		: .word AmodB					/*" B "								*/
 
 address_of_divMod 	 	: .word divMod			/*"divmod Prompt"					*/
 address_of_scaleLeft 	: .word scaleLeft		/*"scaleleft Prompt"				*/
