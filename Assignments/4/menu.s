@@ -104,6 +104,10 @@ main:
 	ldr r1, address_of_B
 	ldr r1, [r1]
 	bl printf                       /* call to printf */
+	
+	/*End*/
+	ldr r0, address_of_end     	 	 /* r0 ← &Problem Selected */
+    bl printf   
 		
 /*divMod*/
 _div:
