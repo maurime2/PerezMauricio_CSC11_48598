@@ -38,9 +38,12 @@ _divMod:
 	bl printf                       /* call to printf */
 	
 /*DIVISION PROGRAM STARTS HERE*/
-	MOV R4, r1				@ Number to divide / Will hold remainder.
-	MOV R5, r2				@ Number to divide by.
-	MOV R1, #0				@ Number to hold times divided by value.
+	ldr R4, address_of_TempA				@ Number to divide / Will hold remainder.
+	ldr R4, [r4]
+	ldr R5, address_of_TempB				@ Number to divide by.
+	ldr R5, [r5]
+	ldr R1, address_of_TempC				@ Number to hold times divided by value.
+	ldr R1, [r1]
 	
 _sub:						@ Subtraction Happens HERE.
 	SUBS R4, R4, R5
