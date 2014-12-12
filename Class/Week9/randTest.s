@@ -15,8 +15,8 @@ message5: .asciz "\nYOU REALY WANNA KNOW??? ITS %d YA CHEATER!!!!"
 randomN:  .asciz "\nThe random number was: %d"
 guessed:  .asciz "\n			You Typed: %d"
 
-win:  	 .asciz "\n!!!YOU WIN!!!!"
-lose:  	 .asciz "\n!!!YOU LOSE!!!"
+win:  	 .asciz "\n!!!YOU WIN!!!! The number was: %d!!!!"
+lose:  	 .asciz "\n!!!YOU LOSE!!! The number was: %d...."
 
 .text
 
@@ -74,21 +74,52 @@ _game:	ldr r0, address_of_message1		/*Prompt Game*/
 		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
 		ldr r1, address_of_trys  		/* r1 ← &trys */
 		bl scanf 
- 
- 
+
+_scanN:	/*Prompt for guess*/
+		ldr r0, address_of_message2		/*Prompt Game*/
+		bl printf
+		
+		/*Scan Trys*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_numGue  		/* r1 ← &trys */
+		bl scanf
+
+		/*Check if too high or to low*/
+		ldr r1, address_of_numRan
+		ldr r1, [r1]
+		ldr r2, address_of_numGue
+		ldr r2, [r2]
+		cmp r1, r2
+		beq _winG
+		
 _high:	/*Prompt too High*/
 		ldr r0, address_of_message3		/*Prompt Game*/
 		ldr r1, address_of_trys
 		ldr r1, [r1]
+		sub r1, r1, #1
 		bl printf
-
+		bl _scanN
+		
 _low:	/*Prompt too low*/
 		ldr r0, address_of_message4		/*Prompt Game*/
 		ldr r1, address_of_trys
 		ldr r1, [r1]
+		sub r1, r1, #1
 		bl printf
- 
-_endg:   pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
+		bl _scanN
+		
+_winG:	ldr r0, address_of_win		/*Prompt Game*/
+		ldr r1, address_of_numRan
+		ldr r1, [r1]
+		bl printf
+		
+_losG:	ldr r0, address_of_win		/*Prompt Game*/
+		ldr r1, address_of_numRan
+		ldr r1, [r1]
+		bl printf
+
+		
+_endg:  pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
 		bx lr                        	/* Leave main */
  
 address_of_message: .word message
