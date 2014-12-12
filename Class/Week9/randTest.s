@@ -110,20 +110,20 @@ _scanN:	/*Prompt for guess*/
 _high:	/*Prompt too High*/
 		ldr r0, address_of_message3		/*Prompt Game*/
 		ldr r1, address_of_trys
-		ldr r2, [r1]
-		sub r2, r2, #1
-		str r2, [r1]
-		mov r1, r2
+		ldr r1, [r1]
+		sub r1, r1, #1
+		ldr r2, address_of_trys
+		str r1, [r2]
 		bl printf
 		bl _scanN
 		
 _low:	/*Prompt too low*/
 		ldr r0, address_of_message4		/*Prompt Game*/
 		ldr r1, address_of_trys
-		ldr r2, [r1]
-		sub r2, r2, #1
-		str r2, [r1]
-		mov r1, r2
+		ldr r1, [r1]
+		sub r1, r1, #1
+		ldr r2, address_of_trys
+		str r1, [r2]
 		bl printf
 		bl _scanN
 		
