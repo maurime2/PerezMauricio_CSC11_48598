@@ -44,7 +44,7 @@ _sav:	ldr r0, address_of_randomN
 /*CHECK AND MODIFY Random Number to be between 0 and 1000*/	
 	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
-	ldr r0, message5
+	ldr r0, address_of_message5
 	bl printf
 	
 	ldr r1, address_of_randomN		/*Load random number into r1*/
@@ -70,13 +70,13 @@ _corr:	add r0, r0, #1
 	
 	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
-	ldr r0, message5
+	ldr r0, address_of_message5
 	bl printf
 	
 /*GAME START*/	
 	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
-	ldr r0, message5
+	ldr r0, address_of_message5
 	bl printf
 _game:	ldr r0, address_of_message1		/*Prompt Game*/
 		bl printf
