@@ -66,9 +66,9 @@ main:
 
 
 	
-	add r4,#1
-	cmp r4,#20
-	blt loop_rand
+	@add r4,#1
+	@cmp r4,#20
+	@blt loop_rand
 	
  
     pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
