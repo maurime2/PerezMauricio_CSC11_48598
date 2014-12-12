@@ -1,6 +1,8 @@
 /* -- randTest.s */
 .data
- 
+numRan: .word 0 
+numGue: .word 0 
+scan_pattern : .asciz "%d"
 message:  .asciz "The random function returned %d\n"
 message1: .asciz "Guessing Game %d\n"
 message2: .asciz "\nType a Number:" 
@@ -69,8 +71,11 @@ address_of_message4: .word message4
 address_of_randomN: .word randomN
 address_of_guessed: .word guessed
 
-address_of_win: .word win
-address_of_lose: .word lose
+address_of_win: 		.word win
+address_of_lose: 		.word lose
+address_of_numRan:		.word numRan
+address_of_numGue:		.word numGue
+address_of_scan_pattern:.word scan_pattern
 
 /*External Functions*/
 .global printf
