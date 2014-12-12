@@ -1,13 +1,13 @@
 /* -- randTest.s */
 .data
  
-message: .asciz "The random function returned %d\n"
+message:  .asciz "The random function returned %d\n"
 message1: .asciz "Guessing Game %d\n"
 message2: .asciz "\nType a Number:" 
 message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
 message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
 
-rand: 	  .asciz "\nThe random number was: %d"
+randomN:  .asciz "\nThe random number was: %d"
 guessed:  .asciz "\n			You Typed: %d"
 
 win:  	 .asciz "\n!!!YOU WIN!!!!"
@@ -55,7 +55,7 @@ address_of_message2: .word message2
 address_of_message3: .word message3
 address_of_message4: .word message4
 
-address_of_rand: .word rand
+address_of_randomN: .word randomN
 address_of_guessed: .word guessed
 
 address_of_win: .word win
