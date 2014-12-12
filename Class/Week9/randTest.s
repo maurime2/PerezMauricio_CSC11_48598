@@ -143,7 +143,7 @@ _endg:  pop {r4,lr}                     /* Pop the top of the stack and put it i
 _again:	ldr r1, address_of_trys
 		ldr r1, [r1]
 		cmp r1, #0
-		bgt	_scanN
+		bneq _scanN
 		bx lr                        	/* Leave main */
  
 address_of_message: .word message
