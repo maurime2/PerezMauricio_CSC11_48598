@@ -11,10 +11,8 @@ message2: .asciz "\nType a Number:"
 message3: .asciz "\nTOO HIGH! %d TRYS LEFT" 
 message4: .asciz "\nTOO LOW! %d TRYS LEFT"
 message5: .asciz "\nYOU REALY WANNA KNOW??? ITS %d YA CHEATER!!!!" 
-
 randomN:  .asciz "\nThe random number was: %d"
 guessed:  .asciz "\n			You Typed: %d"
-
 win:  	 .asciz "\n!!!YOU WIN!!!! The number was: %d!!!!"
 lose:  	 .asciz "\n!!!YOU LOSE!!! The number was: %d...."
 
@@ -38,16 +36,10 @@ main:
 	bl divMod                    /* Call divMod function to get remainder */
 	
 /*Store Random Number*/	
-_sav:	ldr r0, address_of_randomN
+_sav:	ldr r0, address_of_numRan
 		str r1, [r0]
-	
-/*CHECK AND MODIFY Random Number to be between 0 and 1000*/	
-	ldr r1, address_of_randomN		/*Load random number into r1*/
-	ldr r1, [r1]
-	ldr r0, address_of_message5		/*God mode message*/
-	bl printf
 
-	ldr r1, address_of_randomN		/*Load random number into r1*/
+	ldr r1, address_of_numRan		/*Load random number into r1*/
 	ldr r1, [r1]
 	add r1, r1, #1000
 	CMP r1, #1000					/*Compare will check if its between 0 and 1000*/
@@ -62,16 +54,8 @@ _corr:	add r2, r2, #1
 			bgt _corr
 	
 	/*Store Random Number*/	
-		ldr r1, address_of_randomN
+		ldr r1, address_of_numRan
 		str r0, [r1]
-	
-	/*Load Random Number*/	
-	ldr r0, address_of_message5		/*God mode message*/
-	ldr r1, address_of_randomN		/*Load random number into r1*/
-	ldr r1, [r1]
-	bl printf
-
-
 	
 /*GAME START*/	
 _game:	ldr r0, address_of_message1		/*Prompt Game*/
@@ -96,17 +80,32 @@ _scanN:	/*Prompt for guess*/
 		bl scanf
 
 		/*Check if too high or to low*/
-		ldr r1, address_of_randomN
+		ldr r1, address_of_numRan
 		ldr r1, [r1]
 		ldr r2, address_of_numGue
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _winG
+		cmp r2, #1001
+		beq _godM
 		cmp r1, r2
 		blt _high
 		cmp r1, r2
 		b _low		
+		b _error
+
+
+_godM:
+	/*Load Random Number*/	
+	ldr r0, address_of_message5		/*God mode message*/
+	ldr r1, address_of_numRan		/*Load random number into r1*/
+	ldr r1, [r1]
+	bl printf
+	b _scanN
+
+_error:
 		
+	
 _high:	/*Prompt too High*/
 		ldr r0, address_of_message3		/*Prompt Game*/
 		ldr r1, address_of_trys
@@ -128,13 +127,13 @@ _low:	/*Prompt too low*/
 		bl _again
 		
 _winG:	ldr r0, address_of_win		/*Prompt Game*/
-		ldr r1, address_of_randomN
+		ldr r1, address_of_numRan
 		ldr r1, [r1]
 		bl printf
 		b _endg
 		
 _losG:	ldr r0, address_of_lose		/*Prompt Game*/
-		ldr r1, address_of_randomN
+		ldr r1, address_of_numRan
 		ldr r1, [r1]
 		bl printf
 		b _endg
