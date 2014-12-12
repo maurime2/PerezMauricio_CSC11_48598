@@ -47,6 +47,7 @@ _sav:	ldr r0, address_of_randomN
 	ldr r0, address_of_message5		/*God mode message*/
 	bl printf
 	
+/*	
 	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
 	add r1, r1, #1000
@@ -70,6 +71,8 @@ _corr:	add r2, r2, #1
 	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
 	bl printf
+
+*/
 	
 /*GAME START*/	
 	ldr r1, address_of_randomN		/*Load random number into r1*/
