@@ -115,7 +115,7 @@ _high:	/*Prompt too High*/
 		ldr r2, address_of_trys
 		str r1, [r2]
 		bl printf
-		bl _scanN
+		bl _again
 		
 _low:	/*Prompt too low*/
 		ldr r0, address_of_message4		/*Prompt Game*/
@@ -125,13 +125,13 @@ _low:	/*Prompt too low*/
 		ldr r2, address_of_trys
 		str r1, [r2]
 		bl printf
-		bl _scanN
+		bl _again
 		
 _winG:	ldr r0, address_of_win		/*Prompt Game*/
 		ldr r1, address_of_randomN
 		ldr r1, [r1]
 		bl printf
-		bl _again
+		b _endg
 		
 _losG:	ldr r0, address_of_lose		/*Prompt Game*/
 		ldr r1, address_of_randomN
