@@ -5,7 +5,7 @@ numGue: .word 0
 trys: .word 20 
 scan_pattern : .asciz "%d"
 message:  .asciz "The random function returned %d\n"
-message1: .asciz "\n\n!!!Guessing Game!!!\n
+message1: .asciz "\n\n!!!Guessing Game!!!\n"
 message0: .asciz "\nHow many TRYS would you like?: "
 message2: .asciz "\nType a Number:" 
 message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
