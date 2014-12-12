@@ -2,6 +2,16 @@
 .data
  
 message: .asciz "The random function returned %d\n"
+message1: .asciz "!Guessing Game! %d\n"
+message2: .asciz "\nType a Number:" 
+message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
+message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
+
+rand: 	  .asciz "\nThe random number was: %d"
+guessed:  .asciz "\n			You Typed: %d"
+
+win:  	 .asciz "\n!!!YOU WIN!!!!"
+lose:  	 .asciz "\n!!!YOU LOSE!!!"
  
 .text
 
@@ -29,12 +39,22 @@ main:
 	add r4,#1
 	cmp r4,#20
 	blt loop_rand
-	
- 
-    pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
+
+    pop {r4,lr}                   /* Pop the top of the stack and put it in lr */
+
     bx lr                        /* Leave main */
- 
+
 address_of_message: .word message
+address_of_message1: .word message1
+address_of_message2: .word message2
+address_of_message3: .word message3
+address_of_message4: .word message4
+
+address_of_rand: .word rand
+address_of_guessed: .word guessed
+
+address_of_win: .word win
+address_of_lose: .word lose
 
 /*External Functions*/
 .global printf
