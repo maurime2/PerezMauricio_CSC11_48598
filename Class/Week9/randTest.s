@@ -4,7 +4,7 @@ numRan: .word 0
 numGue: .word 0 
 scan_pattern : .asciz "%d"
 message:  .asciz "The random function returned %d\n"
-message1: .asciz "Guessing Game %d\n"
+message1: .asciz "\n\n!!!Guessing Game!!!\n\n"
 message2: .asciz "\nType a Number:" 
 message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
 message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
@@ -33,46 +33,23 @@ main:
 	mov r2,#90                   /* Move 90 to r2 */
 		                         /* We want rand()%90+10 so cal divMod with rand()%90 */
 	bl divMod                    /* Call divMod function to get remainder */
-@	add r1,#10                   /* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
 	
-	ldr r0, address_of_randomN
-	str r1, [r0]
+/*Store Random Number*/	
+_sav:	ldr r0, address_of_randomN
+		str r1, [r0]
 	
-	ldr r1, address_of_randomN
+/*CHECK AND MODIFY Random Number to be between 0 and 1000*/	
+	ldr r1, address_of_randomN	/*Load random number into r1*/
 	ldr r1, [r1]
-    ldr r0, address_of_message   /* Set &message2 as the first parameter of printf */
-    bl printf                    /* Call printf */
-
+	CMP r1, #1000
+	ble _game
+	b _endg
 	
-	ldr r1, address_of_randomN
-	ldr r1, [r1]
-    ldr r0, address_of_message1   /* Set &message2 as the first parameter of printf */
-    bl printf                    /* Call printf */
-
-	ldr r1, address_of_randomN
-	ldr r1, [r1]
-    ldr r0, address_of_message2   /* Set &message2 as the first parameter of printf */
-    bl printf                    /* Call printf */
-	
-	ldr r1, address_of_randomN
-	ldr r1, [r1]
-    ldr r0, address_of_message3   /* Set &message2 as the first parameter of printf */
-    bl printf                    /* Call printf */
-
-	ldr r1, address_of_randomN
-	ldr r1, [r1]
-    ldr r0, address_of_message4   /* Set &message2 as the first parameter of printf */
-    bl printf                    /* Call printf */
-
-
-	
-	@add r4,#1
-	@cmp r4,#20
-	@blt loop_rand
-	
+_game:	ldr r0, address_of_message1
+		bl printf
  
-    pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
-    bx lr                        /* Leave main */
+_endg:   pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
+		bx lr                        /* Leave main */
  
 address_of_message: .word message
 address_of_message1: .word message1
