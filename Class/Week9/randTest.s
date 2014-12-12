@@ -65,13 +65,10 @@ _corr:	add r2, r2, #1
 		ldr r1, address_of_randomN
 		str r0, [r1]
 	
-	/*Load Random Number*/
-	ldr r1, address_of_randomN
-	ldr r1, [r1]
-	
+	/*Load Random Number*/	
+	ldr r0, address_of_message5		/*God mode message*/
 	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
-	ldr r0, address_of_message5		/*God mode message*/
 	bl printf
 	
 /*GAME START*/	
@@ -107,6 +104,10 @@ _scanN:	/*Prompt for guess*/
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _winG
+		cmp r1, r2
+		blt _high
+		cmp r1, r2
+		b _low		
 		
 _high:	/*Prompt too High*/
 		ldr r0, address_of_message3		/*Prompt Game*/
