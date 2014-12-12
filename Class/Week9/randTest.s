@@ -46,40 +46,34 @@ _sav:	ldr r0, address_of_randomN
 	ldr r1, [r1]
 	ldr r0, address_of_message5		/*God mode message*/
 	bl printf
+
+	ldr r1, address_of_randomN		/*Load random number into r1*/
+	ldr r1, [r1]
+	add r1, r1, #1000
+	CMP r1, #1000					/*Compare will check if its between 0 and 1000*/
+	ble _game
+		/*Correct Number*/
+_clr:	mov r2, #0
+_corr:	add r2, r2, #1
+		cmp r2, #1000
+		beq _clr
+			sub r1, r1, #1
+			cmp r1, #1000
+			bgt _corr
 	
-@	
-@	ldr r1, address_of_randomN		/*Load random number into r1*/
-@	ldr r1, [r1]
-@	add r1, r1, #1000
-@	CMP r1, #1000					/*Compare will check if its between 0 and 1000*/
-@	ble _game
-@		/*Correct Number*/
-@_clr:	mov r2, #0
-@_corr:	add r2, r2, #1
-@		cmp r2, #1000
-@		beq _clr
-@			sub r1, r1, #1
-@			cmp r1, #1000
-@			bgt _corr
-@	
-@	/*Store Random Number*/	
-@		ldr r1, address_of_randomN
-@		str r0, [r1]
-@	
-@	/*Load Random Number*/	
-@	ldr r0, address_of_message5		/*God mode message*/
-@	ldr r1, address_of_randomN		/*Load random number into r1*/
-@	ldr r1, [r1]
-@	bl printf
+	/*Store Random Number*/	
+		ldr r1, address_of_randomN
+		str r0, [r1]
+	
+	/*Load Random Number*/	
+	ldr r0, address_of_message5		/*God mode message*/
+	ldr r1, address_of_randomN		/*Load random number into r1*/
+	ldr r1, [r1]
+	bl printf
 
 
 	
 /*GAME START*/	
-	ldr r1, address_of_randomN		/*Load random number into r1*/
-	ldr r1, [r1]
-	ldr r0, address_of_message5		/*God mode message*/
-	bl printf
-	
 _game:	ldr r0, address_of_message1		/*Prompt Game*/
 		bl printf
 		
