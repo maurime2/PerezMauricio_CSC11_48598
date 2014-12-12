@@ -140,8 +140,8 @@ _losG:	ldr r0, address_of_win		/*Prompt Game*/
 
 _again:	ldr r1, address_of_trys
 		ldr r1, [r1]
-		cmp r1, #0
-		neq _scanN
+		cmp r1, #1
+		bge _scanN
 
 _endg:  pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
 		bx lr                        	/* Leave main */
