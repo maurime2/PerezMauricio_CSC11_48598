@@ -79,6 +79,7 @@ _sav:	ldr r0, address_of_randomN
 	ldr r1, [r1]
 	ldr r0, address_of_message5		/*God mode message*/
 	bl printf
+	
 _game:	ldr r0, address_of_message1		/*Prompt Game*/
 		bl printf
 		
@@ -101,7 +102,7 @@ _scanN:	/*Prompt for guess*/
 		bl scanf
 
 		/*Check if too high or to low*/
-		ldr r1, address_of_numRan
+		ldr r1, address_of_randomN
 		ldr r1, [r1]
 		ldr r2, address_of_numGue
 		ldr r2, [r2]
@@ -129,12 +130,12 @@ _low:	/*Prompt too low*/
 		bl _scanN
 		
 _winG:	ldr r0, address_of_win		/*Prompt Game*/
-		ldr r1, address_of_numRan
+		ldr r1, address_of_randomN
 		ldr r1, [r1]
 		bl printf
 		
 _losG:	ldr r0, address_of_win		/*Prompt Game*/
-		ldr r1, address_of_numRan
+		ldr r1, address_of_randomN
 		ldr r1, [r1]
 		bl printf
 
