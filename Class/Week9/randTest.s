@@ -2,12 +2,15 @@
 .data
 numRan: .word 0 
 numGue: .word 0 
+trys: .word 20 
 scan_pattern : .asciz "%d"
 message:  .asciz "The random function returned %d\n"
-message1: .asciz "\n\n!!!Guessing Game!!!\n\nGuess the Random Number between 0 and 1000!!! GOOD LUCK!!! its %d"
+message1: .asciz "\n\n!!!Guessing Game!!!\n
+message0: .asciz "\nHow many TRYS would you like?: "
 message2: .asciz "\nType a Number:" 
 message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
-message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
+message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT"
+message5: .asciz "\nYOU REALY WANNA KNOW??? ITS %d YA CHEATER!!!!" 
 
 randomN:  .asciz "\nThe random number was: %d"
 guessed:  .asciz "\n			You Typed: %d"
@@ -59,18 +62,43 @@ _corr:	add r0, r0, #1
 	/*Load Random Number*/
 	ldr r1, address_of_randomN
 	ldr r1, [r1]
-_game:	ldr r0, address_of_message1
+/*GAME START*/	
+_game:	ldr r0, address_of_message1		/*Prompt Game*/
+		bl printf
+		
+		/*Prompt for trys*/
+		ldr r0, address_of_message0		/*Prompt Game*/
+		bl printf
+		
+		/*Scan Trys*/
+		ldr r0, address_of_scan_pattern	/* r0 ← &Scan pattern */
+		ldr r1, address_of_trys  		/* r1 ← &trys */
+		bl scanf 
+ 
+ 
+		/*Prompt too High*/
+		ldr r0, address_of_message3		/*Prompt Game*/
+		ldr r1, address_of_trys
+		ldr r1, [r1]
+		bl printf
+
+		/*Prompt too High*/
+		ldr r0, address_of_message3		/*Prompt Game*/
+		ldr r1, address_of_trys
+		ldr r1, [r1]
 		bl printf
  
 _endg:   pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
-		bx lr                        /* Leave main */
+		bx lr                        	/* Leave main */
  
 address_of_message: .word message
 address_of_message1: .word message1
+address_of_message0: .word message1
 address_of_message2: .word message2
 address_of_message3: .word message3
 address_of_message4: .word message4
-
+address_of_message5: .word message5
+address_of_trys: .word trys
 address_of_randomN: .word randomN
 address_of_guessed: .word guessed
 
