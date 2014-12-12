@@ -137,12 +137,15 @@ _losG:	ldr r0, address_of_win		/*Prompt Game*/
 		ldr r1, address_of_randomN
 		ldr r1, [r1]
 		bl printf
-
+		bl _again
+		
 _again:	ldr r1, address_of_trys
 		ldr r1, [r1]
+		cmp r1, #0
+		beq _losG
 		cmp r1, #1
 		bge _scanN
-
+		
 _endg:  pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
 		bx lr                        	/* Leave main */
  
