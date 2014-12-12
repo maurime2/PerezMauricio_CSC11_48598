@@ -76,14 +76,14 @@ _game:	ldr r0, address_of_message1		/*Prompt Game*/
 		bl scanf 
  
  
-		/*Prompt too High*/
+_high:	/*Prompt too High*/
 		ldr r0, address_of_message3		/*Prompt Game*/
 		ldr r1, address_of_trys
 		ldr r1, [r1]
 		bl printf
 
-		/*Prompt too High*/
-		ldr r0, address_of_message3		/*Prompt Game*/
+_low:	/*Prompt too low*/
+		ldr r0, address_of_message4		/*Prompt Game*/
 		ldr r1, address_of_trys
 		ldr r1, [r1]
 		bl printf
