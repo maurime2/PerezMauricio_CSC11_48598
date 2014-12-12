@@ -43,6 +43,7 @@ main:
     pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
     bx lr                        /* Leave main */
 
+/**/
 address_of_message: .word message
 address_of_message1: .word message1
 address_of_message2: .word message2
@@ -60,4 +61,3 @@ address_of_lose: .word lose
 .global time
 .global srand
 .global rand
-
