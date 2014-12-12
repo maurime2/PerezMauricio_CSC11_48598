@@ -2,7 +2,7 @@
 .data
  
 message: .asciz "The random function returned %d\n"
-message1: .asciz "!Guessing Game! %d\n"
+message1: .asciz "Guessing Game %d\n"
 message2: .asciz "\nType a Number:" 
 message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
 message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
@@ -33,7 +33,7 @@ main:
 	bl divMod                    /* Call divMod function to get remainder */
 	add r1,#10                   /* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
 	
-    ldr r0, address_of_message1   /* Set &message2 as the first parameter of printf */
+    ldr r0, address_of_message2   /* Set &message2 as the first parameter of printf */
     bl printf                    /* Call printf */
 
 	
