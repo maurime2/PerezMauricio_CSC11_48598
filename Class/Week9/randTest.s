@@ -137,7 +137,7 @@ _losG:	ldr r0, address_of_lose		/*Prompt Game*/
 		ldr r1, address_of_randomN
 		ldr r1, [r1]
 		bl printf
-		bl _endg
+		b _endg
 		
 _again:	ldr r1, address_of_trys
 		ldr r1, [r1]
