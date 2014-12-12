@@ -31,12 +31,23 @@ main:
 	mov r2,#90                   /* Move 90 to r2 */
 		                         /* We want rand()%90+10 so cal divMod with rand()%90 */
 	bl divMod                    /* Call divMod function to get remainder */
-	add r1,#10                   /* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
+@	add r1,#10                   /* Remainder in r1 so add 10 giving between 10 and 99 -> 2 digits */
+	
+	
 	
     ldr r0, address_of_message   /* Set &message2 as the first parameter of printf */
     bl printf                    /* Call printf */
 
-    ldr r0, address_of_message   /* Set &message2 as the first parameter of printf */
+    ldr r0, address_of_message1   /* Set &message2 as the first parameter of printf */
+    bl printf                    /* Call printf */
+
+    ldr r0, address_of_message2   /* Set &message2 as the first parameter of printf */
+    bl printf                    /* Call printf */
+	
+    ldr r0, address_of_message3   /* Set &message2 as the first parameter of printf */
+    bl printf                    /* Call printf */
+
+    ldr r0, address_of_message4   /* Set &message2 as the first parameter of printf */
     bl printf                    /* Call printf */
 
 
