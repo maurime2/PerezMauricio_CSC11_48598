@@ -4,7 +4,7 @@ numRan: .word 0
 numGue: .word 0 
 scan_pattern : .asciz "%d"
 message:  .asciz "The random function returned %d\n"
-message1: .asciz "\n\n!!!Guessing Game!!!\n\n"
+message1: .asciz "\n\n!!!Guessing Game!!!\n\nGuess the Random Number between 0 and 1000!!! GOOD LUCK!!! its %d"
 message2: .asciz "\nType a Number:" 
 message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
 message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
@@ -39,12 +39,26 @@ _sav:	ldr r0, address_of_randomN
 		str r1, [r0]
 	
 /*CHECK AND MODIFY Random Number to be between 0 and 1000*/	
-	ldr r1, address_of_randomN	/*Load random number into r1*/
+	ldr r1, address_of_randomN		/*Load random number into r1*/
 	ldr r1, [r1]
-	CMP r1, #1000
+	CMP r1, #1000					/*Compare will check if its between 0 and 1000*/
 	ble _game
-	b _endg
+		/*Correct Number*/
+_clr:	mov r0, #0
+_corr:	add r0, r0, #1
+		cmp r1, #1000
+		beq _clr
+			sub r1, r1, #1
+			cmp r1, #1000
+			bgt _corr
 	
+	/*Store Random Number*/	
+		ldr r1, address_of_randomN
+		str r0, [r1]
+	
+	/*Load Random Number*/
+	ldr r1, address_of_randomN
+	ldr r1, [r1]
 _game:	ldr r0, address_of_message1
 		bl printf
  
