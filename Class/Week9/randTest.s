@@ -49,7 +49,7 @@ _sav:	ldr r0, address_of_randomN
 		/*Correct Number*/
 _clr:	mov r0, #0
 _corr:	add r0, r0, #1
-		cmp r1, #1000
+		cmp r0, #1000
 		beq _clr
 			sub r1, r1, #1
 			cmp r1, #1000
