@@ -86,8 +86,8 @@ _scanN:	/*Prompt for guess*/
 		ldr r2, [r2]
 		cmp r1, r2
 		beq _winG
-		cmp r2, #1001
-		beq _godM
+		@cmp r2, #1001
+		@beq _godM
 		cmp r1, r2
 		blt _high
 		cmp r1, r2
