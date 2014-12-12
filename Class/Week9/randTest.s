@@ -141,6 +141,12 @@ _losG:	ldr r0, address_of_lose		/*Prompt Game*/
 		
 _again:	ldr r1, address_of_trys
 		ldr r1, [r1]
+		ldr r0, address_of_message0		/*Prompt Game*/
+		bl printf
+		
+		ldr r1, address_of_trys
+		ldr r1, [r1]
+		
 		cmp r1, #0
 		beq _losG
 		cmp r1, #1
