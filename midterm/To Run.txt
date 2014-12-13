@@ -5,26 +5,3 @@ as -o p2-isp.o p2-isp.s
 as -o p1-pay.o p1-pay.s
 gcc -o menu menu.o p1-pay.o p2-isp.o p3-fib.o mastermind-p1.o
 ./menu
-
-
-
-
-as -o mastermind.o mastermind.s
-gcc -o mastermind mastermind.o
-./mastermind
-
-
-***********************************************\n
-***		  MASTERMIND		    ***\n
-***********************************************\n
-INSTRUCTIONS: 	The CODEMAKER will make a code.\n
-                The PLAYER will have 12 TRYS to\n
-                guess the code.\n
-                The Player will only have PEGS\n
-                as Feedback into guessing the\n
-                code. EXACT Pegs represent\n
-                exact value and placement. COLOR\n
-                Pegs represent Pegs that are the\n
-                right value, but are in the wrong\n
-                place. Game ends after 12 trys.\n
-************************************************
