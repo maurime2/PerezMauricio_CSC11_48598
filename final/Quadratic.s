@@ -1,8 +1,8 @@
 .data
 .text
 
-.global _guess
-_guess:
+.global _quad
+_quad:
 
 	bx lr  
 

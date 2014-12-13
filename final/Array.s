@@ -1,8 +1,9 @@
 .data
+
 .text
 
-.global _guess
-_guess:
+.global _array
+_array:
 
 	bx lr  
 

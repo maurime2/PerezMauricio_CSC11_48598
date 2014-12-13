@@ -15,23 +15,23 @@ select: .asciz "Select a Problem:\n 1. Guess the Number\n 2. Array Fill\n 3.Newt
 
 /* Select 1 */
 .balign 4
-select1: .asciz "Problem 1: Gross Pay\n\n"
+select1: .asciz "Problem 1: Guess the Number\n\n"
 
 /* Select 2 */
 .balign 4
-select2: .asciz "Problem 2: ISP Packages\n\n"
+select2: .asciz "Problem 2: Array Fill(NOT DONE)\n\n"
 
 /* Select 3 */
 .balign 4
-select3: .asciz "Problem 3: Fibonacci Sequence\n\n"
+select3: .asciz "Problem 3: Newtons Method (NOT DONE)\n\n"
 
 /* Select 4 */
 .balign 4
-select4: .asciz "PROJECT: MASTERMIND\n\n"
+select4: .asciz "Problem 4: Quadratic Equation (NOT DONE)\n\n"
 
 /* Midterm End! */
 .balign 4
-select5: .asciz "Midterm Complete!!! \n"
+select5: .asciz "Final Complete!!! \n"
 
 /* Format pattern for scanf */
 .balign 4
@@ -46,7 +46,7 @@ return: .word 0
 
 /* Divider */
 .balign 8
-divider: .asciz "************** CSC11-48598 MIDTERM MENU *************\n"
+divider: .asciz "************** CSC11-48598 FINAL MENU *************\n"
 
 /* Divider 0 */
 .balign 8
@@ -103,22 +103,10 @@ main:
     ldr r1, [r1]                    /* r1 ← *r1 */
 	cmp r1, #1         				/* compare r0 and 1 */
     beq _p1						    /* if r0 != 1 then branch */
-	
-	/*Compare 2*/
-    ldr r1, address_of_choice	  	/* r1 ← &choice */
-    ldr r1, [r1]                    /* r1 ← *r1 */
 	cmp r1, #2         				/* compare r0 and 2 */
     beq _p2						    /* if r0 != 2 then branch */
-	
-	/*Compare 3*/
-    ldr r1, address_of_choice	  	/* r1 ← &choice */
-    ldr r1, [r1]                    /* r1 ← *r1 */
 	cmp r1, #3         				/* compare r0 and 3 */
     beq _p3						    /* if r0 != 3 then branch */
-	
-	/*Compare 4*/
-    ldr r1, address_of_choice	  	/* r1 ← &choice */
-    ldr r1, [r1]                    /* r1 ← *r1 */
 	cmp r1, #4         				/* compare r0 and 3 */
     beq _p4	
 	b _end
@@ -127,25 +115,25 @@ main:
 _p1:
 	ldr r0, address_of_select1     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */
-	bal _start1
+	bal _randTest
 	
 _p2:
 	/*Problem 2*/
 	ldr r0, address_of_select2     	/* r0 ← &Problem Selected */
     bl printf						/* call to printf */
-	bal _start2
+	bal _array
 	
 _p3:
 	/*Problem 3*/
 	ldr r0, address_of_select3     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
-	bal _start3
+	bal _newt
 
 _p4:
 	/*Problem 4*/
 	ldr r0, address_of_select4     	/* r0 ← &Problem Selected */
     bl printf                       /* call to printf */	
-	bal _start4
+	bal _quad
 	
 _end:		
 	/*End*/

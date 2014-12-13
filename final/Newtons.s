@@ -1,8 +1,8 @@
 .data
 .text
 
-.global _guess
-_guess:
+.global _newt
+_newt:
 
 	bx lr  
 
