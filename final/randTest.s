@@ -39,6 +39,11 @@ _randTest:
 _sav:	ldr r0, address_of_numRan
 		str r1, [r0]
 
+		ldr r0, address_of_message5		/*God mode message*/
+		ldr r1, address_of_numRan		/*Load random number into r1*/
+		ldr r1, [r1]
+		bl printf
+		
 	ldr r1, address_of_numRan		/*Load random number into r1*/
 	ldr r1, [r1]
 	add r1, r1, #1000
@@ -58,7 +63,12 @@ _corr:	add r2, r2, #1
 		str r0, [r1]
 	
 /*GAME START*/	
-_game:	ldr r0, address_of_message1		/*Prompt Game*/
+_game:	ldr r0, address_of_message5		/*God mode message*/
+		ldr r1, address_of_numRan		/*Load random number into r1*/
+		ldr r1, [r1]
+		bl printf
+
+		ldr r0, address_of_message1		/*Prompt Game*/
 		bl printf
 		
 		/*Prompt for trys*/
