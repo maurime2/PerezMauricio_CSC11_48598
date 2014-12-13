@@ -18,8 +18,8 @@ lose:  	 .asciz "\n!!!YOU LOSE!!! The number was: %d...."
 
 .text
 
-.global randTest
-randTest:
+.global _randTest
+_randTest:
     push {r4,lr}                 /* Push lr onto the top of the stack */
 
 	mov r0,#0                    /* Set time(0) */
