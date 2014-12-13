@@ -21,7 +21,6 @@ lose:  	 .asciz "\n!!!YOU LOSE!!! The number was: %d...."
 .global _randTest
 _randTest:
     push {r4,lr}                 /* Push lr onto the top of the stack */
-
 	mov r0,#0                    /* Set time(0) */
     bl time                      /* Call time */
 	bl srand                     /* Call srand */
@@ -32,7 +31,7 @@ _randTest:
 	bl rand                      /* Call rand */
 	mov r1,r0,ASR #1             /* In case random return is negative */
 	mov r2,#90                   /* Move 90 to r2 */
-		                         /* We want rand()%90+10 so cal divMod with rand()%90 */
+_ag:		                         /* We want rand()%90+10 so cal divMod with rand()%90 */
 	bl divMod                    /* Call divMod function to get remainder */
 	
 /*Store Random Number*/	
@@ -41,28 +40,11 @@ _sav:	ldr r0, address_of_numRan
 		
 	ldr r1, address_of_numRan		/*Load random number into r1*/
 	ldr r1, [r1]
-	add r1, r1, #1000
 	CMP r1, #1000					/*Compare will check if its between 0 and 1000*/
 	ble _game
-		/*Correct Number*/
-_clr:	mov r2, #0
-_corr:	add r2, r2, #1
-		cmp r2, #1000
-		beq _clr
-			sub r1, r1, #1
-			cmp r1, #1000
-			bgt _corr
-	
-	/*Store Random Number*/	
-		ldr r1, address_of_numRan
-		str r0, [r1]
-		
-		ldr r0, address_of_message5		/*God mode message*/
-		ldr r1, address_of_numRan		/*Load random number into r1*/
-		ldr r1, [r1]
-		bl printf
-		
-	
+	b _ag		 /* get number again*/
+				/*Correct Number*/
+
 /*GAME START*/	
 _game:	
 
@@ -100,9 +82,7 @@ _scanN:	/*Prompt for guess*/
 		blt _high
 		cmp r1, r2
 		b _low		
-		b _error
-
-
+		
 _godM:
 	/*Load Random Number*/	
 	ldr r0, address_of_message5		/*God mode message*/
@@ -151,8 +131,9 @@ _again:	ldr r1, address_of_trys
 		
 		cmp r1, #0
 		beq _losG
-		cmp r1, #1
-		bge _scanN
+		cmp r1, #0
+		bgt _scanN
+		b _endg
 		
 _endg:  pop {r4,lr}                     /* Pop the top of the stack and put it in lr */
 		bx lr                        	/* Leave main */

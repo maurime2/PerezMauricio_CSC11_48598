@@ -6,3 +6,22 @@ as -o Array.o Array.s
 as -o Newtons.o Newtons.s
 gcc -o menu menu.o Array.o Newtons.o Quadratic.o mainDivModFuncV2.o randTest.o
 ./menu
+
+
+
+_clr:	mov r2, #0
+_corr:	add r2, r2, #1
+		cmp r2, #1000
+		beq _clr
+			sub r1, r1, #1
+			cmp r1, #1000
+			bgt _corr
+	
+	/*Store Random Number*/	
+		ldr r1, address_of_numRan
+		str r0, [r1]
+		
+		ldr r0, address_of_message5		/*God mode message*/
+		ldr r1, address_of_numRan		/*Load random number into r1*/
+		ldr r1, [r1]
+		bl printf
