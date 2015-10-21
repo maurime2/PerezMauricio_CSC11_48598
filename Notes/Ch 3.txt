@@ -1,9 +1,0 @@
-HOw to Execute
-
-as -o prog3a.o prog3a.s /*ASSEMBEL PROGRAM in an OBJECT FILE*/
-ld -o prog3a prog3a.o	/* LINK DYNAMIC and convert to an EXECUTABLE FILE into OBJECT*/
-./prog3a		/*RUN Program*/
-echo $?			/*PRINT to CONSOLE*/
-			@this wont be seen by the program either
-
-pg37

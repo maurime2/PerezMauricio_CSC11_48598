@@ -1,4 +1,0 @@
-as -o menu.o menu.s
-as -o divMod.o divMod.s
-gcc -o menu menu.o divMod.o
-./menu

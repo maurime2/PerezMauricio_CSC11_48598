@@ -1,7 +1,0 @@
-Take this program and function.pdf
-
-http://ideone.com/9gWEPm
-
-to create a program that inputs the numerator and denominator and ouputs the quotient and remainder.
-
-Develop the code in your repository, zip and submit here as well as sending an email which copies yourself to mark.lehr@rcc.edu with subject:  Lastname, Firstname - Assignment 4 - 48598
