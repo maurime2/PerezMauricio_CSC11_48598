@@ -1,0 +1,24 @@
+in Raspbarian
+	GCC - GNU collection Compieler
+
+Notation In Use
+		% or 0b -	Denotes Binary Numbers in base 2
+				%11110000 or ob11110000
+
+		0x	-	Denotes Hex Values (Base 16)
+				0xCAFE
+		
+		<>	-	Read as an object to work with a command
+
+		Dest	-	Short ofor Destination
+
+		Operand1-	A Register
+
+		Operand2-	A Register or an immediate Value
+
+		Op1	-	shorthand for <Operand1> when space is tight
+
+		Op2	-	shorthand for <Operand2> when space is tight
+
+		()	-	Whats inside may be ommited.
+

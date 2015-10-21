@@ -1,0 +1,3 @@
+as -o mastermind.o mastermind.s
+gcc -o mastermind mastermind.o
+./mastermind

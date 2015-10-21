@@ -1,0 +1,13 @@
+First, program the Factorial program using all the techniques 
+discussed in Week8.
+
+4 different ways to code the function.
+
+
+Then, use the final technique to create the 4 functions 
+in the last program
+
+http://ideone.com/xpRDfX
+
+Develop the code in your repository, zip and submit here as well as sending an email which copies yourself to mark.lehr@rcc.edu with subject:  
+Perez, Mauricio - Assignment 6 - 48598

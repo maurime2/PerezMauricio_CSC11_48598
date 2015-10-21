@@ -1,0 +1,31 @@
+http://ideone.com/G3v2Ys
+
+http://ideone.com/NRYI0H
+
+Flowchart and code the above using the example attahment.
+
+Compile like this
+
+as -o moddiv.o moddiv.s
+gcc -o moddiv moddiv.o
+gdb ./moddiv
+
+Debug like this -> http://www.yolinux.com/TUTORIALS/GDB-Commands.html
+
+gdb ./prog
+
+start
+
+disassemble
+
+info registers
+
+break * 0x0000xxxx
+
+continue
+
+step i
+
+step 1
+
+q

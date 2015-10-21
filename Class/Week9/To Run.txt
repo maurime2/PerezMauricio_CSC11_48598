@@ -1,0 +1,39 @@
+as -o randTest.o randTest.s
+as -o mainDivModFuncV2.o mainDivModFuncV2.s
+gcc -o randTest randTest.o mainDivModFuncV2.o
+./randTest
+
+
+
+
+
+
+
+
+
+
+/*R1 HAS RANDOM NUMBER AT THIS POINT*/
+    ldr r0, address_of_message1   /* Set &message2 as the first parameter of printf */
+    bl printf                    /* Call printf */
+
+
+
+message1: .asciz "Guessing Game %d\n"
+message2: .asciz "\nType a Number:" 
+message3: .asciz "\nTOO HIGH: TRY AGAIN! %d TRYS LEFT" 
+message4: .asciz "\nTOO LOW: TRY AGAIN! %d TRYS LEFT" 
+
+rand: 	  .asciz "\nThe random number was: %d"
+guessed:  .asciz "\n			You Typed: %d"
+
+win:  	 .asciz "\n!!!YOU WIN!!!!"
+lose:  	 .asciz "\n!!!YOU LOSE!!!"
+ 
+
+
+
+
+
+
+
+

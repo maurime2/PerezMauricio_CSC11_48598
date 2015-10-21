@@ -1,0 +1,16 @@
+as -o Divmod_modified.o Divmod_modified.s
+gcc -o Divmod_modified Divmod_modified.o
+./Divmod_modified
+
+
+as -o dm1.o dm1.s
+gcc -o dm1 dm1.o
+./dm1
+
+
+as -o moddiv.o moddiv.s
+gcc -o moddiv moddiv.o
+./moddiv
+
+
+gdb ./moddiv
